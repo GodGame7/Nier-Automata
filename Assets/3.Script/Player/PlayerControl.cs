@@ -9,9 +9,9 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed = 2.0f;
     public float sprintSpeed = 2.7f;
     [Range(0.0f, 0.3f)]
-    // 카메라 회전 속도 제한
+    [Tooltip("캐릭터 회전 속도")]
     public float rotationSmoothTime = 0.12f;
-    // ??
+    [Tooltip("가감속도")]
     public float speedChangeRate = 10f;
 
     [Space(10)]
@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
     public float gravity = -9.81f;
     // 낙하 애니메이션 돌입 시간
     // => 계단 내려갈때 점프모션 방지
+    [Range(0.0f, 0.2f)]
+    [Tooltip("낙하 판정 돌입하는 시간")]
     public float fallTime = 0.05f;
 
     [Header("땅 체크")]
@@ -26,17 +28,24 @@ public class PlayerControl : MonoBehaviour
     // ??
     public float groundedOffset = -0.14f;
     // 땅체크 반경
-    public float groundedRadius = 0.2f;
+    private float groundedRadius = 0.2f;
+    [Tooltip("땅으로 판단할 레이어들")]
     public LayerMask GroundLayers;
 
     [Header("시네머신 카메라")]
     public GameObject CinemachineCameraTarget;
-    // 아래 바라보는 각도
+    [Tooltip("위에서 아래 바라보는 각도")]
     public float TopClamp = 70.0f;
-    // 위에 바라보는 각도
+    [Tooltip("아래에서 위 바라보는 각도")]
     public float BottomClamp = -30.0f;
+    [Range(0.5f, 2.0f)]
+    [Tooltip("카메라 수직 감도")]
+    public float CameraVerticalSensitivity = 1.0f;
+    [Range(1.0f, 4.0f)]
+    [Tooltip("카메라 수평 감도")]
+    public float CameraHorizontalSensitivity = 2.0f;
+    [Tooltip("카메라 고정")]
     public bool LockCameraPosition = false;
-
 
 
     // 시네머신
@@ -104,11 +113,11 @@ public class PlayerControl : MonoBehaviour
 
     private void GetAnimHash()
     {
-        hashSpeed = Animator.StringToHash("");
-        hashGrounded = Animator.StringToHash("");
-        hashJump = Animator.StringToHash("");
-        hashFreeFall = Animator.StringToHash("");
-        hashMotionSpeed = Animator.StringToHash("");
+        hashSpeed = Animator.StringToHash("Speed");
+        hashGrounded = Animator.StringToHash("Grounded");
+        hashJump = Animator.StringToHash("Jump");
+        hashFreeFall = Animator.StringToHash("FreeFall");
+        hashMotionSpeed = Animator.StringToHash("MotionSpeed");
     }
     private void Move()
     {
@@ -125,13 +134,9 @@ public class PlayerControl : MonoBehaviour
         if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
+            // 커브
             _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed,
                 Time.deltaTime * speedChangeRate);
-
-            // round speed to 3 decimal places
-            _speed = Mathf.Round(_speed * 1000f) / 1000f;
         }
         else
         {
@@ -144,7 +149,6 @@ public class PlayerControl : MonoBehaviour
             _animationBlend = 0f;
         }
         Vector3 inputDirection = new Vector3(move.x, 0.0f, move.y).normalized;
-        // 추가
         if (move != Vector2.zero)
         {
             _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
@@ -152,33 +156,32 @@ public class PlayerControl : MonoBehaviour
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                 rotationSmoothTime);
 
-            // rotate to face input direction relative to camera position
+            // 카메라 보는 방향으로 회전
             transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
 
         Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-        Debug.Log(_speed);
         controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+        anim.SetFloat(hashSpeed, _animationBlend);
+        anim.SetFloat(hashMotionSpeed, 1);
     }
     private void CameraRotation()
     {
+        // 마우스 입력에 의한 회전값
         Vector2 look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         if (look.sqrMagnitude >= _threshold && !LockCameraPosition)
         {
-            //Don't multiply mouse input by Time.deltaTime;
-            float deltaTimeMultiplier = 1.0f;
-
-            _cinemachineTargetYaw += look.x * deltaTimeMultiplier;
-            _cinemachineTargetPitch -= look.y * deltaTimeMultiplier;
+            _cinemachineTargetYaw += look.x * CameraHorizontalSensitivity;
+            _cinemachineTargetPitch -= look.y * CameraVerticalSensitivity;
         }
-
-        // clamp our rotations so our values are limited 360 degrees
+        
+        // 360도 제한
         _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-        // Cinemachine will follow this target
+        // 카메라 세팅
         CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch,
             _cinemachineTargetYaw, 0.0f);
     }
