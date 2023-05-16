@@ -23,7 +23,7 @@ ModelImporter:
     second: FlagIdle
   - first:
       74: 3763711736470402476
-    second: FlagIdle2
+    second: FlagTilt
   - first:
       74: 5340958204920719290
     second: GundamIdle
@@ -32,7 +32,7 @@ ModelImporter:
     second: GundamMove
   - first:
       74: 396392639845537602
-    second: Noesis Frames (6)
+    second: Die
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -218,7 +218,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -236,7 +236,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: FlagIdle2
+      name: FlagTilt
       takeName: Noesis Frames
       internalID: 0
       firstFrame: 860
@@ -247,7 +247,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -276,7 +276,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -305,7 +305,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -323,7 +323,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Noesis Frames (6)
+      name: Die
       takeName: Noesis Frames
       internalID: 0
       firstFrame: 1853
