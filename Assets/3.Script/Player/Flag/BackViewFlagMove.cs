@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BackViewFlagMove : IFlagMoveStrategy
-{    public void Move(FlagControl player)
+{
+    public Vector3 Move(FlagControl player, out Vector3 move)
     {
-        throw new System.NotImplementedException();
+        move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+
+        return move;
     }
 }

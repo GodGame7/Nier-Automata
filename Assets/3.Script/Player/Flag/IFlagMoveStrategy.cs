@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IFlagMoveStrategy
 {
-    public abstract void Move(FlagControl player);
+    public abstract Vector3 Move(FlagControl player, out Vector3 move);
 }
