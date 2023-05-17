@@ -8,8 +8,6 @@ public class TopViewFlagMove : IFlagMoveStrategy
     {
         move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         
-        player.anim.SetFloat(player.hashHSpeed, move.x);
-
         return move;
     }
 }

@@ -8,8 +8,6 @@ public class BackViewFlagMove : IFlagMoveStrategy
     {
         move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 
-        player.anim.SetFloat(player.hashHSpeed, move.x);
-
         return move;
     }
 }

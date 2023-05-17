@@ -5,8 +5,12 @@ using UnityEngine;
 public class FlagControl : MonoBehaviour
 {
     [Header("플레이어 세팅")]
-    public float moveSpeed = 2.0f;
-    public float turnSpeed = 2.7f;
+    [SerializeField]
+    private float moveSpeed = 2.0f;
+    [SerializeField]
+    private float turnSpeed = 2.7f;
+    [SerializeField]
+    private float fireDelay = 0.1f;
 
 
     // 플레이어
@@ -17,18 +21,19 @@ public class FlagControl : MonoBehaviour
     private IFlagMoveStrategy _currentStrategy;
 
     // 애니매이션 해시
-    public int hashHSpeed;
+    private int hashHSpeed;
     private int hashTurn;
     private int hashToGundam;
     private int hashToFlag;
     private int hashAttack;
 
     // 컴포넌트
-    public Animator anim;
-    public CharacterController controller;
+    private Animator anim;
+    private CharacterController controller;
     private GameObject mainCamera;
 
     private const float _threshold = 0.01f;
+
 
     private void Awake()
     {
@@ -36,15 +41,13 @@ public class FlagControl : MonoBehaviour
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+
+        Init();
+        GetAnimHash();
     }
 
     private void Start()
     {
-        TryGetComponent(out anim);
-        TryGetComponent(out controller);
-
-        GetAnimHash();
-
         SetStrategy(new TopViewFlagMove());
         SetStrategy(new SideViewFlagMove());
         SetStrategy(new BackViewFlagMove());
@@ -53,6 +56,12 @@ public class FlagControl : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    private void Init()
+    {
+        TryGetComponent(out anim);
+        TryGetComponent(out controller);
     }
 
     private void GetAnimHash()
@@ -72,7 +81,10 @@ public class FlagControl : MonoBehaviour
     private void Move()
     {
         Vector3 move;
+
         _currentStrategy.Move(this, out move);
+
+        anim.SetFloat(hashHSpeed, move.x);
         controller.Move(moveSpeed * Time.deltaTime * move);
     }
 }
