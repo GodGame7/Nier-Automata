@@ -8,33 +8,29 @@ public class FlagControl : MonoBehaviour
     public float moveSpeed = 2.0f;
     public float turnSpeed = 2.7f;
 
+
     // 플레이어
     private float _speed;
     private float _animationBlend;
     private float _targetRotation = 0.0f;
-    private float _rotationVelocity;
-    private float _verticalVelocity;
-    private float _terminalVelocity = 53.0f;
 
+    private IFlagMoveStrategy _currentStrategy;
 
     // 애니매이션 해시
-    private int hashHSpeed;
+    public int hashHSpeed;
     private int hashTurn;
     private int hashToGundam;
     private int hashToFlag;
     private int hashAttack;
 
-
-    //private PlayerInput _playerInput;
-    private Animator anim;
-    private CharacterController controller;
-    //private StarterAssetsInputs input;
+    // 컴포넌트
+    public Animator anim;
+    public CharacterController controller;
     private GameObject mainCamera;
 
     private const float _threshold = 0.01f;
 
-    private Vector3 scale;
-
+    public Vector3 scale;
 
     private void Awake()
     {
@@ -49,14 +45,15 @@ public class FlagControl : MonoBehaviour
     {
         TryGetComponent(out anim);
         TryGetComponent(out controller);
-        //TryGetComponent(input);
 
         GetAnimHash();
+
+        SetStrategy(new TopViewFlagMove());
     }
 
     private void Update()
     {
-        Move1();
+        Move();
     }
 
     private void GetAnimHash()
@@ -67,24 +64,14 @@ public class FlagControl : MonoBehaviour
         hashToFlag = Animator.StringToHash("toFlag");
         hashAttack = Animator.StringToHash("attack");
     }
-    private void Move1()
+
+    public void SetStrategy(IFlagMoveStrategy strategy)
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        float targetSpeed = moveSpeed;
+        _currentStrategy = strategy;
+    }
 
-        if (move.Equals(Vector2.zero))
-        {
-            targetSpeed = 0f;
-        }
-        _speed = targetSpeed;
-
-        controller.Move(_speed * Time.deltaTime * move);
-
-        if (move.x * scale.x < 0)
-        {
-            scale.x *= -1;
-            transform.localScale = scale;
-        }
-        anim.SetFloat(hashHSpeed, move.x);
+    private void Move()
+    {
+        _currentStrategy.Move(this);        
     }
 }
