@@ -30,15 +30,12 @@ public class FlagControl : MonoBehaviour
 
     private const float _threshold = 0.01f;
 
-    public Vector3 scale;
-
     private void Awake()
     {
         if (mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
-        scale = transform.localScale;
     }
 
     private void Start()
@@ -49,6 +46,8 @@ public class FlagControl : MonoBehaviour
         GetAnimHash();
 
         SetStrategy(new TopViewFlagMove());
+        SetStrategy(new SideViewFlagMove());
+        SetStrategy(new BackViewFlagMove());
     }
 
     private void Update()
@@ -72,6 +71,8 @@ public class FlagControl : MonoBehaviour
 
     private void Move()
     {
-        _currentStrategy.Move(this);        
+        Vector3 move;
+        _currentStrategy.Move(this, out move);
+        controller.Move(moveSpeed * Time.deltaTime * move);
     }
 }
