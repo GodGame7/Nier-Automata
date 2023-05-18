@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BulletHard
   - BulletSoft
+  - Enemy
   layers:
   - Default
   - TransparentFX

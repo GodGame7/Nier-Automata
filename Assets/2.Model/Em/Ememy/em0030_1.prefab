@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 669708989293958587}
   - component: {fileID: 669708989293958586}
   m_Layer: 0
-  m_Name: em0030
+  m_Name: em0030_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,8 +48,9 @@ MonoBehaviour:
   moveSpeed: 1
   rotateSpeed: 60
   fireDelay: 3
-  bulletHard: {fileID: 8337525168673256228, guid: 83f3c64729ed1f742a58333ced30e24f, type: 3}
-  bulletSoft: {fileID: 8980758755611063451, guid: 2cb1cf1b625c43940bdf8e977f3d2822, type: 3}
+  bulletHard: {fileID: 7216397595937012662, guid: 1672e0cffba280940af01124ca053a34, type: 3}
+  bulletSoft: {fileID: 4940254569364709599, guid: e6b5f837fb8ee484fa2508031c42014e, type: 3}
+  bulletSpeed: 1
   firstDesPos: {x: -4, y: 0, z: 2}
   lastDesPos: {x: 4, y: 0, z: 2}
   isCanLook: 1
@@ -336,19 +337,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1337808372568003516, guid: 18f1a806ba0dc25488f85c35260f3f5f, type: 3}
   m_PrefabInstance: {fileID: 669708991143719359}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &669708989250219925
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007357930498957827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.16, z: 0.18}
-  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!95 &669708991143719357
 Animator:
   serializedVersion: 3
@@ -368,3 +356,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &669708989250219925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007357930498957827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18, y: 0.16, z: 0.18}
+  m_Center: {x: 0, y: 0.09, z: 0}
