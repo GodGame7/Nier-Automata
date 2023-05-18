@@ -18,7 +18,6 @@ public class GundamTopViewMove : MonoBehaviour, IFlagViewStrategy
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
             float targetRotation = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-            Debug.Log(move);
             if(targetRotation == 0 && move.z < 0)
             {
                 targetRotation = -180f;
