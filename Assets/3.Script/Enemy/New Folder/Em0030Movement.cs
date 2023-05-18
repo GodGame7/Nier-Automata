@@ -14,6 +14,7 @@ public class Em0030Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
+    [SerializeField] float bulletSpeed = 0.1f;
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
@@ -53,10 +54,12 @@ public class Em0030Movement : MonoBehaviour
     private void Update()
     {
         fireTimer += Time.deltaTime;
+        // 죽거나 준비되지 않았으면 return
         if (!isReady || isDie)
         {
             return;
         }
+        // 플레이어를 처다볼 수 있다면 회전
         if (playerTransform != null && isCanLook)
         {
             Vector3 direction = playerTransform.position - transform.position;
@@ -83,18 +86,53 @@ public class Em0030Movement : MonoBehaviour
             yield return null;
         }
         transform.position = desPos;
-        isReady = true;
         desPos = lastDesPos;
+        isReady = true;
+        while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
+        {
+            if (!isDie)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, desPos, moveSpeed * Time.deltaTime);
+            }
+            yield return null;
+        }
+    }
+
+    public void OnDamage(float damage)
+    {
+        currentHp -= damage;
+        if (currentHp <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        isDie = true;
+        Debug.Log("죽음");
     }
 
     private IEnumerator Fire_co()
     {
-        Debug.Log("파이어!");
-        yield return null;
-    }
-
-    private void Die()
-    {
-        Debug.Log("죽음");
+        for (int i = 0; i < 5; i++)
+        {
+        GameObject Bullet = bulletSoft;
+        int bulletType = Random.Range(0, 4);
+        if (bulletType == 0)
+        {
+            Bullet = bulletHard;
+        }
+        GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation);
+        Vector3 direction = (playerObject.transform.position - bullet.transform.position).normalized;
+        bullet.transform.LookAt(playerObject.transform);
+        
+        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        if (bulletRigidbody != null)
+        {
+            bulletRigidbody.velocity = direction * bulletSpeed;
+        }
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

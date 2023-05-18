@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyBulletSoft
-  m_Shader: {fileID: -6465566751694194690, guid: 727162da91b8e7c4f91423b70b1d098d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6646ce114552a3c48ac6b6c165e4e5c6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,8 +19,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_2e2321c56a8746dba5381556aa6e1ecc:
-        m_Texture: {fileID: 2800000, guid: c369079d2b14b4a4483d4785f6a67005, type: 3}
+    - _texture2D_Albedo:
+        m_Texture: {fileID: 2800000, guid: abd74ce871477484d8ca976b7ed877ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texture2D_Emission:
+        m_Texture: {fileID: 2800000, guid: 7a6c02cf72f9bd44aba56b33243f9dfc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texture2D_Normal:
+        m_Texture: {fileID: 2800000, guid: 2277dc3a340d7e74da5547082d9bf427, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,8 +44,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_c508747f247f4a13a42ce12226c2f19b: 3
+    - Vector1_30b800562d614fe3bc3f262b141e6236: 1
+    - _fresnelPower: 0.5
+    - _fresnelStrength: 1.5
+    - _metallic: 0.5
+    - _smoothness: 0.5
     m_Colors:
-    - _color_Main: {r: 1.062788, g: 2.4699605, b: 0.31457046, a: 0}
-    - vector2_TextureDirection: {r: 2, g: 1, b: 0, a: 0}
+    - _color: {r: 0.7386793, g: 0.5731132, b: 0.764151, a: 0}
+    - _vecter2_SpinDir: {r: 1, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
