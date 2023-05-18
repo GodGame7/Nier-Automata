@@ -28,6 +28,7 @@ public class FlagControl : MonoBehaviour
     // 플레이어
     // 움직임 자연스럽게 이어지도록 하기 위한 변수
     private float animationBlend;
+    private float currentSpeedX = 0;
     public float h;
     public float v;
     //private float targetRotation = 0.0f;
@@ -120,47 +121,7 @@ public class FlagControl : MonoBehaviour
 
     private void Update()
     {
-        foreach (KeyCode key in keysToCheck)
-        {
-            if (Input.GetKeyDown(key))
-            {
-                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
-                {
-                    Dash();
-                    lastKeyPressed = KeyCode.None;
-                }
-                else
-                {
-                    lastKeyPressed = key; 
-                }
-                lastKeyPressTime = Time.time;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            h = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            h = 1;
-        }
-        else
-        {
-            h = 0;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            v = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            v = -1;
-        }
-        else
-        {
-            v = 0;
-        }
+        InputKey();
 
         Move();
     }
@@ -205,6 +166,56 @@ public class FlagControl : MonoBehaviour
         currentState.Action();
     }
 
+
+    private void InputKey()
+    {
+        foreach (KeyCode key in keysToCheck)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
+                {
+                    Dash();
+                    lastKeyPressed = KeyCode.None;
+                }
+                else
+                {
+                    lastKeyPressed = key;
+                }
+                lastKeyPressTime = Time.time;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            h = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            h = 1;
+        }
+        else
+        {
+            h = 0;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            v = 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            v = -1;
+        }
+        else
+        {
+            v = 0;
+        }
+    }
+    private float GetCurrentSpeed()
+    {
+
+        return 0.1f;
+    }
     private void Move()
     {
         Vector3 move;
