@@ -45,7 +45,9 @@ public class FlagControl : MonoBehaviour
     private int hashTurn;
     private int hashToGundam;
     private int hashToFlag;
-    private int hashAttack;
+    private int hashWeakAttack1;
+    private int hashWeakAttack2;
+    private int hashStrongAttack;
 
     // ÄÄÆ÷³ÍÆ®
     private Animator anim;
@@ -125,7 +127,9 @@ public class FlagControl : MonoBehaviour
         hashTurn = Animator.StringToHash("turn");
         hashToGundam = Animator.StringToHash("toGundam");
         hashToFlag = Animator.StringToHash("toFlag");
-        hashAttack = Animator.StringToHash("attack");
+        hashWeakAttack1 = Animator.StringToHash("weakAttack1");
+        hashWeakAttack2 = Animator.StringToHash("weakAttack2");
+        hashStrongAttack = Animator.StringToHash("strongAttack");
     }
 
     public void SetViewStrategy(IFlagViewStrategy strategy)
