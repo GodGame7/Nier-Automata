@@ -11,11 +11,11 @@ public class ModeFlag : IFlagModeStrategy
 
     public void WeakAttack1(FlagControl player)
     {
-        Debug.Log("비행기 약공 2단 중");
+        Debug.Log("비행기 약공 1단 중");
     }
 
     public void WeakAttack2(FlagControl player)
     {
-        Debug.Log("비행기 약공 1단 중");
+        Debug.Log("비행기 약공 2단 중");
     }
 }
