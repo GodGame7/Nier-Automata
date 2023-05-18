@@ -96,10 +96,10 @@ public class FlagControl : MonoBehaviour
 
     private void Start()
     {
-        SetViewStrategy(new FlagTopViewMove());
         SetViewStrategy(new FlagBackViewMove());
         SetViewStrategy(new FlagSideViewMove());
         SetViewStrategy(new GundamTopViewMove());
+        SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
     }
 
