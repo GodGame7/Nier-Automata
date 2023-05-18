@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Em0030Movement : MonoBehaviour
 {
-    [Header("적03 정보")]
+    [Header("적 0030 정보")]
     [SerializeField] float maxHp = 50f;
-    [SerializeField] float moveSpeed = 0.1f;
+    [SerializeField] float firstMoveSpeed = 2.0f;
+    [SerializeField] float lastMoveSpeed = 0.5f;
     [SerializeField] float rotateSpeed = 60.0f; 
     [SerializeField] float fireDelay = 3.0f;
 
@@ -14,13 +15,13 @@ public class Em0030Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
-    [SerializeField] float bulletSpeed = 0.1f;
+    [SerializeField] float bulletSpeed = 1.0f;
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
-    [SerializeField] Vector3 firstDesPos;
-    [SerializeField] Vector3 lastDesPos;
-    [SerializeField] bool isCanLook;
+    [SerializeField] public Vector3 firstDesPos;
+    [SerializeField] public Vector3 lastDesPos;
+    [SerializeField] public bool isCanLook;
 
     [Space(0.5f)]
     [Header("확인용")]
@@ -33,7 +34,6 @@ public class Em0030Movement : MonoBehaviour
     [SerializeField] Transform playerTransform;
 
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
-
     private void Start()
     {
         desPos = firstDesPos;
@@ -81,7 +81,7 @@ public class Em0030Movement : MonoBehaviour
         {
             if (!isDie)
             {
-                transform.position = Vector3.MoveTowards(transform.position, desPos, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
             }
             yield return null;
         }
@@ -92,25 +92,10 @@ public class Em0030Movement : MonoBehaviour
         {
             if (!isDie)
             {
-                transform.position = Vector3.MoveTowards(transform.position, desPos, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, lastMoveSpeed * Time.deltaTime);
             }
             yield return null;
         }
-    }
-
-    public void OnDamage(float damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        isDie = true;
-        Debug.Log("죽음");
     }
 
     private IEnumerator Fire_co()
@@ -135,4 +120,20 @@ public class Em0030Movement : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
+
+    public void OnDamage(float damage)
+    {
+        currentHp -= damage;
+        if (currentHp <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        isDie = true;
+        Debug.Log("죽음");
+    }
+
 }
