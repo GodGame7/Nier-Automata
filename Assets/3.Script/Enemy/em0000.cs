@@ -58,6 +58,8 @@ public class em0000 : MonoBehaviour
 
     private void Start()
     {
+
+        Hp = 100;
         //타겟 위치 찾기
         target = GameObject.FindGameObjectWithTag("Player").transform;
         state = State.IDLE;
