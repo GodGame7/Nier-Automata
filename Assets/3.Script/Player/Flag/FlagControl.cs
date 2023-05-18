@@ -97,9 +97,9 @@ public class FlagControl : MonoBehaviour
     private void Start()
     {
         SetViewStrategy(new FlagTopViewMove());
+        SetViewStrategy(new FlagBackViewMove());
         SetViewStrategy(new FlagSideViewMove());
         SetViewStrategy(new GundamTopViewMove());
-        SetViewStrategy(new FlagBackViewMove());
         SetState(nomalState);
     }
 
@@ -148,7 +148,6 @@ public class FlagControl : MonoBehaviour
     private void Move()
     {
         Vector3 move;
-
         currentViewStrategy.Move(this, out move);
 
         animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
@@ -166,6 +165,9 @@ public class FlagControl : MonoBehaviour
         while (true)
         {
             yield return InputWeakAttackButton_wait;
+
+            currentModeStrategy.WeakAttack1(this);
+
             if (currentState is FlagNomal)
             {
                 SetState(weakAttackState);
