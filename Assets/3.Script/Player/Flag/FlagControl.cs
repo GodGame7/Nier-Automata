@@ -5,12 +5,18 @@ using UnityEngine;
 public class FlagControl : MonoBehaviour
 {
     [Header("플레이어 세팅")]
+    [Tooltip("플레이어 이동 속도")]
     [SerializeField]
     private float moveSpeed = 2.0f;
+    [Tooltip("플레이어 대쉬 속도")]
     [SerializeField]
-    private float turnSpeed = 2.7f;
+    private float dashSpeed = 2.7f;
+    [Tooltip("플레이어 가감속도")]
+    public float speedChangeRate = 10f;
+    [Tooltip("원거리 공격 연사 딜레이")]
     [SerializeField]
     private float fireDelay = 0.1f;
+    [Tooltip("플레이어 공격력")]
     [SerializeField]
     private float damage = 5.0f;
     private float weakDamage = 2.0f;
@@ -19,12 +25,14 @@ public class FlagControl : MonoBehaviour
 
 
     // 플레이어
-    //private float animationBlend;
+    // 움직임 자연스럽게 이어지도록 하기 위한 변수
+    private float animationBlend;
     //private float targetRotation = 0.0f;
     //private PlayerData player;
 
 
-    private IFlagMoveStrategy currentStrategy;
+    private IFlagViewStrategy currentViewStrategy;
+    private IFlagModeStrategy currentModeStrategy;
     private IFlagState currentState;
     private FlagNomal nomalState;
     private FlagWeakAttack weakAttackState;
@@ -88,9 +96,10 @@ public class FlagControl : MonoBehaviour
 
     private void Start()
     {
-        SetStrategy(new TopViewFlagMove());
-        SetStrategy(new SideViewFlagMove());
-        SetStrategy(new BackViewFlagMove());
+        SetViewStrategy(new FlagTopViewMove());
+        SetViewStrategy(new FlagSideViewMove());
+        SetViewStrategy(new GundamTopViewMove());
+        SetViewStrategy(new FlagBackViewMove());
         SetState(nomalState);
     }
 
@@ -119,9 +128,13 @@ public class FlagControl : MonoBehaviour
         hashAttack = Animator.StringToHash("attack");
     }
 
-    public void SetStrategy(IFlagMoveStrategy strategy)
+    public void SetViewStrategy(IFlagViewStrategy strategy)
     {
-        currentStrategy = strategy;
+        currentViewStrategy = strategy;
+    }
+    public void SetModeStrategy(IFlagModeStrategy strategy)
+    {
+        currentModeStrategy = strategy;
     }
     private void SetState(IFlagState state)
     {
@@ -136,9 +149,15 @@ public class FlagControl : MonoBehaviour
     {
         Vector3 move;
 
-        currentStrategy.Move(this, out move);
+        currentViewStrategy.Move(this, out move);
 
-        anim.SetFloat(hashHSpeed, move.x);
+        animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
+        if (Mathf.Abs(animationBlend) < 0.01f)
+        {
+            animationBlend = 0f;
+        }
+
+        anim.SetFloat(hashHSpeed, animationBlend);
         controller.Move(moveSpeed * Time.deltaTime * move);
     }
 
