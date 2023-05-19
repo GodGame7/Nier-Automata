@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,9 +28,17 @@ public class FlagControl : MonoBehaviour
     // 플레이어
     // 움직임 자연스럽게 이어지도록 하기 위한 변수
     private float animationBlend;
+    private float currentSpeedX = 0;
+    public float h;
+    public float v;
     //private float targetRotation = 0.0f;
     //private PlayerData player;
 
+    // 대쉬
+    private float lastKeyPressTime = 0f;
+    private KeyCode lastKeyPressed = KeyCode.None;
+    private float timeAllowedBetweenKeyPresses = 0.5f;
+    private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
 
     private IFlagViewStrategy currentViewStrategy;
     private IFlagModeStrategy currentModeStrategy;
@@ -38,11 +47,12 @@ public class FlagControl : MonoBehaviour
     private FlagWeakAttack weakAttackState;
     private FlagStrongAttack1 strongAttackState1;
     private FlagStrongAttack2 strongAttackState2;
-    private bool isStrongAttackCombo = false;
+    private bool isAttackCombo = false;
+    private bool isDashWaiting = false;
 
     // 애니매이션 해시
     private int hashHSpeed;
-    private int hashTurn;
+    private int hashDash;
     private int hashToGundam;
     private int hashToFlag;
     private int hashWeakAttack1;
@@ -53,6 +63,7 @@ public class FlagControl : MonoBehaviour
     private Animator anim;
     private CharacterController controller;
     private GameObject mainCamera;
+    private Rigidbody rigid;
 
     private const float _threshold = 0.01f;
 
@@ -61,6 +72,7 @@ public class FlagControl : MonoBehaviour
     private WaitUntil InputStrongAttackButton_wait;
     private WaitUntil InputFireButton_wait;
     private WaitForSeconds FireDelay_wait;
+    private WaitForSeconds AnimaReset_wait;
 
     private void Awake()
     {
@@ -87,7 +99,6 @@ public class FlagControl : MonoBehaviour
         StartCoroutine(nameof(StrongAttack_co));
         StartCoroutine(nameof(Fire_co));
     }
-
     private void OnDisable()
     {
         // 이벤트 해제 (시점 변환)
@@ -103,10 +114,15 @@ public class FlagControl : MonoBehaviour
         SetViewStrategy(new GundamTopViewMove());
         SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
+
+        SetModeStrategy(new ModeGundam());
+        SetModeStrategy(new ModeFlag());
     }
 
     private void Update()
     {
+        InputKey();
+
         Move();
     }
 
@@ -114,17 +130,18 @@ public class FlagControl : MonoBehaviour
     {
         TryGetComponent(out anim);
         TryGetComponent(out controller);
+        TryGetComponent(out rigid);
 
-        InputWeakAttackButton_wait = new WaitUntil(()=>Input.GetKey(KeyCode.Period) || Input.GetMouseButton(0));
+        InputWeakAttackButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.Period) || Input.GetMouseButton(0));
         InputStrongAttackButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.Slash) || Input.GetMouseButton(1));
         InputFireButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.LeftShift));
         FireDelay_wait = new WaitForSeconds(fireDelay);
+        AnimaReset_wait = new WaitForSeconds(0.5f);
     }
-
     private void GetAnimHash()
     {
         hashHSpeed = Animator.StringToHash("hSpeed");
-        hashTurn = Animator.StringToHash("turn");
+        hashDash = Animator.StringToHash("dash");
         hashToGundam = Animator.StringToHash("toGundam");
         hashToFlag = Animator.StringToHash("toFlag");
         hashWeakAttack1 = Animator.StringToHash("weakAttack1");
@@ -149,6 +166,56 @@ public class FlagControl : MonoBehaviour
         currentState.Action();
     }
 
+
+    private void InputKey()
+    {
+        foreach (KeyCode key in keysToCheck)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
+                {
+                    Dash();
+                    lastKeyPressed = KeyCode.None;
+                }
+                else
+                {
+                    lastKeyPressed = key;
+                }
+                lastKeyPressTime = Time.time;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            h = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            h = 1;
+        }
+        else
+        {
+            h = 0;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            v = 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            v = -1;
+        }
+        else
+        {
+            v = 0;
+        }
+    }
+    private float GetCurrentSpeed()
+    {
+
+        return 0.1f;
+    }
     private void Move()
     {
         Vector3 move;
@@ -163,7 +230,36 @@ public class FlagControl : MonoBehaviour
         anim.SetFloat(hashHSpeed, animationBlend);
         controller.Move(moveSpeed * Time.deltaTime * move);
     }
+    private void Dash()
+    {
+        Vector3 playerScale = transform.localScale;
+        if (rigid.velocity.x < 0)
+        {
+            playerScale.x = -10;
+            if (!transform.localScale.x.Equals(playerScale.x))
+            {
+                transform.localScale = playerScale;
+            }
+        }
+        else
+        {
+            playerScale.x = 10;
+            if (!transform.localScale.x.Equals(playerScale.x))
+            {
+                transform.localScale = playerScale;
+            }
+        }
+        anim.SetTrigger(hashDash);
+        StopCoroutine(nameof(ResetAnimaTrigger_co));
+        StartCoroutine(nameof(ResetAnimaTrigger_co),(hashDash));
+    }
 
+
+    private IEnumerator ResetAnimaTrigger_co(int hashAni)
+    {
+        yield return AnimaReset_wait;
+        anim.ResetTrigger(hashAni);
+    }
     private IEnumerator WeakAttack_co()
     {
         while (true)
@@ -188,7 +284,7 @@ public class FlagControl : MonoBehaviour
 
             if (currentState is FlagNomal)
             {
-                if (!isStrongAttackCombo)
+                if (!isAttackCombo)
                 {
                     SetState(strongAttackState1);
                 }
@@ -197,14 +293,14 @@ public class FlagControl : MonoBehaviour
                     SetState(strongAttackState2);
                 }
                 ExecuteAttack();
-                StartCoroutine(ReturnToNomalState_co(new WaitUntil(()=>anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f && (anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack1")|| anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack2")))));
+                StartCoroutine(ReturnToNomalState_co(new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f && (anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack2")))));
             }
             else if (currentState is FlagStrongAttack1)
             {
                 SetState(strongAttackState2);
             }
 
-            
+
         }
     }
     private IEnumerator Fire_co()
