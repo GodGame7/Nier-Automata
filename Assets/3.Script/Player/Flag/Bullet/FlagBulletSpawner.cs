@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class FlagBulletSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject bullet_pref;
@@ -11,6 +11,8 @@ public class BulletSpawner : MonoBehaviour
 
     private void Awake()
     {
+        bullets = new GameObject[bulletNum];
+
         for(int i = 0; i< bulletNum; i++)
         {
             bullets[i] = Instantiate(bullet_pref, transform);
