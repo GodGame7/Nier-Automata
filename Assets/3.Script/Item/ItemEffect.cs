@@ -9,9 +9,10 @@ public class ItemEffect : MonoBehaviour
     [SerializeField] private Text Effect_Text;
     public void UseItem(int num)
     {
+
         if (ItemData[num].CurrntItem > 0)
         {
-            if (num <= 3) // 포션을 사용했을때 
+            if (num < 3) // 포션을 사용했을때 
             {
                 //Player.curHp += ItemData[num].HelingValue;
                 StartCoroutine(Text_co(num));
@@ -25,7 +26,7 @@ public class ItemEffect : MonoBehaviour
             // 카메라 흔들림?
         }
     }
-
+    
     private IEnumerator Text_co(int num)
     {
         Effect_Text.gameObject.SetActive(true);
