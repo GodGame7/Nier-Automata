@@ -39,27 +39,31 @@ public class em0000 : MonoBehaviour
     float distance;
     bool isdead = false;
 
-    [SerializeField] BoxCollider[] boxCollider;
+    //BoxCollider[] boxCollider;
 
     //타겟
     [SerializeField] Transform target;
 
     Animator anim;
+    AnimatorClipInfo[] animatorinfo;
 
     //상태
     [SerializeField] State state;
 
+    Stopwatch sw = new Stopwatch();
+
     private void Awake()
     {
         TryGetComponent(out anim);
-        boxCollider = GetComponentsInChildren<BoxCollider>();
-    }   
+        //boxCollider = GetComponentsInChildren<BoxCollider>();
+    }
 
 
     private void Start()
     {
 
         Hp = 100;
+
         //타겟 위치 찾기
         target = GameObject.FindGameObjectWithTag("Player").transform;
         state = State.IDLE;
@@ -73,17 +77,32 @@ public class em0000 : MonoBehaviour
         StartCoroutine(CheckState());
     }
 
-    Stopwatch sw = new Stopwatch();
     IEnumerator CheckState()
     {
         while (!isdead)
         {
+
+            AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+            animatorinfo = this.anim.GetCurrentAnimatorClipInfo(0);
+            string current_animation = animatorinfo[0].clip.name;
+
+            if (current_animation == "em0000_Attack End(Windmill)" || 
+                current_animation == "em0000_Attack")
+            {
+                yield return null;
+                continue;
+            }
+
+
+
             // 타겟 위치를 얻어온다.
             Vector3 targetPosition = target.position;
             targetPosition.y = 0f;
 
             // 타겟 방향을 바라보도록 회전
+
             transform.LookAt(targetPosition);
+
 
             //타겟과 거리를 측정
             distance = Vector3.Distance(transform.position, target.transform.position);
@@ -112,12 +131,6 @@ public class em0000 : MonoBehaviour
                     break;
 
             }
-            //AnimatorStateInfo aniInfo = anim.GetCurrentAnimatorStateInfo(0);
-            //if ( (aniInfo.IsName("em0000_Attack End(Windmill)") && aniInfo.normalizedTime >= 1) ||
-            //    (aniInfo.IsName("em0000_Attack") && aniInfo.normalizedTime >= 1))
-            //{
-            //    boxCollider.enabled = false;
-            //}
             yield return null;
         }
 
@@ -143,7 +156,7 @@ public class em0000 : MonoBehaviour
     {
         sw.Start();
         int random = Random.Range(1, 3);
-        UnityEngine.Debug.Log(random);
+        UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
 
         switch (random)
         {
