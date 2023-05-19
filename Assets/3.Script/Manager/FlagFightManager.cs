@@ -1,9 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FlagFightManager : MonoBehaviour
 {
-    // 여기에서 FlagFight 씬의 각종 메소드의 발동 타이밍을 정해줍니다.
+    // Unity 이벤트 정의
+    public UnityEvent event1;
 
+    private void Awake()
+    {
+        // 이벤트 추가
+        event1.AddListener(OnUnityEvent);
+    }
+
+    private void Start()
+    {
+        event1.Invoke();
+    }
+
+    void OnUnityEvent()
+    {
+        Debug.Log("event1");
+    }
 }
