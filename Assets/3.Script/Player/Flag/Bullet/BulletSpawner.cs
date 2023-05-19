@@ -11,6 +11,8 @@ public class BulletSpawner : MonoBehaviour
 
     private void Awake()
     {
+        bullets = new GameObject[bulletNum];
+
         for(int i = 0; i< bulletNum; i++)
         {
             bullets[i] = Instantiate(bullet_pref, transform);
