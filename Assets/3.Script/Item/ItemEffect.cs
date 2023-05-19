@@ -7,6 +7,7 @@ public class ItemEffect : MonoBehaviour
 {
     [SerializeField] ItemData[] ItemData;
     [SerializeField] private Text Effect_Text;
+    [SerializeField] private Inventory Inven;
     public void UseItem(int num)
     {
 
@@ -17,7 +18,6 @@ public class ItemEffect : MonoBehaviour
                 //Player.curHp += ItemData[num].HelingValue;
                 StartCoroutine(Text_co(num));
             }
-            ItemData[num].CurrntItem--;
         }
         else
         {
@@ -25,6 +25,7 @@ public class ItemEffect : MonoBehaviour
             // »ßºò ¼Ò¸®
             // Ä«¸Þ¶ó Èçµé¸²?
         }
+        Inven.RemoveItem(ItemData[num]);
     }
     
     private IEnumerator Text_co(int num)
