@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 669708989293958580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 1063396768315397716}
   m_Father: {fileID: 0}
@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 50
-  moveSpeed: 1
+  firstMoveSpeed: 2
+  lastMoveSpeed: 0.5
   rotateSpeed: 60
   fireDelay: 3
   bulletHard: {fileID: 7216397595937012662, guid: 1672e0cffba280940af01124ca053a34, type: 3}
