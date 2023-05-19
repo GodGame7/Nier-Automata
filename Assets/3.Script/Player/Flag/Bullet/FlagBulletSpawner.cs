@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class FlagBulletSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject bullet_pref;
