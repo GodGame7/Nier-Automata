@@ -35,10 +35,12 @@ public class FlagControl : MonoBehaviour
     //private PlayerData player;
 
     // 대쉬
-    private float lastKeyPressTime = 0f;
     private KeyCode lastKeyPressed = KeyCode.None;
-    private float timeAllowedBetweenKeyPresses = 0.5f;
     private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
+    private float lastKeyPressTime = 0f;
+    private float timeAllowedBetweenKeyPresses = 0.5f;
+    public int currentDirectX = 0;
+    private bool isDashWaiting = false;
 
     private IFlagViewStrategy currentViewStrategy;
     private IFlagModeStrategy currentModeStrategy;
@@ -48,7 +50,6 @@ public class FlagControl : MonoBehaviour
     private FlagStrongAttack1 strongAttackState1;
     private FlagStrongAttack2 strongAttackState2;
     private bool isAttackCombo = false;
-    private bool isDashWaiting = false;
 
     // 애니매이션 해시
     private int hashHSpeed;
@@ -74,6 +75,7 @@ public class FlagControl : MonoBehaviour
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
+    #region 초기화
     private void Awake()
     {
         if (mainCamera == null)
@@ -118,14 +120,6 @@ public class FlagControl : MonoBehaviour
         SetModeStrategy(new ModeGundam());
         SetModeStrategy(new ModeFlag());
     }
-
-    private void Update()
-    {
-        InputKey();
-
-        Move();
-    }
-
     private void Init()
     {
         TryGetComponent(out anim);
@@ -149,6 +143,8 @@ public class FlagControl : MonoBehaviour
         hashStrongAttack = Animator.StringToHash("strongAttack");
     }
 
+    #endregion 초기화
+    #region 전략, 상태
     public void SetViewStrategy(IFlagViewStrategy strategy)
     {
         currentViewStrategy = strategy;
@@ -165,27 +161,16 @@ public class FlagControl : MonoBehaviour
     {
         currentState.Action();
     }
+    #endregion 전략, 상태
 
+    private void Update()
+    {
+        InputKey();
+        Move();
+    }
 
     private void InputKey()
     {
-        foreach (KeyCode key in keysToCheck)
-        {
-            if (Input.GetKeyDown(key))
-            {
-                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
-                {
-                    Dash();
-                    lastKeyPressed = KeyCode.None;
-                }
-                else
-                {
-                    lastKeyPressed = key;
-                }
-                lastKeyPressTime = Time.time;
-            }
-        }
-
         if (Input.GetKey(KeyCode.A))
         {
             h = -1;
@@ -211,15 +196,12 @@ public class FlagControl : MonoBehaviour
             v = 0;
         }
     }
-    private float GetCurrentSpeed()
-    {
-
-        return 0.1f;
-    }
     private void Move()
     {
         Vector3 move;
         currentViewStrategy.Move(this, out move);
+        currentDirectX = (int)move.x;
+        Debug.Log(currentDirectX);
 
         animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
         if (Mathf.Abs(animationBlend) < 0.01f)
@@ -229,16 +211,42 @@ public class FlagControl : MonoBehaviour
 
         anim.SetFloat(hashHSpeed, animationBlend);
         controller.Move(moveSpeed * Time.deltaTime * move);
+
+        CheckDash();
+    }
+    private void CheckDash()
+    {
+        // 방향키만 두번 입력 체크함
+        foreach (KeyCode key in keysToCheck)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                // 일정 시간 안에 같은 방향키를 두번 눌렀으면 대쉬
+                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
+                {
+                    Dash();
+                    lastKeyPressed = KeyCode.None;
+                }
+                else
+                {
+                    lastKeyPressed = key;
+                }
+                lastKeyPressTime = Time.time;
+            }
+        }
     }
     private void Dash()
     {
         Vector3 playerScale = transform.localScale;
-        if (rigid.velocity.x < 0)
+
+        // 왼쪽 대쉬시 스케일을 통해 애니메이션 반전
+        if (currentDirectX < 0)
         {
             playerScale.x = -10;
             if (!transform.localScale.x.Equals(playerScale.x))
             {
                 transform.localScale = playerScale;
+                StartCoroutine(nameof(ResetScaleX_co));
             }
         }
         else
@@ -255,6 +263,11 @@ public class FlagControl : MonoBehaviour
     }
 
 
+    private IEnumerator ResetScaleX_co()
+    {
+        yield return new WaitUntil(()=>anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagTurn")));
+        transform.localScale = 10 * Vector3.one;
+    }
     private IEnumerator ResetAnimaTrigger_co(int hashAni)
     {
         yield return AnimaReset_wait;
