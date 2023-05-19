@@ -4689,10 +4689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5097756012795409338, guid: 00ff13230c907604791de23b60a0ed03, type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.0001
-      objectReference: {fileID: 0}
     - target: {fileID: 5617412298969213187, guid: 00ff13230c907604791de23b60a0ed03, type: 3}
       propertyPath: m_RootOrder
       value: 18

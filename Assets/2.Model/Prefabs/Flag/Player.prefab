@@ -4262,7 +4262,7 @@ Transform:
   m_GameObject: {fileID: 5097756012795409337}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.006, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4601445096480550303}
   - {fileID: 4328242293611127408}
@@ -4308,7 +4308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d72cfbfd0464744a99259921bf1b6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 0.4
   dashSpeed: 2.7
   speedChangeRate: 10
   fireDelay: 0.1
@@ -4338,8 +4338,8 @@ CharacterController:
   m_Height: 0.04
   m_Radius: 0.02
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_StepOffset: 0.03
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.006, z: 0.019}
 --- !u!54 &3483402369296248446
