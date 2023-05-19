@@ -6,4 +6,5 @@ public interface IFlagModeStrategy
 {
     public void WeakAttack(FlagControl player);
     public void StrongAttack(FlagControl player);
+    public void Dash(FlagControl player);
 }

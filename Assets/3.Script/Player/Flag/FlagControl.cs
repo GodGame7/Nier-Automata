@@ -51,16 +51,16 @@ public class FlagControl : MonoBehaviour
     private bool isAttackCombo = false;
 
     // 애니매이션 해시
-    private int hashHSpeed;
-    private int hashDash;
-    private int hashToGundam;
-    private int hashToFlag;
-    private int hashWeakAttack1;
-    private int hashWeakAttack2;
-    private int hashStrongAttack;
+    public int hashHSpeed;
+    public int hashDash;
+    public int hashToGundam;
+    public int hashToFlag;
+    public int hashWeakAttack1;
+    public int hashWeakAttack2;
+    public int hashStrongAttack;
 
     // 컴포넌트
-    private Animator anim;
+    public Animator anim;
     private CharacterController controller;
     private GameObject mainCamera;
     private Rigidbody rigid;
@@ -220,7 +220,7 @@ public class FlagControl : MonoBehaviour
                 // 일정 시간 안에 같은 방향키를 두번 눌렀으면 대쉬
                 if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
                 {
-                    Dash();
+                    currentModeStrategy.Dash(this);
                     lastKeyPressed = KeyCode.None;
                 }
                 else
@@ -231,40 +231,14 @@ public class FlagControl : MonoBehaviour
             }
         }
     }
-    private void Dash()
-    {
-        Vector3 playerScale = transform.localScale;
+    
 
-        // 왼쪽 대쉬시 스케일을 통해 애니메이션 반전
-        if (currentDirectX < 0)
-        {
-            playerScale.x = -10;
-            if (!transform.localScale.x.Equals(playerScale.x))
-            {
-                transform.localScale = playerScale;
-                StartCoroutine(nameof(ResetScaleX_co));
-            }
-        }
-        else
-        {
-            playerScale.x = 10;
-            if (!transform.localScale.x.Equals(playerScale.x))
-            {
-                transform.localScale = playerScale;
-            }
-        }
-        anim.SetTrigger(hashDash);
-        StopCoroutine(nameof(ResetAnimaTrigger_co));
-        StartCoroutine(nameof(ResetAnimaTrigger_co), (hashDash));
-    }
-
-
-    private IEnumerator ResetScaleX_co()
+    public IEnumerator ResetScaleX_co()
     {
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagTurn")));
         transform.localScale = 10 * Vector3.one;
     }
-    private IEnumerator ResetAnimaTrigger_co(int hashAni)
+    public IEnumerator ResetAnimaTrigger_co(int hashAni)
     {
         yield return AnimaReset_wait;
         anim.ResetTrigger(hashAni);
