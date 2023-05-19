@@ -19,6 +19,19 @@ public class Inventory : MonoBehaviour
             Inven[itemIndex].CurrntItem++;
         }
     }
+    public void RemoveItem(ItemData item)
+    {
+        int itemIndex = Inven.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        if (itemIndex <= 1) //아이템이 1개 이하라면 아이템 삭제
+        {
+            Inven.Remove(item);
+        }
+        else //아이템이 2개 이상이라면 아이템 갯수-1
+        {
+            Inven[itemIndex].CurrntItem--;
+        }
+    }
+
     public int GetItemCount(ItemData item) //아이템의 갯수를 가져오기 위한 메서드
     {
         int itemIndex = Inven.FindIndex(x => x.CurrntItem == item.CurrntItem);

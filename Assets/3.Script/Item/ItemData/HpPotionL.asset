@@ -17,3 +17,4 @@ MonoBehaviour:
   HealingValue: 800
   CurrntItem: 3
   ItemNum: 2
+  ItemType: 2
