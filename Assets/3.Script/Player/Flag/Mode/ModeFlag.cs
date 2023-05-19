@@ -28,7 +28,8 @@ public class ModeFlag : IFlagModeStrategy
         }
         player.anim.SetTrigger(player.hashDash);
         player.StopCoroutine(nameof(player.ResetAnimaTrigger_co));
-        player.StartCoroutine(nameof(player.ResetAnimaTrigger_co), (player.hashDash));
+        player.StartCoroutine(nameof(player.ResetAnimaTrigger_co), player.hashDash);
+        player.StartCoroutine(nameof(player.ReturnToNomalState_co), player.EndDash_wait);
     }
 
     public void StrongAttack(FlagControl player)

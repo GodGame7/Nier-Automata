@@ -71,6 +71,8 @@ public class FlagControl : MonoBehaviour
     private WaitUntil InputWeakAttackButton_wait;
     private WaitUntil InputStrongAttackButton_wait;
     private WaitUntil InputFireButton_wait;
+    public WaitUntil EndDash_wait;
+    public WaitUntil EndAttack_wait;
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
@@ -87,6 +89,7 @@ public class FlagControl : MonoBehaviour
 
         nomalState = new FlagNomal();
         attackState = new FlagAttack();
+        dashState = new FlagDash();
 
         currentState = nomalState;
     }
@@ -126,6 +129,10 @@ public class FlagControl : MonoBehaviour
         InputWeakAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0));
         InputStrongAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1));
         InputFireButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.LeftShift));
+        EndDash_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
+                                             (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamDash")));
+        EndAttack_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
+                                             (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack")));
         FireDelay_wait = new WaitForSeconds(fireDelay);
         AnimaReset_wait = new WaitForSeconds(0.5f);
     }
@@ -162,11 +169,19 @@ public class FlagControl : MonoBehaviour
 
     private void Update()
     {
-        InputKey();
+        InputMoveKey();
         Move();
+        // todo 여기 상태 체크
+        if (currentState.Equals(nomalState))
+        {
+            CheckDash();
+        }
+        // 공격 입력 판단 => 코루틴 말고 메소드 써야되나?
+        // ㄴ 일단 Fire는 코루틴 유지 => 어차피 상태랑 상관 없는애임
+
     }
 
-    private void InputKey()
+    private void InputMoveKey()
     {
         if (Input.GetKey(KeyCode.A))
         {
@@ -208,7 +223,6 @@ public class FlagControl : MonoBehaviour
         anim.SetFloat(hashHSpeed, animationBlend);
         controller.Move(moveSpeed * Time.deltaTime * move);
 
-        CheckDash();
     }
     private void CheckDash()
     {
@@ -220,6 +234,7 @@ public class FlagControl : MonoBehaviour
                 // 일정 시간 안에 같은 방향키를 두번 눌렀으면 대쉬
                 if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
                 {
+                    SetState(dashState);
                     currentModeStrategy.Dash(this);
                     lastKeyPressed = KeyCode.None;
                 }
@@ -254,8 +269,8 @@ public class FlagControl : MonoBehaviour
 
             SetState(attackState);
             ExecuteAttack();
-            StartCoroutine(ReturnToNomalState_co(new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
-                                            anim.GetCurrentAnimatorStateInfo(0).IsName("WeakAttack"))));
+            StartCoroutine(ReturnToNomalState_co());//new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
+                                            //anim.GetCurrentAnimatorStateInfo(0).IsName("WeakAttack"))));
         }
     }
     private IEnumerator StrongAttack_co()
@@ -282,10 +297,11 @@ public class FlagControl : MonoBehaviour
             Debug.Log("발사");
         }
     }
-    private IEnumerator ReturnToNomalState_co(WaitUntil waitAnimationEnd)
+    public IEnumerator ReturnToNomalState_co(WaitUntil waitAnimationEnd = null)
     {
-        //yield return waitAnimationEnd;
-        yield return null;
+        yield return waitAnimationEnd;
+        //yield return null;
+        Debug.Log("노말됨");
         SetState(nomalState);
     }
 }
