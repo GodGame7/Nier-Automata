@@ -251,7 +251,7 @@ public class FlagControl : MonoBehaviour
     public IEnumerator ResetScaleX_co()
     {
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagTurn")));
-        transform.localScale = 10 * Vector3.one;
+        transform.localScale = Vector3.one;
     }
     public IEnumerator ResetAnimaTrigger_co(int hashAni)
     {

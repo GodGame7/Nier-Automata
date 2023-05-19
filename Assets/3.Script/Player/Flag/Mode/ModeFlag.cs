@@ -11,7 +11,7 @@ public class ModeFlag : IFlagModeStrategy
         // 왼쪽 대쉬시 스케일을 통해 애니메이션 반전
         if (player.currentDirectX < 0)
         {
-            playerScale.x = -10;
+            playerScale.x = -1;
             if (!player.transform.localScale.x.Equals(playerScale.x))
             {
                 player.transform.localScale = playerScale;
@@ -20,7 +20,7 @@ public class ModeFlag : IFlagModeStrategy
         }
         else
         {
-            playerScale.x = 10;
+            playerScale.x = 1;
             if (!player.transform.localScale.x.Equals(playerScale.x))
             {
                 player.transform.localScale = playerScale;
