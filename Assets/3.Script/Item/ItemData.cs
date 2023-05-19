@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Item",menuName ="Item")]
+[CreateAssetMenu(fileName = "Item", menuName = "Item")]
 public class ItemData : ScriptableObject
 {
     public string ItemName;
     [Header("설명")]
-    [SerializeField] public string Tooltip;
+    public string Tooltip;
     [Header("힐량")]
-    [SerializeField] private int HealingValue;
+    public int HealingValue;
+    [Header("갯수")]
+    public int CurrntItem;
+    [Header("아이템 넘버")]
+    public int ItemNum;
 
-    
+
     //[Space]
     //[Header("칩 카운트량")]
     //[SerializeField] private float ChipCount;
@@ -24,5 +28,5 @@ public class ItemData : ScriptableObject
 
 
 
-    
+
 }
