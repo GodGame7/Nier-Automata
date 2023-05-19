@@ -5309,6 +5309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4760719384395554699}
+  - component: {fileID: 3687273429888577489}
   m_Layer: 0
   m_Name: BulletSpawnR
   m_TagString: Untagged
@@ -5330,6 +5331,19 @@ Transform:
   m_Father: {fileID: 5617412298969213187}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3687273429888577489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6008144788695508233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd41abb4eeeb914aaa5eeb1120fba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet_pref: {fileID: 4470847111418397664, guid: cc6792e6a2ffb514dbd3eafb0fb390dd, type: 3}
 --- !u!1 &6087350229830648647
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,6 +7092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23208444429946202}
+  - component: {fileID: 3687273429888577490}
   m_Layer: 0
   m_Name: BulletSpawnL
   m_TagString: Untagged
@@ -7099,6 +7114,19 @@ Transform:
   m_Father: {fileID: 5617412298969213187}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3687273429888577490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396176519751937227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd41abb4eeeb914aaa5eeb1120fba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet_pref: {fileID: 4470847111418397664, guid: cc6792e6a2ffb514dbd3eafb0fb390dd, type: 3}
 --- !u!1 &8406543809211298643
 GameObject:
   m_ObjectHideFlags: 0
