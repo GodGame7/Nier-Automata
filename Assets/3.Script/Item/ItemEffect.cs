@@ -7,7 +7,6 @@ public class ItemEffect : MonoBehaviour
 {
     [SerializeField] ItemData[] ItemData;
     [SerializeField] private Text Effect_Text;
-    [SerializeField] private Inventory Inven;
     public void UseItem(int num)
     {
 
@@ -16,18 +15,12 @@ public class ItemEffect : MonoBehaviour
             if (num < 3) // 포션을 사용했을때 
             {
                 //Player.curHp += ItemData[num].HelingValue;
-                StartCoroutine(Text_co(num));
             }
         }
-        else
-        {
-            // 아이템이 없습니다 
-            // 삐빅 소리
-            // 카메라 흔들림?
-        }
-        Inven.RemoveItem(ItemData[num]);
+        
+        StartCoroutine(Text_co(num));
     }
-    
+
     private IEnumerator Text_co(int num)
     {
         Effect_Text.gameObject.SetActive(true);

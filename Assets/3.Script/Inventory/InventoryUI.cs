@@ -7,9 +7,10 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Text[] Slot;
     [SerializeField] ItemData[] ItemData;
-    private void Update()
+
+    public void UpdateUI()
     {
-        for (int i = 0; i < Slot.Length; i++)
+        for (int i = 0; i < Slot.Length; i++) // 플레이어 아이템 리스트 Count까지 해서 바꿔주렴
         {
             Slot[i].text = string.Format("{0} , {1}", ItemData[i].ItemName, ItemData[i].CurrntItem);
         }

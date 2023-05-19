@@ -20,12 +20,12 @@ public class PordControl : MonoBehaviour
             Bullet[bulletCount].SetActive(true);
             if (isLockOn)
             {
-                Bullet[bulletCount].GetComponent<BulletMovement>().Move(targetpos);
+                Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(targetpos);
 
             }
             else
             {
-                Bullet[bulletCount].GetComponent<BulletMovement>().Move(-Cam.transform.position.normalized);
+                Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
             bulletCount++;

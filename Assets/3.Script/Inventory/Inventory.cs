@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    List<ItemData> Inven = new List<ItemData>();
-
+    List<ItemData> Items = new List<ItemData>();
     public void AddItem(ItemData item) //아이템 획득시
     {
-        int itemIndex = Inven.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
 
-        if(itemIndex <0) //아이템이 없다면
+        if(itemIndex <0) //아이템이 없다면 아이템 생성
         {
-            Inven.Add(item);
+            //Inven[0].Use();
+            Items.Add(item);
         }
-        else //아이템이 있다면
+        else //아이템이 있다면 아이템 갯수 추가
         {
-            Inven[itemIndex].CurrntItem++;
+            Items[itemIndex].CurrntItem++;
         }
     }
     public void RemoveItem(ItemData item)
     {
-        int itemIndex = Inven.FindIndex(x => x.CurrntItem == item.CurrntItem);
-        if (itemIndex <= 1) //아이템이 1개 이하라면 아이템 삭제
+        int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        if (itemIndex <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
         {
-            Inven.Remove(item);
+            Items.Remove(item);
         }
-        else //아이템이 2개 이상이라면 아이템 갯수-1
+        else //아이템이 2개 이상이라면 아이템 갯수 -1
         {
-            Inven[itemIndex].CurrntItem--;
+            Items[itemIndex].CurrntItem--;
         }
     }
 
-    public int GetItemCount(ItemData item) //아이템의 갯수를 가져오기 위한 메서드
-    {
-        int itemIndex = Inven.FindIndex(x => x.CurrntItem == item.CurrntItem);
+    //public int GetItemCount(ItemData item) //아이템의 갯수를 가져오기 위한 메서드
+    //{
+    //    int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
 
-        if(itemIndex>=0) //아이템이 있다면
-        {
-            return Inven[itemIndex].CurrntItem;
-        }
-        else //아이템이 없다면
-        {
-            return 0;
-        }
-    }
+    //    if(itemIndex>=0) //아이템이 있다면 아이템 갯수만큼 반환
+    //    {
+    //        return Items[itemIndex].CurrntItem;
+    //    }
+    //    else //아이템이 없다면 0을 반환
+    //    {
+    //        return 0;
+    //    }
+    //}
     // List => HPS , HPM , HPL , HPS , HPS
     // HPS HPM HPL 
     // int itemIndex = Inven.FindIndex(HPS)

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Temp : MonoBehaviour
 {
+    private Inventory inventory;
+
+    
+
+
     //인풋 매니저
     [SerializeField] GameObject Inventory_UI;
     private void Update()

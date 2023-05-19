@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControl : MonoBehaviour
+public class PordBulletControl : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
