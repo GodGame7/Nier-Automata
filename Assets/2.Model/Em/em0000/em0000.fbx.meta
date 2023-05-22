@@ -74,7 +74,7 @@ ModelImporter:
     second: em0000_Attack Start (Windmill)
   - first:
       74: -1170163320328297688
-    second: em0000_Attack ing (Windmill)
+    second: em0000_ing (Windmill)
   - first:
       74: 2765112622853920898
     second: em0000_Attack End(Windmill)
@@ -658,7 +658,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: em0000_Attack ing (Windmill)
+      name: em0000_ing (Windmill)
       takeName: Noesis Frames
       internalID: 0
       firstFrame: 1836
