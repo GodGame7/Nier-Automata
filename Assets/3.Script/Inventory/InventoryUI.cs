@@ -21,6 +21,7 @@ public class InventoryUI : MonoBehaviour
     private void Awake() //처음 위치 (1번자리) 값 할당
     {
         defalutItemPosition = Selected_Item.transform.position;
+        
     }
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
     {
@@ -87,5 +88,6 @@ public class InventoryUI : MonoBehaviour
             Slot[i].color = Color.white;
         }
         Slot[ListNum].color = Color.black;
+        
     }
 }
