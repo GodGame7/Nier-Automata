@@ -64,6 +64,7 @@ public class FlagControl : MonoBehaviour
     private CharacterController controller;
     private GameObject mainCamera;
     private Rigidbody rigid;
+    public FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
     private const float _threshold = 0.01f;
 
@@ -93,7 +94,6 @@ public class FlagControl : MonoBehaviour
 
         currentState = nomalState;
     }
-
     private void OnEnable()
     {
         // 이벤트 구독 (시점 변환)
@@ -108,7 +108,6 @@ public class FlagControl : MonoBehaviour
         StopCoroutine(nameof(StrongAttack_co));
         StopCoroutine(nameof(Fire_co));
     }
-
     private void Start()
     {
         SetViewStrategy(new FlagBackViewMove());
@@ -125,6 +124,7 @@ public class FlagControl : MonoBehaviour
         TryGetComponent(out anim);
         TryGetComponent(out controller);
         TryGetComponent(out rigid);
+        bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
 
         InputWeakAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0));
         InputStrongAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1));
@@ -170,8 +170,6 @@ public class FlagControl : MonoBehaviour
     private void Update()
     {
         InputMoveKey();
-        Move();
-        // todo 여기 상태 체크
         if (currentState.Equals(nomalState))
         {
             CheckDash();
@@ -179,6 +177,10 @@ public class FlagControl : MonoBehaviour
         // 공격 입력 판단 => 코루틴 말고 메소드 써야되나?
         // ㄴ 일단 Fire는 코루틴 유지 => 어차피 상태랑 상관 없는애임
 
+    }
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void InputMoveKey()
@@ -221,7 +223,7 @@ public class FlagControl : MonoBehaviour
         }
 
         anim.SetFloat(hashHSpeed, animationBlend);
-        controller.Move(moveSpeed * Time.deltaTime * move);
+        rigid.MovePosition(rigid.position + moveSpeed * Time.deltaTime * move);
 
     }
     private void CheckDash()
@@ -294,7 +296,10 @@ public class FlagControl : MonoBehaviour
             yield return FireDelay_wait;
             yield return InputFireButton_wait;
 
-            Debug.Log("발사");
+            foreach(FlagBulletSpawner b in bulletSpawners)
+            {
+                b.Fire();
+            }            
         }
     }
     public IEnumerator ReturnToNomalState_co(WaitUntil waitAnimationEnd = null)
