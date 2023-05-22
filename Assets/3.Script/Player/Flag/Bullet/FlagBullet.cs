@@ -18,8 +18,7 @@ public class FlagBullet : MonoBehaviour
         {
             if(TryGetComponent(out Em0032Movement enemy))
             {
-                // todo 데미지 플레이어 데이터 받아와서 설정할 것
-                enemy.OnDamage(1);
+                enemy.OnDamage(PlayerData.instance.atk);
             }
             gameObject.SetActive(false);
         }
