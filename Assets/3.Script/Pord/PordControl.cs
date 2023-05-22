@@ -6,10 +6,15 @@ public class PordControl : MonoBehaviour
 {
     [SerializeField] GameObject[] Bullet;
     [SerializeField] Camera Cam;
+
+    // 록온을 위한 변수
     private bool isLockOn = false;
     private bool isMonster = false;
+
+    // 록온시 타겟 위치
     private Vector3 targetpos;
 
+    //오브젝트 풀링용 갯수
     private int bulletCount = 0;
     private void Update()
     {
@@ -29,7 +34,7 @@ public class PordControl : MonoBehaviour
                 //방향 조정 필요 임시로 넣어뒀음
             }
             bulletCount++;
-            if (bulletCount >= 40) // BulletSpawn 에서 생성한 갯수만큼
+            if (bulletCount >= 60) // BulletSpawn 에서 생성한 갯수만큼
             {
                 bulletCount = 0;
             }
@@ -50,7 +55,7 @@ public class PordControl : MonoBehaviour
         // ----------------------------여기까지 -----------------------------
 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
