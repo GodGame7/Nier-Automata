@@ -36,8 +36,24 @@ public class ModeFlag : IFlagModeStrategy
         Debug.Log("비행기 강공격");
     }
 
-    public void WeakAttack(FlagControl player)
+    public void WeakAttack(FlagControl player, bool isHorizontal)
     {
-        Debug.Log("비행기 약공격");
+        if(isHorizontal)
+        {
+            WeakAttackHorizontal(player);
+        }
+        else
+        {
+            WeakAttackVertical(player);
+        }
+    }
+
+    private void WeakAttackVertical(FlagControl player)
+    {
+        Debug.Log("비행기 수직 약공");
+    }
+    private void WeakAttackHorizontal(FlagControl player)
+    {
+        Debug.Log("비행기 수평 약공");
     }
 }
