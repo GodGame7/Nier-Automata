@@ -11,14 +11,14 @@ public class Temp : MonoBehaviour
     private int ListNum = 0;
 
     //인풋 매니저
-    [SerializeField] GameObject Inventory_UI;
+    [SerializeField] GameObject Inventory_UI_ob;
     [SerializeField] GameObject Selected_Item;
+
+    private InventoryUI Inventory_UI;
     Vector3 defalutItemPosition;
-    Vector3 MoveSelectedPoint;
     private void Awake() //처음 위치 (1번자리) 값 할당
     {
         defalutItemPosition = Selected_Item.transform.position;
-        MoveSelectedPoint = new Vector3(0, -10f, 0); //-10f는 임시로 할당,추후 변경예정
 
     }
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
@@ -33,13 +33,13 @@ public class Temp : MonoBehaviour
                                )
             {
                 isActiveInven = true;
-                Inventory_UI.SetActive(true);
+                Inventory_UI_ob.SetActive(true);
 
             }
             else
             {
                 isActiveInven = false;
-                Inventory_UI.SetActive(false);
+                Inventory_UI_ob.SetActive(false);
             }
         }
 
@@ -51,32 +51,20 @@ public class Temp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
 
-
-                //Player.instance.inventory.RemoveItem(ListNum);
-                Item.UseItem();
+                Item.UseItem(ListNum);
 
             }
 
             if (Input.GetKeyDown(KeyCode.K))
             {
-                if (ListNum >= 0  //&& ListNum <= Player.instance.inventory.Count  
-                    )
-                {
-                    ListNum++;
-                    Selected_Item.transform.position += MoveSelectedPoint;
-                    //
-
-                }
+                Inventory_UI.UpSelected();
 
 
             }
 
             if (Input.GetKeyDown(KeyCode.L))
             {
-                if (ListNum > 0  //Player.instance.inventory.Count <= ListNum
-                    )
-                    ListNum--;
-                Selected_Item.transform.position -= MoveSelectedPoint;
+                Inventory_UI.DownSelected();
             }
 
         }

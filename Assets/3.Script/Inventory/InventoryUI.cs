@@ -8,6 +8,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Text[] Slot;
     [SerializeField] ItemData ItemData;
     private int InvenLength;
+
+    [SerializeField] GameObject Selected_Item;
+    Vector3 MoveSelectedPoint = new Vector3(0, -80f, 0); //-80f는 임시로 할당,추후 변경예정;
+    private int ListNum=0;
     private void Awake()
     {
         //InvenLength = Player.instance.inventory.count;
@@ -26,5 +30,27 @@ public class InventoryUI : MonoBehaviour
         }
         //툴팁을 아이템 갯수로 바꿔줄예정
 
+    }
+
+    public void DownSelected()
+    {
+        if (ListNum >= 0  //&& ListNum <= Player.instance.inventory.Count  
+                    )
+        {
+            ListNum++;
+            Selected_Item.transform.position += MoveSelectedPoint;
+            //
+
+        }
+    }
+
+    public void UpSelected()
+    {
+        if (ListNum > 0  //Player.instance.inventory.Count <= ListNum
+                    )
+        {
+            ListNum--;
+            Selected_Item.transform.position -= MoveSelectedPoint;
+        }
     }
 }
