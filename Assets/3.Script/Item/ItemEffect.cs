@@ -6,14 +6,15 @@ public class ItemEffect : MonoBehaviour
 {
     [SerializeField] ItemData ItemData;
     [SerializeField] private Text Effect_Text;
-  
+
+    private InventoryUI Inven_UI;
     public void UseItem(int num)
     {
 
         if (ItemData.Quantity > 0)
         {
-            //Player.curHp += player.instacne.inventory[num].HelingValue;
-            //Player.instance.inventory.RemoveItem(ListNum);
+            PlayerData.instance.hp += PlayerData.instance.inven.Items[num].HealingValue;
+            PlayerData.instance.inven.RemoveItem(PlayerData.instance.inven.Items[num]);
         }
 
         StartCoroutine(Text_co());

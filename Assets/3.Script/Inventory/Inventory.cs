@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    List<ItemData> Items = new List<ItemData>();
+    public List<ItemData> Items = new List<ItemData>();
     public void AddItem(ItemData item) //¾ÆÀÌÅÛ È¹µæ½Ã
     {
         int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);

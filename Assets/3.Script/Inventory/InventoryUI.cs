@@ -21,7 +21,6 @@ public class InventoryUI : MonoBehaviour
     private void Awake() //처음 위치 (1번자리) 값 할당
     {
         defalutItemPosition = Selected_Item.transform.position;
-
     }
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
     {
@@ -30,17 +29,17 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        InvenLength = PlayerData.instance.inven.Items.Count;
         Selected_Item.transform.position = defalutItemPosition;
-        //InvenLength = Player.instance.inventory.count;
         ListNum = 0;
         for (int i = 0; i < InvenLength / 2; i++)  //아이템 이름
 
         {
-            Slot[i].text = string.Format("{0}", ItemData.ItemName); // ItemData를 Player.instacne.inventory[i]로 변경
+            Slot[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i]); 
         }
         for (int i = InvenLength / 2; i < InvenLength; i++) // 아이템 수량
         {
-            Slot[i].text = string.Format("{0}", ItemData.Quantity); // player.instance.inventory[i-InvenLength/2] 로 변경
+            Slot[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i - (InvenLength / 2)].Quantity); 
         }
         ColorSet();
 
@@ -48,8 +47,7 @@ public class InventoryUI : MonoBehaviour
 
     public void InvenActive()
     {
-        if (!isActiveInven //&& Player.instance.Inventory.count !=0
-                               )
+        if (!isActiveInven && InvenLength != 0)
         {
             isActiveInven = true;
             Inventory_UI_ob.SetActive(true);
@@ -64,8 +62,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DownSelected()
     {
-        if (ListNum >= 0  //&& ListNum <= Player.instance.inventory.Count  
-                    )
+        if (ListNum >= 0 && ListNum <= InvenLength)
         {
             ListNum++;
             Selected_Item.transform.position += MoveSelectedPoint;
@@ -75,8 +72,7 @@ public class InventoryUI : MonoBehaviour
 
     public void UpSelected()
     {
-        if (ListNum > 0  //Player.instance.inventory.Count <= ListNum
-                    )
+        if (ListNum > 0 && InvenLength <= ListNum)
         {
             ListNum--;
             Selected_Item.transform.position -= MoveSelectedPoint;
