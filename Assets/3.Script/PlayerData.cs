@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public PlayerData instance = null;
+    public static PlayerData instance = null;
 
     public float atk;
     public float def;
