@@ -21,7 +21,7 @@ public class ItemData : ScriptableObject
     [Header("갯수")]
     public int Quantity;
     
-    [Header("아이템 종류")] // 우리 보기편하라고 배열순서랑 동일하게할것
+    [Header("아이템 종류")] // 잠시 보류 ㄱㄷ;
     public int ItemNum;
     public EItemType ItemType;
 
