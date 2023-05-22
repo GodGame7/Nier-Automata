@@ -1624,13 +1624,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8823198630048114518}
   - component: {fileID: 7861029085564379205}
+  - component: {fileID: 568232453}
   m_Layer: 0
   m_Name: LOD0_9__2B_wp_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8823198630048114518
 Transform:
   m_ObjectHideFlags: 0
@@ -1664,7 +1665,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00b5c1456b8febd41a5fba483cb154b1, type: 2}
+  - {fileID: 2100000, guid: d0b466bf8b480934b80f268167861e3a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1708,6 +1710,23 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0346118, y: 0.031839363, z: -0.0015285499}
     m_Extent: {x: 0.0142466, y: 0.0019268524, z: 0.0019925502}
   m_DirtyAABB: 0
+--- !u!114 &568232453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477432274676569856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 0a669251a6eef8149a9c8ff25dab1d20, type: 2}
 --- !u!1 &1496209173325533577
 GameObject:
   m_ObjectHideFlags: 0
