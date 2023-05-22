@@ -8,6 +8,7 @@ TagManager:
   - BulletSoft
   - Enemy
   - Actors
+  - FlagBullet
   layers:
   - Default
   - TransparentFX
