@@ -28,7 +28,8 @@ public class ModeFlag : IFlagModeStrategy
         player.anim.SetTrigger(player.hashDash);
         player.StopCoroutine(nameof(player.ResetAnimaTrigger_co));
         player.StartCoroutine(nameof(player.ResetAnimaTrigger_co), player.hashDash);
-        player.StartCoroutine(nameof(player.ReturnToNomalState_co), player.EndDash_wait);
+        player.StopCoroutine(nameof(player.ReturnToNomalState_co));
+        player.StartCoroutine(nameof(player.ReturnToNomalState_co), player.EnterDashAni_wait);
     }
 
     public void StrongAttack(FlagControl player)
@@ -40,20 +41,20 @@ public class ModeFlag : IFlagModeStrategy
     {
         if(isHorizontal)
         {
-            WeakAttackHorizontal(player);
+            HorizontalWeakAttack(player);
         }
         else
         {
-            WeakAttackVertical(player);
+            VerticalWeakAttack(player);
         }
     }
 
-    private void WeakAttackVertical(FlagControl player)
+    private void VerticalWeakAttack(FlagControl player)
     {
-        Debug.Log("비행기 수직 약공");
+        player.anim.SetTrigger(player.hashVerticalWeakAttack);
     }
-    private void WeakAttackHorizontal(FlagControl player)
+    private void HorizontalWeakAttack(FlagControl player)
     {
-        Debug.Log("비행기 수평 약공");
+        player.anim.SetTrigger(player.hashHorizontalWeakAttack);
     }
 }

@@ -29,7 +29,7 @@ public class FlagTopViewMove : IFlagViewStrategy
         return move;
     }
 }
-public class GundamTopViewMove : MonoBehaviour, IFlagViewStrategy
+public class GundamTopViewMove : IFlagViewStrategy
 {
     public Vector3 Move(FlagControl player, out Vector3 move)
     {
