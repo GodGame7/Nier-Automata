@@ -96,15 +96,15 @@ public class FlagControl : MonoBehaviour
     private void OnEnable()
     {
         // 이벤트 구독 (시점 변환)
-        StartCoroutine(nameof(WeakAttack_co));
-        StartCoroutine(nameof(StrongAttack_co));
+        //StartCoroutine(nameof(WeakAttack_co));
+        //StartCoroutine(nameof(StrongAttack_co));
         StartCoroutine(nameof(Fire_co));
     }
     private void OnDisable()
     {
         // 이벤트 해제 (시점 변환)
-        StopCoroutine(nameof(WeakAttack_co));
-        StopCoroutine(nameof(StrongAttack_co));
+        //StopCoroutine(nameof(WeakAttack_co));
+        //StopCoroutine(nameof(StrongAttack_co));
         StopCoroutine(nameof(Fire_co));
     }
     private void Start()
@@ -145,8 +145,8 @@ public class FlagControl : MonoBehaviour
         hashWeakAttack2 = Animator.StringToHash("weakAttack2");
         hashStrongAttack = Animator.StringToHash("strongAttack");
     }
-
     #endregion 초기화
+
     #region 전략, 상태
     public void SetViewStrategy(IFlagViewStrategy strategy)
     {
@@ -173,9 +173,7 @@ public class FlagControl : MonoBehaviour
         {
             CheckDash();
         }
-        // 공격 입력 판단 => 코루틴 말고 메소드 써야되나?
-        // ㄴ 일단 Fire는 코루틴 유지 => 어차피 상태랑 상관 없는애임
-
+        Attack();
     }
     private void FixedUpdate()
     {
@@ -247,6 +245,23 @@ public class FlagControl : MonoBehaviour
         }
     }
     
+    private void Attack()
+    {
+        if (!currentState.Equals(attackState))
+        {
+            if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
+            {
+                SetState(attackState);
+                currentModeStrategy.WeakAttack(this);
+            }
+            if (Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1))
+            {
+                SetState(attackState);
+                currentModeStrategy.StrongAttack(this);
+            }
+            StartCoroutine(ReturnToNomalState_co());
+        }
+    }
 
     public IEnumerator ResetScaleX_co()
     {
