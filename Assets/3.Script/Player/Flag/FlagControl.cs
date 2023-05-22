@@ -35,11 +35,10 @@ public class FlagControl : MonoBehaviour
     //private PlayerData player;
 
     // ´ë½¬
-    private KeyCode lastKeyPressed = KeyCode.None;
+    public KeyCode lastKeyPressed = KeyCode.None;
     private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
     private float lastKeyPressTime = 0f;
     private float timeAllowedBetweenKeyPresses = 0.5f;
-    public int currentDirectX = 0;
     private bool isDashWaiting = false;
 
     private IFlagViewStrategy currentViewStrategy;
@@ -214,17 +213,16 @@ public class FlagControl : MonoBehaviour
     {
         Vector3 move;
         currentViewStrategy.Move(this, out move);
-        currentDirectX = (int)move.x;
 
         animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
         if (Mathf.Abs(animationBlend) < 0.01f)
         {
             animationBlend = 0f;
         }
-
+        
         anim.SetFloat(hashHSpeed, animationBlend);
-        rigid.MovePosition(rigid.position + moveSpeed * Time.deltaTime * move);
-
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + moveSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), 0.0f, Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
+        rigid.MovePosition(newPosition);
     }
     private void CheckDash()
     {

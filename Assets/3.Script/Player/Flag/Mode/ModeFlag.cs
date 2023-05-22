@@ -7,9 +7,8 @@ public class ModeFlag : IFlagModeStrategy
     public void Dash(FlagControl player)
     {
         Vector3 playerScale = player.transform.localScale;
-
         // 왼쪽 대쉬시 스케일을 통해 애니메이션 반전
-        if (player.currentDirectX < 0)
+        if (player.lastKeyPressed == KeyCode.A)
         {
             playerScale.x = -1;
             if (!player.transform.localScale.x.Equals(playerScale.x))
