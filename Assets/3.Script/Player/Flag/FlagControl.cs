@@ -68,8 +68,6 @@ public class FlagControl : MonoBehaviour
     private const float _threshold = 0.01f;
 
     // 캐싱
-    private WaitUntil InputWeakAttackButton_wait;
-    private WaitUntil InputStrongAttackButton_wait;
     private WaitUntil InputFireButton_wait;
     public WaitUntil EndDash_wait;
     public WaitUntil EndAttack_wait;
@@ -125,8 +123,6 @@ public class FlagControl : MonoBehaviour
         TryGetComponent(out rigid);
         bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
 
-        InputWeakAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0));
-        InputStrongAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1));
         InputFireButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.LeftShift));
         EndDash_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
                                              (anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamDash")));
@@ -159,10 +155,6 @@ public class FlagControl : MonoBehaviour
     private void SetState(IFlagState state)
     {
         currentState = state;
-    }
-    public void ExecuteAttack()
-    {
-        currentState.Action();
     }
     #endregion 전략, 상태
 
@@ -251,8 +243,17 @@ public class FlagControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
             {
+                bool isHorizontal;
+                if (currentViewStrategy is FlagSideViewMove)
+                {
+                    isHorizontal = false;
+                }
+                else
+                {
+                    isHorizontal = true;
+                }
                 SetState(attackState);
-                currentModeStrategy.WeakAttack(this);
+                currentModeStrategy.WeakAttack(this, isHorizontal);
             }
             if (Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1))
             {
@@ -277,13 +278,7 @@ public class FlagControl : MonoBehaviour
     {
         while (true)
         {
-            yield return InputWeakAttackButton_wait;
             yield return null;
-
-            currentModeStrategy.WeakAttack(this);
-
-            SetState(attackState);
-            ExecuteAttack();
             StartCoroutine(ReturnToNomalState_co());//new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
                                             //anim.GetCurrentAnimatorStateInfo(0).IsName("WeakAttack"))));
         }
@@ -292,12 +287,7 @@ public class FlagControl : MonoBehaviour
     {
         while (true)
         {
-            yield return InputStrongAttackButton_wait;
             yield return null;
-
-            currentModeStrategy.StrongAttack(this);
-
-            SetState(attackState); ExecuteAttack();
             StartCoroutine(ReturnToNomalState_co(new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f &&
                                             (anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack2")))));
         }

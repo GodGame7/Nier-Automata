@@ -16,7 +16,7 @@ public class ModeGundam : IFlagModeStrategy
         Debug.Log("건담 강공격");
     }
 
-    public void WeakAttack(FlagControl player)
+    public void WeakAttack(FlagControl player, bool isHorizontal)
     {
         if (!isCombo)
         {
