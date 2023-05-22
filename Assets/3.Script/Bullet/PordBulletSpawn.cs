@@ -9,7 +9,7 @@ public class PordBulletSpawn : MonoBehaviour
     private void Awake()
     {
 
-        BulletSpawner(40);
+        BulletSpawner(60);
     }
 
     public void BulletSpawner(int count)
