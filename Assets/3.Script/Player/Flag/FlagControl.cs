@@ -107,8 +107,8 @@ public class FlagControl : MonoBehaviour
     {
         SetViewStrategy(new FlagBackViewMove());
         SetViewStrategy(new GundamTopViewMove());
-        SetViewStrategy(new FlagTopViewMove());
         SetViewStrategy(new FlagSideViewMove());
+        SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
 
         SetModeStrategy(new ModeGundam());
