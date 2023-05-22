@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4940254569364709409}
   - component: {fileID: 4940254569364709408}
   - component: {fileID: 7564368473307371005}
+  - component: {fileID: 260305802}
   m_Layer: 0
   m_Name: BulletSoft
   m_TagString: BulletSoft
@@ -61,6 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: d0b466bf8b480934b80f268167861e3a, type: 2}
   - {fileID: 2100000, guid: cee6886c3f476094685f5cc31d5d8cce, type: 2}
   - {fileID: 2100000, guid: 6e54b123325baef4293616402ffdc9ee, type: 2}
   m_StaticBatchInfo:
@@ -113,3 +115,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &260305802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940254569364709599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 268234ffb27ec514aa323dec145b05f1, type: 2}
