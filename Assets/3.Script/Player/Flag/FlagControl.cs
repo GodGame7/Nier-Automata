@@ -266,18 +266,6 @@ public class FlagControl : MonoBehaviour
         }
     }
 
-    public IEnumerator ResetScaleX_co()
-    {
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
-        yield return null;
-        yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
-        transform.localScale = Vector3.one;
-    }
-    public IEnumerator ResetAnimaTrigger_co(int hashAni)
-    {
-        yield return AnimaReset_wait;
-        anim.ResetTrigger(hashAni);
-    }
     private IEnumerator Fire_co()
     {
         while (true)
@@ -290,6 +278,18 @@ public class FlagControl : MonoBehaviour
                 b.Fire();
             }
         }
+    }
+    public IEnumerator ResetScaleX_co()
+    {
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
+        yield return null;
+        yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
+        transform.localScale = Vector3.one;
+    }
+    public IEnumerator ResetAnimaTrigger_co(int hashAni)
+    {
+        yield return AnimaReset_wait;
+        anim.ResetTrigger(hashAni);
     }
     public IEnumerator ReturnToNomalState_co(WaitUntil waitAnimationEnd = null)
     {
