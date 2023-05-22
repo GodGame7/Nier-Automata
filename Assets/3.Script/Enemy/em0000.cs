@@ -5,75 +5,17 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class em0000 : MonoBehaviour
+public class em0000 : Enemy
 {
-    enum State
-    {
-        IDLE,
-        WALK,
-        JUMP,
-        DASH,
-        ATTACK,
-        DIE
-    }
-
-    [SerializeField] private float Hp;
-    public float hp
-    {
-        get { return Hp; }
-        set
-        {
-            Hp = value;
-
-            if (Hp <= 0)
-            {
-                StopCoroutine(CheckState());
-                isdead = true;
-                anim.SetTrigger("Die");
-                state = State.DIE;
-            }
-        }
-    }
-
-    //타겟과의 거리
-    float distance;
-    bool isdead = false;
-
-    //BoxCollider[] boxCollider;
-
-    //타겟
-    [SerializeField] Transform target;
-
-    Animator anim;
-    AnimatorClipInfo[] animatorinfo;
-
-    //상태
-    [SerializeField] State state;
-
     Stopwatch sw = new Stopwatch();
 
-    private void Awake()
+    enum ADDState
     {
-        TryGetComponent(out anim);
-        //boxCollider = GetComponentsInChildren<BoxCollider>();
+        DASH = 3
     }
-
 
     private void Start()
     {
-
-        Hp = 100;
-
-        //타겟 위치 찾기
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        state = State.IDLE;
-
-        //콜라이더 끄기 => 근데 안됌
-        //for (int i = 0; i < boxCollider.Length; i++)
-        //{
-        //    boxCollider[i].enabled = false;
-        //}
-
         StartCoroutine(CheckState());
     }
 
@@ -81,89 +23,74 @@ public class em0000 : MonoBehaviour
     {
         while (!isdead)
         {
-
             AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
             animatorinfo = this.anim.GetCurrentAnimatorClipInfo(0);
             string current_animation = animatorinfo[0].clip.name;
 
-            if (current_animation == "em0000_Attack End(Windmill)" || 
-                current_animation == "em0000_Attack")
+            //거리 확인
+            Distance();
+
+            //공격 모션이 나올땐, 공격모션만 실행
+            if (current_animation.Contains("Attack") ||
+                current_animation.Contains("Hit") ||
+                current_animation.Contains("Die"))
             {
                 yield return null;
                 continue;
             }
 
-
-
-            // 타겟 위치를 얻어온다.
-            Vector3 targetPosition = target.position;
-            targetPosition.y = 0f;
-
-            // 타겟 방향을 바라보도록 회전
-
-            transform.LookAt(targetPosition);
-
-
-            //타겟과 거리를 측정
-            distance = Vector3.Distance(transform.position, target.transform.position);
+            //타겟을 바라보는 메서드
+            TargetLookat();
 
             switch (state)
             {
                 case State.IDLE:
-                    //1초 뒤에 걷기 시작
-                    yield return new WaitForSeconds(1f);
-                    state = State.WALK;
+                    UpdateIdle();
                     break;
 
                 case State.WALK:
                     UpdateWalk();
                     break;
 
-                case State.JUMP:
+                case State.ATTACK:
+                    UpdateAttack(pattonNum);
                     break;
 
-                case State.DASH:
+                case (State)ADDState.DASH:
                     UpdateDash();
                     break;
-
-                case State.ATTACK:
-                    Attack();
-                    break;
-
             }
             yield return null;
         }
 
     }
 
-    void UpdateWalk()
-    {
-        //걷기
-        anim.SetBool("Walk", true);
 
-        //남은 거리가 3f 이하면 공격하고, 6f 이상이면 대쉬함
-        if (distance < 2.8f)
+    protected override void UpdateWalk()
+    {    
+        base.UpdateWalk();
+
+        if (distance >= 6f)
         {
-            state = State.ATTACK;
-        }
-        else if (distance >= 6f)
-        {
-            state = State.DASH;
+            state = (State)ADDState.DASH;
+            return;
         }
     }
 
-    void Attack()
+    protected override void UpdateAttack(int PattonNum)
     {
         sw.Start();
-        int random = Random.Range(1, 3);
-        UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
+        int random = Random.Range(1, PattonNum + 1);
+        UnityEngine.Debug.Log("왔냐 ? 공격선택");
 
         switch (random)
         {
             case 1:
+                UnityEngine.Debug.Log("윈드밀~");
                 WindmillAttack();
                 break;
             case 2:
+                UnityEngine.Debug.Log("공격!");
                 PunchAttack();
                 break;
         }
@@ -180,6 +107,7 @@ public class em0000 : MonoBehaviour
             anim.SetBool("Attack2", false);
             state = State.IDLE;
             sw.Reset();
+            return;
         }
 
     }
@@ -191,6 +119,7 @@ public class em0000 : MonoBehaviour
             anim.SetTrigger("Attack1");
             state = State.IDLE;
             sw.Reset();
+            return;
         }
     }
 
@@ -200,9 +129,4 @@ public class em0000 : MonoBehaviour
         state = State.WALK;
     }
 
-
-    public void TakeDamage(float damage)
-    {
-
-    }
 }

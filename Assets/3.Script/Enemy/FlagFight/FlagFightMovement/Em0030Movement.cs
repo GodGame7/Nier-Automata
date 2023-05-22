@@ -5,7 +5,6 @@ using UnityEngine;
 public class Em0030Movement : MonoBehaviour
 {
     [Header("적 0030 정보")]
-    [SerializeField] float maxHp = 50f;
     [SerializeField] float firstMoveSpeed = 2.0f;
     [SerializeField] float lastMoveSpeed = 0.5f;
     [SerializeField] float rotateSpeed = 60.0f; 
@@ -26,18 +25,16 @@ public class Em0030Movement : MonoBehaviour
     [Space(0.5f)]
     [Header("확인용")]
     [SerializeField] bool isReady = false;
-    [SerializeField] bool isDie = false; 
-    [SerializeField] float currentHp;
     [SerializeField] float fireTimer;
     [SerializeField] Vector3 desPos;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
+    [SerializeField] FlagEmInformation flagEmInformation;
 
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
     {
         desPos = firstDesPos;
-        currentHp = maxHp;
         fireTimer = 0.0f;
         StartCoroutine(Move_co());
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -55,7 +52,7 @@ public class Em0030Movement : MonoBehaviour
     {
         fireTimer += Time.deltaTime;
         // 죽거나 준비되지 않았으면 return
-        if (!isReady || isDie)
+        if (!isReady || flagEmInformation.isDie)
         {
             return;
         }
@@ -79,7 +76,7 @@ public class Em0030Movement : MonoBehaviour
     {
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)    
         {
-            if (!isDie)
+            if (!flagEmInformation.isDie)
             {
                 transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
             }
@@ -90,7 +87,7 @@ public class Em0030Movement : MonoBehaviour
         isReady = true;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
-            if (!isDie)
+            if (!flagEmInformation.isDie)
             {
                 transform.position = Vector3.MoveTowards(transform.position, desPos, lastMoveSpeed * Time.deltaTime);
             }
@@ -120,20 +117,4 @@ public class Em0030Movement : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
-
-    public void OnDamage(float damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        isDie = true;
-        Debug.Log("죽음");
-    }
-
 }
