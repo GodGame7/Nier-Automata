@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected State state;
 
 
-    [Header("HP")]
+    [Header("Enemy 체력")]
     [SerializeField] private float MaxHP;
     [SerializeField] private float CurrentHP;
 
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
     public void Distance()
     {
 
-        float target_distance = transform.position.z - target.transform.position.z;
+        float target_distance = transform.localPosition.z - target.transform.position.z;
 
         if (target_distance <= 0f)
         {
@@ -134,11 +134,28 @@ public class Enemy : MonoBehaviour
     {
         float Timer = 0; 
         Timer += Time.time;
-        
-        if (Timer >= 2f)
+
+        Debug.Log(Timer);
+
+        if (Timer >= 3f)
         {
             state = State.WALK;
-            return;
+        }
+    }
+
+
+    //실험
+    protected virtual IEnumerator UpdateWalk(WaitUntil waitAnimationEnd = null)
+    {
+        anim.SetBool("Run", true);
+
+        //남은 거리가 3f 이하면 공격하고, 6f 이상이면 대쉬함
+        if (distance < attackDistance)
+        {
+            anim.SetBool("Run", false);
+            yield return waitAnimationEnd;
+            yield return null;
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName(""));
         }
     }
 
