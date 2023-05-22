@@ -45,39 +45,41 @@ public class Temp : MonoBehaviour
 
         //인벤토리 List에서 n번째 아이템인지 확인해서 사용 , 키누르면 위아래로 I 인벤열기 , K 위 L 아래 J 사용
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (isActiveInven)
         {
-            if (isActiveInven)
+
+            if (Input.GetKeyDown(KeyCode.J))
             {
+
 
                 //Player.instance.inventory.RemoveItem(ListNum);
                 Item.UseItem();
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.K)) 
-        {
-            if (ListNum >= 0  //&& ListNum <= Player.instance.inventory.Count  
-                )
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
             {
-                ListNum++;
-                Selected_Item.transform.position += MoveSelectedPoint;
-                //
+                if (ListNum >= 0  //&& ListNum <= Player.instance.inventory.Count  
+                    )
+                {
+                    ListNum++;
+                    Selected_Item.transform.position += MoveSelectedPoint;
+                    //
+
+                }
+
 
             }
 
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (ListNum > 0  //Player.instance.inventory.Count <= ListNum
+                    )
+                    ListNum--;
+                Selected_Item.transform.position -= MoveSelectedPoint;
+            }
 
         }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            if (ListNum > 0  //Player.instance.inventory.Count <= ListNum
-                )
-                ListNum--;
-            Selected_Item.transform.position -= MoveSelectedPoint;
-        }
-
-
 
     }
 }

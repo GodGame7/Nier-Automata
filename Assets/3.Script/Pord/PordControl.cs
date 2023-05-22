@@ -19,7 +19,7 @@ public class PordControl : MonoBehaviour
     private void Update()
     {
         // ------------------------인풋매니저로 넘길부분 ----------------------------
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             Bullet[bulletCount].transform.position = transform.position;
             Bullet[bulletCount].SetActive(true);
