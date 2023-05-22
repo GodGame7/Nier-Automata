@@ -16,7 +16,7 @@ public class FlagBullet : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            if(TryGetComponent(out Em0032Movement enemy))
+            if(TryGetComponent(out FlagEmInformation enemy))
             {
                 enemy.OnDamage(PlayerData.instance.atk);
             }
