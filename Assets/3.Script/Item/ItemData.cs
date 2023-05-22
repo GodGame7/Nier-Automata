@@ -12,19 +12,21 @@ public class ItemData : ScriptableObject
         HealingPotionLarge
 
     }
+
     public string ItemName;
     [Header("설명")]
     public string Tooltip;
     [Header("힐량")]
     public int HealingValue;
     [Header("갯수")]
-    public int CurrntItem;
+    public int Quantity;
+    
     [Header("아이템 종류")] // 우리 보기편하라고 배열순서랑 동일하게할것
     public int ItemNum;
     public EItemType ItemType;
 
 
-    
+
 
     //[Space]
     //[Header("칩 카운트량")]
