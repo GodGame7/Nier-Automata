@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     List<ItemData> Items = new List<ItemData>();
     public void AddItem(ItemData item) //아이템 획득시
     {
-        int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);
 
         if(itemIndex <0) //아이템이 없다면 아이템 생성
         {
@@ -16,19 +16,19 @@ public class Inventory : MonoBehaviour
         }
         else //아이템이 있다면 아이템 갯수 추가
         {
-            Items[itemIndex].CurrntItem++;
+            Items[itemIndex].Quantity++;
         }
     }
     public void RemoveItem(ItemData item)
     {
-        int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);
         if (itemIndex <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
         {
             Items.Remove(item);
         }
         else //아이템이 2개 이상이라면 아이템 갯수 -1
         {
-            Items[itemIndex].CurrntItem--;
+            Items[itemIndex].Quantity--;
         }
     }
 
