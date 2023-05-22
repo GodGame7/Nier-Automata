@@ -122556,15 +122556,20 @@ MonoBehaviour:
   damage: 5
   h: 0
   v: 0
-  currentDirectX: 0
+  lastKeyPressed: 0
   hashHSpeed: 0
   hashDash: 0
   hashToGundam: 0
   hashToFlag: 0
+  hashVerticalWeakAttack: 0
+  hashHorizontalWeakAttack: 0
   hashWeakAttack1: 0
   hashWeakAttack2: 0
-  hashStrongAttack: 0
+  hashFlagStrongAttack: 0
   anim: {fileID: 0}
+  bulletSpawners:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5097756013898744551
 GameObject:
   m_ObjectHideFlags: 0

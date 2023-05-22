@@ -450,6 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373536186192794294}
   - component: {fileID: 2373536186192794298}
+  - component: {fileID: 1759621277}
   m_Layer: 0
   m_Name: em0031
   m_TagString: Untagged
@@ -484,14 +485,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95270fc96b6673844a7422df86906492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
   firstMoveSpeed: 2
   firstDesPos: {x: 5, y: 0, z: 2}
-  isDie: 0
-  currentHp: 0
   desPos: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 0}
   playerTransform: {fileID: 0}
+  flagEmInformation: {fileID: 1759621277}
+--- !u!114 &1759621277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373536186192794297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb18edfea7f5cb4a8353caea5cbccb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 50
+  isDie: 0
+  currentHP: 0
 --- !u!1 &2408918361329220074
 GameObject:
   m_ObjectHideFlags: 0

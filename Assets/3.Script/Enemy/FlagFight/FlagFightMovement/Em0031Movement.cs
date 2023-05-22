@@ -5,7 +5,6 @@ using UnityEngine;
 public class Em0031Movement : MonoBehaviour
 {
     [Header("적 0031 정보")]
-    [SerializeField] float maxHp = 50f;
     [SerializeField] float firstMoveSpeed = 2.0f;
 
     [Space(0.5f)]
@@ -14,16 +13,14 @@ public class Em0031Movement : MonoBehaviour
 
     [Space(0.5f)]
     [Header("확인용")]
-    [SerializeField] bool isDie = false;
-    [SerializeField] float currentHp;
     [SerializeField] Vector3 desPos;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
+    [SerializeField] FlagEmInformation flagEmInformation;
 
     private void Start()
     {
         desPos = firstDesPos;
-        currentHp = maxHp;
         StartCoroutine(Move_co());
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -40,7 +37,7 @@ public class Em0031Movement : MonoBehaviour
     {
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
-            if (!isDie)
+            if (!flagEmInformation.isDie)
             {
                 transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
             }
@@ -48,20 +45,4 @@ public class Em0031Movement : MonoBehaviour
         }
         transform.position = desPos;
     }
-
-    public void OnDamage(float damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        isDie = true;
-        Debug.Log("죽음");
-    }
-
 }

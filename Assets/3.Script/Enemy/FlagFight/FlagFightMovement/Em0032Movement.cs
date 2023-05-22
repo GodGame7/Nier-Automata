@@ -25,19 +25,17 @@ public class Em0032Movement : MonoBehaviour
     [Space(0.5f)]
     [Header("확인용")]
     [SerializeField] bool isReady = false;
-    [SerializeField] bool isDie = false;
-    [SerializeField] float currentHp;
     [SerializeField] float fireTimer;
     [SerializeField] Vector3 desPos;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
+    [SerializeField] FlagEmInformation flagEmInformation;
 
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
     {
 
         desPos = firstDesPos;
-        currentHp = maxHp;
         fireTimer = 0.0f;
         StartCoroutine(Move_co());
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -61,7 +59,7 @@ public class Em0032Movement : MonoBehaviour
     {
         fireTimer += Time.deltaTime;
         // 죽거나 준비되지 않았으면 return
-        if (!isReady || isDie)
+        if (!isReady || flagEmInformation.isDie)
         {
             return;
         }
@@ -85,7 +83,7 @@ public class Em0032Movement : MonoBehaviour
     {
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
-            if (!isDie)
+            if (!flagEmInformation.isDie)
             {
                 transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
             }
@@ -93,7 +91,7 @@ public class Em0032Movement : MonoBehaviour
         }
         transform.position = desPos;
         isReady = true;
-        while (!isDie)
+        while (!flagEmInformation.isDie)
         {
             transform.RotateAround(playerTransform.position, playerTransform.up, lastMoveSpeed * Time.deltaTime);
             yield return null;
@@ -118,20 +116,4 @@ public class Em0032Movement : MonoBehaviour
             bulletRigidbody.velocity = direction * bulletSpeed;
         }
     }
-
-    public void OnDamage(float damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        isDie = true;
-        Debug.Log("죽음");
-    }
-
 }
