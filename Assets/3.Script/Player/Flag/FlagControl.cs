@@ -35,11 +35,10 @@ public class FlagControl : MonoBehaviour
     //private PlayerData player;
 
     // 대쉬
-    private KeyCode lastKeyPressed = KeyCode.None;
+    public KeyCode lastKeyPressed = KeyCode.None;
     private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
     private float lastKeyPressTime = 0f;
     private float timeAllowedBetweenKeyPresses = 0.5f;
-    public int currentDirectX = 0;
     private bool isDashWaiting = false;
 
     private IFlagViewStrategy currentViewStrategy;
@@ -64,6 +63,7 @@ public class FlagControl : MonoBehaviour
     private CharacterController controller;
     private GameObject mainCamera;
     private Rigidbody rigid;
+    public FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
     private const float _threshold = 0.01f;
 
@@ -93,22 +93,20 @@ public class FlagControl : MonoBehaviour
 
         currentState = nomalState;
     }
-
     private void OnEnable()
     {
         // 이벤트 구독 (시점 변환)
-        StartCoroutine(nameof(WeakAttack_co));
-        StartCoroutine(nameof(StrongAttack_co));
+        //StartCoroutine(nameof(WeakAttack_co));
+        //StartCoroutine(nameof(StrongAttack_co));
         StartCoroutine(nameof(Fire_co));
     }
     private void OnDisable()
     {
         // 이벤트 해제 (시점 변환)
-        StopCoroutine(nameof(WeakAttack_co));
-        StopCoroutine(nameof(StrongAttack_co));
+        //StopCoroutine(nameof(WeakAttack_co));
+        //StopCoroutine(nameof(StrongAttack_co));
         StopCoroutine(nameof(Fire_co));
     }
-
     private void Start()
     {
         SetViewStrategy(new FlagBackViewMove());
@@ -125,6 +123,7 @@ public class FlagControl : MonoBehaviour
         TryGetComponent(out anim);
         TryGetComponent(out controller);
         TryGetComponent(out rigid);
+        bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
 
         InputWeakAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0));
         InputStrongAttackButton_wait = new WaitUntil(() => Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1));
@@ -146,8 +145,8 @@ public class FlagControl : MonoBehaviour
         hashWeakAttack2 = Animator.StringToHash("weakAttack2");
         hashStrongAttack = Animator.StringToHash("strongAttack");
     }
-
     #endregion 초기화
+
     #region 전략, 상태
     public void SetViewStrategy(IFlagViewStrategy strategy)
     {
@@ -170,15 +169,15 @@ public class FlagControl : MonoBehaviour
     private void Update()
     {
         InputMoveKey();
-        Move();
-        // todo 여기 상태 체크
         if (currentState.Equals(nomalState))
         {
             CheckDash();
         }
-        // 공격 입력 판단 => 코루틴 말고 메소드 써야되나?
-        // ㄴ 일단 Fire는 코루틴 유지 => 어차피 상태랑 상관 없는애임
-
+        Attack();
+    }
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void InputMoveKey()
@@ -212,17 +211,16 @@ public class FlagControl : MonoBehaviour
     {
         Vector3 move;
         currentViewStrategy.Move(this, out move);
-        currentDirectX = (int)move.x;
 
         animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
         if (Mathf.Abs(animationBlend) < 0.01f)
         {
             animationBlend = 0f;
         }
-
+        
         anim.SetFloat(hashHSpeed, animationBlend);
-        controller.Move(moveSpeed * Time.deltaTime * move);
-
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + moveSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), 0.0f, Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
+        rigid.MovePosition(newPosition);
     }
     private void CheckDash()
     {
@@ -247,6 +245,23 @@ public class FlagControl : MonoBehaviour
         }
     }
     
+    private void Attack()
+    {
+        if (!currentState.Equals(attackState))
+        {
+            if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
+            {
+                SetState(attackState);
+                currentModeStrategy.WeakAttack(this);
+            }
+            if (Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1))
+            {
+                SetState(attackState);
+                currentModeStrategy.StrongAttack(this);
+            }
+            StartCoroutine(ReturnToNomalState_co());
+        }
+    }
 
     public IEnumerator ResetScaleX_co()
     {
@@ -294,7 +309,10 @@ public class FlagControl : MonoBehaviour
             yield return FireDelay_wait;
             yield return InputFireButton_wait;
 
-            Debug.Log("발사");
+            foreach(FlagBulletSpawner b in bulletSpawners)
+            {
+                b.Fire();
+            }            
         }
     }
     public IEnumerator ReturnToNomalState_co(WaitUntil waitAnimationEnd = null)

@@ -8,6 +8,7 @@ public class FlagBulletSpawner : MonoBehaviour
     private GameObject bullet_pref;
     private GameObject[] bullets;
     private int bulletNum = 20;
+    private int cnt = 0;
 
     private void Awake()
     {
@@ -15,12 +16,22 @@ public class FlagBulletSpawner : MonoBehaviour
 
         for(int i = 0; i< bulletNum; i++)
         {
-            bullets[i] = Instantiate(bullet_pref, transform);
+            bullets[i] = Instantiate(bullet_pref);
             bullets[i].SetActive(false);
         }
     }
     public void Fire()
     {
+        if (!bullets[cnt].activeSelf)
+        {
+            bullets[cnt].SetActive(true);
+            bullets[cnt].transform.position = transform.position;
+        }
 
+        cnt++;
+        if(cnt >= bulletNum)
+        {
+            cnt = 0;
+        }
     }
 }

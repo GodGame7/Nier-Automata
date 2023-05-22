@@ -10,11 +10,15 @@ public class ObjectDestroyer : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Equals("BulletHard") || (other.tag.Equals("BulletSoft")))
+        if (other.CompareTag("BulletHard") || (other.CompareTag("BulletSoft")))
         {
             Destroy(other.gameObject);
         }
-        else if (other.tag.Equals("Enemy"))
+        else if (other.CompareTag("Enemy"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("FlagBullet"))
         {
             other.gameObject.SetActive(false);
         }
