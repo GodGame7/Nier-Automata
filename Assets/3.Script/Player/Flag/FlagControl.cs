@@ -210,7 +210,7 @@ public class FlagControl : MonoBehaviour
         }
 
         anim.SetFloat(hashHSpeed, animationBlend);
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + moveSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), 0.0f, Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + moveSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + moveSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
