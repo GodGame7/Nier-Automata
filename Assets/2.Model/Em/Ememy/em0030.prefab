@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 669708989293958587}
   - component: {fileID: 669708989293958586}
   - component: {fileID: 768147204}
+  - component: {fileID: 4612837436207483142}
   m_Layer: 0
   m_Name: em0030
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   maxHp: 50
   isDie: 0
   currentHP: 0
+--- !u!65 &4612837436207483142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669708989293958580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18, y: 0.18, z: 0.18}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1001 &669708991143719359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,11 +361,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18f1a806ba0dc25488f85c35260f3f5f, type: 3}
   m_PrefabInstance: {fileID: 669708991143719359}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2007357930498957827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1337808372568003516, guid: 18f1a806ba0dc25488f85c35260f3f5f, type: 3}
-  m_PrefabInstance: {fileID: 669708991143719359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &669708991143719357
 Animator:
   serializedVersion: 3
@@ -371,16 +380,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &669708989250219925
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007357930498957827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.16, z: 0.18}
-  m_Center: {x: 0, y: 0.09, z: 0}

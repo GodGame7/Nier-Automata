@@ -483,7 +483,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5278063055598318389}
-  - component: {fileID: 4367181337631837800}
   m_Layer: 0
   m_Name: bone-1
   m_TagString: Untagged
@@ -507,19 +506,6 @@ Transform:
   m_Father: {fileID: 4256430739699742633}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!65 &4367181337631837800
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317888391639712766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.16, z: 0.18}
-  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1 &3484151791978507539
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +600,7 @@ GameObject:
   - component: {fileID: 4367181337537770566}
   - component: {fileID: 4367181337537770574}
   - component: {fileID: 10652507}
+  - component: {fileID: 1896696700307058785}
   m_Layer: 0
   m_Name: em0032
   m_TagString: Untagged
@@ -680,6 +667,19 @@ MonoBehaviour:
   maxHp: 50
   isDie: 0
   currentHP: 0
+--- !u!65 &1896696700307058785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367181337537770569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18, y: 0.18, z: 0.18}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1 &4396943291339792154
 GameObject:
   m_ObjectHideFlags: 0
