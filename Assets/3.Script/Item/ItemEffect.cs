@@ -6,17 +6,19 @@ public class ItemEffect : MonoBehaviour
 {
     [SerializeField] ItemData ItemData;
     [SerializeField] private Text Effect_Text;
-    public void UseItem()
+  
+    public void UseItem(int num)
     {
 
         if (ItemData.Quantity > 0)
         {
-            //Player.curHp += ItemData.HelingValue;   
+            //Player.curHp += player.instacne.inventory[num].HelingValue;
+            //Player.instance.inventory.RemoveItem(ListNum);
         }
 
         StartCoroutine(Text_co());
     }
-    
+
 
     private IEnumerator Text_co()
     {
@@ -25,4 +27,6 @@ public class ItemEffect : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Effect_Text.gameObject.SetActive(false);
     }
+
+    
 }
