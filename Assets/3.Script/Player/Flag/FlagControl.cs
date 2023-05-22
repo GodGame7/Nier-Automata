@@ -64,7 +64,6 @@ public class FlagControl : MonoBehaviour
     private CharacterController controller;
     private GameObject mainCamera;
     private Rigidbody rigid;
-    private BulletControl[] bullets = new BulletControl[2];
 
     private const float _threshold = 0.01f;
 
