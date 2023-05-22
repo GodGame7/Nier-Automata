@@ -10,7 +10,7 @@ public class ItemEffect : MonoBehaviour
     public void UseItem(int num)
     {
 
-        if (ItemData[num].CurrntItem > 0)
+        if (ItemData[num].Quantity > 0)
         {
             if (num < 3) // 포션을 사용했을때 
             {
@@ -24,7 +24,7 @@ public class ItemEffect : MonoBehaviour
     private IEnumerator Text_co(int num)
     {
         Effect_Text.gameObject.SetActive(true);
-        Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", ItemData[num].ItemName, ItemData[num].CurrntItem);
+        Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", ItemData[num].ItemName, ItemData[num].Quantity);
         yield return new WaitForSeconds(2f);
         Effect_Text.gameObject.SetActive(false);
     }
