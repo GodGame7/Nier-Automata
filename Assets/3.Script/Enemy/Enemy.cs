@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class Enemy : MonoBehaviour
     {
         IDLE,
         WALK,
-        ATTACK
+        ATTACK,
+        DASH,
+        JUMP
     }
 
     [Header("현재 상태")]
@@ -63,7 +66,7 @@ public class Enemy : MonoBehaviour
     //공격용 콜라이더
     //BoxCollider[] boxCollider;
 
-    //몸체 콜라이더
+    //피격용 콜라이더
     CapsuleCollider capsuleCollider;
 
     protected Animator anim;
@@ -71,11 +74,10 @@ public class Enemy : MonoBehaviour
 
     [Header("패턴의 갯수")]
     [SerializeField] protected int pattonNum = 4;
-    [Header("공격 사정거리")]
+    [Header("사정거리 (없으면 0으로 설정해주세요)")]
     [SerializeField] float attackDistance = 2.8f;
-    [Header("Idle Delay")]
-    [SerializeField] float waitdelay;
-
+    [SerializeField] float DashDistance = 6f;
+     
     Vector3 targetPosition;
 
     public delegate void Del();
@@ -116,7 +118,6 @@ public class Enemy : MonoBehaviour
 
     public void Distance()
     {
-
         float target_distance = transform.localPosition.z - target.transform.position.z;
 
         if (target_distance <= 0f)
@@ -127,67 +128,91 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("FrontPlayer", true);
         }
-        Debug.Log(anim.GetBool("FrontPlayer"));
     }
 
-    public void UpdateIdle()
+
+    protected virtual IEnumerator UpdateIdle2()
     {
-        float Timer = 0; 
-        Timer += Time.time;
+        if (state != State.IDLE)
+        {
+            state = State.IDLE;
 
-        Debug.Log(Timer);
+            anim.SetBool("Run", false);
+        }
 
-        if (Timer >= 3f)
+        yield return null;
+
+        if (distance <= attackDistance)
+        {
+            state = State.ATTACK;
+        }
+        else if (distance >= DashDistance)
+        {
+            //대쉬가 없는 경우는 0
+            if (DashDistance == 0)
+            {
+                state = State.WALK;
+            }
+            else
+            {
+                state = State.DASH;
+            }
+
+        }
+        else
         {
             state = State.WALK;
         }
     }
 
 
-    //실험
-    protected virtual IEnumerator UpdateWalk(WaitUntil waitAnimationEnd = null)
+    protected virtual IEnumerator UpdateDash2()
     {
-        anim.SetBool("Run", true);
-
-        //남은 거리가 3f 이하면 공격하고, 6f 이상이면 대쉬함
-        if (distance < attackDistance)
+        if (state != State.DASH)
         {
-            anim.SetBool("Run", false);
-            yield return waitAnimationEnd;
-            yield return null;
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName(""));
+            state = State.DASH;
         }
+
+        anim.SetTrigger("Dash");
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"));
+        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
+
+        state = State.IDLE;
+
     }
+
+    protected virtual IEnumerator UpdateAttack2(int PattonNum)
+    {
+        if (state != State.ATTACK)
+        {
+            state = State.ATTACK;
+        }
+
+        int value = Random.Range(1, PattonNum + 1);
+        anim.SetFloat("Patton", value);
+
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"));
+        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
+        anim.SetFloat("Patton", 0);
+
+        state = State.IDLE;
+    }
+
+
+
 
     protected virtual void UpdateWalk()
     {
         //걷기
         anim.SetBool("Run", true);
 
-        //남은 거리가 3f 이하면 공격하고, 6f 이상이면 대쉬함
-        if (distance < attackDistance)
-        {
-            anim.SetBool("Run", false);
-            state = State.ATTACK;
-            return;
-        }
+        state = State.IDLE;
         //else if (distance >= 6f)
         //{
         //    state = State.DASH;
         //}
     }
 
-    protected virtual void UpdateAttack(int PattonNum)
-    {
-        int value = Random.Range(1, PattonNum+1);
-        anim.SetFloat("Patton", value);
-
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
-        {
-            state = State.IDLE;
-            return;
-        }
-    }
 
     public void TakeDamage(int Damage)
     {
@@ -208,14 +233,21 @@ public class Enemy : MonoBehaviour
     }
 
 
+    //protected virtual void UpdateAttack(int PattonNum)
+    //{
+    //    int value = Random.Range(1, PattonNum + 1);
+    //    anim.SetFloat("Patton", value);
 
-
-    public IEnumerator Wait_co(float delay, Del func)
-    {
-        yield return new WaitForSeconds(delay);
-
-        func?.Invoke();
-    }
+    //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
+    //    {
+    //        state = State.IDLE;
+    //        return;
+    //    }
+    //}
 
 
 }
+
+
+
+
