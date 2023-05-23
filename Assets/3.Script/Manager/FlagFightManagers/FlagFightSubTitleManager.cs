@@ -15,19 +15,33 @@ public class FlagFightSubTitleManager : MonoBehaviour
     [SerializeField] int subTitleCounter;
 
     #region 발생시킬 이벤트들
-    public UnityEvent phase1_01; // Ground02 서서히 페이드 아웃
+    public UnityEvent phase1_01; // BackGround02 서서히 페이드 아웃
     public UnityEvent phase1_02; // player 등장
     public UnityEvent phase1_03; // BGM 시작
     public UnityEvent phase1_04; // 사령부 UI 등장
     public UnityEvent phase1_05; // 아군 Flag 등장
     public UnityEvent phase1_06; // Flag 이름 UI 등장
+    public UnityEvent phase1_07; // Laser 발사, 아군 기체 이동
+    public UnityEvent phase1_08; // 아군 기체 2번째 이동
+    public UnityEvent phase1_09; // WASD UI 켜짐, BackGround01 서서히 꺼짐
+    public UnityEvent phase1_10; // 플레이어 이동 가능
+    public UnityEvent phase1_11; // 두번째 Laser 발사
+    public UnityEvent phase1_12; // 카메라 이동, 플레이어 회전 및 이동, BackGround01 서서히 켜짐
+    public UnityEvent phase1_13; // 안개 제거
+    public UnityEvent phase1_14; // 사령부 UI 등장
+    public UnityEvent phase1_15; // 사격 UI 활성화, 사격 활성화 em0030 4기 활성화 BackGround01 서서히 꺼짐
+
     #endregion
     //
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
     private WaitForSeconds wait_1_Second = new WaitForSeconds(1.0f);
+    private WaitForSeconds wait_1half_Second = new WaitForSeconds(1.5f);
     private WaitForSeconds wait_2_Second = new WaitForSeconds(2.0f);
     private WaitForSeconds wait_3_Second = new WaitForSeconds(3.0f);
     private WaitForSeconds wait_4_Second = new WaitForSeconds(4.0f);
+    private WaitForSeconds wait_6_Second = new WaitForSeconds(6.0f);
+    private WaitForSeconds wait_7_Second = new WaitForSeconds(7.0f);
+
 
 
     string[] flagSubTitles = new string[]
@@ -47,6 +61,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         "현재, 목표로부터 50km 지점을 통과",
         "적의 방공권 내에 돌입 후, 매뉴얼 공격 형태로 이행하고",
         "목표인 대형 병기 파괴와 정보 소집을 진행해 주십시오",
+        "알겠다.",
         "12H, 로스트",
         "모든 기체 매뉴얼 모드 기동, 눈으로 회피",
         "이미 기동, 이동 조작 가능",
@@ -78,72 +93,184 @@ public class FlagFightSubTitleManager : MonoBehaviour
     {
         yield return wait_4_Second;
         text_Subtitle.gameObject.SetActive(false);
+
         yield return wait_1_Second;
-
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_3_Second;
-        
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_half_Second;
 
-        Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
-        yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false);
         yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
 
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
         phase1_01.Invoke();
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
+
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
-        yield return wait_half_Second;
 
+        yield return wait_half_Second;
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_1_Second;
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_2_Second;
 
+        yield return wait_1half_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
         phase1_02.Invoke();
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_1_Second;
 
-        Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
-        yield return wait_2_Second;
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_2_Second;
-
-        phase1_03.Invoke();
         yield return wait_4_Second;
+        text_Subtitle.gameObject.SetActive(false);
 
-        phase1_04.Invoke();
-        yield return wait_2_Second;
-
+        yield return wait_1_Second;
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_1_Second;
 
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        phase1_03.Invoke();
+
+        yield return wait_4_Second;
+        phase1_04.Invoke();
+
+        yield return wait_2_Second;
         phase1_05.Invoke();
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false);
-        yield return wait_1_Second;
 
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
         Next_SubText();
         text_Subtitle.gameObject.SetActive(true);
-        yield return wait_2_Second;
 
+        yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
+
         yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase1_06.Invoke();
+
+        yield return wait_2_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_4_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_3_Second;
+        phase1_07.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_6_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        phase1_08.Invoke();
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_1_Second;
+        phase1_09.Invoke();
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        phase1_10.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        phase1_11.Invoke();
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_7_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        phase1_12.Invoke();
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_7_Second;
+        phase1_13.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_4_Second;
+        phase1_14.Invoke();
+
+        yield return wait_1_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+        yield return wait_2_Second;
+        Next_SubText();
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        phase1_15.Invoke();
+
+
+
+
 
         // Todo 병현 타임라인 작성 후 다시 올게요...
 

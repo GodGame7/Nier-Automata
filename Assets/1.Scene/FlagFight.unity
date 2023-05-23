@@ -15013,7 +15013,6 @@ GameObject:
   m_Component:
   - component: {fileID: 360017964}
   - component: {fileID: 360017963}
-  - component: {fileID: 360017966}
   - component: {fileID: 360017965}
   m_Layer: 0
   m_Name: ObjectDestroyer
@@ -15062,18 +15061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectDestroyer: {fileID: 360017963}
---- !u!114 &360017966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360017962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7d6fac6f27422458d795a6bd06c715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &393996347
 GameObject:
   m_ObjectHideFlags: 0
@@ -24807,7 +24794,7 @@ RectTransform:
   m_Children:
   - {fileID: 1037132837}
   - {fileID: 1786170870}
-  - {fileID: 801968936}
+  - {fileID: 1429293153}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24830,9 +24817,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background01: {fileID: 1037132836}
   background02: {fileID: 1786170869}
-  subTitle: {fileID: 801968937}
+  subTitle: {fileID: 801968935}
   flagFightManager: {fileID: 236518916}
-  subTitleCounter: 0
+  flagFightSubTitleManager: {fileID: 1429293152}
 --- !u!1 &497146328
 GameObject:
   m_ObjectHideFlags: 0
@@ -34859,7 +34846,7 @@ GameObject:
   - component: {fileID: 801968937}
   - component: {fileID: 801968939}
   m_Layer: 5
-  m_Name: Subtitles
+  m_Name: Text_Subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34873,15 +34860,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801968935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000043553646}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000058071528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 449376185}
-  m_RootOrder: 2
+  m_Father: {fileID: 1429293153}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: -390.00012}
   m_SizeDelta: {x: 1920, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &801968937
@@ -73974,6 +73961,76 @@ Transform:
   m_Father: {fileID: 650553632}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1429293151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429293153}
+  - component: {fileID: 1429293152}
+  m_Layer: 5
+  m_Name: Subtitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1429293152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429293151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff941ebb890385448383697bcd5fb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightManager: {fileID: 236518916}
+  text_Subtitle: {fileID: 801968937}
+  subTitleCounter: 0
+  phase1_01:
+    m_PersistentCalls:
+      m_Calls: []
+  phase1_02:
+    m_PersistentCalls:
+      m_Calls: []
+  phase1_03:
+    m_PersistentCalls:
+      m_Calls: []
+  phase1_04:
+    m_PersistentCalls:
+      m_Calls: []
+  phase1_05:
+    m_PersistentCalls:
+      m_Calls: []
+  phase1_06:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!224 &1429293153
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429293151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 801968936}
+  m_Father: {fileID: 449376185}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1436913396
 GameObject:
   m_ObjectHideFlags: 0
@@ -122578,15 +122635,17 @@ MonoBehaviour:
   h: 0
   v: 0
   lastKeyPressed: 0
+  isCombo: 0
   hashHSpeed: 0
   hashDash: 0
   hashToGundam: 0
   hashToFlag: 0
   hashVerticalWeakAttack: 0
   hashHorizontalWeakAttack: 0
-  hashWeakAttack1: 0
-  hashWeakAttack2: 0
   hashFlagStrongAttack: 0
+  hashGundamWeakAttack1: 0
+  hashGundamWeakAttack2: 0
+  hashGundamStrongAttack: 0
   anim: {fileID: 0}
   bulletSpawners:
   - {fileID: 0}
