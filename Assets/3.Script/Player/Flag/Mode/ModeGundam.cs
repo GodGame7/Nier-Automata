@@ -13,25 +13,20 @@ public class ModeGundam : IFlagModeStrategy
 
     public void StrongAttack(FlagControl player)
     {
-        Debug.Log("건담 강공격");
+        player.anim.SetTrigger(player.hashGundamStrongAttack);
     }
 
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
         if (!isCombo)
         {
-            Debug.Log("건담 약공 1단");
+            player.anim.SetTrigger(player.hashGundamWeakAttack1);
             isCombo = true;
         }
         else
         {
-            WeakAttack2(player);
+            player.anim.SetTrigger(player.hashGundamWeakAttack2);
             isCombo = false;
         }
-    }
-
-    private void WeakAttack2(FlagControl player)
-    {
-        Debug.Log("건담 약공 2단");
     }
 }
