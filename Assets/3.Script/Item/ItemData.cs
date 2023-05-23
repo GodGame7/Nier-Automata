@@ -25,7 +25,7 @@ public class ItemData : ScriptableObject
     public int ItemNum;
     public EItemType ItemType;
 
-
+    
 
 
     //[Space]

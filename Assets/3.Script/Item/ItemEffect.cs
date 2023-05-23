@@ -6,14 +6,14 @@ public class ItemEffect : MonoBehaviour
 {
     [SerializeField] private Text Effect_Text;
     [SerializeField] Temp temp;
-    
+
 
     private InventoryUI Inven_UI;
     private void Awake()
     {
-        
+
         Temp.OnItem += UseItem;
-        
+
 
     }
     //public void Aciton(int num)
@@ -35,11 +35,13 @@ public class ItemEffect : MonoBehaviour
 
     private IEnumerator Text_co(int num)
     {
+
         Effect_Text.gameObject.SetActive(true);
         Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", PlayerData.instance.inven.Items[num].ItemName, PlayerData.instance.inven.Items[num].Quantity);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Effect_Text.gameObject.SetActive(false);
+
     }
 
-    
+
 }

@@ -13,11 +13,13 @@ public class InventoryUI : MonoBehaviour
 
     Vector3 MoveSelectedPoint = new Vector3(0, -85.7f, 0);
     Vector3 defalutItemPosition;
-    Color Selected_BackColor = new Color(218/255f, 212/255f, 186/255f);
-    Color InvenUI_BackColor = new Color(78/255f, 76/255f, 66/255f);
+    Color Selected_BackColor = new Color(218 / 255f, 212 / 255f, 186 / 255f);
+    Color InvenUI_BackColor = new Color(78 / 255f, 76 / 255f, 66 / 255f);
 
+    private int MaxInvenLength = 3;
     private int InvenLength;
     public int ListNum = 0;
+
 
     public bool isActiveInven = false;
 
@@ -34,11 +36,16 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateUI()
     {
+
         InvenLength = PlayerData.instance.inven.Items.Count;
+        if (InvenLength == 0)
+        {
+            Inventory_UI_ob.SetActive(false);
+            return;
+        }
         Selected_Item.transform.position = defalutItemPosition;
         ListNum = 0;
         for (int i = 0; i < InvenLength; i++)  //아이템 이름
-
         {
             Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].ItemName);
 
@@ -47,6 +54,12 @@ public class InventoryUI : MonoBehaviour
         {
             SlotQuantity_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].Quantity);
         }
+        //for (int i = MaxInvenLength; i > InvenLength; i--)
+        //{
+        //    Slot_Image[i].color = InvenUI_BackColor;
+        //    Slot_Text[i].text = "";
+        //    SlotQuantity_Text[i].text = "";
+        //}
         ColorSet();
 
     }
@@ -70,7 +83,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DownSelected()
     {
-        if (ListNum >= 0 && ListNum < InvenLength-1)
+        if (ListNum >= 0 && ListNum < InvenLength - 1)
         {
             ListNum++;
             Selected_Item.transform.position += MoveSelectedPoint;
