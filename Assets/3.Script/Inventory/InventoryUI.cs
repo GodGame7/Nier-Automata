@@ -53,7 +53,7 @@ public class InventoryUI : MonoBehaviour
 
     public void InvenActive()
     {
-        if (!isActiveInven //&& InvenLength != 0
+        if (!isActiveInven && InvenLength != 0
             )
         {
             isActiveInven = true;

@@ -15,6 +15,6 @@ MonoBehaviour:
   ItemName: "\uD68C\uBCF5\uC57D : \uC911"
   Tooltip: "Hp\uB97C 400\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4"
   HealingValue: 400
-  CurrntItem: 5
+  Quantity: 5
   ItemNum: 1
   ItemType: 1
