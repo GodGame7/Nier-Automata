@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45140338, g: 0.5008933, b: 0.5723159, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140398, g: 0.5008938, b: 0.5723169, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15362,6 +15362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: em0031
       objectReference: {fileID: 0}
+    - target: {fileID: 2373536186192794297, guid: c584768b394b56146a22996c16ea1763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2373536186192794298, guid: c584768b394b56146a22996c16ea1763, type: 3}
       propertyPath: firstDesPos.x
       value: 0.28
@@ -25149,6 +25153,10 @@ PrefabInstance:
     - target: {fileID: 669708989293958580, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
       propertyPath: m_Name
       value: em0030
+      objectReference: {fileID: 0}
+    - target: {fileID: 669708989293958580, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 669708989293958586, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
       propertyPath: bulletSpeed
@@ -78986,7 +78994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1386603374
 Transform:
   m_ObjectHideFlags: 0
@@ -108388,6 +108396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: em0032
       objectReference: {fileID: 0}
+    - target: {fileID: 4367181337537770569, guid: 4c1d458e6aa260b4da1f30dfa5409c82, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4367181337537770574, guid: 4c1d458e6aa260b4da1f30dfa5409c82, type: 3}
       propertyPath: bulletSpeed
       value: 0.2
@@ -128656,7 +128668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617412298969213187, guid: 00ff13230c907604791de23b60a0ed03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0203
       objectReference: {fileID: 0}
     - target: {fileID: 5617412298969213187, guid: 00ff13230c907604791de23b60a0ed03, type: 3}
       propertyPath: m_LocalPosition.z
