@@ -28,7 +28,7 @@ public class ModeFlag : IFlagModeStrategy
         player.anim.SetTrigger(player.hashDash);
         player.StartCoroutine(nameof(player.ResetAnimaTrigger_co), player.hashDash);
         player.StopCoroutine(nameof(player.ReturnToNomalState_co));
-        player.StartCoroutine(nameof(player.ReturnToNomalState_co), player.EnterDashAni_wait);
+        player.StartCoroutine(player.ReturnToNomalState_co(player.EnterDashAni_wait, player.ExitDashAni_wait));
     }
 
     public void StrongAttack(FlagControl player)
@@ -38,7 +38,7 @@ public class ModeFlag : IFlagModeStrategy
 
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
-        if(isHorizontal)
+        if (isHorizontal)
         {
             HorizontalWeakAttack(player);
         }

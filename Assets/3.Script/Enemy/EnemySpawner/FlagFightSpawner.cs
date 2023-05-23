@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class FlagFightSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Enemy를 넣어주세요.")]
+    [SerializeField] GameObject em0030;
+    [SerializeField] GameObject em0031;
+    [SerializeField] GameObject em0032;
 }
