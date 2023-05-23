@@ -75,6 +75,30 @@ public class FlagControl : MonoBehaviour
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
+    #region 테스트
+    public void testBackView()
+    {
+        currentViewStrategy = new FlagBackViewMove();
+    }
+    public void testSideView()
+    {
+        currentViewStrategy = new FlagSideViewMove();
+    }
+    public void testTopView()
+    {
+        currentViewStrategy = new FlagTopViewMove();
+    }
+    public void testFlag()
+    {
+        currentModeStrategy = new ModeFlag();
+    }
+    public void testGundam()
+    {
+        currentModeStrategy = new ModeGundam();
+    }
+
+
+    #endregion 테스트
     //private const float _threshold = 0.01f;
     #region 초기화
     private void Awake()
