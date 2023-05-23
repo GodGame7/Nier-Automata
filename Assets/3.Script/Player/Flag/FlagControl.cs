@@ -41,6 +41,7 @@ public class FlagControl : MonoBehaviour
     private float timeAllowedBetweenKeyPresses = 0.5f;
     private bool isDashWaiting = false;
 
+    // 전략, 상태
     private IFlagViewStrategy currentViewStrategy;
     private IFlagModeStrategy currentModeStrategy;
     private IFlagState currentState;
@@ -67,8 +68,6 @@ public class FlagControl : MonoBehaviour
     private Rigidbody rigid;
     public FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
-    private const float _threshold = 0.01f;
-
     // 캐싱
     private WaitUntil InputFireButton_wait;
     public WaitUntil EnterDashAni_wait;
@@ -76,6 +75,7 @@ public class FlagControl : MonoBehaviour
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
+    //private const float _threshold = 0.01f;
     #region 초기화
     private void Awake()
     {

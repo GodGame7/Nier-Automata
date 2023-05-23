@@ -24,8 +24,7 @@ public class FlagBullet : MonoBehaviour
         }
         else if(other.CompareTag("BulletSoft"))
         {
-            // todo 적 총알 비활성화인지 파괴인지
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
             gameObject.SetActive(false);
         }
     }
