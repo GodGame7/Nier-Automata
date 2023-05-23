@@ -13,8 +13,8 @@ public class InventoryUI : MonoBehaviour
 
     Vector3 MoveSelectedPoint = new Vector3(0, -85.7f, 0);
     Vector3 defalutItemPosition;
-    Color Selected_BackColor = new Color(218, 212, 186, 255);
-    Color InvenUI_BackColor = new Color(78, 76, 66, 255);
+    Color Selected_BackColor = new Color(218/255f, 212/255f, 186/255f);
+    Color InvenUI_BackColor = new Color(78/255f, 76/255f, 66/255f);
 
     private int InvenLength;
     public int ListNum = 0;
@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
     {
         UpdateUI();
-        
+
     }
 
     public void UpdateUI()
@@ -37,15 +37,15 @@ public class InventoryUI : MonoBehaviour
         InvenLength = PlayerData.instance.inven.Items.Count;
         Selected_Item.transform.position = defalutItemPosition;
         ListNum = 0;
-        for (int i = 0; i < InvenLength / 2; i++)  //아이템 이름
+        for (int i = 0; i < InvenLength; i++)  //아이템 이름
 
         {
             Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].ItemName);
 
         }
-        for (int i = InvenLength / 2; i < InvenLength; i++) // 아이템 수량
+        for (int i = 0; i < InvenLength; i++) // 아이템 수량
         {
-            Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i - (InvenLength / 2)].Quantity);
+            SlotQuantity_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].Quantity);
         }
         ColorSet();
 
@@ -70,7 +70,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DownSelected()
     {
-        if (ListNum >= 0 && ListNum <= InvenLength)
+        if (ListNum >= 0 && ListNum < InvenLength-1)
         {
             ListNum++;
             Selected_Item.transform.position += MoveSelectedPoint;
@@ -80,7 +80,8 @@ public class InventoryUI : MonoBehaviour
 
     public void UpSelected()
     {
-        if (ListNum > 0 && InvenLength <= ListNum)
+
+        if (ListNum > 0 && ListNum < InvenLength)
         {
             ListNum--;
             Selected_Item.transform.position -= MoveSelectedPoint;
