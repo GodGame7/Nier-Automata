@@ -14,7 +14,7 @@ public class FlagBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag(Define.EnemyTagType.Enemy.ToString()))
         {
             if(other.TryGetComponent(out FlagEmInformation enemy))
             {
@@ -22,7 +22,7 @@ public class FlagBullet : MonoBehaviour
             }
             gameObject.SetActive(false);
         }
-        else if(other.CompareTag("BulletSoft"))
+        else if(other.CompareTag(Define.EnemyTagType.BulletSoft.ToString()))
         {
             Destroy(other.gameObject);
             gameObject.SetActive(false);

@@ -13,4 +13,9 @@ public class Define : MonoBehaviour
     {
         BtnClick, BtnOver, //플레이어 효과음 이름 추가
     }
+
+    public enum EnemyTagType
+    {
+        Enemy, BulletSoft, BulletHard,
+    }
 }

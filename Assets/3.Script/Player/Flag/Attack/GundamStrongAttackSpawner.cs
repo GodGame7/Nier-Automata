@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GundamStrongAttackSpawner : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject sword;
+
+    private void OnEnable()
+    {
+        sword.SetActive(true);
+        sword.transform.position = transform.position;
+    }
+}
