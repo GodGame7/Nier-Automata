@@ -5,27 +5,31 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] Text[] Slot;
-    [SerializeField] ItemData ItemData;
+    [SerializeField] Text[] Slot_Text;
+    [SerializeField] Text[] SlotQuantity_Text;
+    [SerializeField] Image[] Slot_Image;
     [SerializeField] GameObject Selected_Item;
     [SerializeField] GameObject Inventory_UI_ob;
 
-    Vector3 MoveSelectedPoint = new Vector3(0, -80f, 0); //-80f는 임시로 할당,추후 변경예정;
+    Vector3 MoveSelectedPoint = new Vector3(0, -85.7f, 0);
     Vector3 defalutItemPosition;
+    Color Selected_BackColor = new Color(218, 212, 186, 255);
+    Color InvenUI_BackColor = new Color(78, 76, 66, 255);
 
     private int InvenLength;
     public int ListNum = 0;
 
-    private bool isActiveInven = false;
+    public bool isActiveInven = false;
 
     private void Awake() //처음 위치 (1번자리) 값 할당
     {
         defalutItemPosition = Selected_Item.transform.position;
-        
+
     }
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
     {
         UpdateUI();
+        
     }
 
     public void UpdateUI()
@@ -36,11 +40,12 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < InvenLength / 2; i++)  //아이템 이름
 
         {
-            Slot[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i]); 
+            Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].ItemName);
+
         }
         for (int i = InvenLength / 2; i < InvenLength; i++) // 아이템 수량
         {
-            Slot[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i - (InvenLength / 2)].Quantity); 
+            Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i - (InvenLength / 2)].Quantity);
         }
         ColorSet();
 
@@ -48,10 +53,12 @@ public class InventoryUI : MonoBehaviour
 
     public void InvenActive()
     {
-        if (!isActiveInven && InvenLength != 0)
+        if (!isActiveInven //&& InvenLength != 0
+            )
         {
             isActiveInven = true;
             Inventory_UI_ob.SetActive(true);
+            UpdateUI();
 
         }
         else
@@ -67,8 +74,8 @@ public class InventoryUI : MonoBehaviour
         {
             ListNum++;
             Selected_Item.transform.position += MoveSelectedPoint;
-            ColorSet();
         }
+        ColorSet();
     }
 
     public void UpSelected()
@@ -77,17 +84,24 @@ public class InventoryUI : MonoBehaviour
         {
             ListNum--;
             Selected_Item.transform.position -= MoveSelectedPoint;
-            ColorSet();
         }
+        ColorSet();
     }
 
     public void ColorSet()
     {
         for (int i = 0; i < InvenLength; i++)
         {
-            Slot[i].color = Color.white;
+            Slot_Text[i].color = Color.white;
+            SlotQuantity_Text[i].color = Color.white;
+            Slot_Image[i].color = InvenUI_BackColor;
+
+
         }
-        Slot[ListNum].color = Color.black;
-        
+        Slot_Text[ListNum].color = Color.black;
+        SlotQuantity_Text[ListNum].color = Color.black;
+        Slot_Image[ListNum].color = Selected_BackColor;
+
+
     }
 }
