@@ -19,113 +19,200 @@ public class FlagFightManager : MonoBehaviour
     {
         phase1.Invoke();
     }
-    
+
     // phase 설명. 각 대사의 나래이션 추가할지의 여부 미정. 추후 변경될 수 있음.
     #region phase01
-    //    phase01
-    //
-    //    BGM1 한번 시작
-    //    UI SubTitle 수정
-    //    모든 존재는...
+    /* phase01
 
-    //UI SubTitle 수정
-    //    생과사...
+02:36
+UI SubTitle 수정
+    모든 존재는...
 
-    //UI SubTitle 수정
-    //    우리는...
+02:40
+UI SubTitle 비활성화	
 
-    //UI BackGround 서서히 비활성화
-    //UI SubTitle 수정
-    //    이것은 저주인가
+02:41
+UI SubTitle 수정
+    생과사...
 
-    //FlagSound 재생
-    //Player 등장
-    //UI SubTitle 수정
-    //    아니면 벌인가
+02:43
+UI SubTitle 비활성화	
 
-    //UI SubTitle 수정
-    //    이해 ㄴㄴ
+02:44
+UI SubTitle 수정
+    우리는...
 
-    //UI SubTitle 수정
-    //    언젠가
+02:47
+UI SubTitle 비활성화	
 
-    //BGM 변경
+02:49
+UI BackGround 서서히 비활성화
+UI SubTitle 수정
+    이것은 저주인가
 
-    //사령부 UI 등장
-    //등장 Sound 재생
+02:50
+UI SubTitle 비활성화	
 
-    //UI SubTitle 수정
-    //    여기는 사령부
-    //아군 기체 등장
+02:50.5
+UI SubTitle 수정
+    아니면 벌인가
+Player 등장
 
-    //UI SubTitle 수정
-    //    여긴 2B
+02:52
+UI SubTitle 비활성화	
 
-    //UI SubTitle 수정
-    //    자동 문제 ㄴㄴ
+02:53
+UI SubTitle 수정
+    이해 ㄴㄴ
 
-    //아군 기체 이름 UI 켜짐
-    //UI SubTitle 수정
-    //    여긴 6O
+02:57
+UI SubTitle 비활성화	
 
-    //아군 기체 이름 UI 꺼짐
-    //현재, 50
+02:58
+UI SubTitle 수정
+    언젠가
 
-    //UI SubTitle 수정
-    //적의 방공권
+03:00
+UI SubTitle 비활성화	
+BGM 활성화
 
-    //UI SubTitle 수정
-    //목표인
+03:06
+사령부 UI 등장
 
-    //Laser 발사
-    //기체 이동
-    //UI SubTitle 수정
-    //알겠
+03:08
+UI SubTitle 수정
+    여기는 사령부
+아군 기체 등장
 
-    //UI SubTitle 수정
-    //    12H
+03:10
+UI SubTitle 비활성화	
 
-    //UI SubTitle 수정
-    //    눈으로 회피
+03:12
+UI SubTitle 수정
+    여긴 2B
 
-    //UI SubTitle 수정
-    //이미 기동,
-    //기체 좌우 이동
+03:13.5
+UI SubTitle 비활성화	
 
-    //WASD UI 켜짐
-    //UP DOWN 서서히 꺼짐
+03:14
+UI SubTitle 수정
+    자동 문제 ㄴㄴ
 
-    //UI SubTitle 수정
-    //장거리
-    //Player 움직임 가능
+03:16
+UI SubTitle 비활성화	
+아군 기체 이름 UI 하나씩 켜짐
 
-    //Laser
+03:18
+UI SubTitle 수정
+    여긴 6O
 
-    //UI SubTitle 수정
-    //11B
+03:20
+UI SubTitle 비활성화	
 
-    //장비 Ho229
+03:21
+아군 기체 이름 UI 꺼짐
+현재, 50
 
-    //UP DOWN 서서히 켜짐
-    //카메라 movement
-    //플레이어 회전 및 이동
+03:24
+UI SubTitle 비활성화	
 
-    //fog of
+03:26
+UI SubTitle 수정
+적의 방공권
 
-    //UI SubTitle 수정
-    //전방에 적 기체 확인
+03:30
+UI SubTitle 비활성화	
 
-    //UI SubTitle 수정
-    //화기 사용을 신청
+03:31
+UI SubTitle 수정
+목표인
 
-    //사령부 UI 등장
-    //등장 Sound 재생
-    //UI SubTitle 수정
-    //화기 사용을 허가
+03:34
+Laser 발사
+아군 기체 이동
+UI SubTitle 수정
+알겠
 
-    //Enemy 0030 4기 등장
-    //사격 UI OPEN
-    //사격 On
+03:35
+UI SubTitle 비활성화	
+
+(03:36 Laser 맞음)
+
+03:41
+UI SubTitle 수정
+12H
+
+03:42
+UI SubTitle 비활성화	
+
+03:43
+UI SubTitle 수정
+눈으로 회피
+
+03:45
+UI SubTitle 비활성화	
+아군 기체 이동
+
+03:47
+UI SubTitle 수정
+이미 기동,
+아군 기체 좌우 이동
+
+03:48
+UI SubTitle 비활성화
+WASD UI 켜짐
+UP DOWN 서서히 꺼짐
+
+03:50
+UI SubTitle 수정
+장거리
+Player 움직임 가능
+
+03:52
+UI SubTitle 비활성화
+Laser
+
+03:59
+UI SubTitle 수정
+11B
+
+04:00
+UI SubTitle 비활성화
+
+04:01
+UI SubTitle 수정
+장비 Ho229
+
+04:03
+UI SubTitle 비활성화
+UP DOWN 서서히 켜짐
+카메라 movement
+플레이어 이동 및 회전
+
+04:10
+UI SubTitle 수정
+전방에 적 기체 확인
+fog off
+
+04:14
+사령부 UI 등장
+
+04:15
+UI SubTitle 수정
+화기 사용을 신청
+
+04:17
+UI SubTitle 수정
+화기 사용을 허가
+
+04:18
+UI SubTitle 비활성화
+
+04:19
+사격 UI 활성화
+사격 활성화
+em0030 4마리 활성화
+*/
     #endregion
 
 
