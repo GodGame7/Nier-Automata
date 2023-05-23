@@ -16,17 +16,15 @@ public class FlagBullet : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            if(TryGetComponent(out Em0032Movement enemy))
+            if(other.TryGetComponent(out FlagEmInformation enemy))
             {
-                // todo 데미지 플레이어 데이터 받아와서 설정할 것
-                enemy.OnDamage(1);
+                enemy.OnDamage(PlayerData.instance.atk);
             }
             gameObject.SetActive(false);
         }
         else if(other.CompareTag("BulletSoft"))
         {
-            // todo 적 총알 비활성화인지 파괴인지
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
             gameObject.SetActive(false);
         }
     }
