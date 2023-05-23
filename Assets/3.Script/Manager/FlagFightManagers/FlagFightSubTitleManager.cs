@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FlagFightSubTitleManager : MonoBehaviour
@@ -13,10 +14,20 @@ public class FlagFightSubTitleManager : MonoBehaviour
     [SerializeField] Text text_Subtitle;
     [SerializeField] int subTitleCounter;
 
+    #region 발생시킬 이벤트들
+    public UnityEvent phase1_01; // Ground02 서서히 페이드 아웃
+    public UnityEvent phase1_02; // player 등장
+    public UnityEvent phase1_03; // BGM 시작
+    public UnityEvent phase1_04; // 사령부 UI 등장
+    public UnityEvent phase1_05; // 아군 Flag 등장
+    public UnityEvent phase1_06; // Flag 이름 UI 등장
+    #endregion
     //
+    private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
     private WaitForSeconds wait_1_Second = new WaitForSeconds(1.0f);
     private WaitForSeconds wait_2_Second = new WaitForSeconds(2.0f);
     private WaitForSeconds wait_3_Second = new WaitForSeconds(3.0f);
+    private WaitForSeconds wait_4_Second = new WaitForSeconds(4.0f);
 
 
     string[] flagSubTitles = new string[]
@@ -50,7 +61,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     private void Awake()
     {
-        text_Subtitle = GetComponent<Text>();
+        text_Subtitle = GetComponentInChildren<Text>();
         subTitleCounter = 0;
 
         #region 이벤트 추가
@@ -65,15 +76,80 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     IEnumerator Phase01_Co()
     {
-        yield return wait_3_Second;
-        gameObject.SetActive(false);
+        yield return wait_4_Second;
+        text_Subtitle.gameObject.SetActive(false);
         yield return wait_1_Second;
+
         Next_SubText();
-        gameObject.SetActive(true);
+        text_Subtitle.gameObject.SetActive(true);
         yield return wait_3_Second;
+        
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_half_Second;
+
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_2_Second;
+
+        phase1_01.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_half_Second;
+
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_2_Second;
+
+        phase1_02.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_1_Second;
+
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_2_Second;
+
+        phase1_03.Invoke();
+        yield return wait_4_Second;
+
+        phase1_04.Invoke();
+        yield return wait_2_Second;
+
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_1_Second;
+
+        phase1_05.Invoke();
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_1_Second;
+
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+        yield return wait_2_Second;
+
+        text_Subtitle.gameObject.SetActive(false);
+        yield return wait_1_Second;
+
+        // Todo 병현 타임라인 작성 후 다시 올게요...
+
+
+
     }
-
-
 
     private void Next_SubText()
     {
