@@ -41,6 +41,9 @@ public class FlagControl : MonoBehaviour
     private float timeAllowedBetweenKeyPresses = 0.5f;
     private bool isDashWaiting = false;
 
+    // 공격
+    public bool isCombo = false;
+
     // 전략, 상태
     private IFlagViewStrategy currentViewStrategy;
     private IFlagModeStrategy currentModeStrategy = new ModeFlag();
@@ -75,6 +78,7 @@ public class FlagControl : MonoBehaviour
     public WaitUntil ExitDashAni_wait;
     public WaitUntil EnterAttackAni_wait;
     public WaitUntil ExitAttackAni_wait;
+    public WaitUntil ResetCombo_wait;
 
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
@@ -125,6 +129,7 @@ public class FlagControl : MonoBehaviour
     {
         // 이벤트 구독 (시점 변환)
         StartCoroutine(nameof(Fire_co));
+        StartCoroutine(nameof(ResetCombo_co));
     }
     private void OnDisable()
     {
@@ -158,6 +163,7 @@ public class FlagControl : MonoBehaviour
                                                   anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack"));
         FireDelay_wait = new WaitForSeconds(fireDelay);
         AnimaReset_wait = new WaitForSeconds(0.5f);
+        ResetCombo_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f);
     }
     private void GetAnimHash()
     {
@@ -211,6 +217,7 @@ public class FlagControl : MonoBehaviour
         Move();
     }
 
+    #region 이동
     private void InputMoveKey()
     {
         if (Input.GetKey(KeyCode.A))
@@ -275,6 +282,7 @@ public class FlagControl : MonoBehaviour
             }
         }
     }
+    #endregion
 
     private void Attack()
     {
@@ -333,13 +341,18 @@ public class FlagControl : MonoBehaviour
     }
     public IEnumerator ReturnToNomalState_co(WaitUntil startAnimation = null, WaitUntil endAnimation = null)
     {
-        Debug.Log(1);
         yield return startAnimation;
         yield return null;
-        Debug.Log(2);
         yield return endAnimation;
-        Debug.Log(3);
 
         SetState(nomalState);
+    }
+    public IEnumerator ResetCombo_co()
+    {
+        while (true)
+        {
+            yield return ResetCombo_wait;
+            isCombo = false;
+        }
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ModeGundam : IFlagModeStrategy
 {
-    private bool isCombo = false;
-
     public void Dash(FlagControl player)
     {
         throw new System.NotImplementedException();
@@ -18,15 +16,15 @@ public class ModeGundam : IFlagModeStrategy
 
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
-        if (!isCombo)
+        if (!player.isCombo)
         {
             player.anim.SetTrigger(player.hashGundamWeakAttack1);
-            isCombo = true;
+            player.isCombo = true;
         }
         else
         {
             player.anim.SetTrigger(player.hashGundamWeakAttack2);
-            isCombo = false;
+            player.isCombo = false;
         }
     }
 }
