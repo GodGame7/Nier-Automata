@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(ItemData item)
     {
         int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);
-        if (itemIndex <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
+        if (Items[itemIndex].Quantity <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
         {
             Items.Remove(item);
         }

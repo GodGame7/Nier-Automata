@@ -10,9 +10,13 @@ public class Temp : MonoBehaviour
 
     //  ----------------------  인풋 매니저 로 보낼예정 --------------------------------------
 
-    private ItemEffect Item;
     [SerializeField] private InventoryUI Inventory_UI;
-
+    public delegate void Item(int num);
+    public static event Item OnItem;
+    private void Awake()
+    {
+        
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I)) // 왼쪽아래 작은 인벤툴팁 열기
@@ -27,8 +31,12 @@ public class Temp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
+            
 
-            Item.UseItem(Inventory_UI.ListNum);
+            //Item.UseItem(Inventory_UI.ListNum);
+            OnItem?.Invoke(Inventory_UI.ListNum);
+            Inventory_UI.UpdateUI();
+            
 
         }
 
