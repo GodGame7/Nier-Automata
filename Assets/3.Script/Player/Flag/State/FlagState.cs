@@ -22,9 +22,4 @@ public class FlagDash : IFlagState
     {
         Debug.Log("대쉬 상태 진입");
     }
-
-    public void SetAni(FlagControl player)
-    {
-        player.anim.SetTrigger(player.hashDash);
-    }
 }

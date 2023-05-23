@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ModeGundam : IFlagModeStrategy
 {
-    private bool isCombo = false;
-
     public void Dash(FlagControl player)
     {
         throw new System.NotImplementedException();
@@ -13,25 +11,20 @@ public class ModeGundam : IFlagModeStrategy
 
     public void StrongAttack(FlagControl player)
     {
-        Debug.Log("건담 강공격");
+        player.anim.SetTrigger(player.hashGundamStrongAttack);
     }
 
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
-        if (!isCombo)
+        if (!player.isCombo)
         {
-            Debug.Log("건담 약공 1단");
-            isCombo = true;
+            player.anim.SetTrigger(player.hashGundamWeakAttack1);
+            player.isCombo = true;
         }
         else
         {
-            WeakAttack2(player);
-            isCombo = false;
+            player.anim.SetTrigger(player.hashGundamWeakAttack2);
+            player.isCombo = false;
         }
-    }
-
-    private void WeakAttack2(FlagControl player)
-    {
-        Debug.Log("건담 약공 2단");
     }
 }
