@@ -19649,9 +19649,9 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
-    path: StrongAttack
-    classID: 135
+    attribute: m_IsActive
+    path: FlagStrongAttack
+    classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -20824,10 +20824,10 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1970486654
-      attribute: 3305885265
+      path: 4201345284
+      attribute: 2086281974
       script: {fileID: 0}
-      typeID: 135
+      typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
@@ -97368,9 +97368,9 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
-    path: StrongAttack
-    classID: 135
+    attribute: m_IsActive
+    path: FlagStrongAttack
+    classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
