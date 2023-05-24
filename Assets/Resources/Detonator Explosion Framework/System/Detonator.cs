@@ -193,7 +193,7 @@ public class Detonator : MonoBehaviour {
 		if (!heatwaveMaterial) heatwaveMaterial = DefaultHeatwaveMaterial();
 	}
 	
-	void Start()
+	void OnEnable()
 	{
 		if (explodeOnStart)
 		{
@@ -209,7 +209,7 @@ public class Detonator : MonoBehaviour {
 		{
 			if (_lastExplosionTime + destroyTime <= Time.time)
 			{
-				Destroy(gameObject);
+				gameObject.SetActive(false);
 			}
 		}
 	}

@@ -33,6 +33,21 @@ public class Em0031Movement : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        desPos = firstDesPos;
+        StartCoroutine(Move_co());
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
+        }
+    }
+
     private IEnumerator Move_co()
     {
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)

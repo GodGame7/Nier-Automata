@@ -20,6 +20,7 @@ public class Em0032Movement : MonoBehaviour
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
     [SerializeField] public Vector3 firstDesPos;
+    [SerializeField] public Vector3 RotatePoint;
     [SerializeField] public bool isCanLook;
 
     [Space(0.5f)]
@@ -34,7 +35,22 @@ public class Em0032Movement : MonoBehaviour
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
     {
+        desPos = firstDesPos;
+        fireTimer = 0.0f;
+        StartCoroutine(Move_co());
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
+        }
+    }
 
+    private void OnEnable()
+    {
         desPos = firstDesPos;
         fireTimer = 0.0f;
         StartCoroutine(Move_co());
