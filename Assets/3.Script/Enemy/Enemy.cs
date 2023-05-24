@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,13 +15,21 @@ public class Enemy : MonoBehaviour
         JUMP
     }
 
-    [Header("현재 Enemy 상태")]
+    [Header("Enemy 상태")]
     [SerializeField] protected State state;
 
-    [Header("Enemy 체력")]
+    [Header("Enemy 체력 관련")]
     [Space(10f)]
+    [SerializeField] private Slider Hpslider;
     [SerializeField] private float MaxHP;
     [SerializeField] private float CurrentHP;
+    [Tooltip("이정도 이상의 데미지면 아파함")]
+    [SerializeField] private float MinDamage;
+
+
+    [Header("사망시 효과")]
+    [Space(10f)]
+    [SerializeField] GameObject explosion_effect;
 
     [Header("패턴의 갯수")]
     [Space(10f)]
@@ -31,7 +40,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("범위 안에 오면 공격해요~")]
     [SerializeField] float attackDistance = 2.8f;
     [Tooltip("범위 밖이면 대쉬해요~")]
-    [SerializeField] float DashDistance = 6f;
+    [SerializeField] float dashDistance = 6f;
 
     [Header("회전속도")]
     [Space(10f)]
@@ -48,10 +57,7 @@ public class Enemy : MonoBehaviour
 
             if (CurrentHP <= 0f)
             {
-                isdead = true;
-                anim.SetTrigger("DieTrigger");
-                anim.SetBool("Die", true);
-                capsuleCollider.enabled = false;
+                StartCoroutine(Die());
             }
         }
     }
@@ -76,7 +82,7 @@ public class Enemy : MonoBehaviour
     protected bool isdead = false;
 
     //타겟
-    protected Transform target;
+    [SerializeField] protected Transform target;
 
     //공격용 콜라이더
     BoxCollider[] boxCollider;
@@ -91,14 +97,18 @@ public class Enemy : MonoBehaviour
     //타겟 위치
     Vector3 targetPosition;
 
+
     private void Awake()
     {
         boxCollider = GetComponentsInChildren<BoxCollider>();
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+
         TryGetComponent(out anim);
         target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
-
+    protected virtual void OnEnable()
+    {
         currentHp = maxHp;
         state = State.IDLE;
     }
@@ -109,10 +119,8 @@ public class Enemy : MonoBehaviour
         targetPosition = target.position;
         targetPosition.y = 0f;
 
-        // 타겟 방향을 바라보도록 회전
-        //transform.LookAt(targetPosition);
-
-        // 자연스러운 회전
+        //타겟을 쳐다봄
+        //대쉬 할 경우에는 바로 쳐다보고, 아닌경우 자연스러운 회전
         if (state == State.DASH)
         {
             transform.LookAt(targetPosition);
@@ -123,8 +131,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-
-        //타겟과 거리를 측정
+        //타겟과의 거리를 측정
         distance = Vector3.Distance(transform.position, target.transform.position);
 
     }
@@ -138,17 +145,17 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Run", false);
         }
 
-
+        Debug.Log("가자고..");
         yield return null;
 
         if (distance <= attackDistance)
         {
             state = State.ATTACK;
         }
-        else if (distance >= DashDistance)
+        else if (distance >= dashDistance)
         {
             //대쉬가 없는 경우는 0
-            if (DashDistance == 0)
+            if (dashDistance == 0)
             {
                 state = State.WALK;
             }
@@ -162,6 +169,13 @@ public class Enemy : MonoBehaviour
         {
             state = State.WALK;
         }
+    }
+
+    protected virtual void UpdateWalk()
+    {
+        anim.SetBool("Run", true);
+
+        state = State.IDLE;
     }
 
     protected virtual IEnumerator UpdateDash()
@@ -213,31 +227,42 @@ public class Enemy : MonoBehaviour
         state = State.IDLE;
     }
 
-    protected virtual void UpdateWalk()
-    {
-        anim.SetBool("Run", true);
-
-        state = State.IDLE;
-    }
-
 
     //데미지를 받을 때
     public void TakeDamage(int Damage)
     {
-        currentHp -= Damage;
 
+        //앞 뒤에 있는지 확인
         Vector3 targetDirection = target.transform.position - transform.position;
         Vector3 forwardDirection = transform.forward;
-
         bool isTargetInFront = Vector3.Dot(targetDirection, forwardDirection) > 0;
-
         anim.SetBool("FrontPlayer", isTargetInFront);
 
-        hitNum++;
-        anim.SetFloat("HitNum", hitNum);
-        anim.SetTrigger("Hit");
+        currentHp -= Damage;
+
+        //이 데미지 이상이면 충격받아요~
+        if (Damage >= MinDamage)
+        {        
+            hitNum++;
+            anim.SetFloat("HitNum", hitNum);
+            anim.SetTrigger("Hit");
+        }
+
     }
 
+    //사망
+    IEnumerator Die()
+    {
+        isdead = true;
+        anim.SetTrigger("DieTrigger");
+        anim.SetBool("Die", true);
+        capsuleCollider.enabled = false;
+
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        explosion_effect.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        gameObject.SetActive(false);
+    }
 }
 
 
