@@ -21,6 +21,7 @@ public class Em0032Movement : MonoBehaviour
     [Header("Enemy Spawner에서 정해주어야 할 것")]
     [SerializeField] public Vector3 firstDesPos;
     [SerializeField] public Vector3 RotatePoint;
+    [SerializeField] public Vector3 RotateAxis = Vector3.up;
     [SerializeField] public bool isCanLook;
 
     [Space(0.5f)]
@@ -109,7 +110,7 @@ public class Em0032Movement : MonoBehaviour
         isReady = true;
         while (!flagEmInformation.isDie)
         {
-            transform.RotateAround(playerTransform.position, playerTransform.up, lastMoveSpeed * Time.deltaTime);
+            transform.RotateAround(RotatePoint, RotateAxis, lastMoveSpeed * Time.deltaTime);
             yield return null;
         }
     }

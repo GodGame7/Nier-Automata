@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class em0010 : Enemy
 {
-
     private void Start()
     {
         StartCoroutine(CheckState());
@@ -14,15 +13,12 @@ public class em0010 : Enemy
     {
         while (!isdead)
         {
-            //거리확인
-            Distance();
-
             TargetLookat();
 
             switch (state)
             {
                 case State.IDLE:
-                    yield return StartCoroutine(UpdateIdle2());
+                    yield return StartCoroutine(UpdateIdle());
                     break;
 
                 case State.WALK:
@@ -31,7 +27,7 @@ public class em0010 : Enemy
 
                 case State.ATTACK:
                     //패턴의 갯수만큼에서 랜덤공격
-                    yield return StartCoroutine(UpdateAttack2(pattonNum));
+                    yield return StartCoroutine(UpdateAttack(pattonNum));
                     break;
             }
             yield return null;
