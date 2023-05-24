@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private Text Effect_Text;
     public List<ItemData> Items = new List<ItemData>();
     public void AddItem(ItemData item) //아이템 획득시
     {
@@ -18,41 +20,56 @@ public class Inventory : MonoBehaviour
             Items[itemIndex].Quantity++;
         }
     }
+    //public void RemoveItem(ItemData item)
+    //{
+    //    int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);
+    //    if (itemIndex >= 0)
+    //    {
+    //        ItemData removeItem = Items[itemIndex];
+    //        if (Items[itemIndex].Quantity <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
+    //        {
+
+    //            StartCoroutine(Text_co(removeItem));
+    //            Items.Remove(item);
+    //        }
+    //        else //아이템이 2개 이상이라면 아이템 갯수 -1
+    //        {
+    //            Items[itemIndex].Quantity--;
+    //            StartCoroutine(Text_co(removeItem));
+    //        }
+    //    }
+    //}
     public void RemoveItem(ItemData item)
     {
-        int itemIndex = Items.FindIndex(x => x.Quantity == item.Quantity);
-        if (itemIndex >= 0)
+        ItemData removeItem = Items.Find(x => x.ItemName == item.ItemName);
+        if (removeItem !=null)
         {
-
-            if (Items[itemIndex].Quantity <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
+            
+            if (removeItem.Quantity <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
             {
-                Items.Remove(item);
+                removeItem.Quantity--;
+                StartCoroutine(Text_co(removeItem));
+                
+                Items.Remove(removeItem);
             }
             else //아이템이 2개 이상이라면 아이템 갯수 -1
             {
-                Items[itemIndex].Quantity--;
+                removeItem.Quantity--;
+                StartCoroutine(Text_co(removeItem));
             }
         }
     }
+    private IEnumerator Text_co(ItemData item)
+    {
 
-    //public int GetItemCount(ItemData item) //아이템의 갯수를 가져오기 위한 메서드
-    //{
-    //    int itemIndex = Items.FindIndex(x => x.CurrntItem == item.CurrntItem);
+        Effect_Text.gameObject.SetActive(true);
+        Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", item.ItemName, item.Quantity);
+        yield return new WaitForSeconds(0.5f);
+        Effect_Text.gameObject.SetActive(false);
 
-    //    if(itemIndex>=0) //아이템이 있다면 아이템 갯수만큼 반환
-    //    {
-    //        return Items[itemIndex].CurrntItem;
-    //    }
-    //    else //아이템이 없다면 0을 반환
-    //    {
-    //        return 0;
-    //    }
-    //}
-    // List => HPS , HPM , HPL , HPS , HPS
-    // HPS HPM HPL 
-    // int itemIndex = Inven.FindIndex(HPS)
-    // add -> if(itemIndex < 0) Inven.Add(HPS);
-    // else Inven[itemIndex].수량++;
+    }
+
+
 
 
 }

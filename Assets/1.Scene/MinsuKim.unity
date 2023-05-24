@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8a7a52cc034649832f64fc6659b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Effect_Text: {fileID: 419606626}
   Items:
   - {fileID: 11400000, guid: d6294d0af7539e942b809da3579fd0a9, type: 2}
   - {fileID: 11400000, guid: ac69733ff98e86249956cfbb4ab4c50e, type: 2}
@@ -450,7 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4a72ec914f2624dbdd27dc077ddbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect_Text: {fileID: 419606626}
   temp: {fileID: 568013499}
 --- !u!1001 &639697888
 PrefabInstance:
