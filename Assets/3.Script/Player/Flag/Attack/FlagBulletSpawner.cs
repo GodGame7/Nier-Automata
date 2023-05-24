@@ -25,7 +25,7 @@ public class FlagBulletSpawner : MonoBehaviour
         if (!bullets[cnt].activeSelf)
         {
             bullets[cnt].SetActive(true);
-            bullets[cnt].transform.position = transform.position;
+            bullets[cnt].transform.SetPositionAndRotation(transform.position, transform.rotation);
         }
 
         cnt++;

@@ -156,7 +156,9 @@ public class FlagControl : MonoBehaviour
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
+        // todo 버튼 눌러야돼서 나중에 바꿀것
+        Cursor.lockState = CursorLockMode.Confined;
     }
     private void Init()
     {
@@ -207,6 +209,7 @@ public class FlagControl : MonoBehaviour
         else
         {
             anim.SetTrigger(hashToFlag);
+            transform.rotation = Quaternion.Euler(-90f, 0, 0);
         }
     }
     private void SetState(IFlagState state)
