@@ -3380,7 +3380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5233239439888523653}
   - component: {fileID: 8345709371526640036}
-  - component: {fileID: 1913579545572272724}
+  - component: {fileID: 5767292027092590823}
   m_Layer: 0
   m_Name: GundamStrongAttackSpawn
   m_TagString: Untagged
@@ -3416,7 +3416,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.065
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1913579545572272724
+--- !u!114 &5767292027092590823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3425,7 +3425,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3584203190057183579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75359c6d27691a844aa025b86bd2a789, type: 3}
+  m_Script: {fileID: 11500000, guid: 02a499b030461794bb36b9af8c79f50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 1772580023}
@@ -4491,8 +4491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d72cfbfd0464744a99259921bf1b6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.4
-  dashSpeed: 2.7
+  moveSpeed: 0.25
+  dashSpeed: 1.8
   speedChangeRate: 10
   fireDelay: 0.1
   damage: 5
