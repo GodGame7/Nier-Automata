@@ -219,6 +219,10 @@ public class FlagControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(currentModeStrategy is ModeGundam)
+        {
+            currentModeStrategy.Rotate(this);
+        }
         Move();
     }
 

@@ -31,6 +31,11 @@ public class ModeFlag : IFlagModeStrategy
         player.StartCoroutine(player.ReturnToNomalState_co(player.EnterDashAni_wait, player.ExitDashAni_wait));
     }
 
+    public void Rotate(FlagControl player)
+    {
+        throw new System.NotImplementedException();
+    }
+
     #region АјАн
     public void StrongAttack(FlagControl player)
     {
