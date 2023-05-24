@@ -53,12 +53,10 @@ public class ModeGundam : IFlagModeStrategy
         if (!player.isCombo)
         {
             player.SetAnimaTrigger(player.hashGundamWeakAttack1);
-            player.isCombo = true;
         }
         else
         {
             player.SetAnimaTrigger(player.hashGundamWeakAttack2);
-            player.isCombo = false;
         }
     }
     #endregion АјАн

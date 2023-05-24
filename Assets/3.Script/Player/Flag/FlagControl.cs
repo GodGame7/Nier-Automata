@@ -359,6 +359,16 @@ public class FlagControl : MonoBehaviour
                 StartCoroutine(ReturnToNomalState_co(EnterAttackAni_wait, ExitAttackAni_wait));
             }
         }
+        else if (currentModeStrategy is ModeGundam)
+        {
+            if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
+            {
+                SetState(attackState);
+                currentModeStrategy.WeakAttack(this);
+                StopCoroutine(nameof(ReturnToNomalState_co));
+                StartCoroutine(ReturnToNomalState_co(EnterAttackAni_wait, ExitAttackAni_wait));
+            }
+        }
     }
 
     private IEnumerator Fire_co()
@@ -408,10 +418,14 @@ public class FlagControl : MonoBehaviour
     }
     public IEnumerator ResetCombo_co()
     {
+        float waitTime = 5f;
+        float startTime;
         while (true)
         {
-            yield return ResetCombo_wait;
-            yield return preInputDelay;
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1"));
+            isCombo = true;
+            startTime = Time.time;
+            yield return new WaitUntil(() => (Time.time >= startTime + waitTime) || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2"));
             isCombo = false;
         }
     }
