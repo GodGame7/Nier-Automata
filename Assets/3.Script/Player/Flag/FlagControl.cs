@@ -379,6 +379,7 @@ public class FlagControl : MonoBehaviour
     public void SetAnimaTrigger(int hashAni)
     {
         anim.SetTrigger(hashAni);
+        StopCoroutine(nameof(ResetAnimaTrigger_co));
         StartCoroutine(nameof(ResetAnimaTrigger_co), hashAni);
     }
     private IEnumerator ResetAnimaTrigger_co(int hashAni)
@@ -394,12 +395,18 @@ public class FlagControl : MonoBehaviour
 
         SetState(nomalState);
     }
+    public IEnumerator ReturnToNomalState_co(WaitForSeconds wait)
+    {
+        yield return wait;
+
+        SetState(nomalState);
+    }
     public IEnumerator ResetCombo_co()
     {
         while (true)
         {
             yield return ResetCombo_wait;
-            yield return new WaitForSeconds(0.5f);
+            yield return preInputDelay;
             isCombo = false;
         }
     }

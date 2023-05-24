@@ -40,7 +40,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772580023}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.02, z: 0.02}
@@ -1683,13 +1683,14 @@ GameObject:
   - component: {fileID: 7861029085564379205}
   - component: {fileID: 568232453}
   - component: {fileID: 7562478239982781016}
+  - component: {fileID: 1352236}
   m_Layer: 0
   m_Name: LOD0_9__2B_wp_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8823198630048114518
 Transform:
   m_ObjectHideFlags: 0
@@ -1797,6 +1798,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bb38129bb853543a9e35169939f53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1352236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477432274676569856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.06, z: 0.0038537057}
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1 &1496209173325533577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,7 +3393,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5233239439888523653}
-  - component: {fileID: 8345709371526640036}
   - component: {fileID: 5767292027092590823}
   m_Layer: 0
   m_Name: GundamStrongAttackSpawn
@@ -3387,7 +3400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5233239439888523653
 Transform:
   m_ObjectHideFlags: 0
@@ -3403,19 +3416,6 @@ Transform:
   m_Father: {fileID: 5617412298969213187}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8345709371526640036
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3584203190057183579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.065
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5767292027092590823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4173,7 +4173,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3167288600300839774}
-  - component: {fileID: 5656077752035814959}
   m_Layer: 0
   m_Name: bone3090
   m_TagString: Untagged
@@ -4197,19 +4196,6 @@ Transform:
   m_Father: {fileID: 5425425878423028980}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5656077752035814959
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4775078716378632686}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06, y: 0.0039851014, z: 0.0038537057}
-  m_Center: {x: 0.03, y: 0, z: 0}
 --- !u!1 &4859625196621680282
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,6 +4489,7 @@ MonoBehaviour:
   invincibleLayer: 0
   defaultLayer: 0
   hashHSpeed: 0
+  hashAniSpeed: 0
   hashDash: 0
   hashToGundam: 0
   hashToFlag: 0
@@ -4512,7 +4499,6 @@ MonoBehaviour:
   hashGundamWeakAttack1: 0
   hashGundamWeakAttack2: 0
   hashGundamStrongAttack: 0
-  anim: {fileID: 0}
   bulletSpawners:
   - {fileID: 0}
   - {fileID: 0}

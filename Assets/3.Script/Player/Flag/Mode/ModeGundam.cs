@@ -5,11 +5,13 @@ using UnityEngine;
 public class ModeGundam : IFlagModeStrategy
 {
     private Vector2 mouseMovement = Vector2.zero;
-    public float angle;
+    private float angle;
+    private WaitForSeconds dash_wait = new WaitForSeconds(2.3f);
 
     public void Dash(FlagControl player)
     {
-        throw new System.NotImplementedException();
+        player.StopCoroutine(nameof(player.ReturnToNomalState_co));
+        player.StartCoroutine(player.ReturnToNomalState_co(dash_wait));
     }
 
     public void Rotate(FlagControl player)
@@ -22,15 +24,17 @@ public class ModeGundam : IFlagModeStrategy
             {
                 // 마우스 이동값을 이용하여 삼각함수 통해 rotate 구하기
                 angle = (Mathf.Atan2(mouseMovement.y, mouseMovement.x)) * Mathf.Rad2Deg;
+                angle *= -1;
+                angle += 90;
             }
         }
         else
         {
             // 키보드 입력값을 이용하여 삼각함수 통해 rotate 구하기
             angle = Mathf.Atan2(player.v, player.h) * Mathf.Rad2Deg;
+            angle *= -1;
+            angle += 90;
         }
-        angle *= -1;
-        angle += 90;
         player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
     }
 
