@@ -9,11 +9,11 @@ public class ModeGundam : IFlagModeStrategy
         throw new System.NotImplementedException();
     }
 
+    #region 공격
     public void StrongAttack(FlagControl player)
     {
         player.anim.SetTrigger(player.hashGundamStrongAttack);
     }
-
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
         if (!player.isCombo)
@@ -27,4 +27,5 @@ public class ModeGundam : IFlagModeStrategy
             player.isCombo = false;
         }
     }
+    #endregion 공격
 }

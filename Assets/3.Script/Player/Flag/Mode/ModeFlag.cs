@@ -31,11 +31,11 @@ public class ModeFlag : IFlagModeStrategy
         player.StartCoroutine(player.ReturnToNomalState_co(player.EnterDashAni_wait, player.ExitDashAni_wait));
     }
 
+    #region 공격
     public void StrongAttack(FlagControl player)
     {
         player.anim.SetTrigger(player.hashFlagStrongAttack);
     }
-
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
         if (isHorizontal)
@@ -47,7 +47,6 @@ public class ModeFlag : IFlagModeStrategy
             VerticalWeakAttack(player);
         }
     }
-
     private void VerticalWeakAttack(FlagControl player)
     {
         player.anim.SetTrigger(player.hashVerticalWeakAttack);
@@ -56,4 +55,5 @@ public class ModeFlag : IFlagModeStrategy
     {
         player.anim.SetTrigger(player.hashHorizontalWeakAttack);
     }
+    #endregion 공격
 }
