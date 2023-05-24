@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PordControl : MonoBehaviour
 {
-    [SerializeField] GameObject[] Bullet;
     [SerializeField] Camera Cam;
+    [SerializeField] PordBulletSpawn PordBullet;
 
     // 록온을 위한 변수
     private bool isLockOn = false;
@@ -16,21 +16,31 @@ public class PordControl : MonoBehaviour
 
     //오브젝트 풀링용 갯수
     private int bulletCount = 0;
+
+    //총알 딜레이용 변수
+    private float BulletDealyTime = 0.2f;
+    private float CurrentTime = 0f;
+
     private void Update()
     {
         // ------------------------인풋매니저로 넘길부분 ----------------------------
-        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
         {
-            Bullet[bulletCount].transform.position = transform.position;
-            Bullet[bulletCount].SetActive(true);
+            CurrentTime += Time.deltaTime;
+            if (BulletDealyTime > CurrentTime)
+            {
+                return; //딜레이 시간동안은 총알을 못쏘도록
+            }
+            PordBullet.Bullet[bulletCount].transform.position = transform.position;
+            PordBullet.Bullet[bulletCount].SetActive(true);
             if (isLockOn)
             {
-                Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(targetpos);
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(targetpos);
 
             }
             else
             {
-                Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
             bulletCount++;
@@ -38,6 +48,7 @@ public class PordControl : MonoBehaviour
             {
                 bulletCount = 0;
             }
+            CurrentTime = 0;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
