@@ -83,6 +83,8 @@ public class FlagControl : MonoBehaviour
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
+    //private const float _threshold = 0.01f;
+
     #region 테스트
     public void testBackView()
     {
@@ -106,8 +108,6 @@ public class FlagControl : MonoBehaviour
     }
     #endregion 테스트
 
-
-    //private const float _threshold = 0.01f;
     #region 초기화
     private void Awake()
     {
@@ -247,6 +247,7 @@ public class FlagControl : MonoBehaviour
     }
     private void Move()
     {
+        float targetSpeed = moveSpeed;
         Vector3 move;
         currentViewStrategy.Move(this, out move);
 
@@ -255,9 +256,13 @@ public class FlagControl : MonoBehaviour
         {
             animationBlend = 0f;
         }
-
         anim.SetFloat(hashHSpeed, animationBlend);
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + moveSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + moveSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
+
+        if(currentState is FlagDash)
+        {
+            targetSpeed *= dashSpeed;
+        }
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + moveSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
