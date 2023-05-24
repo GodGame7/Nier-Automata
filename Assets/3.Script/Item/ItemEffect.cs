@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class ItemEffect : MonoBehaviour
 {
-    [SerializeField] private Text Effect_Text;
     [SerializeField] Temp temp;
 
 
@@ -12,7 +11,7 @@ public class ItemEffect : MonoBehaviour
     private void Awake()
     {
 
-        Temp.OnItem += UseItem;
+        Temp.UseItem += UseItem;
 
 
     }
@@ -29,19 +28,11 @@ public class ItemEffect : MonoBehaviour
             PlayerData.instance.inven.RemoveItem(PlayerData.instance.inven.Items[num]);
         }
 
-        StartCoroutine(Text_co(num));
+       
     }
 
 
-    private IEnumerator Text_co(int num)
-    {
-
-        Effect_Text.gameObject.SetActive(true);
-        Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", PlayerData.instance.inven.Items[num].ItemName, PlayerData.instance.inven.Items[num].Quantity);
-        yield return new WaitForSeconds(1f);
-        Effect_Text.gameObject.SetActive(false);
-
-    }
+    
 
 
 }

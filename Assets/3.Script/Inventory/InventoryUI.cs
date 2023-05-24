@@ -37,14 +37,18 @@ public class InventoryUI : MonoBehaviour
     public void UpdateUI()
     {
 
-        InvenLength = PlayerData.instance.inven.Items.Count;
-        if (InvenLength == 0)
+        InvenLength = PlayerData.instance.inven.Items.Count; //인벤토리의 길이 캐싱
+        if (InvenLength == 0) // 인벤토리가 없을시 인벤토리가 열리지 않게
         {
             Inventory_UI_ob.SetActive(false);
             return;
         }
-        Selected_Item.transform.position = defalutItemPosition;
-        ListNum = 0;
+        Selected_Item.transform.position = defalutItemPosition; // 다시 활성화시 위치 맨위로 올리기 위함
+
+        ListNum = 0; // 변수값 초기화
+
+        ClearSlot();
+
         for (int i = 0; i < InvenLength; i++)  //아이템 이름
         {
             Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].ItemName);
@@ -54,17 +58,12 @@ public class InventoryUI : MonoBehaviour
         {
             SlotQuantity_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].Quantity);
         }
-        //for (int i = MaxInvenLength; i > InvenLength; i--)
-        //{
-        //    Slot_Image[i].color = InvenUI_BackColor;
-        //    Slot_Text[i].text = "";
-        //    SlotQuantity_Text[i].text = "";
-        //}
+
         ColorSet();
 
     }
 
-    public void InvenActive()
+    public void InvenActive() //인벤토리를 열고,닫는 메서드
     {
         if (!isActiveInven && InvenLength != 0
             )
@@ -81,7 +80,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void DownSelected()
+    public void DownSelected() 
     {
         if (ListNum >= 0 && ListNum < InvenLength - 1)
         {
@@ -102,20 +101,25 @@ public class InventoryUI : MonoBehaviour
         ColorSet();
     }
 
-    public void ColorSet()
+    public void ColorSet() // 커서 움직일시 색을 조절해줌.
     {
         for (int i = 0; i < InvenLength; i++)
         {
             Slot_Text[i].color = Color.white;
             SlotQuantity_Text[i].color = Color.white;
             Slot_Image[i].color = InvenUI_BackColor;
-
-
         }
         Slot_Text[ListNum].color = Color.black;
         SlotQuantity_Text[ListNum].color = Color.black;
         Slot_Image[ListNum].color = Selected_BackColor;
-
-
+    }
+    public void ClearSlot()  // 아이템이 리스트에서 제거됐을때 지우기 위함
+    {
+        for (int i = 0; i < MaxInvenLength; i++)
+        {
+            Slot_Text[i].text = "";
+            SlotQuantity_Text[i].text = "";
+            Slot_Image[i].color = InvenUI_BackColor;
+        }
     }
 }

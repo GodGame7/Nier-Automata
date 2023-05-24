@@ -12,7 +12,7 @@ public class Temp : MonoBehaviour
 
     [SerializeField] private InventoryUI Inventory_UI;
     public delegate void Item(int num);
-    public static event Item OnItem;
+    public static event Item UseItem;
     private void Awake()
     {
 
@@ -33,7 +33,7 @@ public class Temp : MonoBehaviour
             {
 
 
-                OnItem?.Invoke(Inventory_UI.ListNum);
+                UseItem?.Invoke(Inventory_UI.ListNum);
                 Inventory_UI.UpdateUI();
 
 
