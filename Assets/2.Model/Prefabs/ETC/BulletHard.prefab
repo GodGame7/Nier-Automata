@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7216397595937012553}
   - component: {fileID: -711929813262307151}
   - component: {fileID: 1185971921}
+  - component: {fileID: 8762990376140258649}
   m_Layer: 0
   m_Name: BulletHard
   m_TagString: BulletHard
@@ -132,3 +133,16 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: b9e5cfdb0bbeeb44b8115a9cdde852c4, type: 2}
+--- !u!114 &8762990376140258649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216397595937012662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5d5072484065e45ae1b0f07586a84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 20
