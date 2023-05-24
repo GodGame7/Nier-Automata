@@ -48,7 +48,7 @@ public class FlagControl : MonoBehaviour
     // 전략, 상태
     private IFlagViewStrategy currentViewStrategy;
     private IFlagModeStrategy currentModeStrategy = new ModeFlag();
-    private IFlagState currentState;
+    public IFlagState currentState;
     private FlagNomal nomalState;
     private FlagAttack attackState;
     private FlagDash dashState;
@@ -169,11 +169,11 @@ public class FlagControl : MonoBehaviour
 
         InputFireButton_wait = new WaitUntil(() => Input.GetKey(KeyCode.LeftShift));
         EnterDashAni_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamDash"));
-        ExitDashAni_wait = new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamDash"));
+        ExitDashAni_wait = new WaitUntil(() => !(anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamDash")));
         EnterAttackAni_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("HorizontalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("VerticalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") ||
                                                   anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack"));
-        ExitAttackAni_wait = new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("HorizontalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("VerticalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") ||
-                                                  anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack"));
+        ExitAttackAni_wait = new WaitUntil(() => !(anim.GetCurrentAnimatorStateInfo(0).IsName("HorizontalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("VerticalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") ||
+                                                  anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack")));
         FireDelay_wait = new WaitForSeconds(fireDelay);
         AnimaReset_wait = new WaitForSeconds(preInputDelay);
         ResetCombo_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f);
@@ -214,12 +214,14 @@ public class FlagControl : MonoBehaviour
     }
     private void SetState(IFlagState state)
     {
+        StopCoroutine(nameof(ReturnToNomalState_co));
         currentState = state;
     }
     #endregion 전략, 상태
 
     private void Update()
     {
+        Debug.Log(currentState);
         InputMoveKey();
         if (currentState.Equals(nomalState))
         {

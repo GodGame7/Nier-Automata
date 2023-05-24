@@ -6,12 +6,16 @@ public class ModeGundam : IFlagModeStrategy
 {
     private Vector2 mouseMovement = Vector2.zero;
     private float angle;
-    private WaitForSeconds dash_wait = new WaitForSeconds(2.3f);
+    float waitTime = 2.3f;
+    float startTime;
 
+    #region 이동
     public void Dash(FlagControl player)
     {
         player.StopCoroutine(nameof(player.ReturnToNomalState_co));
-        player.StartCoroutine(player.ReturnToNomalState_co(dash_wait));
+        startTime = Time.time;
+        player.StartCoroutine(player.ReturnToNomalState_co(new WaitUntil(()=> (Time.time >= startTime + waitTime) && !(player.currentState is FlagAttack))));
+        player.StartCoroutine(player.ReturnToNomalState_co(new WaitUntil(() => player.h == 0 && player.v == 0 && !(player.currentState is FlagAttack))));
     }
 
     public void Rotate(FlagControl player)
@@ -37,6 +41,7 @@ public class ModeGundam : IFlagModeStrategy
         }
         player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
     }
+    #endregion 이동
 
     #region 공격
     public void StrongAttack(FlagControl player)
