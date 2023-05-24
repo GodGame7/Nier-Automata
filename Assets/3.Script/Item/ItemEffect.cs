@@ -11,7 +11,7 @@ public class ItemEffect : MonoBehaviour
     private void Awake()
     {
 
-        Temp.OnItem += UseItem;
+        Temp.UseItem += UseItem;
 
 
     }
