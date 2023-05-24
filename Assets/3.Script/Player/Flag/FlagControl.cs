@@ -85,7 +85,7 @@ public class FlagControl : MonoBehaviour
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
 
-    //private const float _threshold = 0.01f;
+    public float threshold = 1f;
 
     #region Å×½ºÆ®
     public void testBackView()
@@ -148,8 +148,13 @@ public class FlagControl : MonoBehaviour
         SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
 
-        //SetModeStrategy(new ModeGundam());
+        SetModeStrategy(new ModeGundam());
         //SetModeStrategy(new ModeFlag());
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void Init()
     {
@@ -219,7 +224,7 @@ public class FlagControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(currentModeStrategy is ModeGundam)
+        if (currentModeStrategy is ModeGundam)
         {
             currentModeStrategy.Rotate(this);
         }
@@ -267,7 +272,7 @@ public class FlagControl : MonoBehaviour
         }
         anim.SetFloat(hashHSpeed, animationBlend);
 
-        if(currentState is FlagDash)
+        if (currentState is FlagDash)
         {
             targetSpeed *= dashSpeed;
         }

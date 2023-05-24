@@ -4500,6 +4500,8 @@ MonoBehaviour:
   v: 0
   lastKeyPressed: 0
   isCombo: 0
+  invincibleLayer: 0
+  defaultLayer: 0
   hashHSpeed: 0
   hashDash: 0
   hashToGundam: 0
@@ -4514,6 +4516,7 @@ MonoBehaviour:
   bulletSpawners:
   - {fileID: 0}
   - {fileID: 0}
+  threshold: 1
 --- !u!114 &3421101207437749983
 MonoBehaviour:
   m_ObjectHideFlags: 0

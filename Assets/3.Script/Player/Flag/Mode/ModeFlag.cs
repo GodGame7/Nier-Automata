@@ -30,7 +30,6 @@ public class ModeFlag : IFlagModeStrategy
         player.StopCoroutine(nameof(player.ReturnToNomalState_co));
         player.StartCoroutine(player.ReturnToNomalState_co(player.EnterDashAni_wait, player.ExitDashAni_wait));
     }
-
     public void Rotate(FlagControl player)
     {
         throw new System.NotImplementedException();

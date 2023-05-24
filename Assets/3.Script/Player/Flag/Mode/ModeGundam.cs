@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ModeGundam : IFlagModeStrategy
 {
-    private Vector3 mousePos;
-    private Vector3 playerPos;
+    private Vector2 mouseMovement = Vector2.zero;
     public float angle;
 
     public void Dash(FlagControl player)
@@ -15,19 +14,20 @@ public class ModeGundam : IFlagModeStrategy
 
     public void Rotate(FlagControl player)
     {
-        mousePos = Input.mousePosition;
-        playerPos = Camera.main.WorldToScreenPoint(player.transform.position + 1f * Vector3.up);
+        mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        Vector3 direction = mousePos - playerPos;
-        // 플레이어 위치와 마우스 위치를 이용하여 삼각함수 통해 rotate 구하기
-        angle = (Mathf.Atan2(direction.y, direction.x)) * Mathf.Rad2Deg;
-        angle += 90;
+        if (mouseMovement.sqrMagnitude > player.threshold)
+        {
+            // 마우스 이동값을 이용하여 삼각함수 통해 rotate 구하기
+            angle = (Mathf.Atan2(mouseMovement.y, mouseMovement.x)) * Mathf.Rad2Deg;
+            angle += 90;
 
-        // 왼손 좌표계 보정
-        angle *= -1;
-        angle -= 180;
+            // 왼손 좌표계 보정
+            angle *= -1;
+            angle -= 180;
 
-        player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
+            player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
+        }
     }
 
     #region 공격
