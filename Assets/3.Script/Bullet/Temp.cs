@@ -15,7 +15,7 @@ public class Temp : MonoBehaviour
     public static event Item OnItem;
     private void Awake()
     {
-        
+
     }
     private void Update()
     {
@@ -26,34 +26,35 @@ public class Temp : MonoBehaviour
 
         //인벤토리 List에서 n번째 아이템인지 확인해서 사용 , 키누르면 위아래로 I 인벤열기 , K 위 L 아래 J 사용
 
-        //if (isActiveInven)
-        //{
-
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Inventory_UI.isActiveInven)
         {
-            
 
-            //Item.UseItem(Inventory_UI.ListNum);
-            OnItem?.Invoke(Inventory_UI.ListNum);
-            Inventory_UI.UpdateUI();
-            
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+
+
+                OnItem?.Invoke(Inventory_UI.ListNum);
+                Inventory_UI.UpdateUI();
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Inventory_UI.UpSelected();
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Inventory_UI.DownSelected();
+            }
+
+            //}
 
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Inventory_UI.UpSelected();
-
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Inventory_UI.DownSelected();
-        }
-
-        //}
-
+        // ---------------------------------------------------------------------------------------------
     }
-    // ---------------------------------------------------------------------------------------------
 }
