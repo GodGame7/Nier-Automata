@@ -16,35 +16,39 @@ public class ModeGundam : IFlagModeStrategy
     {
         mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        if (mouseMovement.sqrMagnitude > player.threshold)
+        if (player.h == 0 && player.v == 0)
         {
-            // 마우스 이동값을 이용하여 삼각함수 통해 rotate 구하기
-            angle = (Mathf.Atan2(mouseMovement.y, mouseMovement.x)) * Mathf.Rad2Deg;
-            angle += 90;
-
-            // 왼손 좌표계 보정
-            angle *= -1;
-            angle -= 180;
-
-            player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
+            if (mouseMovement.sqrMagnitude > player.threshold)
+            {
+                // 마우스 이동값을 이용하여 삼각함수 통해 rotate 구하기
+                angle = (Mathf.Atan2(mouseMovement.y, mouseMovement.x)) * Mathf.Rad2Deg;
+            }
         }
+        else
+        {
+            // 키보드 입력값을 이용하여 삼각함수 통해 rotate 구하기
+            angle = Mathf.Atan2(player.v, player.h) * Mathf.Rad2Deg;
+        }
+        angle *= -1;
+        angle += 90;
+        player.transform.rotation = Quaternion.Euler(-90f, angle, 0f);
     }
 
     #region 공격
     public void StrongAttack(FlagControl player)
     {
-        player.anim.SetTrigger(player.hashGundamStrongAttack);
+        player.SetAnimaTrigger(player.hashGundamStrongAttack);
     }
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
         if (!player.isCombo)
         {
-            player.anim.SetTrigger(player.hashGundamWeakAttack1);
+            player.SetAnimaTrigger(player.hashGundamWeakAttack1);
             player.isCombo = true;
         }
         else
         {
-            player.anim.SetTrigger(player.hashGundamWeakAttack2);
+            player.SetAnimaTrigger(player.hashGundamWeakAttack2);
             player.isCombo = false;
         }
     }

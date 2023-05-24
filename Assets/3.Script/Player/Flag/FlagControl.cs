@@ -43,6 +43,7 @@ public class FlagControl : MonoBehaviour
 
     // 공격
     public bool isCombo = false;
+    private float preInputDelay = 0.9f;
 
     // 전략, 상태
     private IFlagViewStrategy currentViewStrategy;
@@ -57,6 +58,7 @@ public class FlagControl : MonoBehaviour
 
     // 애니매이션 해시
     public int hashHSpeed;
+    public int hashAniSpeed;
     public int hashDash;
     public int hashToGundam;
     public int hashToFlag;
@@ -68,7 +70,7 @@ public class FlagControl : MonoBehaviour
     public int hashGundamStrongAttack;
 
     // 컴포넌트
-    public Animator anim;
+    private Animator anim;
     private CharacterController controller;
     private GameObject mainCamera;
     private Rigidbody rigid;
@@ -171,12 +173,13 @@ public class FlagControl : MonoBehaviour
         ExitAttackAni_wait = new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("HorizontalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("VerticalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") ||
                                                   anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack"));
         FireDelay_wait = new WaitForSeconds(fireDelay);
-        AnimaReset_wait = new WaitForSeconds(0.5f);
+        AnimaReset_wait = new WaitForSeconds(preInputDelay);
         ResetCombo_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f);
     }
     private void GetAnimHash()
     {
         hashHSpeed = Animator.StringToHash("hSpeed");
+        hashAniSpeed = Animator.StringToHash("aniSpeed");
         hashDash = Animator.StringToHash("dash");
         hashToGundam = Animator.StringToHash("toGundam");
         hashToFlag = Animator.StringToHash("toFlag");
@@ -265,12 +268,32 @@ public class FlagControl : MonoBehaviour
         Vector3 move;
         currentViewStrategy.Move(this, out move);
 
-        animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
-        if (Mathf.Abs(animationBlend) < 0.01f)
+        if (currentModeStrategy is ModeFlag)
         {
-            animationBlend = 0f;
+            animationBlend = Mathf.Lerp(animationBlend, move.x, Time.deltaTime * speedChangeRate);
+            if (Mathf.Abs(animationBlend) < 0.01f)
+            {
+                animationBlend = 0f;
+            }
+            anim.SetFloat(hashHSpeed, animationBlend);
         }
-        anim.SetFloat(hashHSpeed, animationBlend);
+        else
+        {
+            if (Mathf.Abs(move.x) > Mathf.Abs(move.z))
+            {
+                animationBlend = Mathf.Lerp(animationBlend, Mathf.Abs(move.x), Time.deltaTime * speedChangeRate);
+            }
+            else
+            {
+                animationBlend = Mathf.Lerp(animationBlend, Mathf.Abs(move.z), Time.deltaTime * speedChangeRate);
+            }
+            if (animationBlend < 0.01f)
+            {
+                animationBlend = 0f;
+            }
+            anim.SetFloat(hashAniSpeed, animationBlend);
+        }
+
 
         if (currentState is FlagDash)
         {
@@ -353,7 +376,12 @@ public class FlagControl : MonoBehaviour
         yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
         transform.localScale = Vector3.one;
     }
-    public IEnumerator ResetAnimaTrigger_co(int hashAni)
+    public void SetAnimaTrigger(int hashAni)
+    {
+        anim.SetTrigger(hashAni);
+        StartCoroutine(nameof(ResetAnimaTrigger_co), hashAni);
+    }
+    private IEnumerator ResetAnimaTrigger_co(int hashAni)
     {
         yield return AnimaReset_wait;
         anim.ResetTrigger(hashAni);
@@ -371,6 +399,7 @@ public class FlagControl : MonoBehaviour
         while (true)
         {
             yield return ResetCombo_wait;
+            yield return new WaitForSeconds(0.5f);
             isCombo = false;
         }
     }
