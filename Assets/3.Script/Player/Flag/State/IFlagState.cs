@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IFlagState
 {
-    public void Action();
+    public void Action(FlagControl player);
 }

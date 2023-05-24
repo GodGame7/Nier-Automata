@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class FlagAttack : IFlagState
 {
-    public void Action()
+    public void Action(FlagControl player)
     {
-        Debug.Log("공격 상태 진입");
+        if (!player.gameObject.layer.Equals(player.defaultLayer))
+        {
+            player.gameObject.layer = player.defaultLayer;
+        }
     }
 }
 public class FlagNomal : IFlagState
 {
-    public void Action()
+    public void Action(FlagControl player)
     {
-        Debug.Log("노멀 상태 진입");
+        if (!player.gameObject.layer.Equals(player.defaultLayer))
+        {
+            player.gameObject.layer = player.defaultLayer;
+        }
     }
 }
 public class FlagDash : IFlagState
 {
-    public void Action()
+    public void Action(FlagControl player)
     {
-        Debug.Log("대쉬 상태 진입");
+        if (!player.gameObject.layer.Equals(player.invincibleLayer))
+        {
+            player.gameObject.layer = player.invincibleLayer;
+        }
     }
 }

@@ -52,6 +52,8 @@ public class FlagControl : MonoBehaviour
     private FlagAttack attackState;
     private FlagDash dashState;
     private bool isAttackCombo = false;
+    public int invincibleLayer;
+    public int defaultLayer;
 
     // 애니매이션 해시
     public int hashHSpeed;
@@ -124,6 +126,8 @@ public class FlagControl : MonoBehaviour
         dashState = new FlagDash();
 
         currentState = nomalState;
+        invincibleLayer = LayerMask.NameToLayer("Invincible");
+        defaultLayer = LayerMask.NameToLayer("Default");
     }
     private void OnEnable()
     {
@@ -210,6 +214,7 @@ public class FlagControl : MonoBehaviour
         {
             CheckDash();
         }
+        currentState.Action(this);
         Attack();
     }
     private void FixedUpdate()
