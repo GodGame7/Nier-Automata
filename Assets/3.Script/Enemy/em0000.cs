@@ -15,18 +15,12 @@ public class em0000 : Enemy
     {
         while (!isdead)
         {
-            //거리 확인
-            Distance();
-
-            //타겟 처다보기
             TargetLookat();
-
-            Debug.Log(distance);
 
             switch (state)
             {
                 case State.IDLE:
-                    yield return StartCoroutine(UpdateIdle2());
+                    yield return StartCoroutine(UpdateIdle());
                     break;
 
                 case State.WALK:
@@ -34,11 +28,11 @@ public class em0000 : Enemy
                     break;
 
                 case State.ATTACK:
-                    yield return StartCoroutine(UpdateAttack2(pattonNum));
+                    yield return StartCoroutine(UpdateAttack(pattonNum));
                     break;
 
                 case State.DASH:
-                    yield return StartCoroutine(UpdateDash2());
+                    yield return StartCoroutine(UpdateDash());
                     break;
             }
             yield return null;
@@ -46,11 +40,10 @@ public class em0000 : Enemy
 
     }
 
-    protected override IEnumerator UpdateAttack2(int PattonNum)
+    protected override IEnumerator UpdateAttack(int PattonNum)
     {
         state = State.ATTACK;
 
-        Debug.Log("공격 시작입니다.");
         int random = Random.Range(1, PattonNum + 1);
 
         switch (random)
@@ -63,10 +56,8 @@ public class em0000 : Enemy
                 yield return StartCoroutine(PunchAttact2());
                 break;
         }
-        Debug.Log("나갑니다!");
         state = State.IDLE;
     }
-
 
     IEnumerator WindmillAttack2()
     {
