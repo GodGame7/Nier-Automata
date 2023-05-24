@@ -214,6 +214,24 @@ UI SubTitle 비활성화
 em0030 4마리 활성화
 */
     #endregion
+    #region phase02
+    /*
+     //phase2
+
+04:00 phase1_15_EMDie
+Laser를 발사 7E를 죽임. 4초후 대사 출력
+
+04:04
+UI SubTitle 수정 및 출력
+   7E
+
+04:06
+UI SubTitle 비활성화	
+회피 UI 활성화
+회피 활성화
+em0032 10기 활성화
+    */
+    #endregion
 
 
 

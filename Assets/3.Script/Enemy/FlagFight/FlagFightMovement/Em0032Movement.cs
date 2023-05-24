@@ -123,7 +123,8 @@ public class Em0032Movement : MonoBehaviour
         {
             Bullet = bulletHard;
         }
-        GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation);
+        Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.009f, transform.position.z);
+        GameObject bullet = Instantiate(Bullet, bulletPosition, transform.rotation);
         Vector3 direction = (playerObject.transform.position - bullet.transform.position).normalized;
         bullet.transform.LookAt(playerObject.transform);
 

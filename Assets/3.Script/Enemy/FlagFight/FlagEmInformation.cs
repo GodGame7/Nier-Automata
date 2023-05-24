@@ -15,6 +15,7 @@ public class FlagEmInformation : MonoBehaviour
     [SerializeField] public bool isDie = false;
     [SerializeField] public float currentHP;
     [SerializeField] FlagFightManager fightManager;
+    [SerializeField] FlagFightSpawner flagFightSpawner;
 
     private Collider collider;
 
@@ -23,6 +24,7 @@ public class FlagEmInformation : MonoBehaviour
     {
         collider = GetComponent<Collider>();
         collider.enabled = true;
+        flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
         fightManager = FindObjectOfType<FlagFightManager>();
         currentHP = maxHp;
         isDie = false;
@@ -37,11 +39,15 @@ public class FlagEmInformation : MonoBehaviour
         {
             fightManager = FindObjectOfType<FlagFightManager>();
         }
+        if (flagFightSpawner == null)
+        {
+            flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
+        }
         currentHP = maxHp;
         isDie = false;
         explosion.SetActive(false);
     }
-    
+
     public void OnDamage(float damage)
     {
         currentHP -= damage;
@@ -51,8 +57,15 @@ public class FlagEmInformation : MonoBehaviour
         }
     }
 
+    public void Disappear()
+    {
+        flagFightSpawner.RemainEnemies--;
+        gameObject.SetActive(false);
+    }
+
     public void Die()
     {
+        flagFightSpawner.RemainEnemies--;
         isDie = true;
         explosion.SetActive(true);
         collider.enabled = false;
@@ -71,10 +84,10 @@ public class FlagEmInformation : MonoBehaviour
         float startAlpha = canvasGroup.alpha;
         float targetAlpha = 0f;
 
-        while (counter < 2.00f)
+        while (counter < 1.00f)
         {
             counter += Time.deltaTime;
-            float t = Mathf.Clamp01(counter / 2.00f);
+            float t = Mathf.Clamp01(counter / 1.00f);
             canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
             yield return null;
         }
@@ -82,4 +95,6 @@ public class FlagEmInformation : MonoBehaviour
         // 완전히 사라진 후 비활성화
         gameObject.SetActive(false);
     }
+
+
 }
