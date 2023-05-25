@@ -14,13 +14,6 @@ public class ObjectDestroyer : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Enemy"))
-        {
-            if (other.TryGetComponent(out FlagEmInformation flagEmInformation))
-            {
-                flagEmInformation.Disappear();
-            }
-        }
         else if (other.CompareTag("FlagBullet"))
         {
             other.gameObject.SetActive(false);
