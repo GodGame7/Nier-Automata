@@ -105,9 +105,9 @@ public class Em0030Movement : MonoBehaviour
         {
             if (!flagEmInformation.isDie)
             {
-                if (0.50f < transform.position.x || -0.50f > transform.position.x
-                    || 0.50f < transform.position.y || -0.50f > transform.position.y
-                    || 0.50f < transform.position.z || -0.50f > transform.position.z)
+                if (0.35f < transform.position.x || -0.35f > transform.position.x
+                    || 0.35f < transform.position.y || -0.35f > transform.position.y
+                    || 0.35f < transform.position.z || -0.35f > transform.position.z)
                 {
                     flagEmInformation.Disappear();
                 }

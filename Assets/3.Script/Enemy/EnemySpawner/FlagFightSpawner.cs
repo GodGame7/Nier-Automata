@@ -29,7 +29,7 @@ public class FlagFightSpawner : MonoBehaviour
 
     #region 발생시킬 이벤트들
     public UnityEvent phase1_15_EMDie; // Laser를 발사 7E를 죽임. 4초후 대사 출력
-    public UnityEvent phase2_01_EMDie; //
+    public UnityEvent phase2_01_EMDie; // 4초 후 Laser를 발사 6O를 죽임. 8초후 대사 출력
 
     #endregion
 
@@ -80,19 +80,19 @@ public class FlagFightSpawner : MonoBehaviour
         emRotation = Vector3.zero;
         isCanLook = true;
 
-        emPosition = new Vector3(-0.20f, 0.00f, 0.20f);
+        emPosition = new Vector3(-0.20f, 0.00f, 0.30f);
         emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 0);
 
-        emPosition = new Vector3(-0.10f, 0.00f, 0.20f);
+        emPosition = new Vector3(-0.10f, 0.00f, 0.30f);
         emFirstDesPosition = new Vector3(-0.10f, 0.00f, 0.15f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 1);
 
-        emPosition = new Vector3(0.10f, 0.00f, 0.20f);
+        emPosition = new Vector3(0.10f, 0.00f, 0.30f);
         emFirstDesPosition = new Vector3(0.10f, 0.00f, 0.15f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 2);
 
-        emPosition = new Vector3(0.20f, 0.00f, 0.20f);
+        emPosition = new Vector3(0.20f, 0.00f, 0.30f);
         emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 3);
 
@@ -129,15 +129,15 @@ public class FlagFightSpawner : MonoBehaviour
     {
         for (int i = 0; i < 10; i += 2)
         {
-            emPosition = new Vector3(-0.25f, 0.00f, 0.20f);
-            emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.10f);
+            emPosition = new Vector3(-0.30f, 0.00f, 0.30f);
+            emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.15f);
             emRotatePoint = new Vector3(0.30f, 0.00f, 0.30f);
             RotateAxis = Vector3.down;
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, RotateAxis, lastMoveSpeed, isCanLook, i);
             yield return wait_half_Second;
 
-            emPosition = new Vector3(0.25f, 0.00f, 0.20f);
-            emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.10f);
+            emPosition = new Vector3(0.30f, 0.00f, 0.30f);
+            emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.15f);
             emRotatePoint = new Vector3(-0.30f, 0.00f, 0.30f);
             RotateAxis = Vector3.up;
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, RotateAxis, lastMoveSpeed, isCanLook, i+1);
