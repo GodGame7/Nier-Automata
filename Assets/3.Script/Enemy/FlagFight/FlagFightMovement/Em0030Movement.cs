@@ -50,6 +50,7 @@ public class Em0030Movement : MonoBehaviour
 
     private void OnEnable()
     {
+        
         desPos = firstDesPos;
         fireTimer = 0.0f;
         StartCoroutine(Move_co());

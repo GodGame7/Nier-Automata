@@ -24,6 +24,8 @@ public class FlagFightUIManager : MonoBehaviour
         flagFightSubTitleManager.phase1_09.AddListener(phase1_09);
         flagFightSubTitleManager.phase1_12.AddListener(phase1_12);
         flagFightSubTitleManager.phase1_15.AddListener(phase1_15);
+        flagFightSubTitleManager.phase3_02.AddListener(phase3_02);
+        flagFightSubTitleManager.phase3_03.AddListener(phase3_03);
     }
 
 
@@ -43,6 +45,16 @@ public class FlagFightUIManager : MonoBehaviour
     }
 
     private void phase1_15()
+    {
+        StartCoroutine(FadeOut(background01, 2.0f));
+    }
+
+    private void phase3_02()
+    {
+        StartCoroutine(FadeIn(background01, 2.0f));
+    }
+
+    private void phase3_03()
     {
         StartCoroutine(FadeOut(background01, 2.0f));
     }

@@ -17,7 +17,7 @@ public class FlagEmInformation : MonoBehaviour
     [SerializeField] FlagFightManager fightManager;
     [SerializeField] FlagFightSpawner flagFightSpawner;
 
-    private Collider collider;
+    private new Collider collider;
 
 
     private void Start()

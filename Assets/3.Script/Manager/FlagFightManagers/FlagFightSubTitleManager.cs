@@ -34,7 +34,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     public UnityEvent phase2_01; // 회피 UI 활성화, 회피 활성화, em0032 10기 활성화
 
-    public UnityEvent phase3_01;
+    public UnityEvent phase3_01; // 6E에게 Laser 발사 
+    public UnityEvent phase3_02; // Background1 천천히 활성화 위치 변경
+    public UnityEvent phase3_03; // 플레이어 색깔변경
+    public UnityEvent phase3_04; // em0030 6기 활성화, 강공격 UI 활성화, 강공격 활성화
+
+    public UnityEvent phase4_01; // em0040 4기 활성화
 
     #endregion
     // WaitForSeconds 모음
@@ -98,6 +103,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         flagFightManager.phase1.AddListener(Phase01);
         flagFightSpawner.phase1_15_EMDie.AddListener(Phase02);
         flagFightSpawner.phase2_01_EMDie.AddListener(Phase03);
+        flagFightSpawner.phase3_04_EMDie.AddListener(Phase04);
         #endregion
     }
 
@@ -113,14 +119,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -128,14 +132,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_2_Second;
         phase1_01.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_half_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1half_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -143,14 +145,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_1_Second;
         phase1_02.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_4_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -164,21 +164,18 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_2_Second;
         phase1_05.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -186,47 +183,40 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_2_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_4_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_3_Second;
         phase1_07.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_6_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         phase1_08.Invoke();
@@ -234,7 +224,6 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_2_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1_Second;
         phase1_09.Invoke();
@@ -243,7 +232,6 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_2_Second;
         phase1_10.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         phase1_11.Invoke();
@@ -251,14 +239,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_7_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         phase1_12.Invoke();
@@ -267,14 +253,12 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_7_Second;
         phase1_13.Invoke();
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_4_Second;
         phase1_14.Invoke();
 
         yield return wait_1_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         Next_SubText();
@@ -295,7 +279,6 @@ public class FlagFightSubTitleManager : MonoBehaviour
     {
         yield return wait_4_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -314,13 +297,35 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_4_Second;
         Next_SubText();
-        text_Subtitle.gameObject.SetActive(true);
 
+        yield return wait_3_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase3_02.Invoke();
+
+        yield return wait_3_Second;
+        phase3_03.Invoke();
+
+        yield return wait_3_Second;
+        phase3_04.Invoke();
     }
+
     private void Next_SubText()
     {
         subTitleCounter++;
         text_Subtitle.text = flagSubTitles[subTitleCounter];
+        text_Subtitle.gameObject.SetActive(true);
+    }
+
+    private void Phase04()
+    {
+        StartCoroutine(Phase04_Co());
+    }
+
+    IEnumerator Phase04_Co()
+    {
+        yield return wait_4_Second;
+        phase4_01.Invoke();
+        
     }
 
 }
