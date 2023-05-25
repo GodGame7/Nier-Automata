@@ -34,6 +34,8 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     public UnityEvent phase2_01; // 회피 UI 활성화, 회피 활성화, em0032 10기 활성화
 
+    public UnityEvent phase3_01;
+
     #endregion
     // WaitForSeconds 모음
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
@@ -77,9 +79,14 @@ public class FlagFightSubTitleManager : MonoBehaviour
         #endregion
 
         #region phase02 1개
-        "7E 로스트"
+        "7E 로스트",
 
         #endregion
+
+        #region phase03 1개
+        "⋯⋯1D 로스트, 규정에 따라 본 기체 2B가 대장 임무를 계승"
+
+        #endregion#
     };
 
     private void Awake()
@@ -90,6 +97,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         #region 이벤트 추가
         flagFightManager.phase1.AddListener(Phase01);
         flagFightSpawner.phase1_15_EMDie.AddListener(Phase02);
+        flagFightSpawner.phase2_01_EMDie.AddListener(Phase03);
         #endregion
     }
 
@@ -294,6 +302,21 @@ public class FlagFightSubTitleManager : MonoBehaviour
         phase2_01.Invoke();
     }
 
+    private void Phase03()
+    {
+        StartCoroutine(Phase03_Co());
+    }
+
+    IEnumerator Phase03_Co()
+    {
+        yield return wait_4_Second;
+        phase3_01.Invoke();
+
+        yield return wait_4_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
+
+    }
     private void Next_SubText()
     {
         subTitleCounter++;

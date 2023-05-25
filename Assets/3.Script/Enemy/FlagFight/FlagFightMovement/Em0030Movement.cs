@@ -105,6 +105,12 @@ public class Em0030Movement : MonoBehaviour
         {
             if (!flagEmInformation.isDie)
             {
+                if (0.35f < transform.position.x || -0.35f > transform.position.x
+                    || 0.35f < transform.position.y || -0.35f > transform.position.y
+                    || 0.35f < transform.position.z || -0.35f > transform.position.z)
+                {
+                    flagEmInformation.Disappear();
+                }
                 transform.position = Vector3.MoveTowards(transform.position, desPos, lastMoveSpeed * Time.deltaTime);
             }
             yield return null;
