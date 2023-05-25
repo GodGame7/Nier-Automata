@@ -12,6 +12,16 @@ public class FlagAttack : IFlagState
         }
     }
 }
+public class FlagTransformation : IFlagState
+{
+    public void Action(FlagControl player)
+    {
+        if (!player.gameObject.layer.Equals(player.invincibleLayer))
+        {
+            player.gameObject.layer = player.invincibleLayer;
+        }
+    }
+}
 public class FlagNomal : IFlagState
 {
     public void Action(FlagControl player)

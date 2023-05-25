@@ -7,7 +7,6 @@ public class Em0032Movement : MonoBehaviour
     [Header("Àû 0032 Á¤º¸")]
     [SerializeField] float maxHp = 50f;
     [SerializeField] float firstMoveSpeed = 2.0f;
-    [SerializeField] float lastMoveSpeed = 0.5f;
     [SerializeField] float rotateSpeed = 60.0f;
     [SerializeField] float fireDelay = 1.0f;
 
@@ -22,6 +21,7 @@ public class Em0032Movement : MonoBehaviour
     [SerializeField] public Vector3 firstDesPos;
     [SerializeField] public Vector3 RotatePoint;
     [SerializeField] public Vector3 RotateAxis = Vector3.up;
+    [SerializeField] public float lastMoveSpeed = 30.0f;
     [SerializeField] public bool isCanLook;
 
     [Space(0.5f)]
@@ -110,6 +110,12 @@ public class Em0032Movement : MonoBehaviour
         isReady = true;
         while (!flagEmInformation.isDie)
         {
+            if (0.50f < transform.position.x || -0.50f > transform.position.x
+                || 0.50f < transform.position.y || -0.50f > transform.position.y
+                || 0.50f < transform.position.z || -0.50f > transform.position.z)
+            {
+                flagEmInformation.Disappear();
+            }
             transform.RotateAround(RotatePoint, RotateAxis, lastMoveSpeed * Time.deltaTime);
             yield return null;
         }
