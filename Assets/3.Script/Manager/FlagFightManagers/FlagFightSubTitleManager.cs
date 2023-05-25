@@ -8,6 +8,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 {
     [Header("Managers")]
     [SerializeField] FlagFightManager flagFightManager;
+    [SerializeField] FlagFightSpawner flagFightSpawner;
 
     [Space(0.5f)]
     [Header("확인용")]
@@ -31,8 +32,10 @@ public class FlagFightSubTitleManager : MonoBehaviour
     public UnityEvent phase1_14; // 사령부 UI 등장
     public UnityEvent phase1_15; // 사격 UI 활성화, 사격 활성화 em0030 4기 활성화 BackGround01 서서히 꺼짐
 
+    public UnityEvent phase2_01; // 회피 UI 활성화, 회피 활성화, em0032 10기 활성화
+
     #endregion
-    //
+    // WaitForSeconds 모음
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
     private WaitForSeconds wait_1_Second = new WaitForSeconds(1.0f);
     private WaitForSeconds wait_1half_Second = new WaitForSeconds(1.5f);
@@ -70,8 +73,13 @@ public class FlagFightSubTitleManager : MonoBehaviour
         "장비 Ho229의 캔셀러 효과 없음",
         "전방에 적 기체 확인",
         "화기 사용을 신청",
-        "화기 사용을 허가합니다."
-    #endregion
+        "화기 사용을 허가합니다.",
+        #endregion
+
+        #region phase02 1개
+        "7E 로스트"
+
+        #endregion
     };
 
     private void Awake()
@@ -81,6 +89,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         #region 이벤트 추가
         flagFightManager.phase1.AddListener(Phase01);
+        flagFightSpawner.phase1_15_EMDie.AddListener(Phase02);
         #endregion
     }
 
@@ -267,15 +276,22 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_1_Second;
         phase1_15.Invoke();
+    }
 
+    private void Phase02()
+    {
+        StartCoroutine(Phase02_Co());
+    }
 
+    IEnumerator Phase02_Co()
+    {
+        yield return wait_4_Second;
+        Next_SubText();
+        text_Subtitle.gameObject.SetActive(true);
 
-
-
-        // Todo 병현 타임라인 작성 후 다시 올게요...
-
-
-
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase2_01.Invoke();
     }
 
     private void Next_SubText()

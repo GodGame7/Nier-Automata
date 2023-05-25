@@ -24,7 +24,7 @@ public class FlagFightSpawner : MonoBehaviour
     public int RemainEnemies;
 
     #region 발생시킬 이벤트들
-    public UnityEvent phase1_15_EMDie;
+    public UnityEvent phase1_15_EMDie; // Laser를 발사 7E를 죽임. 4초후 대사 출력
 
     #endregion
 
@@ -33,6 +33,7 @@ public class FlagFightSpawner : MonoBehaviour
     {
         flagFightSubTitleManager.phase1_15.AddListener(Phase1_15);
     }
+
     private void SpawnEm0030(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emLastDesPosition, bool isCanLook, int num)
     {
         em0030s[num].SetActive(true);
@@ -42,6 +43,11 @@ public class FlagFightSpawner : MonoBehaviour
         em0030Movement.firstDesPos = emFirstDesPosition;
         em0030Movement.lastDesPos = emLastDesPosition;
         em0030Movement.isCanLook = isCanLook;
+    }
+
+    private void SpawnEm0032(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emRotatePoint, Vector3 RotateAxis, bool isCanLook, int num)
+    {
+       // 05.24 
     }
 
 
@@ -60,11 +66,11 @@ public class FlagFightSpawner : MonoBehaviour
         emFirstDesPosition = new Vector3(-0.10f, 0.00f, 0.15f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 1);
 
-        emRotation = new Vector3(0.10f, 0.00f, 0.20f);
+        emPosition = new Vector3(0.10f, 0.00f, 0.20f);
         emFirstDesPosition = new Vector3(0.10f, 0.00f, 0.15f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 2);
 
-        emRotation = new Vector3(0.20f, 0.00f, 0.20f);
+        emPosition = new Vector3(0.20f, 0.00f, 0.20f);
         emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, isCanLook, 3);
 
@@ -72,18 +78,23 @@ public class FlagFightSpawner : MonoBehaviour
 
     }
 
-
     IEnumerator Co_CheckNumEm01_15()
     {
-        if (RemainEnemies > 0)
+        while (true)
         {
+            if(RemainEnemies <= 0)
+            {
+                phase1_15_EMDie.Invoke();
+                break;
+            }
             yield return null;
         }
-        else
-        {
-            phase1_15_EMDie.Invoke();
-        }
-    }
+    }    
 
-    
+    // em0032 10기를 생성
+    public void Phase2_01()
+    {
+        RemainEnemies = 4;
+        emRotation = Vector3.zero;
+    }
 }

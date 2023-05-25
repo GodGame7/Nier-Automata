@@ -6,11 +6,13 @@ using UnityEngine.AI;
 
 public class em0000 : Enemy
 {
-    private void Start()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         StartCoroutine(CheckState());
     }
- 
+
     IEnumerator CheckState()
     {
         while (!isdead)

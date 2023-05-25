@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class em0010 : Enemy
 {
-    private void Start()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         StartCoroutine(CheckState());
     }
 
@@ -14,7 +16,6 @@ public class em0010 : Enemy
         while (!isdead)
         {
             TargetLookat();
-
             switch (state)
             {
                 case State.IDLE:

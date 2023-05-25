@@ -27,9 +27,15 @@ public class em0000_2 : Enemy
         //Cannon_pos = transform.Find("bone-1/bone4094/bone000/bone001/em0000_wp/bone-1/bone000/bone3841");
 
         Initialized_Bullet();
-        StartCoroutine(CheckState());
+
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        StartCoroutine(CheckState());
+    }
 
     IEnumerator CheckState()
     {
@@ -51,7 +57,7 @@ public class em0000_2 : Enemy
     {
         timer += Time.deltaTime;
 
-        if (timer > 1f)
+        if (timer > 1f && !anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Hit"))
         {
             if (count >= Bullet_Soft.Length)
             {
