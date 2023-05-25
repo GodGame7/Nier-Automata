@@ -13,10 +13,7 @@ public class Temp : MonoBehaviour
     [SerializeField] private InventoryUI Inventory_UI;
     public delegate void Item(int num);
     public static event Item UseItem;
-    private void Awake()
-    {
-
-    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I)) // 왼쪽아래 작은 인벤툴팁 열기
