@@ -10266,9 +10266,6 @@ MonoBehaviour:
   phase1_15_EMDie:
     m_PersistentCalls:
       m_Calls: []
-  phase2_01_EMDie:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &236518914
 GameObject:
   m_ObjectHideFlags: 0
@@ -50795,10 +50792,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: em0030
       objectReference: {fileID: 0}
-    - target: {fileID: 669708989293958586, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
-      propertyPath: lastDesPos.x
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 669708989293958587, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -50841,10 +50834,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669708989293958587, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612837436207483142, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7873902180539833542, guid: d3838a46b3015214f9c10b0faf000d65, type: 3}

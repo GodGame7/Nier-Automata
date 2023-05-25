@@ -34,7 +34,7 @@ public class FlagFightUIManager : MonoBehaviour
 
     private void phase1_09()
     {
-        StartCoroutine(FadeOut(background01, 2.0f));
+        StartCoroutine(FadeOut(background01, 3.0f));
     }
 
     private void phase1_12()

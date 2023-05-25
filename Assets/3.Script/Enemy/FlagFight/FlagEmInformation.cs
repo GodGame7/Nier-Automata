@@ -17,7 +17,7 @@ public class FlagEmInformation : MonoBehaviour
     [SerializeField] FlagFightManager fightManager;
     [SerializeField] FlagFightSpawner flagFightSpawner;
 
-    private new Collider collider;
+    private Collider collider;
 
 
     private void Start()
@@ -74,28 +74,10 @@ public class FlagEmInformation : MonoBehaviour
 
     IEnumerator Co_Dying()
     {
-
-        // 부모 오브젝트의 CanvasGroup 가져오기
         CanvasGroup canvasGroup = gameObject.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-
-        // 자식 오브젝트들의 CanvasGroup 배열 가져오기
-        CanvasGroup[] childCanvasGroups = gameObject.GetComponentsInChildren<CanvasGroup>();
-
-        // 부모 오브젝트와 자식 오브젝트들에 CanvasGroup 컴포넌트가 없다면 추가하기
-        if (canvasGroup == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-        foreach (Transform child in transform)
-        {
-            if (child.GetComponent<CanvasGroup>() == null)
-            {
-                child.gameObject.AddComponent<CanvasGroup>();
-            }
         }
 
         float counter = 0f;
@@ -106,26 +88,13 @@ public class FlagEmInformation : MonoBehaviour
         {
             counter += Time.deltaTime;
             float t = Mathf.Clamp01(counter / 1.00f);
-
-            // 부모 오브젝트의 CanvasGroup 업데이트
             canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
-
-            // 자식 오브젝트들의 CanvasGroup 업데이트
-            foreach (CanvasGroup childCanvasGroup in childCanvasGroups)
-            {
-                childCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
-            }
-
             yield return null;
         }
 
-        // 마지막에 알파 값을 1로 설정
-        foreach (CanvasGroup childCanvasGroup in childCanvasGroups)
-        {
-            childCanvasGroup.alpha = 1f;
-        }
-
-        // 부모 오브젝트 비활성화
+        // 완전히 사라진 후 비활성화
         gameObject.SetActive(false);
     }
+
+
 }
