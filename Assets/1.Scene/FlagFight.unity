@@ -75449,7 +75449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagFightManager: {fileID: 236518916}
-  flagFightSpawner: {fileID: 0}
+  flagFightSpawner: {fileID: 145294356}
   text_Subtitle: {fileID: 801968937}
   subTitleCounter: 0
   phase1_01:
