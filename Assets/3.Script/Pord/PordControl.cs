@@ -18,7 +18,7 @@ public class PordControl : MonoBehaviour
     private int bulletCount = 0;
 
     //ÃÑ¾Ë µô·¹ÀÌ¿ë º¯¼ö
-    private float BulletDealyTime = 0.2f;
+    private float BulletDealyTime = 0.1f;
     private float CurrentTime = 0f;
 
     private void Update()
