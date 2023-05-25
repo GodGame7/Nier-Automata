@@ -145,7 +145,6 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Run", false);
         }
 
-        Debug.Log("°¡ÀÚ°í..");
         yield return null;
 
         if (distance <= attackDistance)
