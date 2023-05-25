@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: b41e35941a0ff32458b79b200fb6688c, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ce4f9c0a1dab87e41be8027f1b03d2b5, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d4e6be12b993d234184450323acfbe92, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -15584,7 +15584,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -128272,7 +128272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3687273431656153974}
   - component: {fileID: 3687273431656153975}
-  - component: {fileID: 8482327632580126000}
+  - component: {fileID: 3687273431656153978}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -128280,6 +128280,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &3687273431656153978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687273431656153977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bead71b7104f04e8daaa3d07f12d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &3715102935003869173
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -134175,18 +134187,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8482327632580126000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3687273431656153977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32ed871595e8e6e44a95746d86349d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8518820034447066687
 GameObject:
   m_ObjectHideFlags: 0
