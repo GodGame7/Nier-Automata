@@ -26,6 +26,7 @@ public class ItemEffect : MonoBehaviour
         {
             PlayerData.instance.hp += PlayerData.instance.inven.Items[num].HealingValue;
             PlayerData.instance.inven.RemoveItem(PlayerData.instance.inven.Items[num]);
+            //아이템 사용 사운드를 넣어주세용
         }
 
        

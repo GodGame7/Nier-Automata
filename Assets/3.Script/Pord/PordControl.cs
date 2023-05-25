@@ -6,6 +6,7 @@ public class PordControl : MonoBehaviour
 {
     [SerializeField] Camera Cam;
     [SerializeField] PordBulletSpawn PordBullet;
+    [SerializeField] GameObject PordLaser;
 
     // 록온을 위한 변수
     private bool isLockOn = false;
@@ -20,6 +21,9 @@ public class PordControl : MonoBehaviour
     //총알 딜레이용 변수
     private float BulletDealyTime = 0.1f;
     private float CurrentTime = 0f;
+
+    //레이저 딜레이용 변수
+    private bool isLaser = false;
 
     private void Update()
     {
@@ -43,6 +47,9 @@ public class PordControl : MonoBehaviour
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
+
+            //소리를 여기에 넣어주세용
+
             bulletCount++;
             if (bulletCount >= 60) // BulletSpawn 에서 생성한 갯수만큼
             {
@@ -63,8 +70,28 @@ public class PordControl : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !isLaser)
+        {
+
+            StartCoroutine(Laser_co());
+            //방향 조정필요 임시로 넣어뒀음
+        }
         // ----------------------------여기까지 -----------------------------
 
+    }
+
+    private IEnumerator Laser_co()
+    {
+        //카메라를 살짝 흔들어주세용
+        //소리도 여기에 넣어주세용
+
+        isLaser = true;
+        PordLaser.SetActive(true);
+        PordLaser.transform.position = transform.position;
+        PordLaser.transform.rotation = Quaternion.Euler(-Cam.transform.position.normalized);
+        yield return new WaitForSeconds(1f);
+        PordLaser.SetActive(false);
+        isLaser = false;
     }
     private void OnTriggerStay(Collider other)
     {
