@@ -217,7 +217,6 @@ public class FlagControl : MonoBehaviour
         else
         {
             anim.SetTrigger(hashToFlag);
-            transform.rotation = Quaternion.Euler(-90f, 0, 0);
         }
     }
     private void SetState(IFlagState state)
@@ -244,6 +243,7 @@ public class FlagControl : MonoBehaviour
         while (true)
         {
             yield return EnterTransformation_wait;
+            transform.rotation = Quaternion.Euler(-90f, 0, 0);
             SetState(transfomationState);
             yield return ExitTransformation_wait;
             SetState(nomalState);
@@ -253,21 +253,27 @@ public class FlagControl : MonoBehaviour
 
     private void Update()
     {
-        InputMoveKey();
-        if (currentState.Equals(nomalState))
+        if (!currentState.Equals(transfomationState))
         {
-            CheckDash();
+            InputMoveKey();
+            if (currentState.Equals(nomalState))
+            {
+                CheckDash();
+            }
+            currentState.Action(this);
+            Attack(); 
         }
-        currentState.Action(this);
-        Attack();
     }
     private void FixedUpdate()
     {
-        if (currentModeStrategy is ModeGundam)
+        if (!currentState.Equals(transfomationState))
         {
-            currentModeStrategy.Rotate(this);
+            if (currentModeStrategy is ModeGundam)
+            {
+                currentModeStrategy.Rotate(this);
+            }
+            Move();
         }
-        Move();
     }
 
     #region ¿Ãµø
