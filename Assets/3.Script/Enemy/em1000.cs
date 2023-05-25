@@ -5,13 +5,15 @@ using UnityEngine;
 public class em1000 : MonoBehaviour
 {
 
-    [Header ("ล้ ฐüทร")]
+    [Header("ล้ ฐüทร")]
     [SerializeField] GameObject saw;
-    [Range(1f,500f)]
+    [Range(1f, 500f)]
     [SerializeField] float maxsawrotateSpeed = 500f;
-    [Range(1f,500f)]
-    [SerializeField] float minsawrotateSpeed = 100f;
-    [SerializeField] float speed_down_time = 3f;
+    [Range(1f, 500f)]
+    [SerializeField] float minsawrotateSpeed = 150f;
+    [SerializeField] float speed_down_time = 5f;
+
+    [SerializeField] bool isattack = false;
 
     private float currentSawRotateSpeed;
 
@@ -31,16 +33,14 @@ public class em1000 : MonoBehaviour
     //ฐ๘ฐÝ
     void SawAttack()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (currentSawRotateSpeed == maxsawrotateSpeed && isattack)
+
         {
-            if (currentSawRotateSpeed == maxsawrotateSpeed)
-            {
-                StartCoroutine(DecreaseRotationSpeed());
-            }
-            else
-            {
-                currentSawRotateSpeed = maxsawrotateSpeed;
-            }
+            StartCoroutine(DecreaseRotationSpeed());
+        }
+        else if (!isattack)
+        {
+            currentSawRotateSpeed = maxsawrotateSpeed;
         }
     }
 
