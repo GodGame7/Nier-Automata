@@ -12,4 +12,8 @@ public class GundamStrongAttackSpawner : MonoBehaviour
         sword.SetActive(true);
         sword.transform.SetPositionAndRotation(transform.position, transform.rotation);
     }
+    private void OnDisable()
+    {
+        sword.SetActive(false);
+    }
 }
