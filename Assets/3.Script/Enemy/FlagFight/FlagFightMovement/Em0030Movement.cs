@@ -5,8 +5,6 @@ using UnityEngine;
 public class Em0030Movement : MonoBehaviour
 {
     [Header("적 0030 정보")]
-    [SerializeField] float firstMoveSpeed = 2.0f;
-    [SerializeField] float lastMoveSpeed = 1.0f;
     [SerializeField] float rotateSpeed = 60.0f; 
     [SerializeField] float fireDelay = 3.0f;
 
@@ -18,7 +16,9 @@ public class Em0030Movement : MonoBehaviour
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
-    [SerializeField] public Vector3 firstDesPos;
+    [SerializeField] public float firstMoveSpeed = 2.0f;
+    [SerializeField] public float lastMoveSpeed = 1.0f;
+    [SerializeField] public Vector3 desPos;
     [SerializeField] public Vector3 lastDesPos;
     [SerializeField] public bool isCanLook;
 
@@ -26,7 +26,6 @@ public class Em0030Movement : MonoBehaviour
     [Header("확인용")]
     [SerializeField] bool isReady = false;
     [SerializeField] float fireTimer;
-    [SerializeField] Vector3 desPos;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
@@ -34,24 +33,6 @@ public class Em0030Movement : MonoBehaviour
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
     {
-        desPos = firstDesPos;
-        fireTimer = 0.0f;
-        StartCoroutine(Move_co());
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            playerTransform = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
-        }
-    }
-
-    private void OnEnable()
-    {
-        
-        desPos = firstDesPos;
         fireTimer = 0.0f;
         StartCoroutine(Move_co());
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -89,7 +70,7 @@ public class Em0030Movement : MonoBehaviour
         StartCoroutine(Fire_co());
     }
 
-    private IEnumerator Move_co()
+    public IEnumerator Move_co()
     {
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)    
         {
@@ -110,6 +91,7 @@ public class Em0030Movement : MonoBehaviour
                     || 0.35f < transform.position.y || -0.35f > transform.position.y
                     || 0.35f < transform.position.z || -0.35f > transform.position.z)
                 {
+                    transform.position = Vector3.zero;
                     flagEmInformation.Disappear();
                 }
                 transform.position = Vector3.MoveTowards(transform.position, desPos, lastMoveSpeed * Time.deltaTime);

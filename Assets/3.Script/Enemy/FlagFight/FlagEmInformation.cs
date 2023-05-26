@@ -60,6 +60,7 @@ public class FlagEmInformation : MonoBehaviour
     public void Disappear()
     {
         flagFightSpawner.RemainEnemies--;
+        isDie = true;
         gameObject.SetActive(false);
     }
 
