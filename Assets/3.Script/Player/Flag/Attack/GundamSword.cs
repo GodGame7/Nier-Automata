@@ -9,7 +9,7 @@ public class GundamSword : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += moveSpeed * Time.deltaTime * Vector3.forward;
+        transform.position += moveSpeed * Time.deltaTime * -transform.up;
     }
 
     private void OnTriggerEnter(Collider other)
