@@ -1716,6 +1716,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492371181}
   m_CullTransparentMesh: 1
+--- !u!1 &1564089454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5541982754198008184, guid: 254eddff5bbcb844facc15c86fc04fe5, type: 3}
+  m_PrefabInstance: {fileID: 854084205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702264645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5043,6 +5048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam: {fileID: 1341197792}
   PordBullet: {fileID: 1702264646}
+  PordLaser: {fileID: 1581357713849905503}
+  Player: {fileID: 1564089454}
 --- !u!1 &5011042477983548952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5295,7 +5302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4987776731573276052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.594, y: 1.762, z: 0.135}
+  m_LocalPosition: {x: 0.556, y: 1.762, z: 0.135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4349746584414966706}
