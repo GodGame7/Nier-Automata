@@ -36,7 +36,7 @@ public class FlagControl : MonoBehaviour
 
     // 대쉬
     public KeyCode lastKeyPressed = KeyCode.None;
-    private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
+    private KeyCode[]  keysToCheck= { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
     private float lastKeyPressTime = 0f;
     private float timeAllowedBetweenKeyPresses = 0.5f;
     private bool isDashWaiting = false;
@@ -52,6 +52,7 @@ public class FlagControl : MonoBehaviour
     private FlagNomal nomalState;
     private FlagAttack attackState;
     private FlagDash dashState;
+    private FlagTransformation transfomationState;
     private bool isAttackCombo = false;
     public int invincibleLayer;
     public int defaultLayer;
@@ -83,6 +84,8 @@ public class FlagControl : MonoBehaviour
     public WaitUntil EnterAttackAni_wait;
     public WaitUntil ExitAttackAni_wait;
     public WaitUntil ResetCombo_wait;
+    public WaitUntil EnterTransformation_wait;
+    public WaitUntil ExitTransformation_wait;
 
     private WaitForSeconds FireDelay_wait;
     private WaitForSeconds AnimaReset_wait;
@@ -126,6 +129,7 @@ public class FlagControl : MonoBehaviour
         nomalState = new FlagNomal();
         attackState = new FlagAttack();
         dashState = new FlagDash();
+        transfomationState = new FlagTransformation();
 
         currentState = nomalState;
         invincibleLayer = LayerMask.NameToLayer("Invincible");
@@ -136,11 +140,14 @@ public class FlagControl : MonoBehaviour
         // 이벤트 구독 (시점 변환)
         StartCoroutine(nameof(Fire_co));
         StartCoroutine(nameof(ResetCombo_co));
+        StartCoroutine(nameof(SetTransformationState_co));
     }
     private void OnDisable()
     {
         // 이벤트 해제 (시점 변환)
         StopCoroutine(nameof(Fire_co));
+        StopCoroutine(nameof(ResetCombo_co));
+        StopCoroutine(nameof(SetTransformationState_co));
     }
     private void Start()
     {
@@ -153,7 +160,6 @@ public class FlagControl : MonoBehaviour
         SetModeStrategy(new ModeGundam());
         //SetModeStrategy(new ModeFlag());
     }
-
     private void OnApplicationFocus(bool hasFocus)
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -174,6 +180,8 @@ public class FlagControl : MonoBehaviour
                                                   anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack"));
         ExitAttackAni_wait = new WaitUntil(() => !(anim.GetCurrentAnimatorStateInfo(0).IsName("HorizontalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("VerticalWeakAttack") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlagStrongAttack") ||
                                                   anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamStrongAttack")));
+        EnterTransformation_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("ToFlag") || anim.GetCurrentAnimatorStateInfo(0).IsName("ToGundam"));
+        ExitTransformation_wait = new WaitUntil(() => !(anim.GetCurrentAnimatorStateInfo(0).IsName("ToFlag") || anim.GetCurrentAnimatorStateInfo(0).IsName("ToGundam")));
         FireDelay_wait = new WaitForSeconds(fireDelay);
         AnimaReset_wait = new WaitForSeconds(preInputDelay);
         ResetCombo_wait = new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack1") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98f);
@@ -209,7 +217,6 @@ public class FlagControl : MonoBehaviour
         else
         {
             anim.SetTrigger(hashToFlag);
-            transform.rotation = Quaternion.Euler(-90f, 0, 0);
         }
     }
     private void SetState(IFlagState state)
@@ -217,26 +224,56 @@ public class FlagControl : MonoBehaviour
         StopCoroutine(nameof(ReturnToNomalState_co));
         currentState = state;
     }
+    public IEnumerator ReturnToNomalState_co(WaitUntil startAnimation = null, WaitUntil endAnimation = null)
+    {
+        yield return startAnimation;
+        yield return null;
+        yield return endAnimation;
+
+        SetState(nomalState);
+    }
+    public IEnumerator ReturnToNomalState_co(WaitForSeconds wait)
+    {
+        yield return wait;
+
+        SetState(nomalState);
+    }
+    private IEnumerator SetTransformationState_co()
+    {
+        while (true)
+        {
+            yield return EnterTransformation_wait;
+            transform.rotation = Quaternion.Euler(-90f, 0, 0);
+            SetState(transfomationState);
+            yield return ExitTransformation_wait;
+            SetState(nomalState);
+        }
+    }
     #endregion 전략, 상태
 
     private void Update()
     {
-        // Debug.Log(currentState);
-        InputMoveKey();
-        if (currentState.Equals(nomalState))
+        if (!currentState.Equals(transfomationState))
         {
-            CheckDash();
+            InputMoveKey();
+            if (currentState.Equals(nomalState))
+            {
+                CheckDash();
+            }
+            currentState.Action(this);
+            Attack(); 
         }
-        currentState.Action(this);
-        Attack();
     }
     private void FixedUpdate()
     {
-        if (currentModeStrategy is ModeGundam)
+        if (!currentState.Equals(transfomationState))
         {
-            currentModeStrategy.Rotate(this);
+            if (currentModeStrategy is ModeGundam)
+            {
+                currentModeStrategy.Rotate(this);
+            }
+            Move();
         }
-        Move();
     }
 
     #region 이동
@@ -329,6 +366,13 @@ public class FlagControl : MonoBehaviour
             }
         }
     }
+    public IEnumerator ResetScaleX_co()
+    {
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
+        yield return null;
+        yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
+        transform.localScale = Vector3.one;
+    }
     #endregion
 
     private void Attack()
@@ -370,7 +414,6 @@ public class FlagControl : MonoBehaviour
             }
         }
     }
-
     private IEnumerator Fire_co()
     {
         while (true)
@@ -384,38 +427,6 @@ public class FlagControl : MonoBehaviour
             }
         }
     }
-    public IEnumerator ResetScaleX_co()
-    {
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
-        yield return null;
-        yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
-        transform.localScale = Vector3.one;
-    }
-    public void SetAnimaTrigger(int hashAni)
-    {
-        anim.SetTrigger(hashAni);
-        StopCoroutine(nameof(ResetAnimaTrigger_co));
-        StartCoroutine(nameof(ResetAnimaTrigger_co), hashAni);
-    }
-    private IEnumerator ResetAnimaTrigger_co(int hashAni)
-    {
-        yield return AnimaReset_wait;
-        anim.ResetTrigger(hashAni);
-    }
-    public IEnumerator ReturnToNomalState_co(WaitUntil startAnimation = null, WaitUntil endAnimation = null)
-    {
-        yield return startAnimation;
-        yield return null;
-        yield return endAnimation;
-
-        SetState(nomalState);
-    }
-    public IEnumerator ReturnToNomalState_co(WaitForSeconds wait)
-    {
-        yield return wait;
-
-        SetState(nomalState);
-    }
     public IEnumerator ResetCombo_co()
     {
         float waitTime = 5f;
@@ -428,5 +439,17 @@ public class FlagControl : MonoBehaviour
             yield return new WaitUntil(() => (Time.time >= startTime + waitTime) || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2"));
             isCombo = false;
         }
+    }
+
+    public void SetAnimaTrigger(int hashAni)
+    {
+        anim.SetTrigger(hashAni);
+        StopCoroutine(nameof(ResetAnimaTrigger_co));
+        StartCoroutine(nameof(ResetAnimaTrigger_co), hashAni);
+    }
+    private IEnumerator ResetAnimaTrigger_co(int hashAni)
+    {
+        yield return AnimaReset_wait;
+        anim.ResetTrigger(hashAni);
     }
 }
