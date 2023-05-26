@@ -15,26 +15,26 @@ public class em0000 : Enemy
 
     IEnumerator CheckState()
     {
-        while (!isdead)
+        while (!enemyHp.isdead)
         {
             TargetLookat();
 
             switch (state)
             {
                 case State.IDLE:
-                    yield return StartCoroutine(UpdateIdle());
+                    yield return StartCoroutine(OnIdle());
                     break;
 
                 case State.WALK:
-                    UpdateWalk();
+                    Onwalk();
                     break;
 
                 case State.ATTACK:
-                    yield return StartCoroutine(UpdateAttack(pattonNum));
+                    yield return StartCoroutine(OnAttack(pattonNum));
                     break;
 
                 case State.DASH:
-                    yield return StartCoroutine(UpdateDash());
+                    yield return StartCoroutine(OnDash());
                     break;
             }
             yield return null;
@@ -42,7 +42,7 @@ public class em0000 : Enemy
 
     }
 
-    protected override IEnumerator UpdateAttack(int PattonNum)
+    protected override IEnumerator OnAttack(int PattonNum)
     {
         state = State.ATTACK;
 

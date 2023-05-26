@@ -13,22 +13,22 @@ public class em0010 : Enemy
 
     IEnumerator CheckState()
     {
-        while (!isdead)
+        while (!enemyHp.isdead)
         {
             TargetLookat();
             switch (state)
             {
                 case State.IDLE:
-                    yield return StartCoroutine(UpdateIdle());
+                    yield return StartCoroutine(OnIdle());
                     break;
 
                 case State.WALK:
-                    UpdateWalk();
+                    Onwalk();
                     break;
 
                 case State.ATTACK:
                     //패턴의 갯수만큼에서 랜덤공격
-                    yield return StartCoroutine(UpdateAttack(pattonNum));
+                    yield return StartCoroutine(OnAttack(pattonNum));
                     break;
             }
             yield return null;

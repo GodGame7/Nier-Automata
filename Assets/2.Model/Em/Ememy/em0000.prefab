@@ -818,6 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2672583752278627643}
   - component: {fileID: 8356077366978645825}
+  - component: {fileID: 2900453389660313601}
   - component: {fileID: 3340892949670793091}
   - component: {fileID: 3427793693206566815}
   m_Layer: 0
@@ -865,6 +866,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2900453389660313601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340892949670793089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d77ad877ad4dac469f1c3227c1b6169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hpslider: {fileID: 0}
+  MaxHP: 10
+  CurrentHP: 0
+  MinDamage: 1
+  isdead: 0
+  isdead_effect: {fileID: 7070360372437274426}
 --- !u!114 &3340892949670793091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,15 +897,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  Hpslider: {fileID: 0}
-  MaxHP: 10
-  CurrentHP: 0
-  MinDamage: 1
-  explosion_effect: {fileID: 7070360372437274426}
   pattonNum: 2
   attackDistance: 2.5
   dashDistance: 6
   rotationSpeed: 10
+  target: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!54 &3427793693206566815
 Rigidbody:
   m_ObjectHideFlags: 0

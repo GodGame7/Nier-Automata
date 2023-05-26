@@ -7,11 +7,11 @@ public class em0000_2 : Enemy
 {
     [Header("Enemy 총알 관련")]
     [Space(10f)]
-    [SerializeField]GameObject Bullet_Prefab;
+    [SerializeField] GameObject Bullet_Prefab;
     [Tooltip("미리 만들어둘 총알 갯수")]
-    [SerializeField]int bullet_count;
+    [SerializeField] int bullet_count;
     GameObject[] Bullet_Soft;
-    [SerializeField]float bullet_speed = 1.0f;
+    [SerializeField] float bullet_speed = 1.0f;
 
     [Header("발사할 위치")]
     [Space(10f)]
@@ -20,11 +20,15 @@ public class em0000_2 : Enemy
     int count = 0;
     float timer = 0f;
 
-
     void Start()
     {
         Bullet_Soft = new GameObject[bullet_count];
-        //Cannon_pos = transform.Find("bone-1/bone4094/bone000/bone001/em0000_wp/bone-1/bone000/bone3841");
+
+        if (Cannon_pos == null)
+        {
+            Debug.Log("Cannon_pos 할당 안되어있다. ");
+            Cannon_pos = transform.Find("bone-1/bone4094/bone000/bone001/em0000_wp/bone-1/bone000/bone3841");
+        }
 
         Initialized_Bullet();
 
@@ -40,10 +44,8 @@ public class em0000_2 : Enemy
     IEnumerator CheckState()
     {
 
-        while (!isdead)
+        while (!enemyHp.isdead)
         {
-
-
             TargetLookat();
 
             BulletAttack();
@@ -77,7 +79,7 @@ public class em0000_2 : Enemy
             }
             count++;
             timer = 0f;
-        }      
+        }
     }
 
 

@@ -18,20 +18,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy 상태")]
     [SerializeField] protected State state;
 
-    [Header("Enemy 체력 관련")]
-    [Space(10f)]
-    [SerializeField] private Slider Hpslider;
-    [SerializeField] private float MaxHP;
-    [SerializeField] private float CurrentHP;
-    [Tooltip("이정도 이상의 데미지면 아파함")]
-    [SerializeField] private float MinDamage;
-
-
-    [Header("사망시 효과")]
-    [Space(10f)]
-    [SerializeField] GameObject explosion_effect;
-
-    [Header("패턴의 갯수")]
+    [Header("공격 패턴의 수")]
     [Space(10f)]
     [SerializeField] protected int pattonNum = 4;
 
@@ -46,74 +33,43 @@ public class Enemy : MonoBehaviour
     [Space(10f)]
     [SerializeField] float rotationSpeed = 10f;
 
-    //체력 프로퍼티
-    public float maxHp => MaxHP;
-    public float currentHp
-    {
-        get { return CurrentHP; }
-        set
-        {
-            CurrentHP = value;
 
-            if (CurrentHP <= 0f)
-            {
-                StartCoroutine(Die());
-            }
-        }
-    }
-
-    private int HitNum;
-    public int hitNum
-    {
-        get { return HitNum; }
-        set
-        {
-            HitNum = value;
-
-            if (value >= 4)
-            {
-                HitNum = 1;
-            }
-        }
-    }
+    //체력 정보 받아오기
+    protected EnemyHp enemyHp;
 
     //타겟과의 거리
     protected float distance;
-    protected bool isdead = false;
-
-    //타겟
-    [SerializeField] protected Transform target;
 
     //공격용 콜라이더
     BoxCollider[] boxCollider;
 
-    //피격용 콜라이더
-    CapsuleCollider capsuleCollider;
 
     //애니메이터
-    protected Animator anim;
-    protected AnimatorClipInfo[] animatorinfo;
+    [HideInInspector] public Animator anim;
+    //AnimatorClipInfo[] animatorinfo;
 
     //타겟 위치
+    [HideInInspector] public Transform target;
+
+    //타겟 위치를 저장하는 변수
     Vector3 targetPosition;
 
 
     private void Awake()
     {
         boxCollider = GetComponentsInChildren<BoxCollider>();
-        capsuleCollider = GetComponentInChildren<CapsuleCollider>();
 
+        TryGetComponent(out enemyHp);
         TryGetComponent(out anim);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected virtual void OnEnable()
     {
-        currentHp = maxHp;
         state = State.IDLE;
     }
 
-
+    //타겟 바라보기
     public void TargetLookat()
     {
         targetPosition = target.position;
@@ -136,7 +92,8 @@ public class Enemy : MonoBehaviour
 
     }
 
-    protected virtual IEnumerator UpdateIdle()
+    //정지
+    protected virtual IEnumerator OnIdle()
     {
         if (state != State.IDLE)
         {
@@ -170,14 +127,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void UpdateWalk()
+    //걷기
+    protected virtual void Onwalk()
     {
         anim.SetBool("Run", true);
 
         state = State.IDLE;
     }
 
-    protected virtual IEnumerator UpdateDash()
+    //대쉬
+    protected virtual IEnumerator OnDash()
     {
         if (state != State.DASH)
         {
@@ -194,7 +153,8 @@ public class Enemy : MonoBehaviour
 
     }
 
-    protected virtual IEnumerator UpdateAttack(int PattonNum)
+    //공격
+    protected virtual IEnumerator OnAttack(int PattonNum)
     {
         if (state != State.ATTACK)
         {
@@ -226,40 +186,23 @@ public class Enemy : MonoBehaviour
         state = State.IDLE;
     }
 
-
-    //데미지를 받을 때
-    public void TakeDamage(int Damage)
-    {
-
-        //앞 뒤에 있는지 확인
-        Vector3 targetDirection = target.transform.position - transform.position;
-        Vector3 forwardDirection = transform.forward;
-        bool isTargetInFront = Vector3.Dot(targetDirection, forwardDirection) > 0;
-        anim.SetBool("FrontPlayer", isTargetInFront);
-
-        currentHp -= Damage;
-
-        //이 데미지 이상이면 충격받아요~
-        if (Damage >= MinDamage)
-        {        
-            hitNum++;
-            anim.SetFloat("HitNum", hitNum);
-            anim.SetTrigger("Hit");
-        }
-
-    }
-
     //사망
-    IEnumerator Die()
+    public virtual IEnumerator Die()
     {
-        isdead = true;
         anim.SetTrigger("DieTrigger");
         anim.SetBool("Die", true);
-        capsuleCollider.enabled = false;
 
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-        explosion_effect.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        if (enemyHp.capsuleCollider != null)
+        {
+            enemyHp.capsuleCollider.enabled = false;
+        }
+
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f);
+        enemyHp.isdead_effect.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        enemyHp.isdead = false;
+        enemyHp.isdead_effect.SetActive(false);
         gameObject.SetActive(false);
     }
 }
