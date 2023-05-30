@@ -4425,7 +4425,6 @@ MonoBehaviour:
   dashSpeed: 1.8
   speedChangeRate: 10
   fireDelay: 0.1
-  damage: 5
   h: 0
   v: 0
   lastKeyPressed: 0
