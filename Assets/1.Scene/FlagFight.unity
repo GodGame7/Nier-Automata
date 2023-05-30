@@ -31059,6 +31059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 650553632}
   - component: {fileID: 650553633}
+  - component: {fileID: 650553634}
   m_Layer: 0
   m_Name: Fog2.5
   m_TagString: Untagged
@@ -31097,9 +31098,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
   ZScale: 5
   RepositionRatio: 2.5
+  scrollingSpeed: 10
+--- !u!114 &650553634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650553631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c1185e50fbe84c9ff850d3c031fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightSubTitleManager: {fileID: 0}
 --- !u!1 &651439369
 GameObject:
   m_ObjectHideFlags: 0
@@ -31110,6 +31124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 651439370}
   - component: {fileID: 651439371}
+  - component: {fileID: 651439372}
   m_Layer: 0
   m_Name: Fog3
   m_TagString: Untagged
@@ -31148,9 +31163,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
   ZScale: 5
   RepositionRatio: 2.5
+  scrollingSpeed: 10
+--- !u!114 &651439372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651439369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c1185e50fbe84c9ff850d3c031fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightSubTitleManager: {fileID: 0}
 --- !u!1001 &662030927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51944,6 +51972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977232644}
   - component: {fileID: 977232645}
+  - component: {fileID: 977232646}
   m_Layer: 0
   m_Name: Fog1
   m_TagString: Untagged
@@ -51982,9 +52011,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
   ZScale: 5
   RepositionRatio: 2.5
+  scrollingSpeed: 10
+--- !u!114 &977232646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977232643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c1185e50fbe84c9ff850d3c031fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightSubTitleManager: {fileID: 0}
 --- !u!1 &1037132836
 GameObject:
   m_ObjectHideFlags: 0
@@ -57023,6 +57065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207488557}
   - component: {fileID: 1207488558}
+  - component: {fileID: 1207488559}
   m_Layer: 0
   m_Name: Fog2
   m_TagString: Untagged
@@ -57061,9 +57104,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
   ZScale: 5
   RepositionRatio: 2.5
+  scrollingSpeed: 10
+--- !u!114 &1207488559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207488556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c1185e50fbe84c9ff850d3c031fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightSubTitleManager: {fileID: 0}
 --- !u!1001 &1226769223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77232,6 +77288,12 @@ MonoBehaviour:
   phase7_06:
     m_PersistentCalls:
       m_Calls: []
+  phase7_07:
+    m_PersistentCalls:
+      m_Calls: []
+  phase7_08:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1429293153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87187,6 +87249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546892638}
   - component: {fileID: 1546892639}
+  - component: {fileID: 1546892640}
   m_Layer: 0
   m_Name: Fog1.5
   m_TagString: Untagged
@@ -87225,9 +87288,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
   ZScale: 5
   RepositionRatio: 2.5
+  scrollingSpeed: 10
+--- !u!114 &1546892640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546892637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c1185e50fbe84c9ff850d3c031fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagFightSubTitleManager: {fileID: 0}
 --- !u!1001 &1568723930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122500,6 +122576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419331944740572322}
   - component: {fileID: 1419331944740572324}
+  - component: {fileID: 1419331944740572325}
   m_Layer: 0
   m_Name: Sea1
   m_TagString: Untagged
@@ -122519,9 +122596,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
-  ZScale: 50
+  ZScale: 48
   RepositionRatio: 1.7
+  scrollingSpeed: 10
+--- !u!114 &1419331944740572325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419331944740572323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1f2eb1d80b9e8409c1ae4e070d1235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!218 &1419331944855704514
 Terrain:
   m_ObjectHideFlags: 0
@@ -122682,7 +122771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419331945248920547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: 48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 530942512490939684}
@@ -122700,6 +122789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419331945248920546}
   - component: {fileID: 1419331945248920548}
+  - component: {fileID: 1419331945248920549}
   m_Layer: 0
   m_Name: Sea2
   m_TagString: Untagged
@@ -122719,9 +122809,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
-  ZScale: 50
+  ZScale: 48
   RepositionRatio: 1.7
+  scrollingSpeed: 10
+--- !u!114 &1419331945248920549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419331945248920547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1f2eb1d80b9e8409c1ae4e070d1235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1419331945512630842
 GameObject:
   m_ObjectHideFlags: 0
@@ -122732,6 +122834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419331945512630843}
   - component: {fileID: 1419331945512630844}
+  - component: {fileID: 1419331945512630845}
   m_Layer: 0
   m_Name: Sea3
   m_TagString: Untagged
@@ -122747,7 +122850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419331945512630842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 530942512226168061}
@@ -122767,9 +122870,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162e4305e0ca9774195b290481cdd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 10
-  ZScale: 50
+  ZScale: 48
   RepositionRatio: 1.7
+  scrollingSpeed: 10
+--- !u!114 &1419331945512630845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419331945512630842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1f2eb1d80b9e8409c1ae4e070d1235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!154 &1419331945656285722
 TerrainCollider:
   m_ObjectHideFlags: 0
