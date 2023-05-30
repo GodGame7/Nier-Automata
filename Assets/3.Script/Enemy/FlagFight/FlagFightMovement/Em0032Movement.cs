@@ -12,7 +12,7 @@ public class Em0032Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
-    [SerializeField] float bulletSpeed = 1.0f;
+    [SerializeField] float bulletSpeed = 0.3f;
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
