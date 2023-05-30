@@ -38,7 +38,6 @@ public class GundamTopViewMove : IFlagViewStrategy
         return move;
     }
 
-    float _rotationVelocity;
     private void Rotate(FlagControl player, Vector3 move)
     {
         Vector3 inputDirection = new Vector3(move.x, 0.0f, move.z).normalized;
@@ -49,7 +48,6 @@ public class GundamTopViewMove : IFlagViewStrategy
             {
                 targetRotation = -180f;
             }
-            //float rotation = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, 0.12f);
             player.transform.rotation = Quaternion.Euler(player.transform.eulerAngles.x, 0.0f, targetRotation);
         }
     }
