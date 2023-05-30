@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ObjectScrolling : MonoBehaviour
 {
-    [SerializeField] float scrollingSpeed;
     [SerializeField] float ZScale;
     [SerializeField] float RepositionRatio;
+
+    public float scrollingSpeed;
 
     Vector3 offsetPosition;
     float repotision;

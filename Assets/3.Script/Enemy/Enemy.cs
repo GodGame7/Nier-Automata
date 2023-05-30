@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Transform target;
 
     //타겟 위치를 저장하는 변수
-    Vector3 targetPosition;
+    protected Vector3 targetPosition;
 
 
     private void Awake()

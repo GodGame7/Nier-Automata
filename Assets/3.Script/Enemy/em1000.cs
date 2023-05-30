@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class em1000 : Enemy
 {
+    enum Dir
+    {
+        Left,
+        Center,
+        Right
+    }
 
     [Header("톱 관련")]
     [Space(10f)]
@@ -15,50 +21,203 @@ public class em1000 : Enemy
     [SerializeField] float speed_down_time = 5f;
     [SerializeField] bool isattack = false;
 
-
+    private float target_x;
     private float currentSawRotateSpeed;
+
+    bool allattack;
+    bool allattack2;
+
+    Dir dir;
 
     void Start()
     {
-        currentSawRotateSpeed = maxsawrotateSpeed;
-
         if (saw == null)
         {
             Debug.Log("saw 할당 안되어있다. ");
             saw = GameObject.Find("bone-1/bone000/bone001/bone002/bone003/bone004/bone005/bone007/bone008/bone009");
         }
+
+
+        currentSawRotateSpeed = maxsawrotateSpeed;
+
+        anim.SetTrigger("Intro");
+        StartCoroutine(Attack());
+
     }
 
-    void Update()
-    {
-
-    }
     private void FixedUpdate()
+    {
+        //톱날 회전
+        Saw();
+
+        TargetCheck();
+
+    }
+
+    IEnumerator Attack()
+    {
+        Debug.Log("코루틴 들ㄹ어옴");
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
+        yield return null;
+
+
+        Debug.Log("시작");
+
+        while (true)
+        {
+
+            switch (dir)
+            {
+                case Dir.Left:
+                    anim.SetBool("Left", true);
+                    anim.SetBool("Center", false);
+                    anim.SetBool("Right", false);
+                    break;
+
+                case Dir.Center:
+                    anim.SetBool("Left", false);
+                    anim.SetBool("Center", true);
+                    anim.SetBool("Right", false);
+                    break;
+
+                case Dir.Right:
+                    anim.SetBool("Left", false);
+                    anim.SetBool("Center", false);
+                    anim.SetBool("Right", true);
+                    break;
+            }
+
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+            anim.SetFloat("Random", Random.Range(0, 2));
+            isattack = false;
+            Debug.Log("normaliziedTimer 완료");
+            yield return null;
+
+            //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"));
+            isattack = true;
+            yield return null;
+            Debug.Log("AttackAllgo라는데 ?");
+        }
+    }
+
+    IEnumerator While()
+    {
+        while (true)
+        {
+
+            if (!allattack)
+            {
+                Debug.Log("1번 코루틴 가자");
+                StartCoroutine(Attack1());
+                yield return null;
+            }
+
+
+            if (!allattack)
+            {
+                Debug.Log("2번 코루틴 가자");
+                StartCoroutine(Attack2());
+                yield return null;
+            }
+
+            Debug.Log("반복");
+            yield return null;
+        }
+    }
+
+    IEnumerator Attack1()
+    {
+        Debug.Log("1번 코루틴 왔어 ?");
+
+        //isattack = true;
+
+        allattack = true;
+
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+
+
+        Debug.Log("나갔니?");
+
+        //isattack = false;
+
+        allattack = false;
+
+    }
+
+    IEnumerator Attack2()
+    {
+        Debug.Log("2번 코루틴 ㅇ왔어?");
+        anim.SetFloat("Random", Random.Range(0, 2));
+
+        switch (dir)
+        {
+            case Dir.Left:
+                anim.SetBool("Left", true);
+                anim.SetBool("Center", false);
+                anim.SetBool("Right", false);
+                break;
+
+            case Dir.Center:
+                anim.SetBool("Left", false);
+                anim.SetBool("Center", true);
+                anim.SetBool("Right", false);
+                break;
+
+            case Dir.Right:
+                anim.SetBool("Left", false);
+                anim.SetBool("Center", false);
+                anim.SetBool("Right", true);
+                break;
+        }
+        //isattack = true;
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
+
+    }
+
+
+
+    //좌우 판단
+    void TargetCheck()
+    {
+        target_x = target.position.x;
+
+        if (target_x > 80f)
+        {
+            dir = Dir.Left;
+        }
+        else if (target_x <= 80f && target_x > 53f)
+        {
+            dir = Dir.Center;
+        }
+        else if (target_x <= 53f)
+        {
+            dir = Dir.Right;
+        }
+
+    }
+
+    //톱날 공격
+    void Saw()
     {
         if (!enemyHp.isdead)
         {
+            //톱날 회전
             saw.transform.Rotate(-currentSawRotateSpeed * Time.deltaTime, 0, 0);
-            SawAttack();
+
+            //최고속도이고, 공격이 실행되면, 톱 회전속도가 천천히 느려지게
+            if (currentSawRotateSpeed == maxsawrotateSpeed && isattack)
+            {
+                StartCoroutine(DecreaseRotationSpeed());
+            }
+            else if (!isattack)
+            {
+                currentSawRotateSpeed = maxsawrotateSpeed;
+            }
         }
     }
 
-
-    //공격
-    void SawAttack()
-    {
-        if (currentSawRotateSpeed == maxsawrotateSpeed && isattack)
-
-        {
-            StartCoroutine(DecreaseRotationSpeed());
-        }
-        else if (!isattack)
-        {
-            currentSawRotateSpeed = maxsawrotateSpeed;
-        }
-    }
-
-
-    //회전 떨구기
+    //톱 회전속도 느리게하기
     IEnumerator DecreaseRotationSpeed()
     {
         float Timer = 0f;
@@ -90,6 +249,8 @@ public class em1000 : Enemy
         enemyHp.isdead_effect.SetActive(true);
 
         yield return new WaitForSeconds(3f);
+        enabled = false;
+        //StopCoroutine(Attack());
         //enemyHp.isdead = false;
     }
 }
