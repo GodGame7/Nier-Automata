@@ -17,13 +17,6 @@ public class FlagControl : MonoBehaviour
     [Tooltip("원거리 공격 연사 딜레이")]
     [SerializeField]
     private float fireDelay = 0.1f;
-    [Tooltip("플레이어 공격력")]
-    [SerializeField]
-    private float damage = 5.0f;
-    private float weakDamage = 2.0f;
-    private float strong1Damage = 3.0f;
-    private float strong2Damage = 3.1f;
-
 
     // 플레이어
     // 움직임 자연스럽게 이어지도록 하기 위한 변수
@@ -41,7 +34,6 @@ public class FlagControl : MonoBehaviour
     private KeyCode[]  keysToCheck= { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
     private float lastKeyPressTime = 0f;
     private float timeAllowedBetweenKeyPresses = 0.5f;
-    private bool isDashWaiting = false;
 
     // 공격
     public bool isCombo = false;
@@ -55,7 +47,6 @@ public class FlagControl : MonoBehaviour
     private FlagAttack attackState;
     private FlagDash dashState;
     private FlagTransformation transfomationState;
-    private bool isAttackCombo = false;
     public int invincibleLayer;
     public int defaultLayer;
 
@@ -75,7 +66,6 @@ public class FlagControl : MonoBehaviour
     // 컴포넌트
     private Animator anim;
     private CharacterController controller;
-    private GameObject mainCamera;
     private Rigidbody rigid;
     public FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
@@ -120,11 +110,6 @@ public class FlagControl : MonoBehaviour
     #region 초기화
     private void Awake()
     {
-        if (mainCamera == null)
-        {
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
-
         Init();
         GetAnimHash();
 
@@ -208,17 +193,14 @@ public class FlagControl : MonoBehaviour
 
     public void SetTopViewStrategy()
     {
-
         currentViewStrategy = new FlagTopViewMove();
     }
     public void SetBackViewStrategy()
     {
-
         currentViewStrategy = new FlagBackViewMove();
     }
     public void SetSideViewStrategy()
     {
-
         currentViewStrategy = new FlagSideViewMove();
     }
     public void SetViewStrategy(IFlagViewStrategy strategy)
@@ -392,23 +374,23 @@ public class FlagControl : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
-    public void SetCenterZ(float center)
-    {
-        centerZ += center;
-    }
-    public IEnumerator MoveTo(float destPosZ, float speed)
-    {
-        canMove = false;
-        Vector3 destPos = new Vector3(0, 0.02f, destPosZ);
-        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
-        {
-            transform.position += speed * Time.deltaTime * Vector3.forward;
-            yield return null;
-        }
-        SetCenterZ(destPosZ);
-        transform.position = destPos;
-        canMove = true;
-    }
+    //public void SetCenterZ(float center)
+    //{
+    //    centerZ += center;
+    //}
+    //public IEnumerator MoveTo(float destPosZ, float speed)
+    //{
+    //    canMove = false;
+    //    Vector3 destPos = new Vector3(0, 0.02f, destPosZ);
+    //    while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
+    //    {
+    //        transform.position += speed * Time.deltaTime * Vector3.forward;
+    //        yield return null;
+    //    }
+    //    SetCenterZ(destPosZ);
+    //    transform.position = destPos;
+    //    canMove = true;
+    //}
     #endregion
 
     private void Attack()
