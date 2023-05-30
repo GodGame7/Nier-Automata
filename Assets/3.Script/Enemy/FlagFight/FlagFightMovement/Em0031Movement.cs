@@ -16,6 +16,7 @@ public class Em0031Movement : MonoBehaviour
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
+    [SerializeField] float speed;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class Em0031Movement : MonoBehaviour
 
     public IEnumerator Move_co()
     {
+        speed = firstMoveSpeed;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
             if (!flagEmInformation.isDie)
@@ -44,7 +46,7 @@ public class Em0031Movement : MonoBehaviour
                     transform.position = Vector3.zero;
                     flagEmInformation.Disappear();
                 }
-                transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
             }
             yield return null;
         }

@@ -12,7 +12,7 @@ public class Em0030Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
-    [SerializeField] float bulletSpeed = 1.0f;
+    [SerializeField] float bulletSpeed = 0.3f;
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
@@ -21,14 +21,15 @@ public class Em0030Movement : MonoBehaviour
     [SerializeField] public Vector3 desPos;
     [SerializeField] public Vector3 lastDesPos;
     [SerializeField] public bool isCanLook;
+    [SerializeField] public bool isReady = false;
 
     [Space(0.5f)]
     [Header("확인용")]
-    [SerializeField] bool isReady = false;
     [SerializeField] float fireTimer;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
+    [SerializeField] float speed;
 
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
@@ -44,6 +45,11 @@ public class Em0030Movement : MonoBehaviour
         {
             Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
         }
+    }
+
+    private void OnEnable()
+    {
+        fireTimer = 0.0f;
     }
 
     private void Update()
@@ -72,16 +78,18 @@ public class Em0030Movement : MonoBehaviour
 
     public IEnumerator Move_co()
     {
+        speed = firstMoveSpeed;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)    
         {
             if (!flagEmInformation.isDie)
             {
-                transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
             }
             yield return null;
         }
         transform.position = desPos;
         desPos = lastDesPos;
+        speed = lastMoveSpeed;
         isReady = true;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
@@ -94,7 +102,7 @@ public class Em0030Movement : MonoBehaviour
                     transform.position = Vector3.zero;
                     flagEmInformation.Disappear();
                 }
-                transform.position = Vector3.MoveTowards(transform.position, desPos, lastMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
             }
             yield return null;
         }

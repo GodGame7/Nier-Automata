@@ -31,6 +31,8 @@ public class FlagControl : MonoBehaviour
     private float currentSpeedX = 0;
     public float h;
     public float v;
+    private float centerZ = 0f;
+    private bool canMove = true;
     //private float targetRotation = 0.0f;
     //private PlayerData player;
 
@@ -157,14 +159,14 @@ public class FlagControl : MonoBehaviour
         SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
 
-        SetModeStrategy(new ModeGundam());
+        //SetModeStrategy(new ModeGundam());
         //SetModeStrategy(new ModeFlag());
     }
     private void OnApplicationFocus(bool hasFocus)
     {
         //Cursor.lockState = CursorLockMode.Locked;
         // todo 버튼 눌러야돼서 나중에 바꿀것
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
     }
     private void Init()
     {
@@ -253,7 +255,7 @@ public class FlagControl : MonoBehaviour
 
     private void Update()
     {
-        if (!currentState.Equals(transfomationState))
+        if (!currentState.Equals(transfomationState) && canMove)
         {
             InputMoveKey();
             if (currentState.Equals(nomalState))
@@ -266,7 +268,7 @@ public class FlagControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!currentState.Equals(transfomationState))
+        if (!currentState.Equals(transfomationState) && canMove)
         {
             if (currentModeStrategy is ModeGundam)
             {
@@ -341,7 +343,7 @@ public class FlagControl : MonoBehaviour
         {
             targetSpeed *= dashSpeed;
         }
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + moveSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + moveSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ -0.15f, centerZ + 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
@@ -372,6 +374,24 @@ public class FlagControl : MonoBehaviour
         yield return null;
         yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("FlagDash"));
         transform.localScale = Vector3.one;
+    }
+
+    public void SetCenterZ(float center)
+    {
+        centerZ += center;
+    }
+    public IEnumerator MoveTo(float destPosZ, float speed)
+    {
+        canMove = false;
+        Vector3 destPos = new Vector3(0, 0.02f, destPosZ);
+        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
+        {
+            transform.position += speed * Time.deltaTime * Vector3.forward;
+            yield return null;
+        }
+        SetCenterZ(destPosZ);
+        transform.position = destPos;
+        canMove = true;
     }
     #endregion
 

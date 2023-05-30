@@ -5,7 +5,6 @@ using UnityEngine;
 public class Em0032Movement : MonoBehaviour
 {
     [Header("적 0032 정보")]
-    [SerializeField] float maxHp = 50f;
     [SerializeField] float rotateSpeed = 60.0f;
     [SerializeField] float fireDelay = 1.0f;
 
@@ -13,7 +12,7 @@ public class Em0032Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
-    [SerializeField] float bulletSpeed = 1.0f;
+    [SerializeField] float bulletSpeed = 0.3f;
 
     [Space(0.5f)]
     [Header("Enemy Spawner에서 정해주어야 할 것")]
@@ -23,14 +22,15 @@ public class Em0032Movement : MonoBehaviour
     [SerializeField] public float firstMoveSpeed = 2.0f;
     [SerializeField] public float lastMoveSpeed = 30.0f;
     [SerializeField] public bool isCanLook;
+    [SerializeField] public bool isReady = false;
 
     [Space(0.5f)]
     [Header("확인용")]
-    [SerializeField] bool isReady = false;
     [SerializeField] float fireTimer;
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
+    [SerializeField] float speed; 
 
     /*start는 확인용이니, 에너미 스폰 생성시 삭제할것.*/
     private void Start()
@@ -46,6 +46,11 @@ public class Em0032Movement : MonoBehaviour
         {
             Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
         }
+    }
+
+    private void OnEnable()
+    {
+        fireTimer = 0.0f;
     }
 
     private void Update()
@@ -74,15 +79,17 @@ public class Em0032Movement : MonoBehaviour
 
     public IEnumerator Move_co()
     {
+        speed = firstMoveSpeed;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
             if (!flagEmInformation.isDie)
             {
-                transform.position = Vector3.MoveTowards(transform.position, desPos, firstMoveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
             }
             yield return null;
         }
         transform.position = desPos;
+        speed = lastMoveSpeed;
         isReady = true;
         while (!flagEmInformation.isDie)
         {
@@ -93,7 +100,7 @@ public class Em0032Movement : MonoBehaviour
                 transform.position = Vector3.zero;
                 flagEmInformation.Disappear();
             }
-            transform.RotateAround(RotatePoint, RotateAxis, lastMoveSpeed * Time.deltaTime);
+            transform.RotateAround(RotatePoint, RotateAxis, speed * Time.deltaTime);
             yield return null;
         }
     }
