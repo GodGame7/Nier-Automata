@@ -9,6 +9,7 @@ public class FlagEmInformation : MonoBehaviour
     [SerializeField] float maxHp = 50f;
 
     [Header("Enemy 폭발")]
+    [SerializeField] GameObject em;
     [SerializeField] GameObject explosion;
 
     // 확인용
@@ -22,6 +23,7 @@ public class FlagEmInformation : MonoBehaviour
 
     private void Start()
     {
+        em.SetActive(true);
         collider = GetComponent<Collider>();
         collider.enabled = true;
         flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
@@ -61,6 +63,7 @@ public class FlagEmInformation : MonoBehaviour
     {
         flagFightSpawner.RemainEnemies--;
         isDie = true;
+        transform.position = Vector3.zero;
         gameObject.SetActive(false);
     }
 
@@ -68,6 +71,7 @@ public class FlagEmInformation : MonoBehaviour
     {
         flagFightSpawner.RemainEnemies--;
         isDie = true;
+        em.SetActive(false);
         explosion.SetActive(true);
         collider.enabled = false;
         StartCoroutine(Co_Dying());
@@ -75,24 +79,7 @@ public class FlagEmInformation : MonoBehaviour
 
     IEnumerator Co_Dying()
     {
-        CanvasGroup canvasGroup = gameObject.GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-
-        float counter = 0f;
-        float startAlpha = canvasGroup.alpha;
-        float targetAlpha = 0f;
-
-        while (counter < 1.00f)
-        {
-            counter += Time.deltaTime;
-            float t = Mathf.Clamp01(counter / 1.00f);
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(1.0f);
         // 완전히 사라진 후 비활성화
         gameObject.SetActive(false);
     }

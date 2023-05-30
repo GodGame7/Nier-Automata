@@ -488,11 +488,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstMoveSpeed: 0.02
-  firstDesPos: {x: 0.28, y: 0, z: 0.1}
   desPos: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 0}
   playerTransform: {fileID: 0}
   flagEmInformation: {fileID: 1759621277}
+  speed: 0
 --- !u!114 &1759621277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,10 +506,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 50
+  em: {fileID: 3184351994001394659}
   explosion: {fileID: 6146039442423053175}
   isDie: 0
   currentHP: 0
   fightManager: {fileID: 0}
+  flagFightSpawner: {fileID: 0}
 --- !u!65 &4281882476359186296
 BoxCollider:
   m_ObjectHideFlags: 0

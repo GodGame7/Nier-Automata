@@ -41,7 +41,17 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     public UnityEvent phase4_01; // em0040 4기 활성화
 
+    public UnityEvent phase5_01; // BackGround01 서서히 활성화
+    public UnityEvent phase5_02; // 사령부 UI 활성화, em0030 8기 등장
+    public UnityEvent phase5_03; // 카메라 시점 변경, 플레이어 모드 변경
+    public UnityEvent phase5_04; // BackGround01 서서히 비활성화, 사격방향 UI 활성화(3초)
+
+    public UnityEvent phase6_01; // em0032 18기 등장, em0031 3기 등장
+
+
+
     #endregion
+
     // WaitForSeconds 모음
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
     private WaitForSeconds wait_1_Second = new WaitForSeconds(1.0f);
@@ -89,9 +99,15 @@ public class FlagFightSubTitleManager : MonoBehaviour
         #endregion
 
         #region phase03 1개
-        "⋯⋯1D 로스트, 규정에 따라 본 기체 2B가 대장 임무를 계승"
+        "⋯⋯1D 로스트, 규정에 따라 본 기체 2B가 대장 임무를 계승",
 
         #endregion#
+
+        #region phase05 2개
+        "주위에 적기 다수 확인, 기동 형태로 허가를 신청",
+        "기동 형태로 이행을 허가합니다."
+
+        #endregion
     };
 
     private void Awake()
@@ -104,6 +120,9 @@ public class FlagFightSubTitleManager : MonoBehaviour
         flagFightSpawner.phase1_15_EMDie.AddListener(Phase02);
         flagFightSpawner.phase2_01_EMDie.AddListener(Phase03);
         flagFightSpawner.phase3_04_EMDie.AddListener(Phase04);
+        flagFightSpawner.phase4_01_EMDie.AddListener(Phase05);
+        flagFightSpawner.Phase5_02_EMDie.AddListener(Phase06);
+
         #endregion
     }
 
@@ -309,13 +328,6 @@ public class FlagFightSubTitleManager : MonoBehaviour
         phase3_04.Invoke();
     }
 
-    private void Next_SubText()
-    {
-        subTitleCounter++;
-        text_Subtitle.text = flagSubTitles[subTitleCounter];
-        text_Subtitle.gameObject.SetActive(true);
-    }
-
     private void Phase04()
     {
         StartCoroutine(Phase04_Co());
@@ -328,4 +340,46 @@ public class FlagFightSubTitleManager : MonoBehaviour
         
     }
 
+    private void Phase05()
+    {
+        StartCoroutine(Phase05_Co());
+    }
+
+    IEnumerator Phase05_Co()
+    {
+        phase5_01.Invoke();
+
+        yield return wait_2_Second;
+        phase5_02.Invoke();
+
+        yield return wait_3_Second;
+        Next_SubText();
+
+        yield return wait_4_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase5_03.Invoke();
+
+        yield return wait_6_Second;
+        phase5_04.Invoke();
+
+
+    }
+
+    private void Phase06()
+    {
+        phase6_01.Invoke();
+    }
+
+    private void Next_SubText()
+    {
+        subTitleCounter++;
+        text_Subtitle.text = flagSubTitles[subTitleCounter];
+        text_Subtitle.gameObject.SetActive(true);
+    }
 }

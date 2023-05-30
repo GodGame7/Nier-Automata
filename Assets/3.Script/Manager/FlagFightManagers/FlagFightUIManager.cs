@@ -20,28 +20,33 @@ public class FlagFightUIManager : MonoBehaviour
 
     private void Awake()
     {
+        #region 이벤트 등록
         flagFightSubTitleManager.phase1_01.AddListener(phase1_01);
         flagFightSubTitleManager.phase1_09.AddListener(phase1_09);
         flagFightSubTitleManager.phase1_12.AddListener(phase1_12);
         flagFightSubTitleManager.phase1_15.AddListener(phase1_15);
         flagFightSubTitleManager.phase3_02.AddListener(phase3_02);
         flagFightSubTitleManager.phase3_03.AddListener(phase3_03);
+        flagFightSubTitleManager.phase5_01.AddListener(phase5_01);
+        flagFightSubTitleManager.phase5_04.AddListener(phase5_04);
+
+        #endregion
     }
 
 
     private void phase1_01()
     {
-        StartCoroutine(FadeOut(background02, 3.0f));
+        StartCoroutine(FadeOut(background02, 2.0f));
     }
 
     private void phase1_09()
     {
-        StartCoroutine(FadeOut(background01, 3.0f));
+        StartCoroutine(FadeOut(background01, 2.0f));
     }
 
     private void phase1_12()
     {
-        StartCoroutine(FadeIn(background01, 3.0f));
+        StartCoroutine(FadeIn(background01, 2.0f));
     }
 
     private void phase1_15()
@@ -57,6 +62,16 @@ public class FlagFightUIManager : MonoBehaviour
     private void phase3_03()
     {
         StartCoroutine(FadeOut(background01, 2.0f));
+    }
+
+    private void phase5_01()
+    {
+        StartCoroutine(FadeIn(background01, 2.0f));
+    }
+
+    private void phase5_04()
+    {
+       StartCoroutine(FadeOut(background01, 2.0f));
     }
 
     private IEnumerator FadeOut(GameObject obj, float duration)

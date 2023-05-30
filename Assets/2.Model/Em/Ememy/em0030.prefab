@@ -47,22 +47,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641ceee4a31cb5c429a13fa747e09363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstMoveSpeed: 0.02
-  lastMoveSpeed: 0.05
   rotateSpeed: 60
   fireDelay: 3
   bulletHard: {fileID: 7216397595937012662, guid: 1672e0cffba280940af01124ca053a34, type: 3}
   bulletSoft: {fileID: 4940254569364709599, guid: e6b5f837fb8ee484fa2508031c42014e, type: 3}
   bulletSpeed: 0.2
-  firstDesPos: {x: -0.2, y: 0, z: 0.15}
+  firstMoveSpeed: 0.02
+  lastMoveSpeed: 0.05
+  desPos: {x: 0, y: 0, z: 0}
   lastDesPos: {x: 0.2, y: 0, z: 0.15}
   isCanLook: 1
   isReady: 0
   fireTimer: 0
-  desPos: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 0}
   playerTransform: {fileID: 0}
   flagEmInformation: {fileID: 768147204}
+  speed: 0
 --- !u!114 &768147204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,10 +76,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 50
+  em: {fileID: 399167897966775534}
   explosion: {fileID: 7873902180551125286}
   isDie: 0
   currentHP: 0
   fightManager: {fileID: 0}
+  flagFightSpawner: {fileID: 0}
 --- !u!65 &4612837436207483142
 BoxCollider:
   m_ObjectHideFlags: 0

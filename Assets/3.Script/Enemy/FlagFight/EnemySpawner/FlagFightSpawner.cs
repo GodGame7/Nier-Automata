@@ -21,7 +21,7 @@ public class FlagFightSpawner : MonoBehaviour
     private Vector3 emFirstDesPosition;
     private Vector3 emLastDesPosition;
     private Vector3 emRotatePoint;
-    private Vector3 RotateAxis;
+    private Vector3 emRotateAxis;
     private float emfirstMoveSpeed;
     private float emlastMoveSpeed;
     private bool isCanLook;
@@ -34,6 +34,8 @@ public class FlagFightSpawner : MonoBehaviour
     public UnityEvent phase2_01_EMDie; // phase3 시작
     public UnityEvent phase3_04_EMDie; // phase4 시작 
     public UnityEvent phase4_01_EMDie; // Phase5 시작
+    public UnityEvent Phase5_02_EMDie; // Phase6 시작
+    public UnityEvent Phase6_01_EMDie; // Phase7 시작
 
     #endregion
 
@@ -49,6 +51,8 @@ public class FlagFightSpawner : MonoBehaviour
         flagFightSubTitleManager.phase2_01.AddListener(Phase2_01);
         flagFightSubTitleManager.phase3_04.AddListener(Phase3_04);
         flagFightSubTitleManager.phase4_01.AddListener(Phase4_01);
+        flagFightSubTitleManager.phase5_02.AddListener(Phase5_02);
+        flagFightSubTitleManager.phase6_01.AddListener(Phase6_01);
 
         #endregion
     }
@@ -65,7 +69,18 @@ public class FlagFightSpawner : MonoBehaviour
         em0030Movement.desPos = emFirstDesPosition;
         em0030Movement.lastDesPos = emLastDesPosition;
         em0030Movement.isCanLook = isCanLook;
+        em0030Movement.isReady = false;
         StartCoroutine(em0030Movement.Move_co());
+    }
+
+    private void SpawnEm0031(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, int num)
+    {
+        em0031s[num].SetActive(true);
+        em0031s[num].transform.rotation = Quaternion.Euler(emRotation);
+        em0031s[num].transform.position = emPosition;
+        Em0031Movement em0031Movement = em0031s[num].GetComponent<Em0031Movement>();
+        em0031Movement.desPos = emFirstDesPosition;
+        StartCoroutine(em0031Movement.Move_co());
     }
 
     // Em0032 생성 메소드
@@ -81,6 +96,7 @@ public class FlagFightSpawner : MonoBehaviour
         em0032Movement.firstMoveSpeed = emfirstMoveSpeed;
         em0032Movement.lastMoveSpeed = emlastMoveSpeed;
         em0032Movement.isCanLook = isCanLook;
+        em0032Movement.isReady = false;
         StartCoroutine(em0032Movement.Move_co());
 
     }
@@ -91,8 +107,8 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 4;
         emRotation = Vector3.zero;
-        emfirstMoveSpeed = 0.03f;
-        emlastMoveSpeed = 0.02f;
+        emfirstMoveSpeed = 0.05f;
+        emlastMoveSpeed = 0.001f;
         isCanLook = true;
 
         emPosition = new Vector3(-0.20f, 0.00f, 0.30f);
@@ -133,8 +149,8 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 10;
         emRotation = Vector3.zero;
-        RotateAxis = Vector3.up;
-        emfirstMoveSpeed = 0.02f;
+        emRotateAxis = Vector3.up;
+        emfirstMoveSpeed = 0.05f;
         emlastMoveSpeed = 15.00f;
         isCanLook = true;
 
@@ -146,21 +162,20 @@ public class FlagFightSpawner : MonoBehaviour
         for (int i = 0; i < 10; i += 2)
         {
             emPosition = new Vector3(-0.30f, 0.00f, 0.30f);
-            emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.15f);
+            emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.20f);
             emRotatePoint = new Vector3(0.30f, 0.00f, 0.30f);
-            RotateAxis = Vector3.down;
-            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, RotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            emRotateAxis = Vector3.down;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
             yield return wait_half_Second;
 
             emPosition = new Vector3(0.30f, 0.00f, 0.30f);
-            emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.15f);
+            emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.20f);
             emRotatePoint = new Vector3(-0.30f, 0.00f, 0.30f);
-            RotateAxis = Vector3.up;
-            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, RotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i + 1);
+            emRotateAxis = Vector3.up;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i + 1);
             yield return wait_half_Second;
         }
         StartCoroutine(Co_CheckNumEm02_01());
-
     }
 
     IEnumerator Co_CheckNumEm02_01()
@@ -181,10 +196,9 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 6;
         emRotation = Vector3.zero;
-        emfirstMoveSpeed = 0.03f;
-        emlastMoveSpeed = 0.05f;
+        emfirstMoveSpeed = 0.10f;
+        emlastMoveSpeed = 0.10f;
         isCanLook = true;
-
 
         StartCoroutine(Co_Phase3_04());
     }
@@ -194,13 +208,13 @@ public class FlagFightSpawner : MonoBehaviour
         for (int i = 0; i < 6; i += 2)
         {
             emPosition = new Vector3(-0.30f, 0.00f, 0.25f);
-            emFirstDesPosition = new Vector3(-0.27f, 0.00f, 0.22f);
+            emFirstDesPosition = new Vector3(-0.29f, 0.00f, 0.24f);
             emLastDesPosition = new Vector3(0.40f, 0.00f, 0.00f);
             SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
             yield return wait_half_Second;
 
             emPosition = new Vector3(0.30f, 0.00f, 0.25f);
-            emFirstDesPosition = new Vector3(0.27f, 0.00f, 0.22f);
+            emFirstDesPosition = new Vector3(0.29f, 0.00f, 0.24f);
             emLastDesPosition = new Vector3(-0.40f, 0.00f, 0.00f);
             SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i+1);
             yield return wait_half_Second;
@@ -228,8 +242,8 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 4;
         emRotation = Vector3.zero;
-        emfirstMoveSpeed = 0.1f;
-        emlastMoveSpeed = 0.02f;
+        emfirstMoveSpeed = 0.4f;
+        emlastMoveSpeed = 0.001f;
         isCanLook = true;
 
         emPosition = new Vector3(-0.10f, 0.00f, -0.30f);
@@ -264,5 +278,135 @@ public class FlagFightSpawner : MonoBehaviour
         }
     }
 
+    // em0030 8기를 생성
+    public void Phase5_02()
+    {
+        RemainEnemies = 8;
+        emRotation = Vector3.zero;
+        emfirstMoveSpeed = 0.00350f;
+        emlastMoveSpeed = 0.0f;
+        isCanLook = true;
+
+        emPosition = new Vector3(0.15f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(0.075f, 0.00f, 0.15f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 0);
+
+        emPosition = new Vector3(0.30f, 0.00f, 0.15f);
+        emFirstDesPosition = new Vector3(0.15f, 0.00f, 0.075f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 1);
+
+        emPosition = new Vector3(0.30f, 0.00f, -0.15f);
+        emFirstDesPosition = new Vector3(0.15f, 0.00f, -0.075f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 2);
+
+        emPosition = new Vector3(0.15f, 0.00f, -0.30f);
+        emFirstDesPosition = new Vector3(0.075f, 0.00f, -0.15f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 3);
+
+        emPosition = new Vector3(-0.15f, 0.00f, -0.30f);
+        emFirstDesPosition = new Vector3(-0.075f, 0.00f, -0.15f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 4);
+
+        emPosition = new Vector3(-0.30f, 0.00f, -0.15f);
+        emFirstDesPosition = new Vector3(-0.15f, 0.00f, -0.075f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 5);
+
+        emPosition = new Vector3(-0.30f, 0.00f, 0.15f);
+        emFirstDesPosition = new Vector3(-0.15f, 0.00f, 0.075f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 6);
+
+        emPosition = new Vector3(-0.15f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(-0.075f, 0.00f, 0.15f);
+        SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 7);
+
+        StartCoroutine(Co_CheckNumEm05_02());
+    }
+
+    IEnumerator Co_CheckNumEm05_02()
+    {
+        while (true)
+        {
+            if (RemainEnemies <= 0)
+            {
+                Phase5_02_EMDie.Invoke();
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    // em0032 18기와 em0031 3기 생성
+    public void Phase6_01()
+    {
+        RemainEnemies = 21;
+        emRotation = Vector3.zero;
+        emfirstMoveSpeed = 0.05f;
+        emlastMoveSpeed = 10.00f;
+        isCanLook = true;
+
+        StartCoroutine(Co_Phase6_01());
+    }
+
+    IEnumerator Co_Phase6_01()
+    {
+        emPosition = new Vector3(-0.10f, 0.00f, -0.30f);
+        emFirstDesPosition = new Vector3(0.10f, 0.00f, -0.10f);
+        emRotateAxis = Vector3.up;
+
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_half_Second;
+        }
+
+        emPosition = new Vector3(0.10f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(-0.10f, 0.00f, 0.10f);
+        emRotateAxis = Vector3.up;
+
+        for(int i = 3; i < 6; i++)
+        {
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_half_Second;
+        }
+
+        for (int i = 6; i < 18; i += 2)
+        {
+            emPosition = new Vector3(-0.10f, 0.00f, 0.30f);
+            emFirstDesPosition = new Vector3(0.10f, 0.00f, 0.10f);
+            emRotateAxis = Vector3.down;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_half_Second;
+
+            emPosition = new Vector3(0.10f, 0.00f, 0.30f);
+            emFirstDesPosition = new Vector3(-0.10f, 0.00f, 0.10f);
+            emRotateAxis = Vector3.up;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i + 1);
+            yield return wait_half_Second;
+        }
+
+        emPosition = new Vector3(-0.30f, 0.00f, 0.15f);
+        emFirstDesPosition = new Vector3(0.40f, 0.00f, 0.15f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnEm0031(emRotation, emPosition, emFirstDesPosition, i);
+            yield return wait_half_Second;
+        }
+
+        StartCoroutine(Co_CheckNumEm06_01());
+    }
+
+    IEnumerator Co_CheckNumEm06_01()
+    {
+        while (true)
+        {
+            if (RemainEnemies <= 0)
+            {
+                Phase6_01_EMDie.Invoke();
+                break;
+            }
+            yield return null;
+        }
+    }
 
 }
