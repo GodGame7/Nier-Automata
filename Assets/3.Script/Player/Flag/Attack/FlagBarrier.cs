@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlagBarrier : MonoBehaviour
 {
-    private float meleeDamageMagnification = 1.5f;
+    private float meleeDamage = 1.5f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +12,7 @@ public class FlagBarrier : MonoBehaviour
         {
             if (other.TryGetComponent(out FlagEmInformation enemy))
             {
-                enemy.OnDamage(PlayerData.instance.atk * meleeDamageMagnification);
+                enemy.OnDamage(PlayerData.instance.atk * meleeDamage);
             }
         }
         if (other.CompareTag("BulletSoft") || other.CompareTag("BulletHard"))

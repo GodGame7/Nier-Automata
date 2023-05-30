@@ -5,7 +5,7 @@ using UnityEngine;
 public class GundamSword : MonoBehaviour
 {
     private float moveSpeed = 0.6f;
-    private float damage = 1.5f;
+    private float damage = 5f;
 
     private void FixedUpdate()
     {
