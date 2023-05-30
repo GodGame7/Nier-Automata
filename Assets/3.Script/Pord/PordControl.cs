@@ -39,7 +39,6 @@ public class PordControl : MonoBehaviour
     private void Update()
     {
         
-                Debug.Log(targetpos);
 
         if (transform.position.y >= (Player.transform.position + TopPosition).y && !isActive)
         {
@@ -72,7 +71,6 @@ public class PordControl : MonoBehaviour
             if (isLockOn)
             {
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move((targetpos-PordBullet.Bullet[bulletCount].transform.position).normalized);
-                Debug.Log(targetpos);
                 //PordBullet.Bullet[bulletCount].transform.LookAt(targetpos);
                 //PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(Vector3.forward);
                 
@@ -160,7 +158,6 @@ public class PordControl : MonoBehaviour
         PordLaser.transform.position = transform.position + MagicCirclePositon;
         if (isLockOn)
         {
-            Debug.Log(targetpos);
             PordLaser.transform.LookAt(targetpos);
             //if(PordLaser.TryGetComponent(out LineRenderer line))
             //{
@@ -185,7 +182,6 @@ public class PordControl : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(isMonster);
         if (other.CompareTag("Enemy"))
         {
             isMonster = true;
