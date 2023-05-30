@@ -70,6 +70,7 @@ public class em0000_2 : Enemy
             Bullet_Soft[count].transform.position = Cannon_pos.position;
 
             Vector3 direction = (target.transform.position - Bullet_Soft[count].transform.position).normalized;
+
             //Bullet_Soft[count].transform.LookAt(target.transform);
 
             Rigidbody bulletRigidbody = Bullet_Soft[count].GetComponent<Rigidbody>();
