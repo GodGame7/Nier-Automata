@@ -8,6 +8,7 @@ public class PordControl : MonoBehaviour
     [SerializeField] PordBulletSpawn PordBullet;
     [SerializeField] GameObject PordLaser;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject Lockon;
 
     // 록온을 위한 변수
     private bool isLockOn = false;
@@ -81,10 +82,12 @@ public class PordControl : MonoBehaviour
             if (isLockOn)
             {
                 isLockOn = false;
+                Lockon.SetActive(false);
             }
             else if (isMonster)
             {
                 isLockOn = true;
+                Lockon.SetActive(true);
             }
 
         }

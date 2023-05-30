@@ -5,6 +5,10 @@ using UnityEngine;
 public class PordBulletControl : MonoBehaviour
 {
     private Vector3 WaitLocation = new Vector3(999, 999, 999);
+    private void OnEnable()
+    {
+        StartCoroutine(Disable());
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -20,8 +24,13 @@ public class PordBulletControl : MonoBehaviour
         }
 
     }
-
-
+    
+    private IEnumerator Disable()
+    {
+        yield return new WaitForSeconds(4f);
+        gameObject.SetActive(false);
+    }
+        
 
 
 }
