@@ -9,6 +9,7 @@ public class PordControl : MonoBehaviour
     [SerializeField] GameObject PordLaser;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject Lockon;
+    [SerializeField] GameObject MagicCircle;
 
     // 록온을 위한 변수
     private bool isLockOn = false;
@@ -44,7 +45,7 @@ public class PordControl : MonoBehaviour
         {
             transform.position += Vector3.up * 0.2f * Time.deltaTime;
         }
-        
+
         // ------------------------인풋매니저로 넘길부분 ----------------------------
         if (Input.GetKey(KeyCode.RightShift) && !isLaser || Input.GetKey(KeyCode.LeftShift) && !isLaser) //레이저와 동시에 나가는것 방지
         {
@@ -55,7 +56,9 @@ public class PordControl : MonoBehaviour
             }
             transform.position = Player.transform.position + PlayerAround;
             isActive = true;
-            PordBullet.Bullet[bulletCount].transform.position = transform.position;
+            MagicCircle.transform.position = transform.position + new Vector3(0, 0, 0.4f);
+            MagicCircle.SetActive(true);
+            PordBullet.Bullet[bulletCount].transform.position = transform.position + new Vector3(0, 0, 0.4f);
             PordBullet.Bullet[bulletCount].SetActive(true);
             if (isLockOn)
             {
@@ -69,13 +72,17 @@ public class PordControl : MonoBehaviour
             }
 
             //소리를 여기에 넣어주세용
-            Invoke("ActiveFalse",0.3f);
+            Invoke("ActiveFalse", 0.3f);
             bulletCount++;
             if (bulletCount >= 60) // BulletSpawn 에서 생성한 갯수만큼
             {
                 bulletCount = 0;
             }
             CurrentTime = 0;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            MagicCircle.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -130,14 +137,16 @@ public class PordControl : MonoBehaviour
     {
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
-        transform.position = Player.transform.position + PlayerAround;
+        transform.position = Player.transform.position + PlayerAround ;
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
-        PordLaser.transform.position = transform.position;
+        MagicCircle.SetActive(true);
+        PordLaser.transform.position = transform.position + new Vector3(0,0,0.4f);
         PordLaser.transform.rotation = Quaternion.Euler(-Cam.transform.position.normalized);
         yield return new WaitForSeconds(1f);
         PordLaser.SetActive(false);
+        MagicCircle.SetActive(false);
         isLaser = false;
         ActiveFalse();
     }
@@ -154,7 +163,7 @@ public class PordControl : MonoBehaviour
         }
 
     }
-    
+
     public void ActiveFalse()
     {
         isActive = false;
