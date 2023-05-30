@@ -54,7 +54,8 @@ public class FlagFightSubTitleManager : MonoBehaviour
     public UnityEvent pahse7_04; // 사령부 UI 활성화
     public UnityEvent phase7_05; // BackGround01 서서히 비활성화, 시점 전환, 플레이어 모드 변경
     public UnityEvent phase7_06; // em0030 4기 등장
-
+    public UnityEvent phase7_07; // 건물 안으로 
+    public UnityEvent phase7_08; // 시점 전환, 플레이어 모드 변경
 
 
     #endregion
@@ -457,7 +458,13 @@ public class FlagFightSubTitleManager : MonoBehaviour
         text_Subtitle.gameObject.SetActive(false);
         phase7_05.Invoke();
 
-        yield return new WaitForSeconds(24.0f);
+        yield return new WaitForSeconds(12.0f);
+        phase7_07.Invoke();
+
+        yield return new WaitForSeconds(9.0f);
+        phase7_08.Invoke();
+
+        yield return wait_3_Second;
         phase7_06.Invoke();
     }
 
