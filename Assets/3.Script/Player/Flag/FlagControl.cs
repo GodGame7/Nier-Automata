@@ -83,28 +83,6 @@ public class FlagControl : MonoBehaviour
 
     public float threshold = 1f;
 
-    #region 테스트
-    public void testBackView()
-    {
-        SetViewStrategy(new FlagBackViewMove());
-    }
-    public void testSideView()
-    {
-        SetViewStrategy(new FlagSideViewMove());
-    }
-    public void testTopView()
-    {
-        SetViewStrategy(new FlagTopViewMove());
-    }
-    public void testFlag()
-    {
-        SetModeStrategy(new ModeFlag());
-    }
-    public void testGundam()
-    {
-        SetModeStrategy(new ModeGundam());
-    }
-    #endregion 테스트
 
     #region 초기화
     private void Awake()
@@ -341,7 +319,7 @@ public class FlagControl : MonoBehaviour
         {
             targetSpeed *= dashSpeed;
         }
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ - 0.15f, centerZ + 0.15f));
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.3f, 0.3f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ - 0.15f, centerZ + 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
@@ -378,7 +356,7 @@ public class FlagControl : MonoBehaviour
     {
         canMove = false;
         Vector3 destPos = new Vector3(0, 0.02f, 0);
-        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
+        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.0004f)
         {
             Vector3 direction = (destPos - transform.position).normalized; // 방향 벡터 계산
             Vector3 moveVector = direction * speed * Time.deltaTime; // 이동 벡터 계산
@@ -399,6 +377,7 @@ public class FlagControl : MonoBehaviour
     }
     #endregion 이동
 
+    #region 공격
     private void Attack()
     {
         if (!currentState.Equals(attackState))
@@ -464,6 +443,7 @@ public class FlagControl : MonoBehaviour
             isCombo = false;
         }
     }
+    #endregion 공격
 
     public void SetAnimaTrigger(int hashAni)
     {
