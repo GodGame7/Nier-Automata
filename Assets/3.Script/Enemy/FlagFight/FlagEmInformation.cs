@@ -24,6 +24,7 @@ public class FlagEmInformation : MonoBehaviour
     private void Start()
     {
         em.SetActive(true);
+        explosion.SetActive(false); 
         collider = GetComponent<Collider>();
         collider.enabled = true;
         flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
@@ -35,6 +36,8 @@ public class FlagEmInformation : MonoBehaviour
     /*에너미 스폰서가 생겼으면 좋겠다.*/
     private void OnEnable()
     {
+        em.SetActive(true);
+        explosion.SetActive(false);
         collider = GetComponent<Collider>();
         collider.enabled = true;
         if (fightManager == null)
@@ -47,7 +50,6 @@ public class FlagEmInformation : MonoBehaviour
         }
         currentHP = maxHp;
         isDie = false;
-        explosion.SetActive(false);
     }
 
     public void OnDamage(float damage)

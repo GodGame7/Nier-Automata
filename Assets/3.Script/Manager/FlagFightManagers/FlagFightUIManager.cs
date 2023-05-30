@@ -29,6 +29,10 @@ public class FlagFightUIManager : MonoBehaviour
         flagFightSubTitleManager.phase3_03.AddListener(phase3_03);
         flagFightSubTitleManager.phase5_01.AddListener(phase5_01);
         flagFightSubTitleManager.phase5_04.AddListener(phase5_04);
+        flagFightSubTitleManager.phase5_04.AddListener(phase5_04);
+        flagFightSubTitleManager.phase7_03.AddListener(phase7_03);
+        flagFightSubTitleManager.phase7_05.AddListener(phase7_05);
+
 
         #endregion
     }
@@ -72,6 +76,16 @@ public class FlagFightUIManager : MonoBehaviour
     private void phase5_04()
     {
        StartCoroutine(FadeOut(background01, 2.0f));
+    }
+
+    private void phase7_03()
+    {
+        StartCoroutine(FadeIn(background01, 2.0f));
+    }
+
+    private void phase7_05()
+    {
+        StartCoroutine(FadeOut(background01, 2.0f));
     }
 
     private IEnumerator FadeOut(GameObject obj, float duration)

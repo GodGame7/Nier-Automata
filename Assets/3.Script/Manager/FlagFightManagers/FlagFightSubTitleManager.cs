@@ -48,11 +48,18 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     public UnityEvent phase6_01; // em0032 18기 등장, em0031 3기 등장
 
+    public UnityEvent phase7_01; // Laser 4B에게 발사
+    public UnityEvent phase7_02; // ObjectScrolling 끝, 구조물 등장.
+    public UnityEvent phase7_03; // BackGround01 천천히 활성화, 카메라 시점 전환
+    public UnityEvent pahse7_04; // 사령부 UI 활성화
+    public UnityEvent phase7_05; // BackGround01 서서히 비활성화, 시점 전환, 플레이어 모드 변경
+    public UnityEvent phase7_06; // em0030 4기 등장
+
 
 
     #endregion
 
-    // WaitForSeconds 모음
+    #region WaitForSeconds 모음
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
     private WaitForSeconds wait_1_Second = new WaitForSeconds(1.0f);
     private WaitForSeconds wait_1half_Second = new WaitForSeconds(1.5f);
@@ -61,6 +68,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
     private WaitForSeconds wait_4_Second = new WaitForSeconds(4.0f);
     private WaitForSeconds wait_6_Second = new WaitForSeconds(6.0f);
     private WaitForSeconds wait_7_Second = new WaitForSeconds(7.0f);
+    #endregion
 
 
 
@@ -105,9 +113,20 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         #region phase05 2개
         "주위에 적기 다수 확인, 기동 형태로 허가를 신청",
-        "기동 형태로 이행을 허가합니다."
+        "기동 형태로 이행을 허가합니다.",
 
         #endregion
+
+        #region phase07 7개
+        "대장⋯⋯나⋯⋯",
+        "2B가 오퍼레이터 6O에게",
+        "본기 이외의 기체는 모두 로스트됐다.",
+        "작전 수행에 지장이 예상된다. 지시를 바란다.",
+        "오, 오퍼레이터가 2B에게",
+        "현지 담당 9S와 합류해서 지형 정보를 입수하세요.",
+        "알겠다."
+
+        #endregion 
     };
 
     private void Awake()
@@ -122,6 +141,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         flagFightSpawner.phase3_04_EMDie.AddListener(Phase04);
         flagFightSpawner.phase4_01_EMDie.AddListener(Phase05);
         flagFightSpawner.Phase5_02_EMDie.AddListener(Phase06);
+        flagFightSpawner.Phase6_01_EMDie.AddListener(Phase07);
 
         #endregion
     }
@@ -374,6 +394,71 @@ public class FlagFightSubTitleManager : MonoBehaviour
     private void Phase06()
     {
         phase6_01.Invoke();
+    }
+
+    private void Phase07()
+    {
+        StartCoroutine(Phase07_Co());
+    }
+
+    IEnumerator Phase07_Co()
+    {
+        Next_SubText();
+        phase7_01.Invoke();
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase7_02.Invoke();
+
+        yield return wait_4_Second;
+        Next_SubText();
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase7_03.Invoke();
+
+        yield return wait_4_Second;
+        pahse7_04.Invoke();
+
+        yield return wait_1_Second;
+        Next_SubText();
+
+        yield return wait_1half_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_half_Second;
+        Next_SubText();
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        Next_SubText();
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+
+        yield return wait_2_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText();
+
+        yield return wait_1_Second;
+        text_Subtitle.gameObject.SetActive(false);
+        phase7_05.Invoke();
+
+        yield return new WaitForSeconds(24.0f);
+        phase7_06.Invoke();
     }
 
     private void Next_SubText()
