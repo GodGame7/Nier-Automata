@@ -47,7 +47,8 @@ public class PordControl : MonoBehaviour
         }
 
         // ------------------------인풋매니저로 넘길부분 ----------------------------
-        if (Input.GetKey(KeyCode.RightShift) && !isLaser || Input.GetKey(KeyCode.LeftShift) && !isLaser) //레이저와 동시에 나가는것 방지
+        if (Input.GetKey(KeyCode.RightShift) && !isLaser ||
+            Input.GetKey(KeyCode.LeftShift) && !isLaser) //레이저와 동시에 나가는것 방지
         {
             CurrentTime += Time.deltaTime;
             if (BulletDealyTime > CurrentTime)
@@ -63,6 +64,7 @@ public class PordControl : MonoBehaviour
             if (isLockOn)
             {
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(targetpos);
+
 
             }
             else
@@ -80,12 +82,14 @@ public class PordControl : MonoBehaviour
             }
             CurrentTime = 0;
         }
-        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) ||
+            Input.GetKeyUp(KeyCode.RightShift))  // 키를 뗐을 때 마법진 사라지게
         {
             MagicCircle.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q)) // 록온
         {
+
             if (isLockOn)
             {
                 isLockOn = false;
@@ -137,14 +141,24 @@ public class PordControl : MonoBehaviour
     {
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
-        transform.position = Player.transform.position + PlayerAround ;
+        transform.position = Player.transform.position + PlayerAround;
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
         MagicCircle.SetActive(true);
-        PordLaser.transform.position = transform.position + new Vector3(0,0,0.4f);
-        PordLaser.transform.rotation = Quaternion.Euler(-Cam.transform.position.normalized);
+        PordLaser.transform.position = transform.position + new Vector3(0, 0, 0.4f);
+        if (isLockOn)
+        {
+            PordLaser.transform.rotation = Quaternion.Euler(targetpos);
+        }
+        else
+        {
+            PordLaser.transform.rotation = Quaternion.Euler(-Cam.transform.position.normalized);
+
+        }
+
         yield return new WaitForSeconds(1f);
+        // 레이저가 끝난 이후 
         PordLaser.SetActive(false);
         MagicCircle.SetActive(false);
         isLaser = false;
@@ -152,6 +166,7 @@ public class PordControl : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(isMonster);
         if (other.CompareTag("Enemy"))
         {
             isMonster = true;
@@ -163,6 +178,14 @@ public class PordControl : MonoBehaviour
         }
 
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            isMonster = false;
+        }
+    }
+
 
     public void ActiveFalse()
     {
