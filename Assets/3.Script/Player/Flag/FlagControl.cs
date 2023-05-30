@@ -21,7 +21,6 @@ public class FlagControl : MonoBehaviour
     // 플레이어
     // 움직임 자연스럽게 이어지도록 하기 위한 변수
     private float animationBlend;
-    private float currentSpeedX = 0;
     public float h;
     public float v;
     private float centerZ = 0f;
@@ -390,7 +389,15 @@ public class FlagControl : MonoBehaviour
         transform.position = destPos;
         canMove = true;
     }
-    #endregion
+    public void StopMove()
+    {
+        canMove = false;
+    }
+    public void CanMove()
+    {
+        canMove = true;
+    }
+    #endregion 이동
 
     private void Attack()
     {
