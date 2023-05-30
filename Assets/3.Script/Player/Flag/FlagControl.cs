@@ -205,6 +205,22 @@ public class FlagControl : MonoBehaviour
     #endregion 초기화
 
     #region 전략, 상태
+
+    public void SetTopViewStrategy()
+    {
+
+        currentViewStrategy = new FlagTopViewMove();
+    }
+    public void SetBackViewStrategy()
+    {
+
+        currentViewStrategy = new FlagBackViewMove();
+    }
+    public void SetSideViewStrategy()
+    {
+
+        currentViewStrategy = new FlagSideViewMove();
+    }
     public void SetViewStrategy(IFlagViewStrategy strategy)
     {
         currentViewStrategy = strategy;
