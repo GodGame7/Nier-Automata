@@ -31,12 +31,16 @@ public class PordControl : MonoBehaviour
     //포드의 위치를 위한 변수
     private Vector3 PlayerAround = new Vector3(1, 1, 0);
     private Vector3 TopPosition = new Vector3(0, 1.8f, 0);
+    private Vector3 MagicCirclePositon = new Vector3(0, 0, 0.4f);
 
     //포드의 움직임 제어용 변수
     private bool isActive = false;
 
     private void Update()
     {
+        
+                Debug.Log(targetpos);
+
         if (transform.position.y >= (Player.transform.position + TopPosition).y && !isActive)
         {
             transform.position -= Vector3.up * 0.4f * Time.deltaTime;
@@ -55,17 +59,24 @@ public class PordControl : MonoBehaviour
             {
                 return; //딜레이 시간동안은 총알을 못쏘도록
             }
-            transform.position = Player.transform.position + PlayerAround;
+
             isActive = true;
-            MagicCircle.transform.position = transform.position + new Vector3(0, 0, 0.4f);
+            transform.position = Player.transform.position + PlayerAround;
+
+            MagicCircle.transform.position = transform.position + MagicCirclePositon;
             MagicCircle.SetActive(true);
-            PordBullet.Bullet[bulletCount].transform.position = transform.position + new Vector3(0, 0, 0.4f);
+
+            PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
+
             if (isLockOn)
             {
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(targetpos);
-
-
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move((targetpos-PordBullet.Bullet[bulletCount].transform.position).normalized);
+                Debug.Log(targetpos);
+                //PordBullet.Bullet[bulletCount].transform.LookAt(targetpos);
+                //PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(Vector3.forward);
+                
+                //PordBullet.Bullet[bulletCount].transform.LookAt(targetpos);
             }
             else
             {
@@ -146,10 +157,18 @@ public class PordControl : MonoBehaviour
         isLaser = true;
         PordLaser.SetActive(true);
         MagicCircle.SetActive(true);
-        PordLaser.transform.position = transform.position + new Vector3(0, 0, 0.4f);
+        PordLaser.transform.position = transform.position + MagicCirclePositon;
         if (isLockOn)
         {
-            PordLaser.transform.rotation = Quaternion.Euler(targetpos);
+            Debug.Log(targetpos);
+            PordLaser.transform.LookAt(targetpos);
+            //if(PordLaser.TryGetComponent(out LineRenderer line))
+            //{
+            //    Debug.Log("enter");
+            //    line.SetPosition(0, Vector3.zero);
+            //    line.SetPosition(1, new Vector3(-targetpos.x,targetpos.y,-targetpos.z+0.2f));
+            //    //PordLaser.transform.position = Vector3.zero;
+            //}
         }
         else
         {
@@ -173,7 +192,7 @@ public class PordControl : MonoBehaviour
 
             if (isLockOn)
             {
-                targetpos = other.transform.position.normalized;
+                targetpos = other.transform.position;
             }
         }
 

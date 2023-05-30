@@ -17,11 +17,11 @@ public class PordBulletControl : MonoBehaviour
             transform.position = WaitLocation;
             gameObject.SetActive(false);
         }
-        //if (other.CompareTag("Wall"))
-        //{
-        //    transform.position = WaitLocation;
-        //    gameObject.SetActive(false);
-        //}
+            //if (other.CompareTag("Wall"))
+            //{
+            //    transform.position = WaitLocation;
+            //    gameObject.SetActive(false);
+            //}
 
     }
     
