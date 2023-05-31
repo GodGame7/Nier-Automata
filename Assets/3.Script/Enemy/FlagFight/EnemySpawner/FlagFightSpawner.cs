@@ -36,7 +36,10 @@ public class FlagFightSpawner : MonoBehaviour
     public UnityEvent phase4_01_EMDie; // Phase5 시작
     public UnityEvent Phase5_02_EMDie; // Phase6 시작
     public UnityEvent Phase6_01_EMDie; // Phase7 시작
-    public UnityEvent Phase7_06_EMDie; // Phase8 시작 
+    public UnityEvent Phase7_06_EMDie; // Phase8 시작
+    public UnityEvent Phase8_01_EMDie; // Phase9 시작
+    public UnityEvent Phase9_01_EMDie; // Phase10 시작
+    public UnityEvent Phase10_01_EMDie; // Phase11 시작
 
     #endregion
 
@@ -55,9 +58,15 @@ public class FlagFightSpawner : MonoBehaviour
         flagFightSubTitleManager.phase4_01.AddListener(Phase4_01);
         flagFightSubTitleManager.phase5_02.AddListener(Phase5_02);
         flagFightSubTitleManager.phase6_01.AddListener(Phase6_01);
-        flagFightSubTitleManager.phase7_06.AddListener(phase7_06);
+        flagFightSubTitleManager.phase7_06.AddListener(Phase7_06);
 
-        Phase7_06_EMDie.AddListener(phase8_01);
+        Phase7_06_EMDie.AddListener(Phase8_01);
+        Phase8_01_EMDie.AddListener(Phase9_01);
+        Phase9_01_EMDie.AddListener(Phase10_01);
+        Phase10_01_EMDie.AddListener(Phase11_01);
+
+
+
         #endregion
     }
 
@@ -417,7 +426,7 @@ public class FlagFightSpawner : MonoBehaviour
 
     // Side View
     // em0030 4기를 생성 // 0, 1, 2, 3
-    public void phase7_06()
+    public void Phase7_06()
     {
         RemainEnemies = 4;
         emRotation = Vector3.zero;
@@ -461,8 +470,142 @@ public class FlagFightSpawner : MonoBehaviour
         }
     }
 
-    // em0030 6기를 생성 // 10, 11, 12, 13, 14, 15
-    public void phase8_01()
+    // em0032 6기를 생성 // 10, 11, 12, 13, 14, 15
+    public void Phase8_01()
+    {
+        RemainEnemies = 6;
+        emRotation = Vector3.zero;
+        emfirstMoveSpeed = 0.05f;
+        emlastMoveSpeed = 8.00f;
+        isCanLook = false;
+
+        StartCoroutine(Co_Phase8_01());
+    }
+
+    IEnumerator Co_Phase8_01()
+    {
+        for (int i = 10; i < 16; i += 2)
+        {
+            emPosition = new Vector3(0.00f, 0.15f, -0.30f);
+            emFirstDesPosition = new Vector3(0.00f, 0.15f, -0.15f);
+            emRotatePoint = new Vector3(0.00f, -0.15f, -0.15f);
+            emRotateAxis = Vector3.right;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_1_Second;
+
+            emPosition = new Vector3(0.00f, -0.15f, -0.30f);
+            emFirstDesPosition = new Vector3(0.00f, -0.15f, -0.15f);
+            emRotatePoint = new Vector3(0.00f, 0.15f, -0.15f);
+            emRotateAxis = Vector3.left;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_1_Second;
+        }
+
+        StartCoroutine(Co_CheckNumEm08_01());
+    }
+
+    IEnumerator Co_CheckNumEm08_01()
+    {
+        while (true)
+        {
+            if (RemainEnemies <= 0)
+            {
+                Phase8_01_EMDie.Invoke();
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    // em 0032 3기를 생성 // 16, 17, 18
+    public void Phase9_01()
+    {
+        RemainEnemies = 3;
+        emRotation = Vector3.zero;
+        emfirstMoveSpeed = 0.05f;
+        emlastMoveSpeed = 8.00f;
+        isCanLook = false;
+
+        StartCoroutine(Co_Phase9_01());
+    }
+
+    IEnumerator Co_Phase9_01()
+    {
+        for (int i = 16; i < 19; i++)
+        {
+            emPosition = new Vector3(0.00f, 0.10f, -0.30f);
+            emFirstDesPosition = new Vector3(0.00f, 0.10f, 0.10f);
+            emRotatePoint = new Vector3(0.00f, -0.00f, -0.00f);
+            emRotateAxis = Vector3.right;
+            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_1_Second;
+        }
+
+        StartCoroutine(Co_CheckNumEm09_01());
+    }
+
+    IEnumerator Co_CheckNumEm09_01()
+    {
+        while (true)
+        {
+            if (RemainEnemies <= 0)
+            {
+                Phase9_01_EMDie.Invoke();
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    // em 0030 6기를 생성 // 10, 11, 12, 13, 14, 15
+    public void Phase10_01()
+    {
+        RemainEnemies = 6;
+        emRotation = Vector3.zero;
+        emfirstMoveSpeed = 0.05f;
+        isCanLook = true;
+
+        StartCoroutine(Co_Phase10_01());
+    }
+
+    IEnumerator Co_Phase10_01()
+    {
+        emPosition = new Vector3(0.00f, 0.30f, 0.20f);
+        emFirstDesPosition = new Vector3(0.00f, 0.24f, 0.19f);
+        emLastDesPosition = new Vector3(0.00f, -0.60f, 0.05f);
+        for (int i = 10; i < 13; i++)
+        {
+            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_1_Second;
+        }
+
+        emPosition = new Vector3(0.00f, -0.30f, 0.07f);
+        emFirstDesPosition = new Vector3(0.00f, -0.24f, 0.08f);
+        emLastDesPosition = new Vector3(0.00f, 0.60f, 0.22f);
+        for (int i = 13; i < 16; i++)
+        {
+            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            yield return wait_1_Second;
+        }
+
+        StartCoroutine(Co_CheckNumEm10_01());
+    }
+
+    IEnumerator Co_CheckNumEm10_01()
+    {
+        while (true)
+        {
+            if (RemainEnemies <= 0)
+            {
+                Phase10_01_EMDie.Invoke();
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    // em 0030 4기를 생성
+    public void Phase11_01()
     {
 
     }
