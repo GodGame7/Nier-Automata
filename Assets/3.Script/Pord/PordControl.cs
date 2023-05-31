@@ -10,6 +10,8 @@ public class PordControl : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject Lockon;
     [SerializeField] GameObject MagicCircle;
+    [SerializeField] ParticleSystem Smoke;
+
 
     // 록온을 위한 변수
     private bool isLockOn = false;
@@ -67,6 +69,9 @@ public class PordControl : MonoBehaviour
 
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
+
+            Smoke.Play();
+            Smoke.transform.position = transform.position + MagicCirclePositon;
 
             if (isLockOn)
             {
