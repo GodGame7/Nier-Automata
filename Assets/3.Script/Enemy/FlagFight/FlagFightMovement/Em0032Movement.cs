@@ -84,6 +84,13 @@ public class Em0032Movement : MonoBehaviour
         {
             if (!flagEmInformation.isDie)
             {
+                if (0.35f < transform.position.x || -0.35f > transform.position.x
+                       || 0.35f < transform.position.y || -0.35f > transform.position.y
+                       || 0.35f < transform.position.z || -0.35f > transform.position.z)
+                {
+                    transform.position = Vector3.zero;
+                    flagEmInformation.Disappear();
+                }
                 transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
             }
             yield return null;
