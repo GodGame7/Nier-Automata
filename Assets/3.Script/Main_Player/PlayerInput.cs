@@ -18,24 +18,23 @@ public class PlayerInput : MonoBehaviour
     Vector3 inputVec;
     private void Update()
     {
-        inputVec = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        if (!Main_Player.Instance.isAtk)
+        if (isCanMove())
         {
-            if (inputVec.z < 0)
-            {
-
-            }
-            else if (inputVec.magnitude != 0 && !Main_Player.Instance.isDash && sm.currentState != sm.move)
-            {
-                sm.ChangeState(sm.move);
-            }
-            else if (inputVec.magnitude == 0 && !Main_Player.Instance.isDash && sm.currentState != sm.idle)
+            if (sm.currentState != sm.idle)
             {
                 sm.ChangeState(sm.idle);
             }
         }
     }
 
+    public bool isCanMove()
+    {
+        if (!Main_Player.Instance.isAtk && !Main_Player.Instance.isDash)
+        {
+            return true;
+        }
+        else return false;
+    }
     private IEnumerator AttackListener()
     {
         while (true)

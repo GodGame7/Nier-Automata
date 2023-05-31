@@ -25,10 +25,10 @@ public class State_Move : State
     public override void StateUpdate()
     {
         Vector3 inputVec = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        if (inputVec.magnitude > 0.1f)
+        Main_Player.Instance.Rotate();
+        if (inputVec.z > 0)
         { 
             transform.position += transform.forward * Time.deltaTime * speed;
-            Main_Player.Instance.Rotate(); 
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {

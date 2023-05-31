@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [Header("공격 패턴의 수")]
     [Space(10f)]
     [SerializeField] protected int pattonNum = 4;
+    [SerializeField] protected int damage = 4;
 
     [Header("사정거리 (없으면 0으로)")]
     [Space(10f)]
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
 
 
     //체력 정보 받아오기
-    protected EnemyHp enemyHp;
+    [SerializeField]protected EnemyHp enemyHp;
 
     //타겟과의 거리
     protected float distance;
@@ -57,6 +58,8 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+
+        //enemyHp = GetComponentInChildren<EnemyHp>();
         boxCollider = GetComponentsInChildren<BoxCollider>();
 
         TryGetComponent(out enemyHp);
@@ -204,6 +207,14 @@ public class Enemy : MonoBehaviour
         enemyHp.isdead = false;
         enemyHp.isdead_effect.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Main_Player.Instance.OnDamage(damage);
+        }
     }
 }
 

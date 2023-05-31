@@ -19,6 +19,7 @@ public class State_Atk : State
     public override void Exit(State next)
     {
         Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.collider_sword.enabled = false;
         Main_Player.Instance.anim_sword.SetTrigger("Idle");
         Main_Player.Instance.anim_bigsword.SetTrigger("Idle");
 
@@ -50,7 +51,7 @@ public class State_Atk : State
         lastAtkTime = Time.time;
         Main_Player.Instance.anim_player.SetTrigger("Atk1");
         Main_Player.Instance.anim_sword.SetTrigger("Atk1");
-
+        Main_Player.Instance.collider_sword.enabled = true;
         yield return AtkListener(2);
         yield return CancleListener();
         Main_Player.Instance.isAtk = false;
@@ -81,16 +82,21 @@ public class State_Atk : State
         float count = 0f;
         while (count < 2f)
         {
-            if (!isStrongAtk && Input.GetMouseButtonDown(0))
+            if (count > 0.5f)
             {
-                lastAtkTime = Time.time;
-                Main_Player.Instance.anim_player.SetTrigger("Atk"+i);
-                Main_Player.Instance.anim_sword.SetTrigger("Atk" + i);
-                yield return AtkListener(i+1);
-                break;
+                Main_Player.Instance.collider_sword.enabled = false;
+                if (!isStrongAtk && Input.GetMouseButtonDown(0))
+                {
+                    lastAtkTime = Time.time;
+                    Main_Player.Instance.anim_player.SetTrigger("Atk" + i);
+                    Main_Player.Instance.anim_sword.SetTrigger("Atk" + i);
+                    Main_Player.Instance.collider_sword.enabled = true;
+                    yield return AtkListener(i + 1);
+                    break;
+                }
             }
             count += Time.deltaTime;
-            yield return null;
+            yield return null;  
         }
         yield break;
     }
@@ -98,4 +104,5 @@ public class State_Atk : State
     {
         StartCoroutine(Attack_co());
     }
+        
 }
