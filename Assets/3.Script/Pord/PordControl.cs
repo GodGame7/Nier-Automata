@@ -10,6 +10,7 @@ public class PordControl : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject Lockon;
     [SerializeField] GameObject MagicCircle;
+    [SerializeField] LaserCoolTime LaserCoolTime;
     [SerializeField] ParticleSystem Smoke;
 
 
@@ -37,7 +38,7 @@ public class PordControl : MonoBehaviour
 
     //포드의 움직임 제어용 변수
     private bool isActive = false;
-
+    
     private void Update()
     {
         
@@ -117,11 +118,13 @@ public class PordControl : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && !isLaser)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && LaserCoolTime.CanLaser)
         {
 
             StartCoroutine(Laser_co());
-            //방향 조정필요 임시로 넣어뒀음
+            LaserCoolTime.gameObject.SetActive(true);
+            
+            
         }
 
         //-- 플레이어 움직임에 맞춰서 포드도 움직임--
