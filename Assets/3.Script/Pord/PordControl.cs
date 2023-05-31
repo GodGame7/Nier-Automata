@@ -206,6 +206,8 @@ public class PordControl : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             isMonster = false;
+            isLockOn = false;
+            Lockon.SetActive(false);
         }
     }
 
