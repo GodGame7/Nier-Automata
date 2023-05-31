@@ -58,20 +58,12 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        TryGetComponent(out anim);
-        TryGetComponent(out enemyHp);
+
         //enemyHp = GetComponentInChildren<EnemyHp>();
         boxCollider = GetComponentsInChildren<BoxCollider>();
 
-<<<<<<< Updated upstream
-        //TryGetComponent(out enemyHp);
-=======
-<<<<<<< Updated upstream
         TryGetComponent(out enemyHp);
->>>>>>> Stashed changes
         TryGetComponent(out anim);
-=======
->>>>>>> Stashed changes
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
