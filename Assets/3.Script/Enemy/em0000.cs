@@ -37,6 +37,7 @@ public class em0000 : Enemy
                     yield return StartCoroutine(OnDash());
                     break;
             }
+            TargetLookat();
             yield return null;
         }
 

@@ -22,7 +22,7 @@ public class EnemyHp : MonoBehaviour
     public CapsuleCollider capsuleCollider;
 
     //스크립트
-    [SerializeField] Enemy enemy;
+    Enemy enemy;
 
 
     //체력 프로퍼티

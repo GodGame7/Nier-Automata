@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
 
     //체력 정보 받아오기
-    [SerializeField]protected EnemyHp enemyHp;
+    protected EnemyHp enemyHp;
 
     //타겟과의 거리
     protected float distance;
@@ -50,10 +50,10 @@ public class Enemy : MonoBehaviour
     //AnimatorClipInfo[] animatorinfo;
 
     //타겟 위치
-    [HideInInspector] public Transform target;
+    public Transform target;
 
     //타겟 위치를 저장하는 변수
-    protected Vector3 targetPosition;
+    [SerializeField]protected Vector3 targetPosition;
 
 
     private void Awake()
@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+
         state = State.IDLE;
     }
 
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour
     {
         if (state != State.IDLE)
         {
+            Debug.Log("가만히있기");
             state = State.IDLE;
 
             anim.SetBool("Run", false);
@@ -148,8 +150,8 @@ public class Enemy : MonoBehaviour
 
         //대쉬 출력
         anim.SetTrigger("Dash");
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"));
-        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") ||
+        anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Walk"));
 
         //애니메이션이 Idle이 되면, 상태도 Idle이 됌
         state = State.IDLE;
