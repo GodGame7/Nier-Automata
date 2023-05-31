@@ -29,12 +29,15 @@ public class PlayerInput : MonoBehaviour
 
     public bool isCanMove()
     {
-        if (!Main_Player.Instance.isAtk && !Main_Player.Instance.isDash)
+        if (!Main_Player.Instance.isAtk && !Main_Player.Instance.isDash &&!Main_Player.Instance.isHitted)
         {
             return true;
         }
         else return false;
     }
+
+
+    #region 공격 리스너
     private IEnumerator AttackListener()
     {
         while (true)
@@ -47,7 +50,7 @@ public class PlayerInput : MonoBehaviour
             yield return null;
         }
     }
-
+    #endregion
     #region Dash_Dodge 관련
     private IEnumerator DodgeListener()
     {

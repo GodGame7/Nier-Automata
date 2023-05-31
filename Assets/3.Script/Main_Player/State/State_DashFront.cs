@@ -14,7 +14,7 @@ public class State_DashFront : State
     public override void Enter(State before)
     {
         Main_Player.Instance.isDash = true;
-        Main_Player.Instance.anim_player.SetBool("DashEnd", true);
+        Main_Player.Instance.anim_player.SetBool("DashEnd", false);
         lastdashtime = Time.time;
         Dash();
     }

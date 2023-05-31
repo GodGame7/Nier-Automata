@@ -6,7 +6,7 @@ public class PlayerAttackBox : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent(out EnemyHp eh);
+        other.transform.root.TryGetComponent(out EnemyHp eh);
         Debug.Log("Ãæµ¹");
         if (other.CompareTag("Enemy"))
         {

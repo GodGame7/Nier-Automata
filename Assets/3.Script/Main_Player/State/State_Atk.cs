@@ -22,7 +22,6 @@ public class State_Atk : State
         Main_Player.Instance.collider_sword.enabled = false;
         Main_Player.Instance.anim_sword.SetTrigger("Idle");
         Main_Player.Instance.anim_bigsword.SetTrigger("Idle");
-
     }
 
     public override void StateFixedUpdate()

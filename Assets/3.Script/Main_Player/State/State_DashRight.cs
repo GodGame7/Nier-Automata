@@ -48,6 +48,8 @@ public class State_DashRight : State
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     Debug.Log("닷지");
+                    StartCoroutine(Dodge());
+                    yield break;
                 }
             }
             yield return null;
@@ -62,4 +64,22 @@ public class State_DashRight : State
             StartCoroutine(DashRight());
     }
 
+    private IEnumerator Dodge()
+    {
+        Main_Player.Instance.isDodge = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        //todo 닷지 애니메이션 실행 , 닷지 애니메이션 종료 후 닷지끝애니메이션, isDodge = false
+        Main_Player.Instance.anim_player.SetBool("DodgeRight", true);
+        //yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() =>
+        Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge3_right"));
+        yield return new WaitUntil(() =>
+        !(Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge3_right")));
+
+        Main_Player.Instance.isDodge = false;
+        Main_Player.Instance.anim_player.SetBool("DodgeRight", false);
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.isDash = false;
+
+    }
 }

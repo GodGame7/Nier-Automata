@@ -48,6 +48,6 @@ public class State_Idle : State
                 Main_Player.Instance.anim_player.SetFloat("Speed", inputVec.z);
             }
         }
-        else Main_Player.Instance.anim_player.SetFloat("Speed", 0.5f);
+        else Main_Player.Instance.anim_player.SetFloat("Speed", 0f);
     }
 }
