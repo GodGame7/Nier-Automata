@@ -14,6 +14,7 @@ public class State_DashLeft : State
     public override void Enter(State before)
     {
         Main_Player.Instance.isDash = true;
+        Main_Player.Instance.anim_player.SetBool("DashEnd", false);
         lastdashtime = Time.time;
         Dash();
     }
@@ -48,8 +49,7 @@ public class State_DashLeft : State
             }
             yield return null;
         }
-        Debug.Log("대쉬종료");
-        Main_Player.Instance.anim_player.SetTrigger("DashEnd");
+        Main_Player.Instance.anim_player.SetBool("DashEnd", true);
         yield return new WaitForSeconds(0.4f);
         Main_Player.Instance.isDash = false;
     }

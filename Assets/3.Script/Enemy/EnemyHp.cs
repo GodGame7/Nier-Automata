@@ -22,7 +22,7 @@ public class EnemyHp : MonoBehaviour
     public CapsuleCollider capsuleCollider;
 
     //스크립트
-    Enemy enemy;
+    [SerializeField] Enemy enemy;
 
 
     //체력 프로퍼티
@@ -61,7 +61,7 @@ public class EnemyHp : MonoBehaviour
     void Awake()
     {
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
-        TryGetComponent(out enemy);
+        //TryGetComponent(out enemy);
     }
     void OnEnable()
     {

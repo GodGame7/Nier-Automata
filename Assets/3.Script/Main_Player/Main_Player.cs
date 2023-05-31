@@ -15,6 +15,8 @@ public class Main_Player : MonoBehaviour
     public Animator anim_sword;
     public Animator anim_bigsword;
     public CapsuleCollider collider_body;
+    public BoxCollider collider_sword;
+    public BoxCollider collider_bigsword;
 
     [Header("컨트롤용 불변수")]
     public bool isGrounded;
@@ -33,6 +35,8 @@ public class Main_Player : MonoBehaviour
         isGrounded = true;
         isDash = false;
         isAtk = false;
+        collider_sword.enabled = false;
+        collider_bigsword.enabled = false;
     }
 
     public void Rotation2(Vector3 inputVec)
@@ -54,8 +58,10 @@ public class Main_Player : MonoBehaviour
         Vector3 rotation = new Vector3(0f, Input.GetAxis("Horizontal"), 0f) * 1f;
         transform.Rotate(rotation);
     }
-    public void JumpMovePosition()
+
+    public void OnDamage(float damage)
     {
-        transform.position += new Vector3(0f, 0f, Input.GetAxis("Vertical")) * Time.deltaTime;
+        Main_Player.Instance.anim_player.SetTrigger("Hitted");
+        PlayerData.instance.OnDamage(damage);
     }
 }

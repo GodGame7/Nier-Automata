@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
 
     //체력 정보 받아오기
-    protected EnemyHp enemyHp;
+    [SerializeField]protected EnemyHp enemyHp;
 
     //타겟과의 거리
     protected float distance;
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         boxCollider = GetComponentsInChildren<BoxCollider>();
 
-        TryGetComponent(out enemyHp);
+        //TryGetComponent(out enemyHp);
         TryGetComponent(out anim);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
