@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 567624654198962931}
   - component: {fileID: 5836866641538162825}
-  - component: {fileID: 1205272615624628159}
+  - component: {fileID: 6869911654841462164}
   - component: {fileID: 4372576327314739545}
   - component: {fileID: 965898344258009175}
   m_Layer: 0
@@ -330,7 +330,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1205272615624628159
+--- !u!114 &6869911654841462164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,12 +342,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d77ad877ad4dac469f1c3227c1b6169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hpslider: {fileID: 0}
   MaxHP: 10
   CurrentHP: 0
   MinDamage: 1
+  enemyHPBar: {fileID: 0}
   isdead: 0
   isdead_effect: {fileID: 2037547747521888150}
+  capsuleCollider: {fileID: 0}
 --- !u!114 &4372576327314739545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,11 +363,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   pattonNum: 0
+  damage: 4
   attackDistance: 0
   dashDistance: 0
   rotationSpeed: 5
-  target: {fileID: 0}
   anim: {fileID: 0}
+  target: {fileID: 0}
   Bullet_Prefab: {fileID: 2332928524474320455, guid: b72a357218355a94eb8d1dfc5ab4d6ed, type: 3}
   bullet_count: 15
   bullet_speed: 10

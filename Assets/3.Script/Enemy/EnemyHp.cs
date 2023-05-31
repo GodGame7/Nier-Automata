@@ -61,6 +61,10 @@ public class EnemyHp : MonoBehaviour
     void Awake()
     {
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+<<<<<<< Updated upstream
+=======
+        //enemy = GetComponentInParent<Enemy>();
+>>>>>>> Stashed changes
         TryGetComponent(out enemy);
     }
     void OnEnable()
