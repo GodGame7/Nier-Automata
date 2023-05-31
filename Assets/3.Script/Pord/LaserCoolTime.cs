@@ -16,19 +16,19 @@ public class LaserCoolTime : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    private void OnEnable()
+    private void OnEnable() // 레이저쏠시 쿨타임 설정
     {
         CurrentCool = LaserCool;
     }
-    private void Update()
+    private void Update() 
     {
 
-        if (CurrentCool > 0f)
+        if (CurrentCool > 0f) //쿨타임이 0초이상일시 레이저 다시 못쏘고,쿨타임이 줄어들도록
         {
             CurrentCool -= Time.deltaTime;
             CanLaser = false;
         }
-        else
+        else //쿨타임이 0초이하라면 쏠수있도록, 쿨타임UI 비활성화
         {
             CanLaser = true;
             gameObject.SetActive(false);

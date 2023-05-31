@@ -28,7 +28,7 @@ public class PordBulletControl : MonoBehaviour
 
     }
     
-    private IEnumerator Disable()
+    private IEnumerator Disable() //불렛 지속시간 설정
     {
         yield return new WaitForSeconds(4f);
         gameObject.SetActive(false);
