@@ -4272,7 +4272,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae34c3f2289dd0f478c17828b07fe4f9, type: 2}
+  - {fileID: 2100000, guid: 91356118685aa2548b3cc60782aa6097, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4298,7 +4298,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.003
+    widthMultiplier: 0.15
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -4362,7 +4362,7 @@ GameObject:
   - component: {fileID: 1581357713849905500}
   - component: {fileID: 1581357713849905501}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: PordLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5279,6 +5279,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2928896833667464268, guid: 526ed6233da373a409235d23dea47809, type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928896833667464268, guid: 526ed6233da373a409235d23dea47809, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055098379243286784, guid: 526ed6233da373a409235d23dea47809, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3055098379257469416, guid: 526ed6233da373a409235d23dea47809, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5568,6 +5580,18 @@ PrefabInstance:
     - target: {fileID: 3805646018043100993, guid: 366117713930a0549a002f7cc297fe23, type: 3}
       propertyPath: m_Name
       value: PordAttackEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805646018062174849, guid: 366117713930a0549a002f7cc297fe23, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896204096424718709, guid: 366117713930a0549a002f7cc297fe23, type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896204096424718709, guid: 366117713930a0549a002f7cc297fe23, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 366117713930a0549a002f7cc297fe23, type: 3}
