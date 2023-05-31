@@ -668,7 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406359698313740757}
   - component: {fileID: 5000201086009039791}
-  - component: {fileID: 5643047864372849170}
+  - component: {fileID: 2027661026697055571}
   - component: {fileID: 1787845615327828840}
   - component: {fileID: 1787845615327828841}
   m_Layer: 0
@@ -717,7 +717,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5643047864372849170
+--- !u!114 &2027661026697055571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -729,13 +729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d77ad877ad4dac469f1c3227c1b6169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hpslider: {fileID: 0}
   MaxHP: 10
   CurrentHP: 0
   MinDamage: 1
-  enemyHPBar: {fileID: 0}
   isdead: 0
   isdead_effect: {fileID: 3222767971913519887}
-  capsuleCollider: {fileID: 0}
 --- !u!114 &1787845615327828840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,12 +749,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   pattonNum: 5
-  damage: 4
   attackDistance: 4
   dashDistance: 0
   rotationSpeed: 10
-  anim: {fileID: 0}
   target: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!54 &1787845615327828841
 Rigidbody:
   m_ObjectHideFlags: 0

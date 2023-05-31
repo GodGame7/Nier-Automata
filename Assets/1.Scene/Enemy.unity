@@ -627,11 +627,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &804217578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8706809041425183, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-  m_PrefabInstance: {fileID: 8067629728840827754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,34 +1747,6 @@ PrefabInstance:
     - target: {fileID: 208011033131784737, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_Name
       value: em1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: saw
-      value: 
-      objectReference: {fileID: 804217578}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: pattonNum
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: dashDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: rotationSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: attackDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: speed_down_time
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 208011033131784739, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
-      propertyPath: maxsawrotateSpeed
-      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 696035124879212699, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_RootOrder
