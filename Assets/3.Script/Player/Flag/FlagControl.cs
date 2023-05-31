@@ -21,7 +21,6 @@ public class FlagControl : MonoBehaviour
     // 플레이어
     // 움직임 자연스럽게 이어지도록 하기 위한 변수
     private float animationBlend;
-    private float currentSpeedX = 0;
     public float h;
     public float v;
     private float centerZ = 0f;
@@ -31,7 +30,7 @@ public class FlagControl : MonoBehaviour
 
     // 대쉬
     public KeyCode lastKeyPressed = KeyCode.None;
-    private KeyCode[]  keysToCheck= { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
+    private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
     private float lastKeyPressTime = 0f;
     private float timeAllowedBetweenKeyPresses = 0.5f;
 
@@ -84,28 +83,6 @@ public class FlagControl : MonoBehaviour
 
     public float threshold = 1f;
 
-    #region 테스트
-    public void testBackView()
-    {
-        SetViewStrategy(new FlagBackViewMove());
-    }
-    public void testSideView()
-    {
-        SetViewStrategy(new FlagSideViewMove());
-    }
-    public void testTopView()
-    {
-        SetViewStrategy(new FlagTopViewMove());
-    }
-    public void testFlag()
-    {
-        SetModeStrategy(new ModeFlag());
-    }
-    public void testGundam()
-    {
-        SetModeStrategy(new ModeGundam());
-    }
-    #endregion 테스트
 
     #region 초기화
     private void Awake()
@@ -193,18 +170,19 @@ public class FlagControl : MonoBehaviour
 
     public void SetTopViewStrategy()
     {
-        currentViewStrategy = new FlagTopViewMove();
+        SetViewStrategy(new FlagTopViewMove());
     }
     public void SetBackViewStrategy()
     {
-        currentViewStrategy = new FlagBackViewMove();
+        SetViewStrategy(new FlagBackViewMove());
     }
     public void SetSideViewStrategy()
     {
-        currentViewStrategy = new FlagSideViewMove();
+        SetViewStrategy(new FlagSideViewMove());
     }
-    public void SetViewStrategy(IFlagViewStrategy strategy)
+    private void SetViewStrategy(IFlagViewStrategy strategy)
     {
+        StartCoroutine(MoveToCenter(0.5f));
         currentViewStrategy = strategy;
     }
     public void SetModeStrategy(IFlagModeStrategy strategy)
@@ -261,7 +239,7 @@ public class FlagControl : MonoBehaviour
                 CheckDash();
             }
             currentState.Action(this);
-            Attack(); 
+            Attack();
         }
     }
     private void FixedUpdate()
@@ -341,7 +319,7 @@ public class FlagControl : MonoBehaviour
         {
             targetSpeed *= dashSpeed;
         }
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.27f, 0.27f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ -0.15f, centerZ + 0.15f));
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.3f, 0.3f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ - 0.15f, centerZ + 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
@@ -374,25 +352,32 @@ public class FlagControl : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
-    //public void SetCenterZ(float center)
-    //{
-    //    centerZ += center;
-    //}
-    //public IEnumerator MoveTo(float destPosZ, float speed)
-    //{
-    //    canMove = false;
-    //    Vector3 destPos = new Vector3(0, 0.02f, destPosZ);
-    //    while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.001f)
-    //    {
-    //        transform.position += speed * Time.deltaTime * Vector3.forward;
-    //        yield return null;
-    //    }
-    //    SetCenterZ(destPosZ);
-    //    transform.position = destPos;
-    //    canMove = true;
-    //}
-    #endregion
+    public IEnumerator MoveToCenter(float speed)
+    {
+        canMove = false;
+        Vector3 destPos = new Vector3(0, 0.02f, 0);
+        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.0004f)
+        {
+            Vector3 direction = (destPos - transform.position).normalized; // 방향 벡터 계산
+            Vector3 moveVector = direction * speed * Time.deltaTime; // 이동 벡터 계산
 
+            rigid.MovePosition(transform.position + moveVector);
+            yield return null;
+        }
+        transform.position = destPos;
+        canMove = true;
+    }
+    public void StopMove()
+    {
+        canMove = false;
+    }
+    public void CanMove()
+    {
+        canMove = true;
+    }
+    #endregion 이동
+
+    #region 공격
     private void Attack()
     {
         if (!currentState.Equals(attackState))
@@ -458,6 +443,7 @@ public class FlagControl : MonoBehaviour
             isCombo = false;
         }
     }
+    #endregion 공격
 
     public void SetAnimaTrigger(int hashAni)
     {

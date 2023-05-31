@@ -52,7 +52,7 @@ public class ModeFlag : IFlagModeStrategy
     }
     private void VerticalWeakAttack(FlagControl player)
     {
-        player.SetAnimaTrigger(player.hashFlagStrongAttack);
+        player.SetAnimaTrigger(player.hashVerticalWeakAttack);
     }
     private void HorizontalWeakAttack(FlagControl player)
     {

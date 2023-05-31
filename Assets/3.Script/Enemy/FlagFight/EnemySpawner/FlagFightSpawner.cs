@@ -43,7 +43,6 @@ public class FlagFightSpawner : MonoBehaviour
     private WaitForSeconds wait_half_Second = new WaitForSeconds(0.5f);
 
 
-
     private void Awake()
     {
         #region ¿Ã∫•∆Æ add
@@ -111,20 +110,20 @@ public class FlagFightSpawner : MonoBehaviour
         emlastMoveSpeed = 0.001f;
         isCanLook = true;
 
-        emPosition = new Vector3(-0.20f, 0.00f, 0.30f);
-        emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.10f);
+        emPosition = new Vector3(-0.15f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(-0.15f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 0);
 
-        emPosition = new Vector3(-0.10f, 0.00f, 0.30f);
-        emFirstDesPosition = new Vector3(-0.10f, 0.00f, 0.15f);
+        emPosition = new Vector3(-0.05f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(-0.05f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 1);
 
-        emPosition = new Vector3(0.10f, 0.00f, 0.30f);
-        emFirstDesPosition = new Vector3(0.10f, 0.00f, 0.15f);
+        emPosition = new Vector3(0.05f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(0.05f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 2);
 
-        emPosition = new Vector3(0.20f, 0.00f, 0.30f);
-        emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.10f);
+        emPosition = new Vector3(0.15f, 0.00f, 0.30f);
+        emFirstDesPosition = new Vector3(0.15f, 0.00f, 0.10f);
         SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, 3);
 
         StartCoroutine(Co_CheckNumEm01_15());
@@ -161,16 +160,16 @@ public class FlagFightSpawner : MonoBehaviour
     {
         for (int i = 0; i < 10; i += 2)
         {
-            emPosition = new Vector3(-0.30f, 0.00f, 0.30f);
+            emPosition = new Vector3(-0.25f, 0.00f, 0.30f);
             emFirstDesPosition = new Vector3(-0.20f, 0.00f, 0.20f);
-            emRotatePoint = new Vector3(0.30f, 0.00f, 0.30f);
+            emRotatePoint = new Vector3(0.30f, 0.00f, 0.725f);
             emRotateAxis = Vector3.down;
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
             yield return wait_half_Second;
 
-            emPosition = new Vector3(0.30f, 0.00f, 0.30f);
+            emPosition = new Vector3(0.25f, 0.00f, 0.30f);
             emFirstDesPosition = new Vector3(0.20f, 0.00f, 0.20f);
-            emRotatePoint = new Vector3(-0.30f, 0.00f, 0.30f);
+            emRotatePoint = new Vector3(-0.30f, 0.00f, 0.725f);
             emRotateAxis = Vector3.up;
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i + 1);
             yield return wait_half_Second;
@@ -196,8 +195,7 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 6;
         emRotation = Vector3.zero;
-        emfirstMoveSpeed = 0.10f;
-        emlastMoveSpeed = 0.10f;
+        emfirstMoveSpeed = 0.30f;
         isCanLook = true;
 
         StartCoroutine(Co_Phase3_04());
@@ -207,16 +205,14 @@ public class FlagFightSpawner : MonoBehaviour
     {
         for (int i = 0; i < 6; i += 2)
         {
-            emPosition = new Vector3(-0.30f, 0.00f, 0.25f);
-            emFirstDesPosition = new Vector3(-0.29f, 0.00f, 0.24f);
-            emLastDesPosition = new Vector3(0.40f, 0.00f, 0.00f);
-            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
+            emPosition = new Vector3(-0.30f, 0.00f, 0.08f);
+            emFirstDesPosition = new Vector3(0.50f, 0.00f, 0.13f);
+            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emfirstMoveSpeed, isCanLook, i);
             yield return wait_half_Second;
 
-            emPosition = new Vector3(0.30f, 0.00f, 0.25f);
-            emFirstDesPosition = new Vector3(0.29f, 0.00f, 0.24f);
-            emLastDesPosition = new Vector3(-0.40f, 0.00f, 0.00f);
-            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emLastDesPosition, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i+1);
+            emPosition = new Vector3(0.30f, 0.00f, 0.12f);
+            emFirstDesPosition = new Vector3(-0.50f, 0.00f, 0.07f);
+            SpawnEm0030(emRotation, emPosition, emFirstDesPosition, emFirstDesPosition, emfirstMoveSpeed, emfirstMoveSpeed, isCanLook, i+1);
             yield return wait_half_Second;
         }
 
@@ -242,7 +238,7 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 4;
         emRotation = Vector3.zero;
-        emfirstMoveSpeed = 0.4f;
+        emfirstMoveSpeed = 0.3f;
         emlastMoveSpeed = 0.001f;
         isCanLook = true;
 
