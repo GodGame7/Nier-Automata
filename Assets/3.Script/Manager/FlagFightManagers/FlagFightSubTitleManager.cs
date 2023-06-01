@@ -120,6 +120,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         #region phase07 7개
         "대장⋯⋯나⋯⋯",
+        "⋯⋯4B, 로스트",
         "2B가 오퍼레이터 6O에게",
         "본기 이외의 기체는 모두 로스트됐다.",
         "작전 수행에 지장이 예상된다. 지시를 바란다.",

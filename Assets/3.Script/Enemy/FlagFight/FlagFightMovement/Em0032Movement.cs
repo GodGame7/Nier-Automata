@@ -80,11 +80,23 @@ public class Em0032Movement : MonoBehaviour
     public IEnumerator Move_co()
     {
         speed = firstMoveSpeed;
+        Quaternion startRotation = transform.rotation;
         while (Vector3.SqrMagnitude(transform.position - desPos) >= 0.00005f)
         {
             if (!flagEmInformation.isDie)
             {
+                if (0.35f < transform.position.x || -0.35f > transform.position.x
+                       || 0.35f < transform.position.y || -0.35f > transform.position.y
+                       || 0.35f < transform.position.z || -0.35f > transform.position.z)
+                {
+                    transform.position = Vector3.zero;
+                    flagEmInformation.Disappear();
+                }
                 transform.position = Vector3.MoveTowards(transform.position, desPos, speed * Time.deltaTime);
+                if(!isCanLook)
+                {
+                    transform.rotation = startRotation;
+                }
             }
             yield return null;
         }
@@ -101,6 +113,10 @@ public class Em0032Movement : MonoBehaviour
                 flagEmInformation.Disappear();
             }
             transform.RotateAround(RotatePoint, RotateAxis, speed * Time.deltaTime);
+            if (!isCanLook)
+            {
+                transform.rotation = startRotation;
+            }
             yield return null;
         }
     }
