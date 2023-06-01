@@ -69,6 +69,14 @@ public class EnemyHp : MonoBehaviour
         currentHp = maxHp;
     }
 
+    private void Update()
+    {
+        if (enemyHPBar)
+        {
+            enemyHPBar.value = currentHp / maxHp;
+        }
+    }
+
     //데미지를 받을 때
     public void TakeDamage(int Damage)
     {

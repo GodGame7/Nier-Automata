@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
         TryGetComponent(out enemyHp);
         TryGetComponent(out anim);
-        target = GameObject.Find("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected virtual void OnEnable()

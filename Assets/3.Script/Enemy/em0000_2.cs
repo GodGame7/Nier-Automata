@@ -67,6 +67,9 @@ public class em0000_2 : Enemy
                 count = 0;
             }
 
+            //Vector3 Can_pos = Cannon_pos.position;
+            //Can_pos.y = 1f;
+
             Bullet_Soft[count].SetActive(true);
             Bullet_Soft[count].transform.position = Cannon_pos.position;
 

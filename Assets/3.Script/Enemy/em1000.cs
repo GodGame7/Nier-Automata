@@ -101,7 +101,7 @@ public class em1000 : Enemy
     //ÁÂ¿ì ÆÇ´Ü
     void TargetCheck()
     {
-        target_x = target.position.x;
+        target_x = target.root.position.x;
 
         if (target_x > 5f)
         {
