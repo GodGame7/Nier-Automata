@@ -49,6 +49,8 @@ public class FlagFightSpawner : MonoBehaviour
     public UnityEvent Phase17_01_EMDie; // Phase18 시작
     public UnityEvent Phase18_01_EMDie; // Phase19 시작
 
+    public UnityEvent Phase18_01_Alone; //
+
     #endregion
 
     #region WaitForSeconds 모음
@@ -927,7 +929,7 @@ public class FlagFightSpawner : MonoBehaviour
     // 중간 보스 생성
     public void Phase18_01()
     {
-        RemainEnemies = 1;
+        RemainEnemies = 5;
         Debug.Log("으악 중간 보스다!");
 
         StartCoroutine(Co_CheckNumEm018_01());
@@ -937,6 +939,10 @@ public class FlagFightSpawner : MonoBehaviour
     {
         while (true)
         {
+            if (RemainEnemies == 1)
+            {
+
+            }
             if (RemainEnemies <= 0)
             {
                 Phase18_01_EMDie.Invoke();
