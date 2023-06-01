@@ -376,8 +376,7 @@ public class FlagFightSpawner : MonoBehaviour
         RemainEnemies = 21;
         emRotation = Vector3.zero;
         emRotatePoint = Vector3.zero;
-        emfirstMoveSpeed = 0.05f;
-        emlastMoveSpeed = 12.50f;
+        emlastMoveSpeed = 40.00f;
         isCanLook = true;
 
         StartCoroutine(Co_Phase6_01());
@@ -385,41 +384,29 @@ public class FlagFightSpawner : MonoBehaviour
 
     IEnumerator Co_Phase6_01()
     {
+        emfirstMoveSpeed = 0.05f;
         emPosition = new Vector3(-0.23f, 0.00f, -0.27f);
         emFirstDesPosition = new Vector3(0.07f, 0.00f, -0.07f);
         emRotateAxis = Vector3.down;
 
-        for (int i = 10; i < 13; i++)
+        for (int i = 10; i < 19; i++)
         {
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
-            yield return wait_1_Second;
+            yield return wait_half_Second;
         }
 
-        emPosition = new Vector3(0.23f, 0.00f, 0.27f);
-        emFirstDesPosition = new Vector3(-0.07f, 0.00f, 0.07f);
-        emRotateAxis = Vector3.down;
+        emfirstMoveSpeed = 0.06f;
+        emPosition = new Vector3(0.21f, 0.00f, -0.29f);
+        emFirstDesPosition = new Vector3(-0.09f, 0.00f, -0.09f);
+        emRotateAxis = Vector3.up;
 
-        for(int i = 13; i < 16; i++)
+        for (int i = 19; i < 28; i++)
         {
             SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
-            yield return wait_1_Second;
+            yield return wait_half_Second;
         }
 
-        for (int i = 16; i < 27; i += 2)
-        {
-            emPosition = new Vector3(-0.09f, 0.00f, 0.31f);
-            emFirstDesPosition = new Vector3(0.11f, 0.00f, 0.11f);
-            emRotateAxis = Vector3.up;
-            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i);
-            yield return wait_1_Second;
-
-            emPosition = new Vector3(0.11f, 0.00f, 0.29f);
-            emFirstDesPosition = new Vector3(-0.09f, 0.00f, 0.09f);
-            emRotateAxis = Vector3.down;
-            SpawnEm0032(emRotation, emPosition, emFirstDesPosition, emRotatePoint, emRotateAxis, emfirstMoveSpeed, emlastMoveSpeed, isCanLook, i + 1);
-            yield return wait_1_Second;
-        }
-
+        emfirstMoveSpeed = 0.10f;
         emPosition = new Vector3(-0.30f, 0.00f, 0.15f);
         emFirstDesPosition = new Vector3(0.40f, 0.00f, 0.15f);
 
