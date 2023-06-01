@@ -25,8 +25,10 @@ public class Em0071Movement : MonoBehaviour
 
     private void Start()
     {
+
         waitfireDelay = new WaitForSeconds(fireDelay);
         flagEmInformation = GetComponent<FlagEmInformation>();
+        em0070Movement = FindObjectOfType<Em0070Movement>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -39,7 +41,6 @@ public class Em0071Movement : MonoBehaviour
 
         em0070Movement.Ready.AddListener(Ready);
         em0070Movement.SlowSpin.AddListener(SlowSpin);
-        em0070Movement.StopSlowSpin.AddListener(StopSlowSpin);
     }
 
     private void Ready()
@@ -50,16 +51,13 @@ public class Em0071Movement : MonoBehaviour
     private void SlowSpin()
     {
         StartCoroutine(Fire_co());
-    }
-
-    private void StopSlowSpin()
-    {
-        StopCoroutine(Fire_co());
+        StartCoroutine(StopFiring_co());
     }
 
     private IEnumerator Fire_co()
     {
-        while (true)
+        float counter = 0.0f;
+        while (counter < 5.0f)
         {
             GameObject Bullet = bulletSoft;
             int bulletType = Random.Range(0, 4);
@@ -70,13 +68,23 @@ public class Em0071Movement : MonoBehaviour
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bullet = Instantiate(Bullet, bulletPosition, transform.rotation);
             Vector3 direction = transform.forward;
-            bullet.transform.LookAt(bullet.transform.position + direction); 
+            bullet.transform.LookAt(bullet.transform.position + direction);
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
             if (bulletRigidbody != null)
             {
                 bulletRigidbody.velocity = direction * bulletSpeed;
             }
+            counter += Time.deltaTime;
             yield return waitfireDelay;
         }
+
+        // 5초가 지나면 발사 중단
+        yield break;
+    }
+
+    private IEnumerator StopFiring_co()
+    {
+        yield return new WaitForSeconds(5.0f);
+        StopCoroutine(Fire_co());
     }
 }
