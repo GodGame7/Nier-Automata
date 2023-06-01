@@ -62,6 +62,10 @@ public class em1000 : Enemy
 
         while (true)
         {
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f);
+            anim.SetFloat("Random", Random.Range(0, 2));
+            isattack = false;
+
 
             switch (dir)
             {
@@ -84,10 +88,6 @@ public class em1000 : Enemy
                     break;
             }
 
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-            anim.SetFloat("Random", Random.Range(0, 2));
-            isattack = false;
-
             //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
             yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"));
             isattack = true;
@@ -103,17 +103,17 @@ public class em1000 : Enemy
     {
         target_x = target.position.x;
 
-        if (target_x > 77f)
+        if (target_x > 5f)
         {
-            dir = Dir.Left;
+            dir = Dir.Right;
         }
-        else if (target_x <= 77f && target_x > 57f)
+        else if (target_x <= 5f && target_x > -15f)
         {
             dir = Dir.Center;
         }
-        else if (target_x <= 57f)
+        else if (target_x <= -15f)
         {
-            dir = Dir.Right;
+            dir = Dir.Left;
         }
 
     }
