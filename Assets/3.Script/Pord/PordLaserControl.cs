@@ -15,4 +15,6 @@ public class PordLaserControl : MonoBehaviour
             //에너미 데미지 주는 부분
         }
     }
+
+
 }

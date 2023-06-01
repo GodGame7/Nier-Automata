@@ -61,6 +61,7 @@ public class EnemyHp : MonoBehaviour
     void Awake()
     {
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+
         TryGetComponent(out enemy);
     }
     void OnEnable()

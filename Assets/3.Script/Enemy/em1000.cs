@@ -14,9 +14,9 @@ public class em1000 : Enemy
     [Header("톱 관련")]
     [Space(10f)]
     [SerializeField] GameObject saw;
-    [Range(1f, 500f)]
-    [SerializeField] float maxsawrotateSpeed = 500f;
-    [Range(1f, 500f)]
+    [Range(1f, 700f)]
+    [SerializeField] float maxsawrotateSpeed = 700f;
+    [Range(1f, 700f)]
     [SerializeField] float minsawrotateSpeed = 150f;
     [SerializeField] float speed_down_time = 5f;
     [SerializeField] bool isattack = false;
@@ -56,12 +56,9 @@ public class em1000 : Enemy
 
     IEnumerator Attack()
     {
-        Debug.Log("코루틴 들ㄹ어옴");
+
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
         yield return null;
-
-
-        Debug.Log("시작");
 
         while (true)
         {
@@ -90,91 +87,15 @@ public class em1000 : Enemy
             yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
             anim.SetFloat("Random", Random.Range(0, 2));
             isattack = false;
-            Debug.Log("normaliziedTimer 완료");
-            yield return null;
 
             //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
             yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"));
             isattack = true;
             yield return null;
-            Debug.Log("AttackAllgo라는데 ?");
         }
     }
 
-    IEnumerator While()
-    {
-        while (true)
-        {
-
-            if (!allattack)
-            {
-                Debug.Log("1번 코루틴 가자");
-                StartCoroutine(Attack1());
-                yield return null;
-            }
-
-
-            if (!allattack)
-            {
-                Debug.Log("2번 코루틴 가자");
-                StartCoroutine(Attack2());
-                yield return null;
-            }
-
-            Debug.Log("반복");
-            yield return null;
-        }
-    }
-
-    IEnumerator Attack1()
-    {
-        Debug.Log("1번 코루틴 왔어 ?");
-
-        //isattack = true;
-
-        allattack = true;
-
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-
-
-        Debug.Log("나갔니?");
-
-        //isattack = false;
-
-        allattack = false;
-
-    }
-
-    IEnumerator Attack2()
-    {
-        Debug.Log("2번 코루틴 ㅇ왔어?");
-        anim.SetFloat("Random", Random.Range(0, 2));
-
-        switch (dir)
-        {
-            case Dir.Left:
-                anim.SetBool("Left", true);
-                anim.SetBool("Center", false);
-                anim.SetBool("Right", false);
-                break;
-
-            case Dir.Center:
-                anim.SetBool("Left", false);
-                anim.SetBool("Center", true);
-                anim.SetBool("Right", false);
-                break;
-
-            case Dir.Right:
-                anim.SetBool("Left", false);
-                anim.SetBool("Center", false);
-                anim.SetBool("Right", true);
-                break;
-        }
-        //isattack = true;
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(All)go"));
-
-    }
-
+    
 
 
     //좌우 판단
@@ -182,15 +103,15 @@ public class em1000 : Enemy
     {
         target_x = target.position.x;
 
-        if (target_x > 80f)
+        if (target_x > 77f)
         {
             dir = Dir.Left;
         }
-        else if (target_x <= 80f && target_x > 53f)
+        else if (target_x <= 77f && target_x > 57f)
         {
             dir = Dir.Center;
         }
-        else if (target_x <= 53f)
+        else if (target_x <= 57f)
         {
             dir = Dir.Right;
         }

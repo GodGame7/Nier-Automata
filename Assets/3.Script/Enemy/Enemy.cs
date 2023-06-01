@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [Header("공격 패턴의 수")]
     [Space(10f)]
     [SerializeField] protected int pattonNum = 4;
+    [SerializeField] protected int damage = 4;
 
     [Header("사정거리 (없으면 0으로)")]
     [Space(10f)]
@@ -49,14 +50,16 @@ public class Enemy : MonoBehaviour
     //AnimatorClipInfo[] animatorinfo;
 
     //타겟 위치
-    [HideInInspector] public Transform target;
+    public Transform target;
 
     //타겟 위치를 저장하는 변수
-    protected Vector3 targetPosition;
+    [SerializeField]protected Vector3 targetPosition;
 
 
     private void Awake()
     {
+
+        //enemyHp = GetComponentInChildren<EnemyHp>();
         boxCollider = GetComponentsInChildren<BoxCollider>();
 
         TryGetComponent(out enemyHp);
@@ -66,6 +69,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+
         state = State.IDLE;
     }
 
@@ -97,6 +101,7 @@ public class Enemy : MonoBehaviour
     {
         if (state != State.IDLE)
         {
+            Debug.Log("가만히있기");
             state = State.IDLE;
 
             anim.SetBool("Run", false);
@@ -145,8 +150,8 @@ public class Enemy : MonoBehaviour
 
         //대쉬 출력
         anim.SetTrigger("Dash");
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"));
-        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") ||
+        anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Walk"));
 
         //애니메이션이 Idle이 되면, 상태도 Idle이 됌
         state = State.IDLE;
@@ -204,6 +209,14 @@ public class Enemy : MonoBehaviour
         enemyHp.isdead = false;
         enemyHp.isdead_effect.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Main_Player.Instance.OnDamage(damage);
+        }
     }
 }
 

@@ -15,10 +15,7 @@ public class ItemEffect : MonoBehaviour
 
 
     }
-    //public void Aciton(int num)
-    //{
-    //    OnItem.Invoke(num);
-    //}
+
     public void UseItem(int num)
     {
 
