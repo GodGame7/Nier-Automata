@@ -13,30 +13,34 @@ public class FlagControl : MonoBehaviour
     [SerializeField]
     private float dashSpeed = 2.7f;
     [Tooltip("플레이어 가감속도")]
-    public float speedChangeRate = 10f;
+    [SerializeField]
+    private float speedChangeRate = 10f;
     [Tooltip("원거리 공격 연사 딜레이")]
     [SerializeField]
     private float fireDelay = 0.1f;
 
-    // 플레이어
-    // 움직임 자연스럽게 이어지도록 하기 위한 변수
-    private float animationBlend;
-    public float h;
-    public float v;
-    private float centerZ = 0f;
-    private bool canMove = true;
-    //private float targetRotation = 0.0f;
+
     //private PlayerData player;
 
+    // 플레이어
+    public float h { get; private set; }
+    public float v { get; private set; }
+    private float animationBlend;
+    public int invincibleLayer { get; private set; }
+    public int defaultLayer { get; private set; }
+    private bool canMove = true;
+    public float threshold = 1f;
+    private readonly Vector3 defaultPos = new Vector3(0, 0.02f, 0);
+
     // 대쉬
-    public KeyCode lastKeyPressed = KeyCode.None;
-    private KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };
+    public KeyCode lastKeyPressed { get; private set; }  // 대쉬를 위해 이전 키입력 저장
+    private readonly KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };    // 대쉬를 위해 비교할 이동키 모음
     private float lastKeyPressTime = 0f;
-    private float timeAllowedBetweenKeyPresses = 0.5f;
+    private readonly float timeAllowedBetweenKeyPresses = 0.5f; // 연속 입력으로 판단하기 위한 최대 시간차
 
     // 공격
-    public bool isCombo = false;
-    private float preInputDelay = 0.9f;
+    public bool isCombo { get; private set; }   // 건담 약공격 콤보
+    private float preInputDelay = 0.9f;         // 선입력 유지시간
 
     // 전략, 상태
     private IFlagViewStrategy currentViewStrategy = new FlagTopViewMove();
@@ -46,65 +50,64 @@ public class FlagControl : MonoBehaviour
     private FlagAttack attackState;
     private FlagDash dashState;
     private FlagTransformation transfomationState;
-    public int invincibleLayer;
-    public int defaultLayer;
 
+
+    //[Header("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")]
+    //[Space(50)]
     // 애니매이션 해시
-    public int hashHSpeed;
-    public int hashAniSpeed;
-    public int hashDash;
-    public int hashToGundam;
-    public int hashToFlag;
-    public int hashVerticalWeakAttack;
-    public int hashHorizontalWeakAttack;
-    public int hashFlagStrongAttack;
-    public int hashGundamWeakAttack1;
-    public int hashGundamWeakAttack2;
-    public int hashGundamStrongAttack;
+    public int hashHSpeed { get; private set; }
+    public int hashAniSpeed { get; private set; }
+    public int hashDash { get; private set; }
+    public int hashToGundam { get; private set; }
+    public int hashToFlag { get; private set; }
+    public int hashVerticalWeakAttack { get; private set; }
+    public int hashHorizontalWeakAttack { get; private set; }
+    public int hashFlagStrongAttack { get; private set; }
+    public int hashGundamWeakAttack1 { get; private set; }
+    public int hashGundamWeakAttack2 { get; private set; }
+    public int hashGundamStrongAttack { get; private set; }
 
     // 컴포넌트
     private Animator anim;
     private CharacterController controller;
     private Rigidbody rigid;
-    public FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
+    private FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
     // 캐싱
-    private WaitUntil InputFireButton_wait;
-    public WaitUntil EnterDashAni_wait;
-    public WaitUntil ExitDashAni_wait;
-    public WaitUntil EnterAttackAni_wait;
-    public WaitUntil ExitAttackAni_wait;
-    public WaitUntil ResetCombo_wait;
-    public WaitUntil EnterTransformation_wait;
-    public WaitUntil ExitTransformation_wait;
+    #region 코루틴 Wait
+    public WaitUntil InputFireButton_wait { get; private set; }
+    public WaitUntil EnterDashAni_wait { get; private set; }
+    public WaitUntil ExitDashAni_wait { get; private set; }
+    public WaitUntil EnterAttackAni_wait { get; private set; }
+    public WaitUntil ExitAttackAni_wait { get; private set; }
+    public WaitUntil ResetCombo_wait { get; private set; }
+    public WaitUntil EnterTransformation_wait { get; private set; }
+    public WaitUntil ExitTransformation_wait { get; private set; }
 
-    private WaitForSeconds FireDelay_wait;
-    private WaitForSeconds AnimaReset_wait;
-
-    public float threshold = 1f;
+    public WaitForSeconds FireDelay_wait { get; private set; }
+    public WaitForSeconds AnimaReset_wait { get; private set; }
+    #endregion 코루틴 Wait
 
 
     #region 초기화
     private void Awake()
     {
-        Init();
+        GetComponentAndCashing();
         GetAnimHash();
+
+        invincibleLayer = LayerMask.NameToLayer("Invincible");
+        defaultLayer = LayerMask.NameToLayer("Default");
 
         nomalState = new FlagNomal();
         attackState = new FlagAttack();
         dashState = new FlagDash();
         transfomationState = new FlagTransformation();
-
-        currentState = nomalState;
-        invincibleLayer = LayerMask.NameToLayer("Invincible");
-        defaultLayer = LayerMask.NameToLayer("Default");
     }
     private void OnEnable()
     {
         // 이벤트 구독 (시점 변환)
-        StartCoroutine(nameof(Fire_co));
-        StartCoroutine(nameof(ResetCombo_co));
-        StartCoroutine(nameof(SetTransformationState_co));
+        Init();
+        SetViewStrategy(new FlagTopViewMove());
     }
     private void OnDisable()
     {
@@ -113,18 +116,13 @@ public class FlagControl : MonoBehaviour
         StopCoroutine(nameof(ResetCombo_co));
         StopCoroutine(nameof(SetTransformationState_co));
     }
-    private void Start()
-    {
-        SetViewStrategy(new FlagTopViewMove());
-        SetState(nomalState);
-    }
     private void OnApplicationFocus(bool hasFocus)
     {
         //Cursor.lockState = CursorLockMode.Locked;
         // todo 버튼 눌러야돼서 나중에 바꿀것
         Cursor.lockState = CursorLockMode.None;
     }
-    private void Init()
+    private void GetComponentAndCashing()
     {
         TryGetComponent(out anim);
         TryGetComponent(out controller);
@@ -158,10 +156,19 @@ public class FlagControl : MonoBehaviour
         hashGundamWeakAttack2 = Animator.StringToHash("gundamWeakAttack2");
         hashGundamStrongAttack = Animator.StringToHash("gundamStrongAttack");
     }
+    private void Init()
+    {
+        currentState = nomalState;
+        isCombo = false;
+        SetModeStrategy(new ModeFlag());
+
+        StartCoroutine(nameof(Fire_co));
+        StartCoroutine(nameof(ResetCombo_co));
+        StartCoroutine(nameof(SetTransformationState_co));
+    }
     #endregion 초기화
 
     #region 전략, 상태
-
     public void SetTopViewStrategy()
     {
         SetViewStrategy(new FlagTopViewMove());
@@ -176,20 +183,31 @@ public class FlagControl : MonoBehaviour
     }
     private void SetViewStrategy(IFlagViewStrategy strategy)
     {
+        // 시점 변환하면 플레이어를 중앙으로 다시 이동시킴
         StartCoroutine(MoveToCenter(0.5f));
         currentViewStrategy = strategy;
     }
-    public void SetModeStrategy(IFlagModeStrategy strategy)
+    public void TransGundam()
     {
-        currentModeStrategy = strategy;
-        if (strategy is ModeGundam)
+        SetModeStrategy(new ModeGundam());
+    }
+    public void TransFlag()
+    {
+        SetModeStrategy(new ModeFlag());
+    }
+    private void SetModeStrategy(IFlagModeStrategy strategy)
+    {
+        // 모드 변경에 따른 애니메이션 출력
+        if (!(currentModeStrategy is ModeGundam) && strategy is ModeGundam)
         {
             anim.SetTrigger(hashToGundam);
         }
-        else
+        else if (!(currentModeStrategy is ModeFlag) && strategy is ModeFlag)
         {
             anim.SetTrigger(hashToFlag);
         }
+
+        currentModeStrategy = strategy;
     }
     private void SetState(IFlagState state)
     {
@@ -225,6 +243,8 @@ public class FlagControl : MonoBehaviour
 
     private void Update()
     {
+        currentState.Action(this);  // 상태에 따라 레이어 변경하여 무적여부 결정
+
         if (!currentState.Equals(transfomationState) && canMove)
         {
             InputMoveKey();
@@ -232,7 +252,6 @@ public class FlagControl : MonoBehaviour
             {
                 CheckDash();
             }
-            currentState.Action(this);
             Attack();
         }
     }
@@ -313,7 +332,7 @@ public class FlagControl : MonoBehaviour
         {
             targetSpeed *= dashSpeed;
         }
-        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.3f, 0.3f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), centerZ - 0.15f, centerZ + 0.15f));
+        Vector3 newPosition = new Vector3(Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * move.x), -0.3f, 0.3f), Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * move.y), -0.18f, 0.18f), Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * move.z), -0.15f, 0.15f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
@@ -349,16 +368,16 @@ public class FlagControl : MonoBehaviour
     public IEnumerator MoveToCenter(float speed)
     {
         canMove = false;
-        Vector3 destPos = new Vector3(0, 0.02f, 0);
-        while (Vector3.SqrMagnitude(transform.position - destPos) >= 0.0004f)
+
+        while (Vector3.SqrMagnitude(transform.position - defaultPos) >= 0.0004f)
         {
-            Vector3 direction = (destPos - transform.position).normalized; // 방향 벡터 계산
+            Vector3 direction = (defaultPos - transform.position).normalized; // 방향 벡터 계산
             Vector3 moveVector = direction * speed * Time.deltaTime; // 이동 벡터 계산
 
             rigid.MovePosition(transform.position + moveVector);
             yield return null;
         }
-        transform.position = destPos;
+        transform.position = defaultPos;
         canMove = true;
     }
     public void StopMove()
