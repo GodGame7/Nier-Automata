@@ -6,12 +6,14 @@ public class PlayerAttackBox : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.root.TryGetComponent(out EnemyHp eh);
         Debug.Log("충돌");
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("데미지");
-            eh.TakeDamage(2);
+            other.transform.root.GetComponent<EnemyHp>().TakeDamage(2);
+        }
+        else if (other.CompareTag("BulletSoft"))
+        {
+            other.gameObject.SetActive(false);
         }
     }
 }

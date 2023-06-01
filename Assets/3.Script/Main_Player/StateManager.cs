@@ -13,7 +13,7 @@ public class StateManager : MonoBehaviour
     public State move;
     public State[] dashstates;
     public State atk;
-    public State dodge;
+    public State hitted;
 
     private void Start()
     {
@@ -21,10 +21,12 @@ public class StateManager : MonoBehaviour
     }
     public void ChangeState(State newState)
     {
+        
         tempState = currentState;
         if (currentState != null)
             currentState.Exit(newState);
         currentState = newState;
+        Main_Player.Instance.ResetBool();
         currentState.Enter(tempState);
     }
 

@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool isCanMove()
     {
-        if (!Main_Player.Instance.isAtk && !Main_Player.Instance.isDash &&!Main_Player.Instance.isHitted)
+        if (!Main_Player.Instance.isAtk && !Main_Player.Instance.isDash && !Main_Player.Instance.isHitted)
         {
             return true;
         }
@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(sm.currentState != sm.atk)
+                if (sm.currentState != sm.atk && Main_Player.Instance.isCanAttack())
                 sm.ChangeState(sm.atk);
             }
             yield return null;
@@ -75,8 +75,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if(!Main_Player.Instance.isDash)
-                sm.ChangeState(sm.dashstates[0]);
+                if (!Main_Player.Instance.isDash)
+                    DashWW();
                 yield break;
             }
             count += Time.deltaTime;
@@ -93,7 +93,7 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 if (!Main_Player.Instance.isDash)
-                    sm.ChangeState(sm.dashstates[1]);
+                    DashAA();
                 yield break;
             }
             count += Time.deltaTime;
@@ -110,7 +110,7 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 if (!Main_Player.Instance.isDash)
-                    sm.ChangeState(sm.dashstates[2]);
+                    DashSS();
                 yield break;
             }
             count += Time.deltaTime;
@@ -127,12 +127,108 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (!Main_Player.Instance.isDash)
-                    sm.ChangeState(sm.dashstates[3]);
+                    DashDD();
                 yield break;
             }
             count += Time.deltaTime;
             yield return null;
         }
     }
+    #endregion
+
+    #region 대쉬인풋관련
+    private void DashWW()
+    {
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 playerForward = transform.forward;
+
+        float angle = Vector3.SignedAngle(cameraForward, playerForward, Vector3.up);
+        if (Mathf.Abs(angle) <= 45f)
+        {
+            sm.ChangeState(sm.dashstates[0]);
+        }
+        else if (angle > 45f && angle <= 135f)
+        {
+            sm.ChangeState(sm.dashstates[1]);
+        }
+        else if (angle > -135f && angle <= -45f)
+        {
+            sm.ChangeState(sm.dashstates[3]);
+        }
+        else
+        {
+            sm.ChangeState(sm.dashstates[2]);
+        }
+    }
+
+    private void DashAA()
+    {
+        Vector3 cameraLeft = -Camera.main.transform.right;
+        Vector3 playerForward = transform.forward;
+        float angle = Vector3.SignedAngle(cameraLeft, playerForward, Vector3.up);
+        if (Mathf.Abs(angle) <= 45f)
+        {
+            sm.ChangeState(sm.dashstates[0]);
+        }
+        else if (angle > 45f && angle <= 135f)
+        {
+            sm.ChangeState(sm.dashstates[1]);
+        }
+        else if (angle > -135f && angle <= -45f)
+        {
+            sm.ChangeState(sm.dashstates[3]);
+        }
+        else
+        {
+            sm.ChangeState(sm.dashstates[2]);
+        }
+    }
+
+    private void DashSS()
+    {
+        Vector3 cameraBack = -Camera.main.transform.forward;
+        Vector3 playerForward = transform.forward;
+        float angle = Vector3.SignedAngle(cameraBack, playerForward, Vector3.up);
+        if (Mathf.Abs(angle) <= 45f)
+        {
+            sm.ChangeState(sm.dashstates[0]);
+        }
+        else if (angle > 45f && angle <= 135f)
+        {
+            sm.ChangeState(sm.dashstates[1]);
+        }
+        else if (angle > -135f && angle <= -45f)
+        {
+            sm.ChangeState(sm.dashstates[3]);
+        }
+        else
+        {
+            sm.ChangeState(sm.dashstates[2]);
+        }
+    }
+
+    private void DashDD()
+    {
+        Vector3 cameraRight = Camera.main.transform.right;
+        Vector3 playerForward = transform.forward;
+        float angle = Vector3.SignedAngle(cameraRight, playerForward, Vector3.up);
+        if (Mathf.Abs(angle) <= 45f)
+        {
+            sm.ChangeState(sm.dashstates[0]);
+        }
+        else if (angle > 45f && angle <= 135f)
+        {
+            sm.ChangeState(sm.dashstates[1]);
+        }
+        else if (angle > -135f && angle <= -45f)
+        {
+            sm.ChangeState(sm.dashstates[3]);
+        }
+        else
+        {
+            sm.ChangeState(sm.dashstates[2]);
+        }
+    }
+
     #endregion
 }

@@ -6,6 +6,11 @@ public class CameraControl : MonoBehaviour
 {
     private ICameraSetStrategy currentViewStrategy;
 
+    private void Awake()
+    {
+        SetTopViewStrategy();
+    }
+
     public void SetTopViewStrategy()
     {
         SetViewStrategy(new CameraTopView());

@@ -31,7 +31,7 @@ public class State_Atk : State
 
     public override void StateUpdate()
     {
-        Main_Player.Instance.Rotate();
+
     }
 
     //private IEnumerator StrongAttack_co()
@@ -52,6 +52,7 @@ public class State_Atk : State
         Main_Player.Instance.anim_sword.SetTrigger("Atk1");
         Main_Player.Instance.collider_sword.enabled = true;
         yield return AtkListener(2);
+        Main_Player.Instance.collider_sword.enabled = false;
         yield return CancleListener();
         Main_Player.Instance.isAtk = false;
     }
@@ -62,7 +63,7 @@ public class State_Atk : State
         float count = 0f;
         while (count < 2f)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetMouseButton(0))
             {
                 break;
             }
@@ -81,16 +82,16 @@ public class State_Atk : State
         float count = 0f;
         while (count < 2f)
         {
-            if (count > 0.5f)
+            if (count > 0.5f && Main_Player.Instance.isCanAttack())
             {
-                Main_Player.Instance.collider_sword.enabled = false;
-                if (!isStrongAtk && Input.GetMouseButtonDown(0))
+                if (!isStrongAtk && Input.GetMouseButtonDown(0)) //АјАн
                 {
                     lastAtkTime = Time.time;
+                    Main_Player.Instance.collider_sword.enabled = true;
                     Main_Player.Instance.anim_player.SetTrigger("Atk" + i);
                     Main_Player.Instance.anim_sword.SetTrigger("Atk" + i);
-                    Main_Player.Instance.collider_sword.enabled = true;
                     yield return AtkListener(i + 1);
+                    Main_Player.Instance.collider_sword.enabled = false;
                     break;
                 }
             }

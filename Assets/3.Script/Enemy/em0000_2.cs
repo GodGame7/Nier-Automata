@@ -12,6 +12,7 @@ public class em0000_2 : Enemy
     [SerializeField] int bullet_count;
     GameObject[] Bullet_Soft;
     [SerializeField] float bullet_speed = 1.0f;
+    [SerializeField] float bullet_reload = 0.5f;
 
     [Header("발사할 위치")]
     [Space(10f)]
@@ -59,12 +60,15 @@ public class em0000_2 : Enemy
     {
         timer += Time.deltaTime;
 
-        if (timer > 1f && !anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Hit"))
+        if (timer > bullet_reload && !anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Hit"))
         {
             if (count >= Bullet_Soft.Length)
             {
                 count = 0;
             }
+
+            //Vector3 Can_pos = Cannon_pos.position;
+            //Can_pos.y = 1f;
 
             Bullet_Soft[count].SetActive(true);
             Bullet_Soft[count].transform.position = Cannon_pos.position;

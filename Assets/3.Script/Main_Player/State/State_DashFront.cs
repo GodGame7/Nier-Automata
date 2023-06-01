@@ -13,6 +13,7 @@ public class State_DashFront : State
     }
     public override void Enter(State before)
     {
+        
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetBool("DashEnd", false);
         lastdashtime = Time.time;
@@ -33,10 +34,6 @@ public class State_DashFront : State
     {
         
     }
-
-   
-
-
     private IEnumerator DashFront()
     {
         Main_Player.Instance.anim_player.SetTrigger("DashFront");
@@ -48,12 +45,17 @@ public class State_DashFront : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("닷지");
+                    StartCoroutine(Dodge());
+                    yield break;
                 }
             }
             yield return null;
         }
-        Debug.Log("대쉬종료");
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            Main_Player.Instance.isDash = false;
+            yield break;
+        }
         Main_Player.Instance.anim_player.SetBool("DashEnd", true);
         yield return new WaitForSeconds(0.4f);
         Main_Player.Instance.isDash = false;
@@ -63,6 +65,35 @@ public class State_DashFront : State
     {
         StartCoroutine(DashFront());
     }
+    private IEnumerator Dodge()
+    {
+        Main_Player.Instance.isDodge = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        Main_Player.Instance.anim_player.SetBool("DodgeFront", true);
+        yield return new WaitUntil(() =>
+        Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_front"));
+        yield return new WaitUntil(() =>
+        (Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).normalizedTime>=0.58f));
+        yield return CancleListener();
+        Main_Player.Instance.anim_player.SetBool("DodgeFront", false);
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.isDash = false;
+        Main_Player.Instance.isDodge = false;
+    }
 
-
+    private IEnumerator CancleListener()
+    {
+        yield return new WaitForEndOfFrame();
+        float count = 0f;
+        while (count < 0.8f)
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetMouseButton(0))
+            {
+                break;
+            }
+            count += Time.deltaTime;
+            yield return null;
+        }
+    }
 }
+

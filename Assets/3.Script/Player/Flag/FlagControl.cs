@@ -39,9 +39,9 @@ public class FlagControl : MonoBehaviour
     private float preInputDelay = 0.9f;
 
     // 전략, 상태
-    private IFlagViewStrategy currentViewStrategy;
+    private IFlagViewStrategy currentViewStrategy = new FlagTopViewMove();
     private IFlagModeStrategy currentModeStrategy = new ModeFlag();
-    public IFlagState currentState;
+    public IFlagState currentState = new FlagNomal();
     private FlagNomal nomalState;
     private FlagAttack attackState;
     private FlagDash dashState;
@@ -115,14 +115,8 @@ public class FlagControl : MonoBehaviour
     }
     private void Start()
     {
-        SetViewStrategy(new FlagBackViewMove());
-        SetViewStrategy(new GundamTopViewMove());
-        SetViewStrategy(new FlagSideViewMove());
         SetViewStrategy(new FlagTopViewMove());
         SetState(nomalState);
-
-        //SetModeStrategy(new ModeGundam());
-        //SetModeStrategy(new ModeFlag());
     }
     private void OnApplicationFocus(bool hasFocus)
     {
