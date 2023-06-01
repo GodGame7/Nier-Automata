@@ -25,9 +25,11 @@ public class FlagFightSpawner : MonoBehaviour
     private float emfirstMoveSpeed;
     private float emlastMoveSpeed;
     private bool isCanLook;
+    
 
     // 적이 없으면 이벤트를 발생시킴
     public int RemainEnemies;
+    private bool isAlone = true;
 
     #region 발생시킬 이벤트들
     public UnityEvent phase1_15_EMDie; // phase2 시작
@@ -49,7 +51,7 @@ public class FlagFightSpawner : MonoBehaviour
     public UnityEvent Phase17_01_EMDie; // Phase18 시작
     public UnityEvent Phase18_01_EMDie; // Phase19 시작
 
-    public UnityEvent Phase18_01_Alone; //
+    public UnityEvent Phase18_01_Alone; // 중간보스 팔이 다 떨어짐
 
     #endregion
 
@@ -930,6 +932,7 @@ public class FlagFightSpawner : MonoBehaviour
     public void Phase18_01()
     {
         RemainEnemies = 5;
+        isAlone = false;
         Debug.Log("으악 중간 보스다!");
 
         StartCoroutine(Co_CheckNumEm018_01());
@@ -939,9 +942,10 @@ public class FlagFightSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (RemainEnemies == 1)
+            if (RemainEnemies == 1 && !isAlone)
             {
-
+                Phase18_01_Alone.Invoke();
+                isAlone = true;
             }
             if (RemainEnemies <= 0)
             {

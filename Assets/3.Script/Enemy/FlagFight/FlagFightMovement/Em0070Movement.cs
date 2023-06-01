@@ -8,9 +8,10 @@ public class Em0070Movement : MonoBehaviour
 
     [Header("적 정보")]
     [SerializeField] Animator animator;
-    [SerializeField] Vector3 firstDestPos;
+    [SerializeField] Vector3 firstDestPos = Vector3.zero;
     [SerializeField] float fireDelay = 1.0f;
-    [SerializeField] float DashSpeed = 0.5f;
+    [SerializeField] float moveSpeed = 0.03f;
+    [SerializeField] float dashSpeed = 0.5f;
 
     [Space(0.5f)]
     [Header("총알")]
@@ -23,6 +24,7 @@ public class Em0070Movement : MonoBehaviour
     [SerializeField] GameObject playerObject;
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
+    [SerializeField] FlagFightSpawner flagFightSpawner;
 
 
     public UnityEvent Ready;
@@ -32,6 +34,7 @@ public class Em0070Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
         flagEmInformation = GetComponent<FlagEmInformation>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -42,16 +45,102 @@ public class Em0070Movement : MonoBehaviour
         {
             Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
         }
+
+        // flagFightSpawner.Phase18_01_Alone.AddListener(Alone);
+        StartCoroutine(Co_Move());
+
     }
+
+    public IEnumerator Co_Move()
+    {
+        while (Vector3.SqrMagnitude(transform.position - firstDestPos) >= 0.00005f)
+        {
+            if (!flagEmInformation.isDie)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, firstDestPos, moveSpeed * Time.deltaTime);
+            }
+            yield return null;
+        }
+        transform.position = firstDestPos;
+
+        StartCoroutine(Co_0070Movement());
+    }
+
+    IEnumerator Co_0070Movement()
+    {
+        animator.SetTrigger("Ready");
+        Ready.Invoke();
+
+        yield return new WaitForSeconds(1.5f);
+
+        StartCoroutine(Co_FastSpinMovement());
+    }
+
+    IEnumerator Co_FastSpinMovement()
+    {
+        animator.SetTrigger("SpinFast");
+        yield return new WaitForSeconds(3.0f);
+
+        animator.SetTrigger("Stay");
+        yield return new WaitForSeconds(3.7f);
+
+        StartCoroutine(Co_SlowSpinMovement());
+        
+    }
+
+    IEnumerator Co_SlowSpinMovement()
+    {
+        animator.SetTrigger("SpinSlow");
+        SlowSpin.Invoke();
+        yield return new WaitForSeconds(5.0f);
+
+        animator.SetTrigger("Stay");
+        yield return new WaitForSeconds(3.7f);
+
+        StartCoroutine(Co_DashMovement());
+    }
+
+    IEnumerator Co_DashMovement()
+    {
+        animator.SetTrigger("SpinFast");
+        Vector3 playerDirection = (playerTransform.position - transform.position).normalized;
+        Vector3 dashDestPos = transform.position + playerDirection * dashSpeed;
+        dashDestPos.x = Mathf.Clamp(dashDestPos.x, -0.15f, 0.15f);
+        dashDestPos.y = Mathf.Clamp(dashDestPos.y, -0.15f, 0.15f);
+        dashDestPos.z = Mathf.Clamp(dashDestPos.z, -0.15f, 0.15f);
+
+        while (Vector3.SqrMagnitude(transform.position - dashDestPos) >= 0.00005f)
+        {
+            if (!flagEmInformation.isDie)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, dashDestPos, moveSpeed * Time.deltaTime);
+            }
+            yield return null;
+        }
+
+        transform.position = dashDestPos;
+
+        animator.SetTrigger("Stay");
+        StopSlowSpin.Invoke();
+        yield return new WaitForSeconds(3.7f);
+
+        StartCoroutine(Co_FastSpinMovement());
+    }
+
 
 
     // 혼자 남았을 때
     void Alone()
     {
+        StopCoroutine(Co_Move());
+        StopCoroutine(Co_0070Movement());
+        StopCoroutine(Co_FastSpinMovement());
+        StopCoroutine(Co_SlowSpinMovement());
+        StopCoroutine(Co_DashMovement());
         StartCoroutine(Fire_co());
     }
 
-    private IEnumerator Fire_co()
+    IEnumerator Fire_co()
     {
         while (true)
         {
