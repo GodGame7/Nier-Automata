@@ -47,9 +47,7 @@ public class State_DashRight : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("´åÁö");
                     StartCoroutine(Dodge());
-                    yield break;
                 }
             }
             yield return null;
@@ -80,6 +78,5 @@ public class State_DashRight : State
         Main_Player.Instance.anim_player.SetBool("DodgeRight", false);
         Main_Player.Instance.anim_player.applyRootMotion = false;
         Main_Player.Instance.isDash = false;
-
     }
 }

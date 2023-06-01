@@ -41,7 +41,9 @@ public class State_DashBack : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("´åÁö");
+                    Debug.Log("Dodge");
+                    StartCoroutine(Dodge());
+                    
                 }
             }
             yield return null;
@@ -55,6 +57,20 @@ public class State_DashBack : State
     {
             StartCoroutine(DashBack());
     }
+    private IEnumerator Dodge()
+    {
+        Main_Player.Instance.isDodge = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        Main_Player.Instance.anim_player.SetBool("DodgeBack", true);
+        yield return new WaitUntil(() =>
+        Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_back"));
+        yield return new WaitUntil(() =>
+        !(Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_back")));
 
+        Main_Player.Instance.isDodge = false;
+        Main_Player.Instance.anim_player.SetBool("DodgeBack", false);
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.isDash = false;
+    }
 
 }

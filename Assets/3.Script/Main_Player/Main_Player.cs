@@ -8,6 +8,7 @@ public class Main_Player : MonoBehaviour
     public static Main_Player Instance { get { return instance; } }
 
     [Header("컴포넌트")]
+    StateManager sm;
     public Animator anim_player;
     public Animator anim_sword;
     public Animator anim_bigsword;
@@ -42,6 +43,7 @@ public class Main_Player : MonoBehaviour
     }
     private void Start()
     {
+        sm = GetComponent<StateManager>();
         isGrounded = true;
         isDash = false;
         isAtk = false;
@@ -70,10 +72,25 @@ public class Main_Player : MonoBehaviour
         Vector3 rotation = new Vector3(0f, Input.GetAxis("Horizontal"), 0f) * 1f;
         transform.Rotate(rotation);
     }
+    public bool isCanHit()
+    {
+        if (isDodge || isHitted) return false;
+        else return true;
+    }
+    public bool isCanAttack()
+    {
+        if (isDodge || isHitted) return false;
+        else return true;
+    }
     public void OnDamage(float damage)
     {
-        anim_player.SetTrigger("Hitted");
-        PlayerData.instance.OnDamage(damage);
+        if (isCanHit())
+        {
+            sm.ChangeState(sm.hitted);
+            PlayerData.instance.OnDamage(damage);
+        }
+        else Debug.Log("무적 상태입니다");
+        //todo 닷지상태일 때, 닷지 효과 재생.
     }
     public void SwordToHand()
     {

@@ -33,10 +33,6 @@ public class State_DashFront : State
     {
         
     }
-
-   
-
-
     private IEnumerator DashFront()
     {
         Main_Player.Instance.anim_player.SetTrigger("DashFront");
@@ -48,7 +44,7 @@ public class State_DashFront : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("´åÁö");
+                    StartCoroutine(Dodge());
                 }
             }
             yield return null;
@@ -63,6 +59,20 @@ public class State_DashFront : State
     {
         StartCoroutine(DashFront());
     }
+    private IEnumerator Dodge()
+    {
+        Main_Player.Instance.isDodge = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        Main_Player.Instance.anim_player.SetBool("DodgeFront", true);
+        yield return new WaitUntil(() =>
+        Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_front"));
+        yield return new WaitUntil(() =>
+        !(Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_front")));
 
+        Main_Player.Instance.isDodge = false;
+        Main_Player.Instance.anim_player.SetBool("DodgeFront", false);
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.isDash = false;
+    }
 
 }

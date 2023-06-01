@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(sm.currentState != sm.atk)
+                if (sm.currentState != sm.atk && Main_Player.Instance.isCanAttack())
                 sm.ChangeState(sm.atk);
             }
             yield return null;

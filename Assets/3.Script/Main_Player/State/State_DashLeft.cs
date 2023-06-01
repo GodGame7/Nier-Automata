@@ -35,7 +35,7 @@ public class State_DashLeft : State
     }
     private IEnumerator DashLeft()
     {
-            Main_Player.Instance.anim_player.SetTrigger("DashLeft");
+        Main_Player.Instance.anim_player.SetTrigger("DashLeft");
         Main_Player.Instance.isDash = true;
         while (Time.time - lastdashtime < dashbat)
         {
@@ -44,7 +44,8 @@ public class State_DashLeft : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("닷지");
+                    StartCoroutine(Dodge());
+                   
                 }
             }
             yield return null;
@@ -58,6 +59,22 @@ public class State_DashLeft : State
     {
             StartCoroutine(DashLeft());
     }
+    private IEnumerator Dodge()
+    {
+        Main_Player.Instance.isDodge = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        //todo 닷지 애니메이션 실행 , 닷지 애니메이션 종료 후 닷지끝애니메이션, isDodge = false
+        Main_Player.Instance.anim_player.SetBool("DodgeLeft", true);
+        //yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() =>
+        Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge4_left"));
+        yield return new WaitUntil(() =>
+        !(Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge4_left")));
 
+        Main_Player.Instance.isDodge = false;
+        Main_Player.Instance.anim_player.SetBool("DodgeLeft", false);
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.isDash = false;
+    }
 
 }

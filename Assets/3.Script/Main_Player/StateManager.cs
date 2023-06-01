@@ -13,7 +13,7 @@ public class StateManager : MonoBehaviour
     public State move;
     public State[] dashstates;
     public State atk;
-    public State dodge;
+    public State hitted;
 
     private void Start()
     {
