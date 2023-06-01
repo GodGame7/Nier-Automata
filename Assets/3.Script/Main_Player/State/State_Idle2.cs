@@ -5,7 +5,7 @@ using UnityEngine;
 public class State_Idle2 : State
 {
     private Camera mainCamera;
-    public float moveSpeed = 5f; // 플레이어 이동 속도
+    float moveSpeed = 5f; // 플레이어 이동 속도
     private void Start()
     {
         mainCamera = Camera.main;

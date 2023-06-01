@@ -4,14 +4,38 @@ using UnityEngine;
 
 public class State_Atk2 : State
 {
+    private Camera mainCamera;
+    private GameObject sword;
+    private GameObject bigSword;
+    private GameObject idleSword;
+    private GameObject idleBigSword;
+    bool isCanStr;
+    int index = 0;
+    float holdTime = 0;
+    private void Start()
+    {
+        mainCamera = Camera.main;
+        sword = Main_Player.Instance.sword;
+        bigSword = Main_Player.Instance.bigSword;
+        idleSword = Main_Player.Instance.idleSword;
+        idleBigSword = Main_Player.Instance.idleBigSword;
+    }
     public override void Enter(State before)
     {
- 
+        Main_Player.Instance.isAtk = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
+        isCanStr = true;
+        Main_Player.Instance.anim_sword.SetTrigger("Atk");
+        Main_Player.Instance.anim_player.SetTrigger("Atk");
+        Atk();
     }
 
     public override void Exit(State next)
     {
- 
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.collider_sword.enabled = false;
+        ResetBool();
+        index = 0;
     }
 
     public override void StateFixedUpdate()
@@ -21,6 +45,129 @@ public class State_Atk2 : State
 
     public override void StateUpdate()
     {
-  
+        if (Input.GetMouseButtonDown(0))
+        {
+            holdTime = 0;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            holdTime += Time.deltaTime;
+            if (holdTime > 1.5f && isCanStr)
+            {                
+                isCanStr = false;
+                //todo 스트롱어택발동
+                isCanStr = true;
+            }
+        }
     }
+    void Rotate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 cameraForward = Vector3.Scale(mainCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        Vector3 movement = (moveHorizontal * mainCamera.transform.right + moveVertical * cameraForward).normalized;
+
+        Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.1f);
+    }
+
+    void ResetBool()
+    {
+        for (int i = 1; i <= 5; i++)
+        {
+            Main_Player.Instance.anim_sword.SetBool("Atk" + i, false);
+            Main_Player.Instance.anim_player.SetBool("Atk" + i, false);
+            if (i <= 3)
+            {
+                Main_Player.Instance.anim_bigsword.SetBool("Atk" + i, false);
+            }
+        }
+    }
+    //============================ 공격 메소드 =========================
+    public void Atk()
+    {
+        index++;
+        int i = index;
+        //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
+        if (i <= 5)
+        {
+            Atk_co(i);
+        }
+        //공격 5콤보가 끝난 상태이므로 아무것도 안 함.
+    }
+    void Atk_co(int i)
+    {
+        //칼을 꺼냄
+        LoadSword();
+        //공격 애니메이션 실행
+        Atk_anim(i);
+        //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
+        // == Sword 스크립트에서 처리 ==
+        //다음 공격을 입력받고 입력받으면 다음 공격을 실행해야 돼!
+        // == Sword 스크립트에서 처리 ==
+    }
+
+    void Atk_anim(int i)
+    {
+        Main_Player.Instance.anim_sword.SetBool("Atk" + i, true);
+        Main_Player.Instance.anim_player.SetBool("Atk" + i, true);
+    }
+
+    IEnumerator listener;
+    public void EndAtk()
+    {
+        //지금 애니메이션이 끝까지 재생 될 거임.
+        //근데 WASD나 공격키, 점프키 등 입력값이 있으면 언제든지 애니메이션 재생이 종료되어야 함.
+        //애니메이션 재생 종료는 Main_Player의 불값이 초기화되기만 해도 ForceIdle이 됨.
+        listener = CancleListener();
+        StopCoroutine(listener);
+        StartCoroutine(listener);
+        
+        //칼을 집어넣음
+        
+    }
+
+    IEnumerator CancleListener()
+    {
+        yield return new WaitForEndOfFrame();
+        float count = 0f;
+        while (count < 2f)
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetMouseButton(0))
+            {
+                break;
+            }
+            count += Time.deltaTime;
+            yield return null;
+        }
+        Main_Player.Instance.ResetBool();
+        ResetSword();
+    }
+
+
+    #region 메소드 Load,Reset + Sword, Big
+    void LoadSword()
+    {
+        sword.SetActive(true);
+        idleSword.SetActive(false);
+    }
+    void ResetSword()
+    {
+        sword.SetActive(false);
+        idleSword.SetActive(true);
+    }
+    void LoadBig()
+    {
+        bigSword.SetActive(true);
+        idleBigSword.SetActive(false);
+    }
+    void ResetBig()
+    {
+        bigSword.SetActive(false);
+        idleBigSword.SetActive(true);
+    }
+    #endregion
+
 }

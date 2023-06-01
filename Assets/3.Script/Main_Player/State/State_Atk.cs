@@ -8,6 +8,7 @@ public class State_Atk : State
     float strongCount;
     StateManager sm;
     bool isStrongAtk;
+
     public override void Enter(State before)
     {
         isStrongAtk = false;
