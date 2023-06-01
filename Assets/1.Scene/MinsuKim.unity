@@ -5418,6 +5418,7 @@ GameObject:
   - component: {fileID: 1960171725102277135}
   - component: {fileID: 2069778623270815206}
   - component: {fileID: 1186765988495636662}
+  - component: {fileID: 1186765988495636663}
   m_Layer: 0
   m_Name: em0030
   m_TagString: Enemy
@@ -5438,6 +5439,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0.1}
+--- !u!54 &1186765988495636663
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186765988495636661}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1204027621220239734
 Transform:
   m_ObjectHideFlags: 0
@@ -5792,6 +5809,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1581357713849905500}
   - component: {fileID: 1581357713849905501}
+  - component: {fileID: 1581357713849905504}
+  - component: {fileID: 1581357713849905505}
   m_Layer: 0
   m_Name: PordLaser
   m_TagString: Untagged
@@ -5799,6 +5818,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1581357713849905504
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581357713849905503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.5}
+--- !u!114 &1581357713849905505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581357713849905503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75792f7db5200d74cb5368fc36da8a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &1581357713970692392
 MeshRenderer:
   m_ObjectHideFlags: 0

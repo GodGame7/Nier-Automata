@@ -10,9 +10,9 @@ public class PordLaserControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            //에너미 데미지 주는 부분
+            other.transform.root.GetComponent<EnemyHp>().TakeDamage(90);
         }
     }
 

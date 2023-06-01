@@ -6,6 +6,7 @@ public class PordBulletControl : MonoBehaviour
 {
     private Vector3 WaitLocation = new Vector3(999, 999, 999);
     [SerializeField] ParticleSystem Spark;
+    
     private void OnEnable()
     {
         StartCoroutine(Disable());
@@ -15,10 +16,16 @@ public class PordBulletControl : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             //todo 김민수 0518 데미지 넣는거 여기넣을지 에너미에 넣을지 수민이랑 결정하렴
+            other.transform.root.GetComponent<EnemyHp>().TakeDamage(6);
             transform.position = WaitLocation;
             gameObject.SetActive(false);
             Spark.transform.position = other.gameObject.transform.position;
             Spark.Play();
+        }
+        if (other.CompareTag("BulletSoft"))
+        {
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
             //if (other.CompareTag("Wall"))
             //{
