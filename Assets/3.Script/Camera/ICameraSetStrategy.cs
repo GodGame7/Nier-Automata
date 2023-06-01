@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICameraSetStrategy
 {
-    void Action();
+    void Action(CameraControl camera);
 }
