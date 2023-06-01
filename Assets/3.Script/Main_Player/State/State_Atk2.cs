@@ -60,18 +60,7 @@ public class State_Atk2 : State
             }
         }
     }
-    void Rotate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 cameraForward = Vector3.Scale(mainCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
-
-        Vector3 movement = (moveHorizontal * mainCamera.transform.right + moveVertical * cameraForward).normalized;
-
-        Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.1f);
-    }
 
     void ResetBool()
     {
@@ -85,11 +74,31 @@ public class State_Atk2 : State
             }
         }
     }
+
+
+
+
+
+    void Rotate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 cameraForward = Vector3.Scale(mainCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        Vector3 movement = (moveHorizontal * mainCamera.transform.right + moveVertical * cameraForward).normalized;
+
+        Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+        transform.rotation = toRotation;
+    }
+
+
     //============================ 공격 메소드 =========================
     public void Atk()
     {
         index++;
         int i = index;
+        Rotate();
         //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
         if (i <= 5)
         {
@@ -142,7 +151,7 @@ public class State_Atk2 : State
             count += Time.deltaTime;
             yield return null;
         }
-        Main_Player.Instance.ResetBool();
+        Main_Player.Instance.isAtk = false;
         ResetSword();
     }
 
@@ -150,22 +159,27 @@ public class State_Atk2 : State
     #region 메소드 Load,Reset + Sword, Big
     void LoadSword()
     {
-        sword.SetActive(true);
+        //sword.SetActive(true);
+        sword.transform.localPosition = new Vector3(0, 0, -1.9f);
         idleSword.SetActive(false);
     }
     void ResetSword()
     {
-        sword.SetActive(false);
+        //sword.SetActive(false);
+        sword.transform.localPosition = new Vector3(0, 100, -1.9f);
         idleSword.SetActive(true);
     }
     void LoadBig()
     {
-        bigSword.SetActive(true);
+        //bigSword.SetActive(true);
+        bigSword.transform.localPosition = new Vector3(0, 0, -1.9f);
         idleBigSword.SetActive(false);
     }
     void ResetBig()
     {
-        bigSword.SetActive(false);
+        //bigSword.SetActive(false);
+        bigSword.transform.localPosition = new Vector3(0, 100, -1.9f);
+
         idleBigSword.SetActive(true);
     }
     #endregion

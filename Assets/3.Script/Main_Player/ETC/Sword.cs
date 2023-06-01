@@ -37,16 +37,18 @@ public class Sword : MonoBehaviour
     }
     void StartComboAtk()
     {
-        Debug.Log(isContinueAtk);
         if (isContinueAtk)
         {
             player.Atk();
         }
         else
         {
-            Debug.Log(1);
-            StopCoroutine(cor); 
-            player.EndAtk();
+            StopCoroutine(cor);
         }
+    }
+
+    void EndAtk()
+    {
+        player.EndAtk();
     }
 }
