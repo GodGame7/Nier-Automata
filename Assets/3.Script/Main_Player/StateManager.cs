@@ -21,10 +21,12 @@ public class StateManager : MonoBehaviour
     }
     public void ChangeState(State newState)
     {
+        
         tempState = currentState;
         if (currentState != null)
             currentState.Exit(newState);
         currentState = newState;
+        Main_Player.Instance.ResetBool();
         currentState.Enter(tempState);
     }
 

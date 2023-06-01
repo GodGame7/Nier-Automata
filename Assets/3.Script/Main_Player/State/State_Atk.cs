@@ -31,7 +31,7 @@ public class State_Atk : State
 
     public override void StateUpdate()
     {
-        Main_Player.Instance.Rotate();
+
     }
 
     //private IEnumerator StrongAttack_co()
@@ -63,7 +63,7 @@ public class State_Atk : State
         float count = 0f;
         while (count < 2f)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetMouseButton(0))
             {
                 break;
             }

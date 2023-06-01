@@ -18,6 +18,8 @@ public class Main_Player : MonoBehaviour
     [Header("검 거치대")]
     public GameObject idleSword;
     public GameObject idleBigSword;
+    public GameObject bigSword;
+    public GameObject sword;
     [Header("손 위치")]
     public Transform leftHand;
     public Transform rightHand;
@@ -53,6 +55,13 @@ public class Main_Player : MonoBehaviour
         collider_bigsword.enabled = false;
     }
 
+    public void ResetBool()
+    {
+        isDash = false;
+        isAtk = false;
+        isDodge = false;
+        isHitted = false;
+    }
     //public void Rotation2(Vector3 inputVec)
     //{
     //    StartCoroutine(Rotatewhile(inputVec));

@@ -33,7 +33,7 @@ public class State_Hitted : State
         Main_Player.Instance.anim_player.SetTrigger("HittedTrigger");
         HitNum++;
         Debug.Log("맞음");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Main_Player.Instance.isHitted = false;
         //todo 히티드 상태일 때, 포스트프로세싱
     }
