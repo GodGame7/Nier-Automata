@@ -39,10 +39,10 @@ public class PordControl : MonoBehaviour
 
     //포드의 움직임 제어용 변수
     private bool isActive = false;
-    
+
     private void Update()
     {
-        
+
 
         if (transform.position.y >= (Player.transform.position + TopPosition).y && !isActive)
         {
@@ -77,7 +77,7 @@ public class PordControl : MonoBehaviour
 
             if (isLockOn) //록온시 타겟방향으로
             {
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move((targetpos-PordBullet.Bullet[bulletCount].transform.position).normalized);
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move((targetpos - PordBullet.Bullet[bulletCount].transform.position).normalized);
             }
             else //록온이 아닐시 앞으로
             {
@@ -122,33 +122,35 @@ public class PordControl : MonoBehaviour
 
             StartCoroutine(Laser_co());
             LaserCoolTime.gameObject.SetActive(true);
-            
-            
-        }
 
+
+        }
+        transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
+                                         transform.position.y,
+                                         Player.transform.position.z + PlayerAround.z);
         //-- 플레이어 움직임에 맞춰서 포드도 움직임--
 
-        //속도 플레이어랑 맞춰주렴
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += new Vector3(0, 0, 1) * 5f * Time.deltaTime;
-            //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += new Vector3(0, 0, -1) * 5f * Time.deltaTime;
-            //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(-1, 0, 0) * 5f * Time.deltaTime;
-            //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(1, 0, 0) * 5f * Time.deltaTime;
-            //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        }
+        ////속도 플레이어랑 맞춰주렴
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    transform.position += new Vector3(0, 0, 1) * 5f * Time.deltaTime;
+        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
+        //}
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    transform.position += new Vector3(0, 0, -1) * 5f * Time.deltaTime;
+        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
+        //}
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    transform.position += new Vector3(-1, 0, 0) * 5f * Time.deltaTime;
+        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
+        //}
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    transform.position += new Vector3(1, 0, 0) * 5f * Time.deltaTime;
+        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
+        //}
         // ----------------------------여기까지 -----------------------------
 
     }
