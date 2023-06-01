@@ -11,6 +11,7 @@ public class EnemyHp : MonoBehaviour
     [Tooltip("이정도 이상의 데미지면 아파함")]
     [SerializeField] private float MinDamage;
     [SerializeField] private Slider enemyHPBar;
+    [SerializeField] private Canvas enemyUI;
 
 
     [Header("Enemy 사망 관련")]
@@ -24,6 +25,7 @@ public class EnemyHp : MonoBehaviour
     //스크립트
     Enemy enemy;
 
+    Camera camera;
 
     //체력 프로퍼티
     public float maxHp => MaxHP;
@@ -63,6 +65,8 @@ public class EnemyHp : MonoBehaviour
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
 
         TryGetComponent(out enemy);
+
+        camera = Camera.main;
     }
     void OnEnable()
     {
@@ -71,10 +75,15 @@ public class EnemyHp : MonoBehaviour
 
     private void Update()
     {
-        if (enemyHPBar)
+        if (enemyHPBar != null)
         {
+            //Vector3 screenPosition = camera.WorldToScreenPoint(transform.position);
+            //enemyHPBar.transform.position = screenPosition + new Vector3(0, 150f, 0);
+            enemyUI.transform.LookAt(camera.transform);
             enemyHPBar.value = currentHp / maxHp;
         }
+
+
     }
 
     //데미지를 받을 때
@@ -90,7 +99,7 @@ public class EnemyHp : MonoBehaviour
         currentHp -= Damage;
 
         //이 데미지 이상이면 충격받아요~
-        if (Damage >= MinDamage)
+        if (Damage >= MinDamage )
         {
             hitNum++;
             enemy.anim.SetFloat("HitNum", hitNum);

@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
 
     //타겟 위치를 저장하는 변수
-    [SerializeField]protected Vector3 targetPosition;
+    [SerializeField] protected Vector3 targetPosition;
 
 
     private void Awake()
@@ -173,6 +173,10 @@ public class Enemy : MonoBehaviour
 
         int value = Random.Range(1, PattonNum + 1);
         anim.SetFloat("Patton", value);
+        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4 || anim.GetFloat("Patton") == 5)
+        {
+            anim.SetBool("IsAttack", true);
+        }
 
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"));
@@ -180,6 +184,7 @@ public class Enemy : MonoBehaviour
 
         //패턴 초기화 되고
         anim.SetFloat("Patton", 0);
+        anim.SetBool("IsAttack", false);
 
         //무기 콜라이더 끄고
         for (int i = 0; i < boxCollider.Length; i++)
