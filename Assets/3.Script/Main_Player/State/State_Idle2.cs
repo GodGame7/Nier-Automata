@@ -47,7 +47,7 @@ public class State_Idle2 : State
         {
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.1f);
-            
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 moveSpeed = 8f;
@@ -58,7 +58,11 @@ public class State_Idle2 : State
                 moveSpeed = 2f;
                 Main_Player.Instance.anim_player.SetFloat("Speed", 0.5f);
             }
-            else Main_Player.Instance.anim_player.SetFloat("Speed", 1f);
+            else
+            {
+                moveSpeed = 5f;
+                Main_Player.Instance.anim_player.SetFloat("Speed", 1f);
+            }
         }
         else Main_Player.Instance.anim_player.SetFloat("Speed", 0f);
     }
