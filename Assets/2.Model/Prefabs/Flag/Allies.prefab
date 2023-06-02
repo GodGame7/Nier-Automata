@@ -1946,6 +1946,7 @@ GameObject:
   - component: {fileID: 3295654722792492628}
   - component: {fileID: 6310867687258959552}
   - component: {fileID: 3199881641008189783}
+  - component: {fileID: 317306167}
   m_Layer: 0
   m_Name: Allies
   m_TagString: Player
@@ -2024,6 +2025,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.032, y: 0.03, z: 0.01}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &317306167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413345919206404871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46004b2edbcadb4ebdb72a3d6e0cdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDelay: 0.2
+  dir: 1
+  time: 0
+  isSway: 1
 --- !u!1 &2429551226791790416
 GameObject:
   m_ObjectHideFlags: 0
