@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2399,7 +2399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2532,7 +2532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3315,7 +3315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -11813,8 +11813,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4efa98c5a9b9745a5bb0b035398bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinnedMeshRenderers: []
-  material: {fileID: 0}
+  skinnedMeshRenderers:
+  - {fileID: 5661357362715782845}
+  - {fileID: 5661357363513521153}
+  - {fileID: 7961995847750127305}
+  - {fileID: 444184049324749806}
+  - {fileID: 585636211159275138}
+  - {fileID: 5066522799691360576}
+  - {fileID: 1326256701718326420}
+  - {fileID: 3001318663170265281}
+  - {fileID: 6833806317766629488}
+  - {fileID: 1012690547581874682}
+  - {fileID: 1124175659704491538}
+  - {fileID: 3776820466730096968}
+  - {fileID: 3883766694956702829}
+  - {fileID: 228853723239558617}
+  - {fileID: 4792449022769332340}
+  material: {fileID: 2100000, guid: fa500a1972b17e146abd257177b91b0c, type: 2}
+  shoulder: {fileID: 8775314410367171970}
+  ghost1:
+    meshFilters: []
+    meshRenderers: []
+    bakedMeshes: []
+    ghostContainers: []
+    material: {fileID: 2100000, guid: 91356118685aa2548b3cc60782aa6097, type: 2}
+  ghost2:
+    meshFilters: []
+    meshRenderers: []
+    bakedMeshes: []
+    ghostContainers: []
+    material: {fileID: 2100000, guid: 6e54b123325baef4293616402ffdc9ee, type: 2}
   delayTime: 0.1
   TrailMotion: 0
 --- !u!4 &6492541961985951617
