@@ -4,16 +4,10 @@ using UnityEngine.UI;
 
 public class ItemEffect : MonoBehaviour
 {
-    [SerializeField] Temp temp;
 
-
-    private InventoryUI Inven_UI;
     private void Awake()
     {
-
-        Temp.UseItem += UseItem;
-
-
+        PlayerInput.UseItem += UseItem;
     }
 
     public void UseItem(int num)

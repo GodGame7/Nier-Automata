@@ -167,17 +167,24 @@ public class PordControl : MonoBehaviour
             {
                 targetpos = other.transform.position;
             }
+
         }
 
     }
     private void OnTriggerExit(Collider other) // 범위 밖으로 나갈시 록온 해제
     {
-        if (other.CompareTag("Enemy"))
+        if (target != null)
         {
-            isMonster = false;
-            isLockOn = false;
-            Lockon.SetActive(false);
-            target = null;
+
+            if ((other == target && other.CompareTag("Enemy")) || !target.gameObject.activeSelf)
+            {
+                Debug.Log("몬스터 빠져나갔당");
+                isMonster = false;
+                isLockOn = false;
+                Lockon.SetActive(false);
+                target = null;
+            }
+
         }
     }
 
