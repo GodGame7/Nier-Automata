@@ -5,91 +5,121 @@ using UnityEngine.Events;
 
 public class SceneManager : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] GameObject[] em0000;
     [SerializeField] GameObject[] em0000_2;
     [SerializeField] GameObject em0010;
     [SerializeField] GameObject em1000;
 
-    public UnityEvent enemyspawner;
+    [SerializeField] float respawnTime = 2f;
+    //public UnityEvent enemyspawner;
 
-    bool first = true;
-    bool second = false;
-    bool third = false;
-    bool four = false;
+    [Header("벽뿌")]
+    [SerializeField] Animator Wallanim;
+    [SerializeField] GameObject Wall;
 
-    bool allInactive = true;
+
+    [Header("순서 확인용")]
+    public bool first = true;
+    public bool second = false;
+    public bool third = false;
+
 
     private void Update()
     {
         if (first)
         {
-            firstEnemy();
+            StartCoroutine(firstEnemy());
         }
         else if (second)
         {
-            SecondEnemy();
+            StartCoroutine(SecondEnemy());
         }
         else if (third)
         {
-            //활성화 되어있지 않으면,
-            if (em0010.activeSelf)
+            if (!em0010.activeSelf)
             {
+                StartCoroutine(Boss());
+            }
+        }
+    }
+
+    IEnumerator firstEnemy()
+    {
+        first = false;
+
+        while (true)
+        {
+            bool allInactive = true;
+
+            Debug.Log("반복1");
+            for (int i = 0; i < em0000.Length; i++)
+            {
+                if (em0000[i].activeSelf)
+                {
+                    allInactive = false;
+                    break;
+                }
+            }
+
+            if (allInactive)
+            {
+                yield return new WaitForSeconds(respawnTime);
+
+                for (int i = 0; i < em0000_2.Length; i++)
+                {
+                    em0000_2[i].SetActive(true);
+                }
+                second = true;
+                break;
+            }
+            yield return null;
+        }
+
+    }
+
+    IEnumerator SecondEnemy()
+    {
+        second = false;
+
+        while (true)
+        {
+            bool allInactive = true;
+
+            for (int i = 0; i < em0000_2.Length; i++)
+            {
+                if (em0000_2[i].activeSelf)
+                {
+                    allInactive = false;
+                    break;
+                }
+            }
+
+            if (allInactive)
+            {
+                yield return new WaitForSeconds(respawnTime);
+
                 em0010.SetActive(true);
-            }
-        }
-    }
-
-    void firstEnemy()
-    {
-        bool allInactive = true;
-
-        for (int i = 0; i < em0000.Length; i++)
-        {
-            if (em0000[i].activeSelf)
-            {
-                allInactive = false;
-                Debug.Log("와와~");
+                third = true;
                 break;
             }
+            yield return null;
         }
-
-        if (allInactive)
-        {
-            for (int i = 0; i < em0000_2.Length; i++)
-            {
-                em0000_2[i].SetActive(true);
-            }
-            second = true;
-            first = false;
-            Debug.Log("나감");
-        }
-
     }
-    void SecondEnemy()
+
+    IEnumerator Boss()
     {
-        bool allInactive = true;
+        third = false;
+        yield return new WaitForSeconds(respawnTime);
+        Wall.SetActive(false);
 
-        for (int i = 0; i < em0000_2.Length; i++)
+        if (!em1000.activeSelf)
         {
-            if (em0000_2[i].activeSelf)
-            {
-                allInactive = false;
-                Debug.Log("와와~");
-                break;
-            }
+            em1000.SetActive(true);
         }
 
-        if (allInactive)
-        {
-            for (int i = 0; i < em0000_2.Length; i++)
-            {
-                em0000_2[i].SetActive(true);
-            }
-            second = false;
-            third = true;
-            Debug.Log("나감");
-        }
+        yield return new WaitForSeconds(4.5f);
+        Wallanim.SetTrigger("Breaken");
     }
-
 
 }
