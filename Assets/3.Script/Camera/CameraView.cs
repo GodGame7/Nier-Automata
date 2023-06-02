@@ -7,7 +7,7 @@ public class CameraBackView : ICameraSetStrategy
 {
     Vector3 destPos = -0.33f * Vector3.forward;
     Quaternion destRot = Quaternion.identity;
-
+    
     public void Action(CameraControl camera)
     {
         camera.ChangeCameraPosition(destPos, destRot);
@@ -16,7 +16,7 @@ public class CameraBackView : ICameraSetStrategy
 
 public class CameraSideView : ICameraSetStrategy
 {
-    Vector3 destPos = new Vector3(0.238f, 0.02f, 0);
+    Vector3 destPos = 0.238f * Vector3.right;
     Quaternion destRot = Quaternion.Euler(0, -90, 0);
 
     public void Action(CameraControl camera)
