@@ -31,7 +31,6 @@ public class ModeFlag : IFlagModeStrategy
     }
     public void Rotate(FlagControl player)
     {
-        throw new System.NotImplementedException();
     }
 
     #region АјАн

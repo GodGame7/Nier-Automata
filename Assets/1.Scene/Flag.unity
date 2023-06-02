@@ -11436,13 +11436,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279584642}
-  m_LocalRotation: {x: -0, y: -0.7425985, z: -0, w: 0.6697369}
-  m_LocalPosition: {x: 0.0289, y: 0.02, z: -0.235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: -0.2825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -95.906, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &279584647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21959,6 +21959,7 @@ MonoBehaviour:
   phase1:
     m_PersistentCalls:
       m_Calls: []
+  flagFightSpawner: {fileID: 0}
 --- !u!4 &648818932
 Transform:
   m_ObjectHideFlags: 0
@@ -102334,6 +102335,42 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Phase6_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase7_06_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase8_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase9_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase10_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase11_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase12_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase13_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase14_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase15_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase16_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase17_01_EMDie:
+    m_PersistentCalls:
+      m_Calls: []
+  Phase18_01_EMDie:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1616764686
