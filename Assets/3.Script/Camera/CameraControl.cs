@@ -33,29 +33,22 @@ public class CameraControl : MonoBehaviour
 
     public void ChangeCameraPosition(Vector3 destPos, Quaternion destRot)
     {
-        //StartCoroutine(test_co(destPos, destRot));
+        StartCoroutine(test_co(destPos, destRot));
     }
 
     private IEnumerator test_co(Vector3 destPos, Quaternion destRot)
     {
         int cnt = 0;
         Vector3 center = 0.02f * Vector3.up;
-        Vector3 rotation = Vector3.zero;
-        float rotationSpeed = 45f;
 
         while (Vector3.SqrMagnitude(transform.position - destPos) > 0.00001f && cnt++ < 1000)
         {
-            transform.position = Vector3.Slerp(transform.position, destPos, moveSpeed * Time.deltaTime * cnt);
-            transform.LookAt(center);
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, destRot, rotationSpeed * Time.deltaTime);
+            transform.SetPositionAndRotation(Vector3.Slerp(transform.position, destPos, moveSpeed * Time.deltaTime * cnt),
+                                            Quaternion.Slerp(transform.rotation, destRot, moveSpeed * Time.deltaTime * cnt));
 
             yield return null;
         }
         transform.position = destPos;
         transform.LookAt(center);
-    }
-    private void FixedUpdate()
-    {
-        transform.LookAt(0.02f * Vector3.up);
     }
 }

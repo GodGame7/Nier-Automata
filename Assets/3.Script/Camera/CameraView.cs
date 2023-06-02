@@ -6,8 +6,8 @@ using UnityEngine;
 public class CameraBackView : ICameraSetStrategy
 {
     Vector3 destPos = -0.33f * Vector3.forward;
-    Quaternion destRot = Quaternion.identity;
-
+    Quaternion destRot = Quaternion.Euler(-3.468f, 0, 0);
+    
     public void Action(CameraControl camera)
     {
         camera.ChangeCameraPosition(destPos, destRot);
