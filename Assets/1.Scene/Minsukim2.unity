@@ -225,11 +225,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
@@ -299,11 +299,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793091, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: enemyHp
@@ -386,11 +386,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793091, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: enemyHp
@@ -612,11 +612,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
@@ -943,6 +943,9 @@ MonoBehaviour:
   target: {fileID: 68784103182951577}
   rotationSpeed: 5
   distance: 5
+  minVerticalAngle: -20
+  maxVerticalAngle: 60
+  verticalSpeed: 2
 --- !u!114 &816988976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,11 +1174,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -1227,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793091, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: enemyHp
@@ -1265,11 +1268,11 @@ PrefabInstance:
       objectReference: {fileID: 816988978}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -1321,7 +1324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
@@ -1645,11 +1648,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -1701,7 +1704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
@@ -1829,11 +1832,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1870610006, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672583752278627643, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_RootOrder
@@ -1885,7 +1888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340892949670793089, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a85ad963ca27f54c99044065f79a2f8, type: 3}
@@ -22013,6 +22016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCanStr: 0
+  stronged: 0
 --- !u!23 &996208206109999306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34951,6 +34955,7 @@ MonoBehaviour:
   isDodge: 0
   isHitted: 0
   isSwordhand: 0
+  meshBake: {fileID: 0}
 --- !u!4 &2087397389205251824
 Transform:
   m_ObjectHideFlags: 0
