@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AllyControl : MonoBehaviour
 {
+    private GameObject[] enemies;
+    private List<GameObject> aliveEnemies = new List<GameObject>();
+    int enemyIndex;
+
     private Animator anim;
     private Rigidbody rigid;
     private FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
@@ -19,6 +23,7 @@ public class AllyControl : MonoBehaviour
     private float stopDirTime = 0.5f;
     private float changeDirTime = 2.0f;
     public bool isSway = true;
+    public bool isFire = true;
 
     Vector3 newPosition;
 
@@ -34,16 +39,14 @@ public class AllyControl : MonoBehaviour
 
         newPosition = new Vector3(
         Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
-
-        StartCoroutine(Fire_co(3f));
-        StartCoroutine(MoveTo(0.28f));
+        Transform();
     }
 
     private void Update()
     {
         time += Time.deltaTime;
-        //Sway();
-        //Fire();
+        Sway();
+        Fire();
     }
 
     public IEnumerator MoveTo(float destX)
@@ -86,9 +89,11 @@ public class AllyControl : MonoBehaviour
             time = 0;
         }
     }
+
+    // isFire가 true일 때 발사
     public void Fire()
     {
-        if (Time.time > lastFireTime + fireDelay)
+        if (Time.time > lastFireTime + fireDelay && isFire)
         {
             foreach (FlagBulletSpawner b in bulletSpawners)
             {
@@ -97,31 +102,80 @@ public class AllyControl : MonoBehaviour
             lastFireTime = Time.time;
         }
     }
-    public IEnumerator Fire_co(float time)
-    {
-        float startTime = Time.time;
-        while (true)
-        {
-            yield return fireDelay_wait;
+    // time 동안 쏘고 중지
+    //public IEnumerator Fire_co(float time)
+    //{
+    //
+    //    float startTime = Time.time;
+    //    while (true)
+    //    {
+    //        yield return fireDelay_wait;
 
-            foreach (FlagBulletSpawner b in bulletSpawners)
-            {
-                b.Fire();
-            }
-            if (Time.time - startTime >= time)
-            {
-                break;
-            }
-        }
-    }
+    //        foreach (FlagBulletSpawner b in bulletSpawners)
+    //        {
+    //            b.Fire();
+    //        }
+    //        if (Time.time - startTime >= time)
+    //        {
+    //            break;
+    //        }
+    //    }
+    //}
 
     public void Transform()
     {
         anim.SetTrigger("toGundam");
+        isFire = false;
+        isSway = false;
+        StartCoroutine(FindEnemies_co());
+    }
+    private IEnumerator FindEnemies_co()
+    {
+        yield return new WaitForSeconds(0.5f);
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("ToGundam") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f);
+        StartCoroutine(LookAt_co());
     }
 
-    public void LookAt()
+    private IEnumerator LookAt_co()
     {
+        foreach (GameObject enemy in enemies)
+        {
+            aliveEnemies.Add(enemy);
+        }
+        StartCoroutine(nameof(SearchEnemy));
 
+        while (true)
+        {
+            List<GameObject> tmpList = new List<GameObject>();
+            int length = aliveEnemies.Count;
+            for (int i = 0; i< length;i++)
+            {
+                if (!aliveEnemies[i].activeSelf)
+                {
+                    aliveEnemies.Remove(aliveEnemies[i]);
+                    break;
+                }
+            }
+            if (aliveEnemies.Count == 0)
+            {
+                StopCoroutine(nameof(SearchEnemy));
+                break;
+            }
+            transform.LookAt(enemies[enemyIndex].transform);
+            Quaternion target = Quaternion.Euler(-90, transform.eulerAngles.y, transform.eulerAngles.z);
+            transform.rotation = target;
+            yield return null;
+        }
+    }
+
+    private IEnumerator SearchEnemy()
+    {
+        while (true)
+        {
+            Debug.Log(1);
+            enemyIndex = Random.Range(0, aliveEnemies.Count);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
