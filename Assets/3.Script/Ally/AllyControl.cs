@@ -39,14 +39,11 @@ public class AllyControl : MonoBehaviour
 
         newPosition = new Vector3(
         Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
-        Transform();
     }
 
     private void Update()
     {
         time += Time.deltaTime;
-        Sway();
-        Fire();
     }
 
     public void MoveTo(float destX)
