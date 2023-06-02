@@ -18,6 +18,7 @@ public class PordControl : MonoBehaviour
     // 록온을 위한 변수
     private bool isLockOn = false;
     private bool isMonster = false;
+    private Collider target;
 
     // 록온시 타겟 위치
     private Vector3 targetpos;
@@ -77,6 +78,7 @@ public class PordControl : MonoBehaviour
             }
             else //록온이 아닐시 앞으로
             {
+                Debug.Log(-Cam.transform.position);
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
@@ -124,7 +126,7 @@ public class PordControl : MonoBehaviour
         transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
                                          transform.position.y,
                                          Player.transform.position.z + PlayerAround.z);
-       
+
 
     }
 
@@ -160,11 +162,10 @@ public class PordControl : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             isMonster = true;
-
-            if (isLockOn)
+            target = other;
+            if (isLockOn && other == target)
             {
                 targetpos = other.transform.position;
-                Debug.Log(other.name);
             }
         }
 
@@ -176,6 +177,7 @@ public class PordControl : MonoBehaviour
             isMonster = false;
             isLockOn = false;
             Lockon.SetActive(false);
+            target = null;
         }
     }
 
