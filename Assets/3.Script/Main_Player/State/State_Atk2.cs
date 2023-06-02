@@ -10,6 +10,7 @@ public class State_Atk2 : State
     private GameObject idleSword;
     private GameObject idleBigSword;
     public bool isCanStr;
+    [SerializeField]bool stronged;
     int index = 0;
     float holdTime = 0;
     private void Start()
@@ -24,10 +25,10 @@ public class State_Atk2 : State
     {
         Main_Player.Instance.isAtk = true;
         Main_Player.Instance.anim_player.applyRootMotion = true;
+        Atk();
         Main_Player.Instance.anim_sword.SetTrigger("Atk");
         Main_Player.Instance.anim_player.SetTrigger("Atk");
         ResetStrong();
-        Atk();
     }
 
     public override void Exit(State next)
@@ -36,6 +37,8 @@ public class State_Atk2 : State
         Main_Player.Instance.collider_sword.enabled = false;
         EndAtk();
         ResetBool();
+        isCanStr = false;
+        stronged = false;
         index = 0;
     }
 
@@ -46,6 +49,7 @@ public class State_Atk2 : State
 
     public override void StateUpdate()
     {
+        if (!stronged) { 
             if (Input.GetMouseButtonDown(0))
             {
                 holdTime = 0;
@@ -53,11 +57,12 @@ public class State_Atk2 : State
             else if (Input.GetMouseButton(0))
             {
                 holdTime += Time.deltaTime;
-                if (holdTime > 0.8f)
+                if (holdTime > 0.45f)
                 {
                     isCanStr = true;
                 }
             }
+        }
     }
 
 
@@ -75,6 +80,7 @@ public class State_Atk2 : State
     }
     public void AtkStrong()
     {
+        stronged = true;
         isCanStr = false;//강공격 불변수 체크
         //강공격 애니메이션 재생
         LoadSword();
@@ -87,7 +93,9 @@ public class State_Atk2 : State
     {
         Main_Player.Instance.anim_player.SetBool("CanStrong", true);
         Main_Player.Instance.anim_sword.SetBool("CanStrong", true);
+        stronged = false;
         isCanStr = false;
+        holdTime = 0f;
     }
     void Rotate()
     {
@@ -108,7 +116,6 @@ public class State_Atk2 : State
     {
         index++;
         int i = index;
-        LoadSword();
         //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
         if (i <= 5)
         {
@@ -119,6 +126,7 @@ public class State_Atk2 : State
     void Atk_co(int i)
     {
         //공격 애니메이션 실행
+        LoadSword();
         Atk_anim(i);
         //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
         // == Sword 스크립트에서 처리 ==
