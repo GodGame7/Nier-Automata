@@ -9,10 +9,9 @@ public class State_Atk2 : State
     private GameObject bigSword;
     private GameObject idleSword;
     private GameObject idleBigSword;
-    bool isCanStr;
+    public bool isCanStr;
     int index = 0;
     float holdTime = 0;
-    float holdTime2 = 0;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -25,9 +24,9 @@ public class State_Atk2 : State
     {
         Main_Player.Instance.isAtk = true;
         Main_Player.Instance.anim_player.applyRootMotion = true;
-        isCanStr = true;
         Main_Player.Instance.anim_sword.SetTrigger("Atk");
         Main_Player.Instance.anim_player.SetTrigger("Atk");
+        ResetStrong();
         Atk();
     }
 
@@ -47,8 +46,6 @@ public class State_Atk2 : State
 
     public override void StateUpdate()
     {
-        if (isCanStr)
-        {
             if (Input.GetMouseButtonDown(0))
             {
                 holdTime = 0;
@@ -56,28 +53,11 @@ public class State_Atk2 : State
             else if (Input.GetMouseButton(0))
             {
                 holdTime += Time.deltaTime;
-                if (holdTime > 1.5f && isCanStr)
+                if (holdTime > 0.8f)
                 {
-                    isCanStr = false;
-                    Debug.Log("강공격");
                     isCanStr = true;
                 }
             }
-            if (Input.GetMouseButtonDown(1))
-            {
-                holdTime2 = 0;
-            }
-            else if (Input.GetMouseButton(1))
-            {
-                holdTime2 += Time.deltaTime;
-                if (holdTime2 > 1f && isCanStr)
-                {
-                    isCanStr = false;
-                    Debug.Log("차지");
-                    isCanStr = true;
-                }
-            }
-        }
     }
 
 
@@ -97,9 +77,20 @@ public class State_Atk2 : State
 
 
 
-    void AtkStrong()
+    public void AtkStrong()
     {
-
+        isCanStr = false;//강공격 불변수 체크
+        //강공격 애니메이션 재생
+        Main_Player.Instance.anim_sword.SetTrigger("AtkStrong");
+        Main_Player.Instance.anim_player.SetTrigger("AtkStrong");
+        //holdtime 초기화
+        holdTime = 0f;
+    }
+    void ResetStrong()
+    {
+        Main_Player.Instance.anim_player.SetBool("CanStrong", true);
+        Main_Player.Instance.anim_sword.SetBool("CanStrong", true);
+        isCanStr = false;
     }
     void Rotate()
     {
@@ -177,28 +168,30 @@ public class State_Atk2 : State
 
 
     #region 메소드 Load,Reset + Sword, Big
+
+    Vector3 trashposition = new Vector3(0, 100, 0);
     void LoadSword()
     {
         //sword.SetActive(true);
-        sword.transform.localPosition = new Vector3(0, 0, -1.9f);
+        sword.transform.position = transform.position;
         idleSword.SetActive(false);
     }
     void ResetSword()
     {
         //sword.SetActive(false);
-        sword.transform.localPosition = new Vector3(0, 100, -1.9f);
+        sword.transform.position = trashposition;
         idleSword.SetActive(true);
     }
     void LoadBig()
     {
         //bigSword.SetActive(true);
-        bigSword.transform.localPosition = new Vector3(0, 0, -1.9f);
+        bigSword.transform.position = transform.position;
         idleBigSword.SetActive(false);
     }
     void ResetBig()
     {
         //bigSword.SetActive(false);
-        bigSword.transform.localPosition = new Vector3(0, 100, -1.9f);
+        bigSword.transform.position = trashposition;
 
         idleBigSword.SetActive(true);
     }

@@ -7,8 +7,14 @@ public class PlayerInput : MonoBehaviour
     StateManager sm;
     Coroutine co_dodge;
     Coroutine co_atk;
+
+    [SerializeField] private InventoryUI Inventory_UI;
+    public delegate void Item(int num);
+    public static event Item UseItem;
+
     [Header("대쉬 입력 대기 시간")]
     public float dashCount;
+
     private void Start()
     {
         sm = FindObjectOfType<StateManager>();
@@ -25,7 +31,30 @@ public class PlayerInput : MonoBehaviour
                 sm.ChangeState(sm.idle);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.I)) // 왼쪽아래 작은 인벤툴팁 열기
+        {
+            Inventory_UI.InvenActive();
+        }
+        if (Inventory_UI.isActiveInven)
+        {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                UseItem?.Invoke(Inventory_UI.ListNum);
+                Inventory_UI.UpdateUI();
+            }            
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Inventory_UI.UpSelected();
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Inventory_UI.DownSelected();
+            }
+
+        }
     }
+
 
     public bool isCanMove()
     {
@@ -45,7 +74,19 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 if (sm.currentState != sm.atk && Main_Player.Instance.isCanAttack())
-                sm.ChangeState(sm.atk);
+                    sm.ChangeState(sm.atk);
+            }
+            yield return null;
+        }
+    }
+    private IEnumerator BigAttackListener()
+    {
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (sm.currentState != sm.atk_big && Main_Player.Instance.isCanAttack())
+                    sm.ChangeState(sm.atk_big);
             }
             yield return null;
         }
@@ -60,9 +101,9 @@ public class PlayerInput : MonoBehaviour
             {
                 yield return DoubleWClick();
             }
-            else if(Input.GetKeyDown(KeyCode.A)) { yield return DoubleAClick(); }
-            else if(Input.GetKeyDown(KeyCode.S)) { yield return DoubleSClick(); }
-            else if(Input.GetKeyDown(KeyCode.D)) { yield return DoubleDClick(); }
+            else if (Input.GetKeyDown(KeyCode.A)) { yield return DoubleAClick(); }
+            else if (Input.GetKeyDown(KeyCode.S)) { yield return DoubleSClick(); }
+            else if (Input.GetKeyDown(KeyCode.D)) { yield return DoubleDClick(); }
 
             yield return null;
         }
