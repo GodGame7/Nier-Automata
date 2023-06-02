@@ -41,16 +41,22 @@ public class PordControl : MonoBehaviour
     //포드의 움직임 제어용 변수
     private bool isActive = false;
 
+    //포드의 총위치를 위한 변수
+    Vector3 ScreenCenter;
+    
     private void Update()
     {
-
 
         if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
         {
             transform.position += Vector3.up * 0.2f * Time.deltaTime;
         }
+        
+        ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector3(960, 0, 840));
+        LaserCoolTime.transform.rotation = Cam.transform.rotation;
+        MagicCircle.transform.rotation = Cam.transform.rotation;
 
-        // ------------------------인풋매니저로 넘길부분 ----------------------------
+        // ------------------------인풋 ----------------------------
         if (Input.GetKey(KeyCode.RightShift) && !isLaser ||
             Input.GetKey(KeyCode.LeftShift) && !isLaser) //레이저와 동시에 나가는것 방지
         {
@@ -68,9 +74,11 @@ public class PordControl : MonoBehaviour
 
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
-
+             
             Smoke.Play();
             Smoke.transform.position = transform.position + MagicCirclePositon;
+
+            
 
             if (isLockOn) //록온시 타겟방향으로
             {
@@ -78,8 +86,8 @@ public class PordControl : MonoBehaviour
             }
             else //록온이 아닐시 앞으로
             {
-                Debug.Log(-Cam.transform.position);
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
+                
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(new Vector3(ScreenCenter.x , transform.position.y , ScreenCenter.z).normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
 
@@ -120,13 +128,13 @@ public class PordControl : MonoBehaviour
 
             StartCoroutine(Laser_co());
             LaserCoolTime.gameObject.SetActive(true);
-
+            
 
         }
         transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
                                          transform.position.y,
                                          Player.transform.position.z + PlayerAround.z);
-
+        transform.rotation = Cam.transform.rotation;
 
     }
 
@@ -139,8 +147,12 @@ public class PordControl : MonoBehaviour
         isLaser = true;
         PordLaser.SetActive(true);
         PordLaser.transform.position = transform.position + MagicCirclePositon;
+        PordLaser.transform.rotation = Cam.transform.rotation;
+
         MagicCircle.SetActive(true);
         MagicCircle.transform.position = transform.position + MagicCirclePositon;
+        MagicCircle.transform.rotation = Cam.transform.rotation;
+
         if (isLockOn) //록온시 타겟 에게 방향 설정
         {
             PordLaser.transform.LookAt(targetpos);
@@ -172,12 +184,18 @@ public class PordControl : MonoBehaviour
     }
     private void OnTriggerExit(Collider other) // 범위 밖으로 나갈시 록온 해제
     {
-        if (other.CompareTag("Enemy"))
+        if (target != null)
         {
-            isMonster = false;
-            isLockOn = false;
-            Lockon.SetActive(false);
-            target = null;
+
+            if ((other == target && other.CompareTag("Enemy")) || !target.gameObject.activeSelf)
+            {
+                Debug.Log("몬스터 빠져나갔당");
+                isMonster = false;
+                isLockOn = false;
+                Lockon.SetActive(false);
+                target = null;
+            }
+
         }
     }
 

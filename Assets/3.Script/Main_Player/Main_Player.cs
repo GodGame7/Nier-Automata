@@ -109,4 +109,21 @@ public class Main_Player : MonoBehaviour
     {
         bigSwordBone.position = rightHand.position;
     }
+
+    [Header("메쉬베이크용")]
+    [SerializeField] MeshBake meshBake;
+    public void HittedWhileDodge()
+    {
+        
+    }
+
+    private IEnumerator DestroyCopiesAfterDelay(GameObject[] copies, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        for (int i = 0; i < copies.Length; i++)
+        {
+            Destroy(copies[i]);
+        }
+    }
 }

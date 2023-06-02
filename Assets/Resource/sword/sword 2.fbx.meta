@@ -238,7 +238,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.08690146
+      - time: 0.104758605
         functionName: StartComboAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -345,22 +345,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.094458446
-        functionName: SwordHitboxOn
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.56298774
-        functionName: SwordHitboxOff
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.0012284921
         functionName: CheckComboAtk
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.094458446
+        functionName: SwordHitboxOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -373,8 +366,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5749386
+      - time: 0.3294029
         functionName: EndAtk
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.56298774
+        functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -430,15 +430,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7405541
-        functionName: SwordHitboxOff
+      - time: 0.5861614
+        functionName: EndAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8004471
-        functionName: EndAtk
+      - time: 0.7405541
+        functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
