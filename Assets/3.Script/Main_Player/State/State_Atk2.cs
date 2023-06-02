@@ -12,6 +12,7 @@ public class State_Atk2 : State
     bool isCanStr;
     int index = 0;
     float holdTime = 0;
+    float holdTime2 = 0;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -34,6 +35,7 @@ public class State_Atk2 : State
     {
         Main_Player.Instance.anim_player.applyRootMotion = false;
         Main_Player.Instance.collider_sword.enabled = false;
+        EndAtk();
         ResetBool();
         index = 0;
     }
@@ -45,18 +47,35 @@ public class State_Atk2 : State
 
     public override void StateUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isCanStr)
         {
-            holdTime = 0;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            holdTime += Time.deltaTime;
-            if (holdTime > 1.5f && isCanStr)
-            {                
-                isCanStr = false;
-                //todo 스트롱어택발동
-                isCanStr = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                holdTime = 0;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                holdTime += Time.deltaTime;
+                if (holdTime > 1.5f && isCanStr)
+                {
+                    isCanStr = false;
+                    Debug.Log("강공격");
+                    isCanStr = true;
+                }
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                holdTime2 = 0;
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                holdTime2 += Time.deltaTime;
+                if (holdTime2 > 1f && isCanStr)
+                {
+                    isCanStr = false;
+                    Debug.Log("차지");
+                    isCanStr = true;
+                }
             }
         }
     }
@@ -78,7 +97,10 @@ public class State_Atk2 : State
 
 
 
+    void AtkStrong()
+    {
 
+    }
     void Rotate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -133,9 +155,7 @@ public class State_Atk2 : State
         listener = CancleListener();
         StopCoroutine(listener);
         StartCoroutine(listener);
-        
         //칼을 집어넣음
-        
     }
 
     IEnumerator CancleListener()
