@@ -14,6 +14,7 @@ public class FollowUI : MonoBehaviour
     {
         TryGetComponent(out UITrans);
         mainCamera = Camera.main;
+        target_obj = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void LateUpdate()
