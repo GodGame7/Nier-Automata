@@ -10706,7 +10706,7 @@ MonoBehaviour:
   - {fileID: 777397237}
   - {fileID: 1362018030}
   - {fileID: 1490595817}
-  em0070: {fileID: 0}
+  em0070: {fileID: 1097888923}
   flagFightSubTitleManager: {fileID: 1429293152}
   FlagPrefab: {fileID: 0}
   RemainEnemies: 0
@@ -38979,13 +38979,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 767629934}
     m_Modifications:
     - target: {fileID: 5915697680952693024, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
-      propertyPath: moveSpeed
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915697680952693024, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
-      propertyPath: firstDestPos.z
-      value: 0.12
-      objectReference: {fileID: 0}
+      propertyPath: flagFightSpawner
+      value: 
+      objectReference: {fileID: 145294356}
     - target: {fileID: 5915697680952693025, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
       propertyPath: m_RootOrder
       value: 93
@@ -39030,13 +39026,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5915697680952693027, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
+      propertyPath: fightManager
+      value: 
+      objectReference: {fileID: 236518916}
+    - target: {fileID: 5915697680952693027, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
+      propertyPath: flagFightSpawner
+      value: 
+      objectReference: {fileID: 145294356}
     - target: {fileID: 5915697680952693028, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
       propertyPath: m_Name
       value: em0070
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915697680952693028, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
@@ -55143,6 +55143,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4367181337537770569, guid: 4c1d458e6aa260b4da1f30dfa5409c82, type: 3}
   m_PrefabInstance: {fileID: 1040610611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1097888923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5915697680952693028, guid: ec0ccb69735bbe14e80a3db164b8bd1f, type: 3}
+  m_PrefabInstance: {fileID: 848673781}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1097888924 stripped
 Transform:

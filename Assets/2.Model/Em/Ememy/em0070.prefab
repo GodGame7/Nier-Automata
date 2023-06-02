@@ -3809,7 +3809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5915697680952693025
 Transform:
   m_ObjectHideFlags: 0
@@ -3878,11 +3878,11 @@ MonoBehaviour:
   dashSpeed: 0.2
   LookSpeed: 20
   bulletHard: {fileID: 7216397595937012662, guid: 1672e0cffba280940af01124ca053a34, type: 3}
-  bulletSoft: {fileID: 2332928524474320455, guid: b72a357218355a94eb8d1dfc5ab4d6ed, type: 3}
+  bulletSoft: {fileID: 4940254569364709599, guid: e6b5f837fb8ee484fa2508031c42014e, type: 3}
   bulletSpeed: 0.1
   playerObject: {fileID: 0}
   playerTransform: {fileID: 0}
-  flagEmInformation: {fileID: 0}
+  flagEmInformation: {fileID: 5915697680952693027}
   flagFightSpawner: {fileID: 0}
   Ready:
     m_PersistentCalls:
