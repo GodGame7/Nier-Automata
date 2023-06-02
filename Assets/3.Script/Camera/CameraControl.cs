@@ -39,7 +39,6 @@ public class CameraControl : MonoBehaviour
     private IEnumerator test_co(Vector3 destPos, Quaternion destRot)
     {
         int cnt = 0;
-        Vector3 center = 0.02f * Vector3.up;
 
         while (Vector3.SqrMagnitude(transform.position - destPos) > 0.00001f && cnt++ < 1000)
         {
@@ -49,6 +48,6 @@ public class CameraControl : MonoBehaviour
             yield return null;
         }
         transform.position = destPos;
-        transform.LookAt(center);
+        transform.LookAt(Vector3.zero);
     }
 }
