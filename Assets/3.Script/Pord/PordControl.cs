@@ -18,6 +18,7 @@ public class PordControl : MonoBehaviour
     // 록온을 위한 변수
     private bool isLockOn = false;
     private bool isMonster = false;
+    private Collider target;
 
     // 록온시 타겟 위치
     private Vector3 targetpos;
@@ -44,11 +45,7 @@ public class PordControl : MonoBehaviour
     {
 
 
-        if (transform.position.y >= (Player.transform.position + TopPosition).y && !isActive)
-        {
-            transform.position -= Vector3.up * 0.4f * Time.deltaTime;
-        }
-        else if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
+        if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
         {
             transform.position += Vector3.up * 0.2f * Time.deltaTime;
         }
@@ -81,6 +78,7 @@ public class PordControl : MonoBehaviour
             }
             else //록온이 아닐시 앞으로
             {
+                Debug.Log(-Cam.transform.position);
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
@@ -128,30 +126,7 @@ public class PordControl : MonoBehaviour
         transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
                                          transform.position.y,
                                          Player.transform.position.z + PlayerAround.z);
-        //-- 플레이어 움직임에 맞춰서 포드도 움직임--
 
-        ////속도 플레이어랑 맞춰주렴
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position += new Vector3(0, 0, 1) * 5f * Time.deltaTime;
-        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        //}
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position += new Vector3(0, 0, -1) * 5f * Time.deltaTime;
-        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        //}
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.position += new Vector3(-1, 0, 0) * 5f * Time.deltaTime;
-        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        //}
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.position += new Vector3(1, 0, 0) * 5f * Time.deltaTime;
-        //    //임시값 , 추후 플레이어 이동속도랑 움직이는거보고 변경예정
-        //}
-        // ----------------------------여기까지 -----------------------------
 
     }
 
@@ -163,8 +138,9 @@ public class PordControl : MonoBehaviour
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
-        MagicCircle.SetActive(true);
         PordLaser.transform.position = transform.position + MagicCirclePositon;
+        MagicCircle.SetActive(true);
+        MagicCircle.transform.position = transform.position + MagicCirclePositon;
         if (isLockOn) //록온시 타겟 에게 방향 설정
         {
             PordLaser.transform.LookAt(targetpos);
@@ -186,8 +162,8 @@ public class PordControl : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             isMonster = true;
-
-            if (isLockOn)
+            target = other;
+            if (isLockOn && other == target)
             {
                 targetpos = other.transform.position;
             }
@@ -201,6 +177,7 @@ public class PordControl : MonoBehaviour
             isMonster = false;
             isLockOn = false;
             Lockon.SetActive(false);
+            target = null;
         }
     }
 

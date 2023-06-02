@@ -14,6 +14,12 @@ public class PordLaserControl : MonoBehaviour
         {
             other.transform.root.GetComponent<EnemyHp>().TakeDamage(90);
         }
+
+        if (other.CompareTag("BulletSoft"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        
     }
 
 

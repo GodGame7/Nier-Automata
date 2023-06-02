@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 208011033131784737, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 696035124879212699, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_RootOrder
@@ -861,11 +861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1318492073645627685, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1318492073645627685, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5489295024014421938, guid: b81da291d0d0b2648bc433fb672477cc, type: 3}
       propertyPath: target_obj
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943567550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa66eb83a60db12469cf297511c49d0a, type: 3}
   m_Name: 

@@ -9,7 +9,7 @@ public class PlayerAttackBox : MonoBehaviour
         Debug.Log("Ãæµ¹");
         if (other.CompareTag("Enemy"))
         {
-            other.transform.root.GetComponent<EnemyHp>().TakeDamage(2);
+            other.transform.root.GetComponent<EnemyHp>().TakeDamage(Random.Range(12,18));
         }
         else if (other.CompareTag("BulletSoft"))
         {

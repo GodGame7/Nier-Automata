@@ -15,7 +15,6 @@ public class PordBulletControl : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            //todo 김민수 0518 데미지 넣는거 여기넣을지 에너미에 넣을지 수민이랑 결정하렴
             other.transform.root.GetComponent<EnemyHp>().TakeDamage(6);
             transform.position = WaitLocation;
             gameObject.SetActive(false);
@@ -27,11 +26,7 @@ public class PordBulletControl : MonoBehaviour
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
-            //if (other.CompareTag("Wall"))
-            //{
-            //    transform.position = WaitLocation;
-            //    gameObject.SetActive(false);
-            //}
+         
 
     }
     
