@@ -18,7 +18,7 @@ public class GundamSword : MonoBehaviour
         {
             if (other.TryGetComponent(out FlagEmInformation enemy))
             {
-                enemy.OnDamage(PlayerData.instance.atk * damage);
+                enemy.OnDamage(PlayerData.Instance.atk * damage);
             }
         }
         else if (other.CompareTag(Define.EnemyTagType.BulletSoft.ToString()) || other.CompareTag(Define.EnemyTagType.BulletHard.ToString()))

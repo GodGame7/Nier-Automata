@@ -12,7 +12,7 @@ public class Sound
 }
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance = null;
+    public static AudioManager Instance = null;
 
     [Header("BGM")]
     [SerializeField]
@@ -33,14 +33,14 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            if (!instance.Equals(this))
+            if (!Instance.Equals(this))
             {
                 Destroy(gameObject);
             }

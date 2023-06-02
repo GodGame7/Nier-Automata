@@ -31,13 +31,12 @@ public class InventoryUI : MonoBehaviour
     private void OnEnable() // 활성화가 될때마다 그 할당된 위치로 갈수있도록
     {
         UpdateUI();
-
     }
 
     public void UpdateUI()
     {
 
-        InvenLength = PlayerData.instance.inven.Items.Count; //인벤토리의 길이 캐싱
+        InvenLength = PlayerData.Instance.inven.Items.Count; //인벤토리의 길이 캐싱
         if (InvenLength == 0) // 인벤토리가 없을시 인벤토리가 열리지 않게
         {
             Inventory_UI_ob.SetActive(false);
@@ -51,12 +50,12 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < InvenLength; i++)  //아이템 이름
         {
-            Slot_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].ItemName);
+            Slot_Text[i].text = string.Format("{0}", PlayerData.Instance.inven.Items[i].ItemName);
 
         }
         for (int i = 0; i < InvenLength; i++) // 아이템 수량
         {
-            SlotQuantity_Text[i].text = string.Format("{0}", PlayerData.instance.inven.Items[i].Quantity);
+            SlotQuantity_Text[i].text = string.Format("{0}", PlayerData.Instance.inven.Items[i].Quantity);
         }
 
         ColorSet();

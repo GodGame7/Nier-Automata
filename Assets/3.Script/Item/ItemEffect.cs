@@ -19,10 +19,10 @@ public class ItemEffect : MonoBehaviour
     public void UseItem(int num)
     {
 
-        if (PlayerData.instance.inven.Items[num].Quantity > 0)
+        if (PlayerData.Instance.inven.Items[num].Quantity > 0)
         {
-            PlayerData.instance.hp += PlayerData.instance.inven.Items[num].HealingValue;
-            PlayerData.instance.inven.RemoveItem(PlayerData.instance.inven.Items[num]);
+            PlayerData.Instance.hp += PlayerData.Instance.inven.Items[num].HealingValue;
+            PlayerData.Instance.inven.RemoveItem(PlayerData.Instance.inven.Items[num]);
             //아이템 사용 사운드를 넣어주세용
         }
 

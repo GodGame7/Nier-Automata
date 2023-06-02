@@ -96,7 +96,7 @@ public class Main_Player : MonoBehaviour
         if (isCanHit())
         {
             sm.ChangeState(sm.hitted);
-            PlayerData.instance.OnDamage(damage);
+            PlayerData.Instance.OnDamage(damage);
         }
         else Debug.Log("무적 상태입니다");
         //todo 닷지상태일 때, 닷지 효과 재생.

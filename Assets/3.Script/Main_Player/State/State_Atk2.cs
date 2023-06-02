@@ -73,10 +73,6 @@ public class State_Atk2 : State
             }
         }
     }
-
-
-
-
     public void AtkStrong()
     {
         isCanStr = false;//강공격 불변수 체크
@@ -112,6 +108,7 @@ public class State_Atk2 : State
         index++;
         int i = index;
         Rotate();
+        LoadSword();
         //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
         if (i <= 5)
         {
@@ -121,8 +118,6 @@ public class State_Atk2 : State
     }
     void Atk_co(int i)
     {
-        //칼을 꺼냄
-        LoadSword();
         //공격 애니메이션 실행
         Atk_anim(i);
         //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
@@ -174,6 +169,7 @@ public class State_Atk2 : State
     {
         //sword.SetActive(true);
         sword.transform.position = transform.position;
+        sword.transform.rotation = transform.rotation;
         idleSword.SetActive(false);
     }
     void ResetSword()
@@ -186,6 +182,8 @@ public class State_Atk2 : State
     {
         //bigSword.SetActive(true);
         bigSword.transform.position = transform.position;
+        bigSword.transform.rotation = transform.rotation;
+
         idleBigSword.SetActive(false);
     }
     void ResetBig()

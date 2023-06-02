@@ -13,8 +13,8 @@ public class PlayerHealthUI : MonoBehaviour
     private void Update()
     {
         
-        Hp_Slider.value = PlayerData.instance._hp / PlayerData.instance.maxHp;
-        //Level_Txt.text = string.Format("Lv : {0}",PlayerData.instance.Level); << 레벨이 없어서 보류 1로 고정시켜놓음. 사용할때 Level_txt도 주석풀것
+        Hp_Slider.value = PlayerData.Instance._hp / PlayerData.Instance.maxHp;
+        //Level_Txt.text = string.Format("Lv : {0}",PlayerData.Instance.Level); << 레벨이 없어서 보류 1로 고정시켜놓음. 사용할때 Level_txt도 주석풀것
     }
 
 

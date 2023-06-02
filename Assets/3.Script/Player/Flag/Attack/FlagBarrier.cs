@@ -12,7 +12,7 @@ public class FlagBarrier : MonoBehaviour
         {
             if (other.TryGetComponent(out FlagEmInformation enemy))
             {
-                enemy.OnDamage(PlayerData.instance.atk * meleeDamage);
+                enemy.OnDamage(PlayerData.Instance.atk * meleeDamage);
             }
         }
         if (other.CompareTag("BulletSoft") || other.CompareTag("BulletHard"))

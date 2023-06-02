@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public static PlayerData instance = null;
+    private static PlayerData instance = null;
+    public static PlayerData Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<PlayerData>();
+                //Init();
+                return instance;
+            }
+            else return instance;
+        }
+    }
+    static void Init()
+    {
+        GameObject obj = new GameObject("PlayerManager");
+        obj.AddComponent<PlayerData>();
+        instance = obj.GetComponent<PlayerData>();
+    }
 
     public float atk;
     public float def;

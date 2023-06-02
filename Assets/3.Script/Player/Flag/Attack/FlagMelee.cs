@@ -12,7 +12,7 @@ public class FlagMelee : MonoBehaviour
         {
             if (other.TryGetComponent(out FlagEmInformation enemy))
             {
-                enemy.OnDamage(PlayerData.instance.atk * meleeDamageMagnification);
+                enemy.OnDamage(PlayerData.Instance.atk * meleeDamageMagnification);
             }
         }
         if(other.CompareTag("BulletSoft") || other.CompareTag("BulletHard"))
