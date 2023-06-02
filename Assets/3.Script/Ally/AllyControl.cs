@@ -49,7 +49,11 @@ public class AllyControl : MonoBehaviour
         Fire();
     }
 
-    public IEnumerator MoveTo(float destX)
+    public void MoveTo(float destX)
+    {
+        StartCoroutine(MoveTo_co(destX));
+    }
+    private IEnumerator MoveTo_co(float destX)
     {
         Vector3 destPos = destX * Vector3.right;
         int cnt = 0;
