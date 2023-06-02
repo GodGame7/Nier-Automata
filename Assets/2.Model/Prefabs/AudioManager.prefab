@@ -43,3 +43,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca953bfe02af234691d01c7d4fa2930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmClips: []
+  bgmVolume: 0
+  sfxVolume: 0
+  sfxClips:
+  - {fileID: 8300000, guid: eb600c241cfc5164c8170ac15755cd8b, type: 3}
+  - {fileID: 8300000, guid: c6f9ef9cba4f31e49a8bdc22ca323da2, type: 3}
+  - {fileID: 8300000, guid: 7e5be5e2c65ae7f4bb8d43ba7044105a, type: 3}
+  - {fileID: 8300000, guid: fd705addf21f33847aaff5168a681e3b, type: 3}
+  - {fileID: 8300000, guid: 5ef5af1cf55c333489356ec9ec905256, type: 3}
+  - {fileID: 8300000, guid: 08b0d60922ba2594b8ce3e78bfa13200, type: 3}
+  - {fileID: 8300000, guid: 805577c1e486baf4bbad1d5ee74e8e64, type: 3}
+  - {fileID: 8300000, guid: 024adedceaeb4ed44ab762fa2dadbc0a, type: 3}
+  - {fileID: 8300000, guid: b5c698ae796eda2489a950f781834ca1, type: 3}
+  - {fileID: 8300000, guid: 276d53ddb8d36f94fb8b6d1e1520cc3e, type: 3}
+  - {fileID: 8300000, guid: 35af5477e9aa54e449f55aee36c40bbb, type: 3}

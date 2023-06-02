@@ -1949,7 +1949,7 @@ GameObject:
   - component: {fileID: 317306167}
   m_Layer: 0
   m_Name: Allies
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2041,6 +2041,7 @@ MonoBehaviour:
   dir: 1
   time: 0
   isSway: 1
+  isFire: 1
 --- !u!1 &2429551226791790416
 GameObject:
   m_ObjectHideFlags: 0
