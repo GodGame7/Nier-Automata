@@ -11,7 +11,8 @@ public class Em0070Movement : MonoBehaviour
     [SerializeField] Vector3 firstDestPos = Vector3.zero;
     [SerializeField] float fireDelay = 1.0f;
     [SerializeField] float moveSpeed = 0.03f;
-    [SerializeField] float dashSpeed = 0.5f;
+    [SerializeField] float dashSpeed = 2.0f;
+    [SerializeField] float LookSpeed = 60.0f;
 
     [Space(0.5f)]
     [Header("총알")]
@@ -25,7 +26,6 @@ public class Em0070Movement : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] FlagEmInformation flagEmInformation;
     [SerializeField] FlagFightSpawner flagFightSpawner;
-
 
     public UnityEvent Ready;
     public UnityEvent StopSlowSpin;
@@ -46,9 +46,13 @@ public class Em0070Movement : MonoBehaviour
             Debug.LogError("플레이어 오브젝트를 찾을 수 없습니다.");
         }
 
-        // flagFightSpawner.Phase18_01_Alone.AddListener(Alone);
+        flagFightSpawner.Phase18_01_Alone.AddListener(Alone);
         StartCoroutine(Co_Move());
+    }
 
+    private void FixedUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, 0.00f, transform.position.z);
     }
 
     public IEnumerator Co_Move()
@@ -64,6 +68,22 @@ public class Em0070Movement : MonoBehaviour
         transform.position = firstDestPos;
 
         StartCoroutine(Co_0070Movement());
+        StartCoroutine(Co_Look());
+        StartCoroutine(Co_Look());
+    }
+
+    public IEnumerator Co_Look()
+    {
+        while (!flagEmInformation.isDie)
+        {
+            Vector3 direction = playerTransform.position - transform.position;
+            direction.y = 0f;
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, LookSpeed * Time.deltaTime);
+            yield return null;
+
+        }
+
     }
 
     IEnumerator Co_0070Movement()
@@ -85,7 +105,7 @@ public class Em0070Movement : MonoBehaviour
         yield return new WaitForSeconds(3.7f);
 
         StartCoroutine(Co_SlowSpinMovement());
-        
+
     }
 
     IEnumerator Co_SlowSpinMovement()
@@ -113,7 +133,7 @@ public class Em0070Movement : MonoBehaviour
         {
             if (!flagEmInformation.isDie)
             {
-                transform.position = Vector3.MoveTowards(transform.position, dashDestPos, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, dashDestPos, dashSpeed * Time.deltaTime);
             }
             yield return null;
         }
@@ -126,8 +146,6 @@ public class Em0070Movement : MonoBehaviour
 
         StartCoroutine(Co_FastSpinMovement());
     }
-
-
 
     // 혼자 남았을 때
     void Alone()

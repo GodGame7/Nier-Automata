@@ -11,6 +11,7 @@ public class FlagFightSpawner : MonoBehaviour
     public GameObject[] em0030s;
     public GameObject[] em0031s;
     public GameObject[] em0032s;
+    public GameObject em0070;
 
     [Header("Managers")]
     [SerializeField] FlagFightSubTitleManager flagFightSubTitleManager;

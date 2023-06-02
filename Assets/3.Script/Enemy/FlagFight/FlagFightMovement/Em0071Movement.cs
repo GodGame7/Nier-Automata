@@ -5,7 +5,7 @@ using UnityEngine;
 public class Em0071Movement : MonoBehaviour
 {
     [Header("적 정보")]
-    [SerializeField] float fireDelay = 0.5f;
+    [SerializeField] float fireDelay = 0.3f;
     [SerializeField] Animator animator;
     [SerializeField] Em0070Movement em0070Movement;
 
@@ -13,7 +13,8 @@ public class Em0071Movement : MonoBehaviour
     [Header("총알")]
     [SerializeField] GameObject bulletHard;
     [SerializeField] GameObject bulletSoft;
-    [SerializeField] float bulletSpeed = 0.10f;
+    [SerializeField] float bulletSpeed = 0.05f;
+    [SerializeField] bool isFront = true;
 
     [Space(0.5f)]
     [Header("확인용")]
@@ -25,6 +26,8 @@ public class Em0071Movement : MonoBehaviour
 
     private void Start()
     {
+        fireDelay = 0.1f;
+        bulletSpeed = 0.08f;
 
         waitfireDelay = new WaitForSeconds(fireDelay);
         flagEmInformation = GetComponent<FlagEmInformation>();
@@ -51,7 +54,6 @@ public class Em0071Movement : MonoBehaviour
     private void SlowSpin()
     {
         StartCoroutine(Fire_co());
-        StartCoroutine(StopFiring_co());
     }
 
     private IEnumerator Fire_co()
@@ -68,23 +70,18 @@ public class Em0071Movement : MonoBehaviour
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bullet = Instantiate(Bullet, bulletPosition, transform.rotation);
             Vector3 direction = transform.forward;
+            if (!isFront)
+            {
+                direction = -transform.forward;
+            }
             bullet.transform.LookAt(bullet.transform.position + direction);
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
             if (bulletRigidbody != null)
             {
                 bulletRigidbody.velocity = direction * bulletSpeed;
             }
-            counter += Time.deltaTime;
+            counter += fireDelay;
             yield return waitfireDelay;
         }
-
-        // 5초가 지나면 발사 중단
-        yield break;
-    }
-
-    private IEnumerator StopFiring_co()
-    {
-        yield return new WaitForSeconds(5.0f);
-        StopCoroutine(Fire_co());
     }
 }

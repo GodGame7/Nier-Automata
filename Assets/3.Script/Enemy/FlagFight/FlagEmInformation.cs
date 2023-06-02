@@ -18,6 +18,8 @@ public class FlagEmInformation : MonoBehaviour
     [SerializeField] FlagFightManager fightManager;
     [SerializeField] FlagFightSpawner flagFightSpawner;
 
+    [SerializeField] bool isBoss = false;
+
     private new Collider collider;
 
 
@@ -72,6 +74,10 @@ public class FlagEmInformation : MonoBehaviour
     public void Die()
     {
         flagFightSpawner.RemainEnemies--;
+        if(isBoss)
+        {
+            flagFightSpawner.RemainEnemies -= 4;
+        }
         isDie = true;
         em.SetActive(false);
         explosion.SetActive(true);
