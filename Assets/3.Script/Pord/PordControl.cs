@@ -41,6 +41,9 @@ public class PordControl : MonoBehaviour
     //포드의 움직임 제어용 변수
     private bool isActive = false;
 
+    //포드의 총위치를 위한 변수
+    Vector3 ScreenCenter;
+    
     private void Update()
     {
 
@@ -68,7 +71,7 @@ public class PordControl : MonoBehaviour
 
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
-
+             
             Smoke.Play();
             Smoke.transform.position = transform.position + MagicCirclePositon;
 
@@ -78,8 +81,8 @@ public class PordControl : MonoBehaviour
             }
             else //록온이 아닐시 앞으로
             {
-                Debug.Log(-Cam.transform.position);
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(-Cam.transform.position.normalized);
+                ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector3(960, 0, 840));
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(new Vector3(ScreenCenter.x , transform.position.y , ScreenCenter.z).normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
 
@@ -126,7 +129,7 @@ public class PordControl : MonoBehaviour
         transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
                                          transform.position.y,
                                          Player.transform.position.z + PlayerAround.z);
-
+        transform.rotation = Cam.transform.rotation;
 
     }
 
@@ -139,8 +142,10 @@ public class PordControl : MonoBehaviour
         isLaser = true;
         PordLaser.SetActive(true);
         PordLaser.transform.position = transform.position + MagicCirclePositon;
+        PordLaser.transform.rotation = Cam.transform.rotation;
         MagicCircle.SetActive(true);
         MagicCircle.transform.position = transform.position + MagicCirclePositon;
+        MagicCircle.transform.rotation = Cam.transform.rotation;
         if (isLockOn) //록온시 타겟 에게 방향 설정
         {
             PordLaser.transform.LookAt(targetpos);
@@ -167,7 +172,6 @@ public class PordControl : MonoBehaviour
             {
                 targetpos = other.transform.position;
             }
-
         }
 
     }
