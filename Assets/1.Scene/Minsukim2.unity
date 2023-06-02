@@ -1903,8 +1903,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112387280}
-  - component: {fileID: 2112387279}
   - component: {fileID: 2112387281}
+  - component: {fileID: 2112387279}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1938,7 +1938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112387278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0025218725, y: 0.9481487, z: 0.042022064}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83587,7 +83587,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.15
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
