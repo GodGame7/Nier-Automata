@@ -923,7 +923,10 @@ public class FlagFightSpawner : MonoBehaviour
     {
         RemainEnemies = 5;
         isAlone = false;
-        Debug.Log("으악 중간 보스다!");
+
+        em0070.SetActive(true);
+        em0070.transform.position = new Vector3(0.00f, 0.00f, 0.32f);
+        // StartCoroutine(em0070.Em0070Movement.Co_Move());
 
         StartCoroutine(Co_CheckNumEm018_01());
     }
