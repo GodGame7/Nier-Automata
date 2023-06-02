@@ -131,13 +131,17 @@ public class PordControl : MonoBehaviour
 
 
         }
-        transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
-                                         transform.position.y,
-                                         Player.transform.position.z + PlayerAround.z);
-        //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
-        //                                 transform.position.y,
-        //                                 Player.transform.position.z + Cam.transform.rotation.z);
-        transform.rotation = Cam.transform.rotation;
+        if (!isLaser)
+        {
+
+            transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
+                                             transform.position.y,
+                                             Player.transform.position.z + PlayerAround.z);
+            //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
+            //                                 transform.position.y,
+            //                                 Player.transform.position.z + Cam.transform.rotation.z);
+            transform.rotation = Cam.transform.rotation;
+        }
 
 
     }
@@ -151,7 +155,7 @@ public class PordControl : MonoBehaviour
         isLaser = true;
         PordLaser.SetActive(true);
         PordLaser.transform.position = transform.position + MagicCirclePositon;
-        
+
 
         MagicCircle.SetActive(true);
         MagicCircle.transform.position = transform.position + MagicCirclePositon;
