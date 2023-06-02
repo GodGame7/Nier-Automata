@@ -77,6 +77,7 @@ public class State_Atk2 : State
     {
         isCanStr = false;//강공격 불변수 체크
         //강공격 애니메이션 재생
+        LoadSword();
         Main_Player.Instance.anim_sword.SetTrigger("AtkStrong");
         Main_Player.Instance.anim_player.SetTrigger("AtkStrong");
         //holdtime 초기화
@@ -107,7 +108,6 @@ public class State_Atk2 : State
     {
         index++;
         int i = index;
-        Rotate();
         LoadSword();
         //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
         if (i <= 5)
@@ -183,7 +183,6 @@ public class State_Atk2 : State
         //bigSword.SetActive(true);
         bigSword.transform.position = transform.position;
         bigSword.transform.rotation = transform.rotation;
-
         idleBigSword.SetActive(false);
     }
     void ResetBig()
