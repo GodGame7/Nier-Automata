@@ -43,7 +43,7 @@ public class PordControl : MonoBehaviour
 
     //포드의 총위치를 위한 변수
     Vector3 ScreenCenter;
-    
+
     private void Update()
     {
 
@@ -51,7 +51,7 @@ public class PordControl : MonoBehaviour
         {
             transform.position += Vector3.up * 0.2f * Time.deltaTime;
         }
-        
+
         ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector3(960, 0, 840));
         LaserCoolTime.transform.rotation = Cam.transform.rotation;
         MagicCircle.transform.rotation = Cam.transform.rotation;
@@ -67,18 +67,18 @@ public class PordControl : MonoBehaviour
             }
 
             isActive = true;
-            transform.position = Player.transform.position + PlayerAround;
+            transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
 
             MagicCircle.transform.position = transform.position + MagicCirclePositon;
             MagicCircle.SetActive(true);
 
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
-             
+
             Smoke.Play();
             Smoke.transform.position = transform.position + MagicCirclePositon;
 
-            
+
 
             if (isLockOn) //록온시 타겟방향으로
             {
@@ -86,8 +86,8 @@ public class PordControl : MonoBehaviour
             }
             else //록온이 아닐시 앞으로
             {
-                
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(new Vector3(ScreenCenter.x , transform.position.y , ScreenCenter.z).normalized);
+
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(new Vector3(ScreenCenter.x, transform.position.y, ScreenCenter.z).normalized);
                 //방향 조정 필요 임시로 넣어뒀음
             }
 
@@ -128,13 +128,21 @@ public class PordControl : MonoBehaviour
 
             StartCoroutine(Laser_co());
             LaserCoolTime.gameObject.SetActive(true);
-            
+
 
         }
-        transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
-                                         transform.position.y,
-                                         Player.transform.position.z + PlayerAround.z);
-        transform.rotation = Cam.transform.rotation;
+        if (!isLaser)
+        {
+
+            transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
+                                             transform.position.y,
+                                             Player.transform.position.z + PlayerAround.z);
+            //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
+            //                                 transform.position.y,
+            //                                 Player.transform.position.z + Cam.transform.rotation.z);
+            transform.rotation = Cam.transform.rotation;
+        }
+
 
     }
 
@@ -142,12 +150,12 @@ public class PordControl : MonoBehaviour
     {
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
-        transform.position = Player.transform.position + PlayerAround;
+        transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
         PordLaser.transform.position = transform.position + MagicCirclePositon;
-        PordLaser.transform.rotation = Cam.transform.rotation;
+
 
         MagicCircle.SetActive(true);
         MagicCircle.transform.position = transform.position + MagicCirclePositon;
@@ -159,7 +167,10 @@ public class PordControl : MonoBehaviour
         }
         else //록온이 아닐시 앞으로 나가게
         {
-            PordLaser.transform.rotation = Quaternion.Euler(-Cam.transform.position.normalized);
+            Vector3 LaserLotation = Cam.transform.rotation.eulerAngles;
+            LaserLotation = new Vector3(0, LaserLotation.y, 0);
+            PordLaser.transform.rotation = Quaternion.Euler(LaserLotation);
+
         }
 
         yield return new WaitForSeconds(1f);
