@@ -6,7 +6,11 @@ public class PordBulletControl : MonoBehaviour
 {
     private Vector3 WaitLocation = new Vector3(999, 999, 999);
     [SerializeField] ParticleSystem Spark;
-    
+    private void Awake()
+    {
+        Spark = Instantiate(Spark, transform.position, Quaternion.identity);
+
+    }
     private void OnEnable()
     {
         StartCoroutine(Disable());
