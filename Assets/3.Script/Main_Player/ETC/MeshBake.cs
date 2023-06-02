@@ -102,13 +102,10 @@ public class MeshBake : MonoBehaviour
                 nowT = 0.0f;
                 if (index % 2 == 0)
                 {
-                    Debug.Log("모션트레일");
                     unitGhost(ghost1);
                 }
                 else
                 {
-                    Debug.Log("모션트레일");
-
                     unitGhost(ghost2);
                 }
                 index++;

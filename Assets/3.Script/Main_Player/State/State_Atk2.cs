@@ -170,6 +170,9 @@ public class State_Atk2 : State
     }
 
 
+
+
+
     #region ¸Þ¼Òµå Load,Reset + Sword, Big
 
     Vector3 trashposition = new Vector3(0, 100, 0);

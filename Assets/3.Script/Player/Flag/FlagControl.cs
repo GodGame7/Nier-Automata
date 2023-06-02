@@ -69,7 +69,6 @@ public class FlagControl : MonoBehaviour
 
     // ÄÄÆ÷³ÍÆ®
     private Animator anim;
-    private CharacterController controller;
     private Rigidbody rigid;
     private FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
 
@@ -125,7 +124,6 @@ public class FlagControl : MonoBehaviour
     private void GetComponentAndCashing()
     {
         TryGetComponent(out anim);
-        TryGetComponent(out controller);
         TryGetComponent(out rigid);
         bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
 

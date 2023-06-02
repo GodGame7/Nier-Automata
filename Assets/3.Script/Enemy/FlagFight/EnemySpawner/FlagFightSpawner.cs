@@ -926,7 +926,10 @@ public class FlagFightSpawner : MonoBehaviour
 
         em0070.SetActive(true);
         em0070.transform.position = new Vector3(0.00f, 0.00f, 0.32f);
-        // StartCoroutine(em0070.Em0070Movement.Co_Move());
+        FlagEmInformation flagEmInformation = em0070.GetComponent<FlagEmInformation>();
+        flagEmInformation.isDie = false;
+        Em0070Movement em0070Movement = em0070.GetComponent<Em0070Movement>();
+        StartCoroutine(em0070Movement.Co_Move());
 
         StartCoroutine(Co_CheckNumEm018_01());
     }

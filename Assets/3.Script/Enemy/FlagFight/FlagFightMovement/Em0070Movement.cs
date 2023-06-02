@@ -36,6 +36,10 @@ public class Em0070Movement : MonoBehaviour
     {
         flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
         flagEmInformation = GetComponent<FlagEmInformation>();
+        if (flagEmInformation == null)
+        {
+            Debug.LogError("FlagEmInformation 컴포넌트를 찾을 수 없습니다.");
+        }
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -59,6 +63,7 @@ public class Em0070Movement : MonoBehaviour
     {
         while (Vector3.SqrMagnitude(transform.position - firstDestPos) >= 0.00005f)
         {
+
             if (!flagEmInformation.isDie)
             {
                 transform.position = Vector3.MoveTowards(transform.position, firstDestPos, moveSpeed * Time.deltaTime);
