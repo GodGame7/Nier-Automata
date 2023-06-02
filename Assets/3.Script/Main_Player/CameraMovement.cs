@@ -2,21 +2,33 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Transform target; // 플레이어 오브젝트의 Transform 컴포넌트
-
-    public float rotationSpeed = 5f; // 카메라 회전 속도
-    public float distance = 5f; // 플레이어와의 거리
+    public Transform target;
+    public float rotationSpeed = 5f;
+    public float distance = 5f;
+    public float minVerticalAngle = -20f;
+    public float maxVerticalAngle = 60f;
+    public float verticalSpeed = 2f;
 
     private float currentRotation = 0f;
+    private float currentVerticalAngle = 0f;
 
     private void LateUpdate()
     {
+        // 마우스 움직임 입력
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        // 수평 및 수직 회전 업데이트
+        currentRotation += mouseX * rotationSpeed;
+        currentVerticalAngle -= mouseY * verticalSpeed;
+        currentVerticalAngle = Mathf.Clamp(currentVerticalAngle, minVerticalAngle, maxVerticalAngle);
+
         // 카메라 위치 업데이트
-        Vector3 offset = Quaternion.Euler(0f, currentRotation, 0f) * new Vector3(0f, 3f, -distance);
+        Quaternion rotation = Quaternion.Euler(currentVerticalAngle, currentRotation, 0f);
+        Vector3 offset = rotation * new Vector3(0f, 0f, -distance);
         transform.position = target.position + offset;
 
         // 카메라 회전 업데이트
-        currentRotation += Input.GetAxis("Mouse X") * rotationSpeed;
-        transform.LookAt(target);
+        transform.rotation = Quaternion.Euler(currentVerticalAngle, currentRotation, 0f);
     }
 }
