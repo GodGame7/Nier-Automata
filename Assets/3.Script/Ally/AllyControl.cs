@@ -177,7 +177,6 @@ public class AllyControl : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(1);
             enemyIndex = Random.Range(0, aliveEnemies.Count);
             yield return new WaitForSeconds(1f);
         }

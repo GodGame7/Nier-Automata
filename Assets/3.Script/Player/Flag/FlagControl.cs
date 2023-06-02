@@ -447,6 +447,7 @@ public class FlagControl : MonoBehaviour
             foreach (FlagBulletSpawner b in bulletSpawners)
             {
                 b.Fire();
+                AudioManager.Instance.PlaySfx(Define.SFX.Shot);
             }
         }
     }
@@ -464,6 +465,10 @@ public class FlagControl : MonoBehaviour
             yield return new WaitUntil(() => (Time.time >= startTime + waitTime) || anim.GetCurrentAnimatorStateInfo(0).IsName("GundamWeakAttack2"));
             isCombo = false;
         }
+    }
+    public void PlayGundamAttackSfx()
+    {
+        AudioManager.Instance.PlaySfx(Define.SFX.GundamAttack);
     }
     #endregion АјАн
 
