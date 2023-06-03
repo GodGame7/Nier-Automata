@@ -52,7 +52,6 @@ public class SceneManager : MonoBehaviour
         {
             bool allInactive = true;
 
-            Debug.Log("นÝบน1");
             for (int i = 0; i < em0000.Length; i++)
             {
                 if (em0000[i].activeSelf)

@@ -50,10 +50,10 @@ public class Enemy : MonoBehaviour
     //AnimatorClipInfo[] animatorinfo;
 
     //타겟 위치
-    public Transform target;
+    [HideInInspector] public Transform target;
 
     //타겟 위치를 저장하는 변수
-    [SerializeField] protected Vector3 targetPosition;
+    protected Vector3 targetPosition;
 
 
     private void Awake()

@@ -19,7 +19,7 @@ public class em1000 : Enemy
     [Range(1f, 700f)]
     [SerializeField] float minsawrotateSpeed = 150f;
     [SerializeField] float speed_down_time = 5f;
-    [SerializeField] bool isattack = false;
+    bool isattack = false;
 
     private float target_x;
     private float currentSawRotateSpeed;
@@ -62,7 +62,7 @@ public class em1000 : Enemy
 
         while (true)
         {
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f);
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f);
             anim.SetFloat("Random", Random.Range(0, 2));
             isattack = false;
 
