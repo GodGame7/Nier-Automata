@@ -1,0 +1,4068 @@
+fileFormatVersion: 2
+guid: 0ca64643078f12b48a38ce1e9b9c6f08
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8349011100777887564
+    second: PC Computer - NieR Automata - PC Icons_0
+  - first:
+      213: -1986105835586302793
+    second: PC Computer - NieR Automata - PC Icons_1
+  - first:
+      213: 6534384575932161727
+    second: PC Computer - NieR Automata - PC Icons_2
+  - first:
+      213: -7110683606517074019
+    second: PC Computer - NieR Automata - PC Icons_3
+  - first:
+      213: 5629232442687457178
+    second: PC Computer - NieR Automata - PC Icons_4
+  - first:
+      213: -1844010949872383426
+    second: PC Computer - NieR Automata - PC Icons_5
+  - first:
+      213: 3148312412330806152
+    second: PC Computer - NieR Automata - PC Icons_6
+  - first:
+      213: -427997075165478238
+    second: PC Computer - NieR Automata - PC Icons_7
+  - first:
+      213: -1386759273283650959
+    second: PC Computer - NieR Automata - PC Icons_8
+  - first:
+      213: -5206233729397553005
+    second: PC Computer - NieR Automata - PC Icons_9
+  - first:
+      213: -4596353753956533839
+    second: PC Computer - NieR Automata - PC Icons_10
+  - first:
+      213: 5024872551629563986
+    second: PC Computer - NieR Automata - PC Icons_11
+  - first:
+      213: 747482584701644319
+    second: PC Computer - NieR Automata - PC Icons_12
+  - first:
+      213: 7874629867409578294
+    second: PC Computer - NieR Automata - PC Icons_13
+  - first:
+      213: -2303188494704915061
+    second: PC Computer - NieR Automata - PC Icons_14
+  - first:
+      213: -4668630409200190521
+    second: PC Computer - NieR Automata - PC Icons_15
+  - first:
+      213: -6358930415560487277
+    second: PC Computer - NieR Automata - PC Icons_16
+  - first:
+      213: 1796377856119946409
+    second: PC Computer - NieR Automata - PC Icons_17
+  - first:
+      213: -2558400925674992104
+    second: PC Computer - NieR Automata - PC Icons_18
+  - first:
+      213: 3186810492606980307
+    second: PC Computer - NieR Automata - PC Icons_19
+  - first:
+      213: 8864838338825240289
+    second: PC Computer - NieR Automata - PC Icons_20
+  - first:
+      213: 9042702224781511006
+    second: PC Computer - NieR Automata - PC Icons_21
+  - first:
+      213: -7129048883621493132
+    second: PC Computer - NieR Automata - PC Icons_22
+  - first:
+      213: 168298031011640733
+    second: PC Computer - NieR Automata - PC Icons_23
+  - first:
+      213: 4509918760394778592
+    second: PC Computer - NieR Automata - PC Icons_24
+  - first:
+      213: 2606320361166808126
+    second: PC Computer - NieR Automata - PC Icons_25
+  - first:
+      213: -6137423507891667463
+    second: PC Computer - NieR Automata - PC Icons_26
+  - first:
+      213: -8710683492748494853
+    second: PC Computer - NieR Automata - PC Icons_27
+  - first:
+      213: 7609007083428925137
+    second: PC Computer - NieR Automata - PC Icons_28
+  - first:
+      213: -4784186016737161204
+    second: PC Computer - NieR Automata - PC Icons_29
+  - first:
+      213: 378267017521543097
+    second: PC Computer - NieR Automata - PC Icons_30
+  - first:
+      213: -945693069665198033
+    second: PC Computer - NieR Automata - PC Icons_31
+  - first:
+      213: -6859991413929813876
+    second: PC Computer - NieR Automata - PC Icons_32
+  - first:
+      213: -8222179072286019404
+    second: PC Computer - NieR Automata - PC Icons_33
+  - first:
+      213: -1997381048776682785
+    second: PC Computer - NieR Automata - PC Icons_34
+  - first:
+      213: -10198627306239343
+    second: PC Computer - NieR Automata - PC Icons_35
+  - first:
+      213: -609535314529144276
+    second: PC Computer - NieR Automata - PC Icons_36
+  - first:
+      213: -1487420352181916852
+    second: PC Computer - NieR Automata - PC Icons_37
+  - first:
+      213: 6277228281757510002
+    second: PC Computer - NieR Automata - PC Icons_38
+  - first:
+      213: 2292630655890088986
+    second: PC Computer - NieR Automata - PC Icons_39
+  - first:
+      213: -7184800212988708848
+    second: PC Computer - NieR Automata - PC Icons_40
+  - first:
+      213: -9191982952586420919
+    second: PC Computer - NieR Automata - PC Icons_41
+  - first:
+      213: 7434517841936444564
+    second: PC Computer - NieR Automata - PC Icons_42
+  - first:
+      213: -261799488242405140
+    second: PC Computer - NieR Automata - PC Icons_43
+  - first:
+      213: 8592387956381126965
+    second: PC Computer - NieR Automata - PC Icons_44
+  - first:
+      213: -6112171452909603416
+    second: PC Computer - NieR Automata - PC Icons_45
+  - first:
+      213: 4033031221763723404
+    second: PC Computer - NieR Automata - PC Icons_46
+  - first:
+      213: -4601606347064929884
+    second: PC Computer - NieR Automata - PC Icons_47
+  - first:
+      213: 2967073494932907902
+    second: PC Computer - NieR Automata - PC Icons_48
+  - first:
+      213: -369945215116184351
+    second: PC Computer - NieR Automata - PC Icons_49
+  - first:
+      213: 4403897952709303877
+    second: PC Computer - NieR Automata - PC Icons_50
+  - first:
+      213: -6204863330832507429
+    second: PC Computer - NieR Automata - PC Icons_51
+  - first:
+      213: 2676713372098034993
+    second: PC Computer - NieR Automata - PC Icons_52
+  - first:
+      213: 7450959000149721238
+    second: PC Computer - NieR Automata - PC Icons_53
+  - first:
+      213: 8964783478737813895
+    second: PC Computer - NieR Automata - PC Icons_54
+  - first:
+      213: 7415485061630146366
+    second: PC Computer - NieR Automata - PC Icons_55
+  - first:
+      213: -8529643055555842153
+    second: PC Computer - NieR Automata - PC Icons_56
+  - first:
+      213: 7205594659657963484
+    second: PC Computer - NieR Automata - PC Icons_57
+  - first:
+      213: -1889939415331805570
+    second: PC Computer - NieR Automata - PC Icons_58
+  - first:
+      213: -7823873210773823971
+    second: PC Computer - NieR Automata - PC Icons_59
+  - first:
+      213: -8043813390941034081
+    second: PC Computer - NieR Automata - PC Icons_60
+  - first:
+      213: 1527424627619912369
+    second: PC Computer - NieR Automata - PC Icons_61
+  - first:
+      213: -7610577332030590686
+    second: PC Computer - NieR Automata - PC Icons_62
+  - first:
+      213: -7644674358750585589
+    second: PC Computer - NieR Automata - PC Icons_63
+  - first:
+      213: 5884504241728198201
+    second: PC Computer - NieR Automata - PC Icons_64
+  - first:
+      213: -4493751121151672334
+    second: PC Computer - NieR Automata - PC Icons_65
+  - first:
+      213: 1783452219207555030
+    second: PC Computer - NieR Automata - PC Icons_66
+  - first:
+      213: -4234503791190224387
+    second: PC Computer - NieR Automata - PC Icons_67
+  - first:
+      213: 7011572861651573203
+    second: PC Computer - NieR Automata - PC Icons_68
+  - first:
+      213: 5984779624971859644
+    second: PC Computer - NieR Automata - PC Icons_69
+  - first:
+      213: 2543200760061280617
+    second: PC Computer - NieR Automata - PC Icons_70
+  - first:
+      213: -3989036677343688165
+    second: PC Computer - NieR Automata - PC Icons_71
+  - first:
+      213: 2969568583796294214
+    second: PC Computer - NieR Automata - PC Icons_72
+  - first:
+      213: -6655921472416542979
+    second: PC Computer - NieR Automata - PC Icons_73
+  - first:
+      213: -7644292774746007652
+    second: PC Computer - NieR Automata - PC Icons_74
+  - first:
+      213: -3748977904620320702
+    second: PC Computer - NieR Automata - PC Icons_75
+  - first:
+      213: -2657094328430734027
+    second: PC Computer - NieR Automata - PC Icons_76
+  - first:
+      213: 8255177177874448326
+    second: PC Computer - NieR Automata - PC Icons_77
+  - first:
+      213: 4482284193390483011
+    second: PC Computer - NieR Automata - PC Icons_78
+  - first:
+      213: -644014545694112468
+    second: PC Computer - NieR Automata - PC Icons_79
+  - first:
+      213: -3942568327473012160
+    second: PC Computer - NieR Automata - PC Icons_80
+  - first:
+      213: 3269902434167975167
+    second: PC Computer - NieR Automata - PC Icons_81
+  - first:
+      213: 5717327660924826587
+    second: PC Computer - NieR Automata - PC Icons_82
+  - first:
+      213: -4506915003634215391
+    second: PC Computer - NieR Automata - PC Icons_83
+  - first:
+      213: 2359119147294440023
+    second: PC Computer - NieR Automata - PC Icons_84
+  - first:
+      213: -6425228127941570940
+    second: PC Computer - NieR Automata - PC Icons_85
+  - first:
+      213: 1562516084539506227
+    second: PC Computer - NieR Automata - PC Icons_86
+  - first:
+      213: -883191250913212474
+    second: PC Computer - NieR Automata - PC Icons_87
+  - first:
+      213: -4446730297714944905
+    second: PC Computer - NieR Automata - PC Icons_88
+  - first:
+      213: 5611679036864269941
+    second: PC Computer - NieR Automata - PC Icons_89
+  - first:
+      213: -4979438369278090640
+    second: PC Computer - NieR Automata - PC Icons_90
+  - first:
+      213: 4809281871413504693
+    second: PC Computer - NieR Automata - PC Icons_91
+  - first:
+      213: 4009735602732127505
+    second: PC Computer - NieR Automata - PC Icons_92
+  - first:
+      213: -4937165665525699188
+    second: PC Computer - NieR Automata - PC Icons_93
+  - first:
+      213: -2771377394856260125
+    second: PC Computer - NieR Automata - PC Icons_94
+  - first:
+      213: 1284181468407029412
+    second: PC Computer - NieR Automata - PC Icons_95
+  - first:
+      213: 8359343317432535930
+    second: PC Computer - NieR Automata - PC Icons_96
+  - first:
+      213: -5259425428376595779
+    second: PC Computer - NieR Automata - PC Icons_97
+  - first:
+      213: 6286123509850016286
+    second: PC Computer - NieR Automata - PC Icons_98
+  - first:
+      213: 1722200724480022045
+    second: PC Computer - NieR Automata - PC Icons_99
+  - first:
+      213: 8399167596745366351
+    second: PC Computer - NieR Automata - PC Icons_100
+  - first:
+      213: -2430509772410179075
+    second: PC Computer - NieR Automata - PC Icons_101
+  - first:
+      213: 1797438398255569221
+    second: PC Computer - NieR Automata - PC Icons_102
+  - first:
+      213: -1010125172639420082
+    second: PC Computer - NieR Automata - PC Icons_103
+  - first:
+      213: 7583039960440231400
+    second: PC Computer - NieR Automata - PC Icons_104
+  - first:
+      213: -488989739488207334
+    second: PC Computer - NieR Automata - PC Icons_105
+  - first:
+      213: -1792431286044390985
+    second: PC Computer - NieR Automata - PC Icons_106
+  - first:
+      213: 7600563321410905951
+    second: PC Computer - NieR Automata - PC Icons_107
+  - first:
+      213: -82390451127865447
+    second: PC Computer - NieR Automata - PC Icons_108
+  - first:
+      213: 3979094945008819595
+    second: PC Computer - NieR Automata - PC Icons_109
+  - first:
+      213: -4116545991481952339
+    second: PC Computer - NieR Automata - PC Icons_110
+  - first:
+      213: 5343983024983988793
+    second: PC Computer - NieR Automata - PC Icons_111
+  - first:
+      213: -8002969779085180149
+    second: PC Computer - NieR Automata - PC Icons_112
+  - first:
+      213: -819763519677721816
+    second: PC Computer - NieR Automata - PC Icons_113
+  - first:
+      213: -3894800359892390687
+    second: PC Computer - NieR Automata - PC Icons_114
+  - first:
+      213: -3326299569658221305
+    second: PC Computer - NieR Automata - PC Icons_115
+  - first:
+      213: 3420303032532011960
+    second: PC Computer - NieR Automata - PC Icons_116
+  - first:
+      213: 6731939790222776231
+    second: PC Computer - NieR Automata - PC Icons_117
+  - first:
+      213: 2467317186998662493
+    second: PC Computer - NieR Automata - PC Icons_118
+  - first:
+      213: -8269178731007780500
+    second: PC Computer - NieR Automata - PC Icons_119
+  - first:
+      213: -8449067175670528211
+    second: PC Computer - NieR Automata - PC Icons_120
+  - first:
+      213: -6086424490087753893
+    second: PC Computer - NieR Automata - PC Icons_121
+  - first:
+      213: -301079293554456280
+    second: PC Computer - NieR Automata - PC Icons_122
+  - first:
+      213: 9105521402650287658
+    second: PC Computer - NieR Automata - PC Icons_123
+  - first:
+      213: 5782591465783310913
+    second: PC Computer - NieR Automata - PC Icons_124
+  - first:
+      213: 7726313248415758237
+    second: PC Computer - NieR Automata - PC Icons_125
+  - first:
+      213: 5010488794352330214
+    second: PC Computer - NieR Automata - PC Icons_126
+  - first:
+      213: -825265965091452415
+    second: PC Computer - NieR Automata - PC Icons_127
+  - first:
+      213: -4770386313436729689
+    second: PC Computer - NieR Automata - PC Icons_128
+  - first:
+      213: 175128690563794711
+    second: PC Computer - NieR Automata - PC Icons_129
+  - first:
+      213: -6890767377639255107
+    second: PC Computer - NieR Automata - PC Icons_130
+  - first:
+      213: 4236927096802950906
+    second: PC Computer - NieR Automata - PC Icons_131
+  - first:
+      213: 4719401912621504173
+    second: PC Computer - NieR Automata - PC Icons_132
+  - first:
+      213: -2890442415587277179
+    second: PC Computer - NieR Automata - PC Icons_133
+  - first:
+      213: -1172650601733625133
+    second: PC Computer - NieR Automata - PC Icons_134
+  - first:
+      213: 9989386017664846
+    second: PC Computer - NieR Automata - PC Icons_135
+  - first:
+      213: -9055334267504101521
+    second: PC Computer - NieR Automata - PC Icons_136
+  - first:
+      213: 8024632120783593698
+    second: PC Computer - NieR Automata - PC Icons_137
+  - first:
+      213: 6521594684796579853
+    second: PC Computer - NieR Automata - PC Icons_138
+  - first:
+      213: 162911765380606896
+    second: PC Computer - NieR Automata - PC Icons_139
+  - first:
+      213: -4374645280916922707
+    second: PC Computer - NieR Automata - PC Icons_140
+  - first:
+      213: -485516030377172326
+    second: PC Computer - NieR Automata - PC Icons_141
+  - first:
+      213: -8944342112732563596
+    second: PC Computer - NieR Automata - PC Icons_142
+  - first:
+      213: -510064790760746989
+    second: PC Computer - NieR Automata - PC Icons_143
+  - first:
+      213: 9103064711704139747
+    second: PC Computer - NieR Automata - PC Icons_144
+  - first:
+      213: 3992798418535133032
+    second: PC Computer - NieR Automata - PC Icons_145
+  - first:
+      213: 807410882870149500
+    second: PC Computer - NieR Automata - PC Icons_146
+  - first:
+      213: 6789589821291762213
+    second: PC Computer - NieR Automata - PC Icons_147
+  - first:
+      213: 996482869161060037
+    second: PC Computer - NieR Automata - PC Icons_148
+  - first:
+      213: -739385295490669891
+    second: PC Computer - NieR Automata - PC Icons_149
+  - first:
+      213: -8396950594640695245
+    second: PC Computer - NieR Automata - PC Icons_150
+  - first:
+      213: 7569668932792132301
+    second: PC Computer - NieR Automata - PC Icons_151
+  - first:
+      213: -6262551407372999908
+    second: PC Computer - NieR Automata - PC Icons_152
+  - first:
+      213: -2550561074782680855
+    second: PC Computer - NieR Automata - PC Icons_153
+  - first:
+      213: 8577269733021461426
+    second: PC Computer - NieR Automata - PC Icons_154
+  - first:
+      213: 7308750234589248581
+    second: PC Computer - NieR Automata - PC Icons_155
+  - first:
+      213: -7953413285814712521
+    second: PC Computer - NieR Automata - PC Icons_156
+  - first:
+      213: 6452213949174100360
+    second: PC Computer - NieR Automata - PC Icons_157
+  - first:
+      213: 8887268470625626305
+    second: PC Computer - NieR Automata - PC Icons_158
+  - first:
+      213: 4085571368447879954
+    second: PC Computer - NieR Automata - PC Icons_159
+  - first:
+      213: 1615707238795367301
+    second: PC Computer - NieR Automata - PC Icons_160
+  - first:
+      213: 7478804451182104284
+    second: PC Computer - NieR Automata - PC Icons_161
+  - first:
+      213: -2686098254556815609
+    second: PC Computer - NieR Automata - PC Icons_162
+  - first:
+      213: 8497858644311052810
+    second: PC Computer - NieR Automata - PC Icons_163
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 480
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8475883aa522c80800000000000000
+      internalID: -8349011100777887564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 68
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc4c8fe34fef64e0800000000000000
+      internalID: -1986105835586302793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_2
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 481
+        width: 45
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe5a32b62cceaa50800000000000000
+      internalID: 6534384575932161727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_3
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 480
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d973b531fe6c15d90800000000000000
+      internalID: -7110683606517074019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_4
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 483
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a978d78e41d0f1e40800000000000000
+      internalID: 5629232442687457178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_5
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 487
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a0de2afc1c866e0800000000000000
+      internalID: -1844010949872383426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_6
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 481
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b4ee2657d01bb20800000000000000
+      internalID: 3148312412330806152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 487
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a20bd18de27f0af0800000000000000
+      internalID: -427997075165478238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_8
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 483
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17af2fec9cd31cce0800000000000000
+      internalID: -1386759273283650959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_9
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 473
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3980a95c10ebfb7b0800000000000000
+      internalID: -5206233729397553005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_10
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b933610d987630c0800000000000000
+      internalID: -4596353753956533839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_11
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258ad7976feebb540800000000000000
+      internalID: 5024872551629563986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_12
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1eaee053779f5a00800000000000000
+      internalID: 747482584701644319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_13
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63911a0942e484d60800000000000000
+      internalID: 7874629867409578294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_14
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dc852544e6900e0800000000000000
+      internalID: -2303188494704915061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_15
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb3908d061b53fb0800000000000000
+      internalID: -4668630409200190521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_16
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e07156a7a80c7a0800000000000000
+      internalID: -6358930415560487277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_17
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac386c74240ee810800000000000000
+      internalID: 1796377856119946409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_18
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 480
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e8c10c9ebbe7cd0800000000000000
+      internalID: -2558400925674992104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_19
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 476
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0a3523243d93c20800000000000000
+      internalID: 3186810492606980307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_20
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 436
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee31f0508b360b70800000000000000
+      internalID: 8864838338825240289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_21
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 436
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e598cbd53c12e7d70800000000000000
+      internalID: 9042702224781511006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_22
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 436
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4768859cfc7801d90800000000000000
+      internalID: -7129048883621493132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_23
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 436
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95b8d2ea2ae55200800000000000000
+      internalID: 168298031011640733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_24
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7633fc733769e30800000000000000
+      internalID: 4509918760394778592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_25
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3427324f828b2420800000000000000
+      internalID: 2606320361166808126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_26
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd3cf746dd73daa0800000000000000
+      internalID: -6137423507891667463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_27
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7fdd7b38f6d1780800000000000000
+      internalID: -8710683492748494853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_28
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de463dc0af989960800000000000000
+      internalID: 7609007083428925137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_29
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c009dfc5a282b9db0800000000000000
+      internalID: -4784186016737161204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_30
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b73e9929dfdf3500800000000000000
+      internalID: 378267017521543097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_31
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 436
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20ae04e92930e2f0800000000000000
+      internalID: -945693069665198033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_32
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 392
+        width: 67
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88db72a72a6cc0a0800000000000000
+      internalID: -6859991413929813876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_33
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 392
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0bdbc52b3f4ed80800000000000000
+      internalID: -8222179072286019404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_34
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 392
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2919ac480e744e0800000000000000
+      internalID: -1997381048776682785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_35
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 392
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a073a0764cbdff0800000000000000
+      internalID: -10198627306239343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_36
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 389
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c223f636cde7a87f0800000000000000
+      internalID: -609535314529144276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_37
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 400
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ba284021f9b5be0800000000000000
+      internalID: -1487420352181916852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_38
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 385
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27921343dd13d1750800000000000000
+      internalID: 6277228281757510002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_39
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14ef754f6f01df10800000000000000
+      internalID: 2292630655890088986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_40
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01838a2e5467a4c90800000000000000
+      internalID: -7184800212988708848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_41
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94dd3a1b4348f6080800000000000000
+      internalID: -9191982952586420919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_42
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49cece46696bc2760800000000000000
+      internalID: 7434517841936444564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_43
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0bee4a0c6ed5cf0800000000000000
+      internalID: -261799488242405140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_44
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5311178625b4e3770800000000000000
+      internalID: 8592387956381126965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_45
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a53a0f72743d2ba0800000000000000
+      internalID: -6112171452909603416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_46
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80594d378438f730800000000000000
+      internalID: 4033031221763723404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_47
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 392
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a1130f586fc320c0800000000000000
+      internalID: -4601606347064929884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_48
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 390
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77e3f79f992d2920800000000000000
+      internalID: 2967073494932907902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_49
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 348
+        width: 68
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4f4a279c0bddaf0800000000000000
+      internalID: -369945215116184351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 348
+        width: 68
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ede4aead9cd1d30800000000000000
+      internalID: 4403897952709303877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_51
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 348
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd91e5eca5e3e9a0800000000000000
+      internalID: -6204863330832507429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_52
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 348
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13df07d41a8952520800000000000000
+      internalID: 2676713372098034993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_53
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6908ce7dbbf176760800000000000000
+      internalID: 7450959000149721238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_54
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7814572931f496c70800000000000000
+      internalID: 8964783478737813895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_55
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e373ea7ef5819e660800000000000000
+      internalID: 7415485061630146366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_56
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f67bc35de90a980800000000000000
+      internalID: -8529643055555842153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_57
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd75d548a2a6ff360800000000000000
+      internalID: 7205594659657963484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_58
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 348
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7663267d1695c5e0800000000000000
+      internalID: -1889939415331805570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_59
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e912874c40c6390800000000000000
+      internalID: -7823873210773823971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_60
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 348
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f99ed61c652ae5090800000000000000
+      internalID: -8043813390941034081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_61
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 304
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bad77e2b90823510800000000000000
+      internalID: 1527424627619912369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_62
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 304
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2213da43d3cc16690800000000000000
+      internalID: -7610577332030590686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_63
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 304
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d52278c29a8e590800000000000000
+      internalID: -7644674358750585589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_64
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 304
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9361d7f2e65f9a150800000000000000
+      internalID: 5884504241728198201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_65
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 303
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ffbdba0a2df2a1c0800000000000000
+      internalID: -4493751121151672334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_66
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d79fbf185810c810800000000000000
+      internalID: 1783452219207555030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_67
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1df0ebc350c35c0800000000000000
+      internalID: -4234503791190224387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_68
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9d2876e5c1e4160800000000000000
+      internalID: 7011572861651573203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_69
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb671753c553e0350800000000000000
+      internalID: 5984779624971859644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_70
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961c4f7ed934b4320800000000000000
+      internalID: 2543200760061280617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_71
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1accead64814a8c0800000000000000
+      internalID: -3989036677343688165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_72
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642865db4e6063920800000000000000
+      internalID: 2969568583796294214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_73
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfe87b77faa61a3a0800000000000000
+      internalID: -6655921472416542979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_74
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97dd2af8340ae590800000000000000
+      internalID: -7644292774746007652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_75
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 304
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 248415c6574f8fbc0800000000000000
+      internalID: -3748977904620320702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_76
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 260
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5355e2349ca102bd0800000000000000
+      internalID: -2657094328430734027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_77
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 260
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf3e1dc7e7409270800000000000000
+      internalID: 8255177177874448326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_78
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 260
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3465369c9b5443e30800000000000000
+      internalID: 4482284193390483011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_79
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 260
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25c7bdce200017f0800000000000000
+      internalID: -644014545694112468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_80
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 259
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042e34aaefe2949c0800000000000000
+      internalID: -3942568327473012160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_81
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc64ce60f6016d20800000000000000
+      internalID: 3269902434167975167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_82
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd370f54737085f40800000000000000
+      internalID: 5717327660924826587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_83
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126118fcea83471c0800000000000000
+      internalID: -4506915003634215391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_84
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75abe458d564db020800000000000000
+      internalID: 2359119147294440023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_85
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 260
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ec1395f0105d6a0800000000000000
+      internalID: -6425228127941570940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_86
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ebfcea91c2fa510800000000000000
+      internalID: 1562516084539506227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_87
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c7c5949c364eb3f0800000000000000
+      internalID: -883191250913212474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_88
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774dbb0aa5a0a42c0800000000000000
+      internalID: -4446730297714944905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_89
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e0dc12a50b0ed40800000000000000
+      internalID: 5611679036864269941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_90
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 260
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072aa327f2b75eab0800000000000000
+      internalID: -4979438369278090640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_91
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 216
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bae352a1600eb240800000000000000
+      internalID: 4809281871413504693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_92
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 216
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115d514494175a730800000000000000
+      internalID: 4009735602732127505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_93
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 216
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8de5154cf9ab7bb0800000000000000
+      internalID: -4937165665525699188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_94
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 216
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed8b0951f61a89d0800000000000000
+      internalID: -2771377394856260125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_95
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 215
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae5a8bdd3452d110800000000000000
+      internalID: 1284181468407029412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_96
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b0a1f157a520470800000000000000
+      internalID: 8359343317432535930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_97
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2d4f24074c207b0800000000000000
+      internalID: -5259425428376595779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_98
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1a87d2e60ccc3750800000000000000
+      internalID: 6286123509850016286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_99
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d165d8e2f6c76e710800000000000000
+      internalID: 1722200724480022045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_100
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b9af4bd66df8470800000000000000
+      internalID: 8399167596745366351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_101
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df130684d38154ed0800000000000000
+      internalID: -2430509772410179075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_102
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5499ba133b8c1f810800000000000000
+      internalID: 1797438398255569221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_103
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 216
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41b522e1805bf1f0800000000000000
+      internalID: -1010125172639420082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_104
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 216
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5d1a7daae5c3960800000000000000
+      internalID: 7583039960440231400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_105
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 172
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e9ef63c62c639f0800000000000000
+      internalID: -488989739488207334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_106
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 172
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b90707fd310027e0800000000000000
+      internalID: -1792431286044390985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_107
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 172
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f576f814210aa7960800000000000000
+      internalID: 7600563321410905951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_108
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 172
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fa3ab325a4bdef0800000000000000
+      internalID: -82390451127865447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_109
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 170
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d9dc435c5983730800000000000000
+      internalID: 3979094945008819595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_110
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da7f82c2b371fd6c0800000000000000
+      internalID: -4116545991481952339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_111
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a53e16f34a92a40800000000000000
+      internalID: 5343983024983988793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_112
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b030171336dbfe090800000000000000
+      internalID: -8002969779085180149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_113
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82319c11c6d9f94f0800000000000000
+      internalID: -819763519677721816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_114
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ecec8d45b3e2f9c0800000000000000
+      internalID: -3894800359892390687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_115
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70dacf53a2c96d1d0800000000000000
+      internalID: -3326299569658221305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_116
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb034e8c7b577f20800000000000000
+      internalID: 3420303032532011960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_117
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a7db856297ac6d50800000000000000
+      internalID: 6731939790222776231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_118
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 172
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55754fb8ebad3220800000000000000
+      internalID: 2467317186998662493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_119
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 128
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69d01291c9fd3d80800000000000000
+      internalID: -8269178731007780500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_120
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27ceb63b22eeba80800000000000000
+      internalID: -8449067175670528211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_121
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 128
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57d41c6c2da88ba0800000000000000
+      internalID: -6086424490087753893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_122
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 128
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829067a4af952dbf0800000000000000
+      internalID: -301079293554456280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_123
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 145
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2edfabf87f4d5e70800000000000000
+      internalID: 9105521402650287658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_124
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a3837fc44ef3050800000000000000
+      internalID: 5782591465783310913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_125
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d973733b6f0693b60800000000000000
+      internalID: 7726313248415758237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_126
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e522720305d88540800000000000000
+      internalID: 5010488794352330214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_127
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a01892af01c84f0800000000000000
+      internalID: -825265965091452415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_128
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aee73a2cee2ccdb0800000000000000
+      internalID: -4770386313436729689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_129
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717c80fbd9e2e6200800000000000000
+      internalID: 175128690563794711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_130
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db356f134931f50a0800000000000000
+      internalID: -6890767377639255107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_131
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afeba201fb69cca30800000000000000
+      internalID: 4236927096802950906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_132
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 128
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da69a1af80fae7140800000000000000
+      internalID: 4719401912621504173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_133
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 134
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586c23fefe513e7d0800000000000000
+      internalID: -2890442415587277179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_134
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 132
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dae40e9d78e9bfe0800000000000000
+      internalID: -1172650601733625133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_135
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 124
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f6b1d2b4d732000800000000000000
+      internalID: 9989386017664846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_136
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 84
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67fefef57df45280800000000000000
+      internalID: -9055334267504101521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_137
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 84
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e0ee74c5683d5f60800000000000000
+      internalID: 8024632120783593698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_138
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 84
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00306c10db518a50800000000000000
+      internalID: 6521594684796579853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_139
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 84
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb2e313367c24200800000000000000
+      internalID: 162911765380606896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_140
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 83
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae9b9c7b432a43c0800000000000000
+      internalID: -4374645280916922707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_141
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a926c942eb91349f0800000000000000
+      internalID: -485516030377172326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_142
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4773205dc305fd380800000000000000
+      internalID: -8944342112732563596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_143
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310954676c2ebe8f0800000000000000
+      internalID: -510064790760746989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_144
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e7d48c0025945e70800000000000000
+      internalID: 9103064711704139747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_145
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f2784c105496730800000000000000
+      internalID: 3992798418535133032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_146
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71824d8bef743b00800000000000000
+      internalID: 807410882870149500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_147
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52214bc38f7793e50800000000000000
+      internalID: 6789589821291762213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_148
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c66b11d3e734dd00800000000000000
+      internalID: 996482869161060037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_149
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 84
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2a12ebdfc2db5f0800000000000000
+      internalID: -739385295490669891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_150
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 40
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330bfe15ce9087b80800000000000000
+      internalID: -8396950594640695245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_151
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 40
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2a26ed9cddc0960800000000000000
+      internalID: 7569668932792132301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_152
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 40
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13e8e7eca2f619a0800000000000000
+      internalID: -6262551407372999908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_153
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 40
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e8c3a747369a9cd0800000000000000
+      internalID: -2550561074782680855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_154
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 39
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bb247bb065980770800000000000000
+      internalID: 8577269733021461426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_155
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cbebc6d95ed6560800000000000000
+      internalID: 7308750234589248581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_156
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737442b61cccf9190800000000000000
+      internalID: -7953413285814712521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_157
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 881b757c66eda8950800000000000000
+      internalID: 6452213949174100360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_158
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c86b27569be55b70800000000000000
+      internalID: 8887268470625626305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_159
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ba7d8638dd2b830800000000000000
+      internalID: 4085571368447879954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_160
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583dc6d5c252c6610800000000000000
+      internalID: 1615707238795367301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_161
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdec151260d0ac760800000000000000
+      internalID: 7478804451182104284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_162
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f18597edf09bad0800000000000000
+      internalID: -2686098254556815609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - NieR Automata - PC Icons_163
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 40
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0294a5d9657ee570800000000000000
+      internalID: 8497858644311052810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
