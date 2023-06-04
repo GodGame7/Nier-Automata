@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class AllyControl : MonoBehaviour
 {
+
     private GameObject[] enemies;
     private List<GameObject> aliveEnemies = new List<GameObject>();
     int enemyIndex;
