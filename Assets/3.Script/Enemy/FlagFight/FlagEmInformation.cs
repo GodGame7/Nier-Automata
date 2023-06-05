@@ -6,7 +6,8 @@ using UnityEngine;
 public class FlagEmInformation : MonoBehaviour
 {
     [Header("Enemy 체력")]
-    [SerializeField] float maxHp = 50f;
+    float maxHp = 50f;
+    public float MaxHp => maxHp;
 
     [Header("Enemy 폭발")]
     [SerializeField] GameObject em;
@@ -14,7 +15,8 @@ public class FlagEmInformation : MonoBehaviour
 
     // 확인용
     [SerializeField] public bool isDie = false;
-    [SerializeField] public float currentHP;
+    [SerializeField] float currentHP;
+    public float CurrentHp => currentHP;
     [SerializeField] FlagFightManager fightManager;
     [SerializeField] FlagFightSpawner flagFightSpawner;
 
@@ -22,11 +24,12 @@ public class FlagEmInformation : MonoBehaviour
 
     private new Collider collider;
 
+    public bool onHP = true;
 
     private void Start()
     {
         em.SetActive(true);
-        explosion.SetActive(false); 
+        explosion.SetActive(false);
         collider = GetComponent<Collider>();
         collider.enabled = true;
         flagFightSpawner = FindObjectOfType<FlagFightSpawner>();
@@ -74,7 +77,7 @@ public class FlagEmInformation : MonoBehaviour
     public void Die()
     {
         flagFightSpawner.RemainEnemies--;
-        if(isBoss)
+        if (isBoss)
         {
             flagFightSpawner.RemainEnemies -= 4;
         }

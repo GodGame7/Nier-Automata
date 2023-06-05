@@ -6,7 +6,7 @@ public class EnemyHPPositionSetter : MonoBehaviour
 {
     public GameObject Target;
     private RectTransform UITrans;
-    public Enemy monster;
+    public FlagEmInformation monster;
 
     private Vector3 distance = 70 * Vector3.up;
 
@@ -33,7 +33,7 @@ public class EnemyHPPositionSetter : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            //child.gameObject.SetActive(monster.onHP);
+            child.gameObject.SetActive(monster.onHP);
         }
         if (!Target.activeSelf)
         {

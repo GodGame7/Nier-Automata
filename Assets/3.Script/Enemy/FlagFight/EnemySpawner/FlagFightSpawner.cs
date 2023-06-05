@@ -26,7 +26,11 @@ public class FlagFightSpawner : MonoBehaviour
     private float emfirstMoveSpeed;
     private float emlastMoveSpeed;
     private bool isCanLook;
-    
+
+    [SerializeField]
+    private GameObject monsterHPPrefabs;
+    [SerializeField]
+    private Transform CanvasTrans;
 
     // 적이 없으면 이벤트를 발생시킴
     public int RemainEnemies;
@@ -90,6 +94,10 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0030 생성 메소드
     private void SpawnEm0030(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emLastDesPosition, float emfirstMoveSpeed, float emlastMoveSpeed, bool isCanLook, int num)
     {
+        if (em0030s[num].TryGetComponent(out FlagEmInformation enemy))
+        {
+            SpawnEnemyHP(enemy);
+        }
         em0030s[num].SetActive(true);
         em0030s[num].transform.rotation = Quaternion.Euler(emRotation);
         em0030s[num].transform.position = emPosition;
@@ -107,6 +115,10 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0031 생성 메소드
     private void SpawnEm0031(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, int num)
     {
+        if (em0031s[num].TryGetComponent(out FlagEmInformation enemy))
+        {
+            SpawnEnemyHP(enemy);
+        }
         em0031s[num].SetActive(true);
         em0031s[num].transform.rotation = Quaternion.Euler(emRotation);
         em0031s[num].transform.position = emPosition;
@@ -119,6 +131,11 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0032 생성 메소드
     private void SpawnEm0032(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emRotatePoint, Vector3 emRotateAxis, float emfirstMoveSpeed, float emlastMoveSpeed, bool isCanLook, int num)
     {
+        Debug.Log(1);
+        if (em0032s[num].TryGetComponent(out FlagEmInformation enemy))
+        {
+            SpawnEnemyHP(enemy);
+        }
         em0032s[num].SetActive(true);
         em0032s[num].transform.rotation = Quaternion.Euler(emRotation);
         em0032s[num].transform.position = emPosition;
@@ -134,7 +151,23 @@ public class FlagFightSpawner : MonoBehaviour
         StartCoroutine(em0032Movement.Move_co());
 
     }
+    private void SpawnEnemyHP(FlagEmInformation enemy)
+    {
+        GameObject sliderClone = Instantiate(monsterHPPrefabs);
 
+        sliderClone.transform.SetParent(CanvasTrans);
+        sliderClone.transform.localScale = Vector3.one;
+
+        if (sliderClone.TryGetComponent(out EnemyHPPositionSetter positionSetter))
+        {
+            positionSetter.SetUp(enemy.gameObject);
+        }
+
+        if (sliderClone.TryGetComponent(out EnemyHPViewer hpViewer))
+        {
+            hpViewer.SetUp(enemy);
+        }
+    }
     // em0030 4기를 생성 // 0, 1, 2, 3
     public void Phase1_15()
     {

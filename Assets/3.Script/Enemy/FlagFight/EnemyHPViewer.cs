@@ -8,9 +8,9 @@ public class EnemyHPViewer : MonoBehaviour
     [SerializeField]
     private Slider sliderHP;
     [SerializeField]
-    private Enemy enemy;
+    private FlagEmInformation enemy;
 
-    public void SetUp(Enemy enemy)
+    public void SetUp(FlagEmInformation enemy)
     {
         this.enemy = enemy;
         TryGetComponent(out sliderHP);
@@ -20,7 +20,7 @@ public class EnemyHPViewer : MonoBehaviour
     {
         if (!enemy.Equals(null))
         {
-            sliderHP.value = enemy.enemyHp.currentHp / (float)enemy.enemyHp.maxHp;
+            sliderHP.value = enemy.CurrentHp / (float)enemy.MaxHp;
         }
     }
 }
