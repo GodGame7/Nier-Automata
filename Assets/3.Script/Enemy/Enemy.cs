@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
 
     //체력 정보 받아오기
-    protected EnemyHp enemyHp;
+    public EnemyHp enemyHp;
 
     //타겟과의 거리
     protected float distance;
