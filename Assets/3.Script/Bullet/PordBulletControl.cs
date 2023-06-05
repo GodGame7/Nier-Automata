@@ -9,11 +9,11 @@ public class PordBulletControl : MonoBehaviour
     private void Awake()
     {
         Spark = Instantiate(Spark, transform.position, Quaternion.identity);
-
+        Spark.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
-        StartCoroutine(Disable());
+        Invoke("DisableBullet", 4f);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,25 +21,34 @@ public class PordBulletControl : MonoBehaviour
         {
             other.transform.root.GetComponent<EnemyHp>().TakeDamage(6);
             transform.position = WaitLocation;
-            gameObject.SetActive(false);
-            Spark.transform.position = other.gameObject.transform.position;
+            DisableBullet();
+
+            Spark.gameObject.transform.position = other.gameObject.transform.position;
+            Spark.gameObject.SetActive(true);
             Spark.Play();
+            Invoke("DisableSpark", 1f);
         }
         if (other.CompareTag("BulletSoft"))
         {
             other.gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            DisableBullet();
         }
-         
+        if (other.CompareTag("Wall"))
+        {
+            DisableBullet();
+        }
 
     }
-    
-    private IEnumerator Disable() //불렛 지속시간 설정
+
+   
+    private void DisableBullet() //불렛 일정시간후 지우기위함
     {
-        yield return new WaitForSeconds(4f);
         gameObject.SetActive(false);
     }
-        
+    private void DisableSpark() //파티클시스템 일정시간후 지우기 위함
+    {
+        Spark.gameObject.SetActive(false);
+    }
 
 
 }

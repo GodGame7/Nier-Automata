@@ -20,7 +20,6 @@ public class Sword : MonoBehaviour
     {
         Main_Player.Instance.collider_sword.enabled = false;
     }
-
     void CheckComboAtk()
     {
         isContinueAtk = false;
@@ -30,7 +29,7 @@ public class Sword : MonoBehaviour
         //Local Function
         IEnumerator CheckComboAtk_co()
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.08f);
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             isContinueAtk = true;
         }
