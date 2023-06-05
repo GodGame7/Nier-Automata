@@ -24,7 +24,7 @@ public class FlagEmInformation : MonoBehaviour
 
     private new Collider collider;
 
-    public bool onHP = true;
+    public bool onHP = false;
 
     private void Start()
     {
@@ -36,6 +36,7 @@ public class FlagEmInformation : MonoBehaviour
         fightManager = FindObjectOfType<FlagFightManager>();
         currentHP = maxHp;
         isDie = false;
+        onHP = false;
     }
 
     /*에너미 스폰서가 생겼으면 좋겠다.*/
@@ -60,10 +61,18 @@ public class FlagEmInformation : MonoBehaviour
     public void OnDamage(float damage)
     {
         currentHP -= damage;
+        onHP = true;
+        StopCoroutine(nameof(OffDamaged_co));
+        StartCoroutine(nameof(OffDamaged_co));
         if (currentHP <= 0 && !isDie)
         {
             Die();
         }
+    }
+    private IEnumerator OffDamaged_co()
+    {
+        yield return new WaitForSeconds(0.8f);
+        onHP = false;
     }
 
     public void Disappear()
