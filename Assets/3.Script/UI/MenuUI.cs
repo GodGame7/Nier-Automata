@@ -43,6 +43,14 @@ public class MenuUI : MonoBehaviour
     [Tooltip("상단 메뉴 마우스 커서")]
     [SerializeField] private Image Cursor;
 
+    [Header("멈추기 위한 변수")]
+    [Tooltip("플레이어와 카메라를 넣어주세용")]
+    [SerializeField] GameObject Player;
+    [SerializeField] Camera MainCam;
+    [SerializeField] PlayerInput Player_Input;
+    [SerializeField] StateManager Player_State;
+
+
     //마우스 커서 위치용 변수
     private Vector3 Defalut_TopMenu_Cursor = new Vector3(-860, 390, 0);
     private Vector3 Move_TopMenu_Cursor = new Vector3(250, 0, 0);
@@ -112,6 +120,12 @@ public class MenuUI : MonoBehaviour
     }
     public void MenuOpen() //메뉴창 열기
     {
+        //Player1.GetComponent<Main_Player>().enabled = false;
+        //Player2.GetComponent<PlayerInput>().enabled = false;
+        Player_Input.enabled = false;
+        Player_State.enabled = false;
+        //Player.SetActive(false);
+        MainCam.GetComponent<CameraMovement>().enabled = false;
         MenuCount = 0;
         Time.timeScale = 0;
         OpenMenu = true;
@@ -121,6 +135,10 @@ public class MenuUI : MonoBehaviour
     }
     public void MenuClose() //메뉴창 닫기
     {
+        //Player.SetActive(true);
+        Player_Input.enabled = true;
+        Player_State.enabled = true;
+        MainCam.GetComponent<CameraMovement>().enabled = true;
         MenuCount = 0;
         Time.timeScale = 1;
         OpenMenu = false;
@@ -131,6 +149,7 @@ public class MenuUI : MonoBehaviour
         }
 
     }
+    
     public void LeftArrow() //탑메뉴창 왼쪽 넘기기
     {
         MenuCount--;
