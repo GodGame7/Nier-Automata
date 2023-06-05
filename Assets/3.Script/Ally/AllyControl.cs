@@ -38,8 +38,6 @@ public class AllyControl : MonoBehaviour
         bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
 
         fireDelay_wait = new WaitForSeconds(fireDelay);
-
-        MoveTo(new Vector3(0.03f, 0, 0.03f));
     }
 
     private void Update()
@@ -47,12 +45,14 @@ public class AllyControl : MonoBehaviour
         time += Time.deltaTime;
     }
 
-    public void MoveTo(Vector3 destPos)
+    public void MoveTo(string destPos)
     {
         StartCoroutine(MoveTo_co(destPos));
     }
-    private IEnumerator MoveTo_co(Vector3 destPos)
+    private IEnumerator MoveTo_co(string destPosition)
     {
+        string[] pos = destPosition.Split(',');
+        Vector3 destPos = new Vector3(float.Parse(pos[0].Trim()), 0, float.Parse(pos[1].Trim()));
         int cnt = 0;
         while (Vector3.SqrMagnitude(destPos - rigid.position) > 0.000001f)
         {
