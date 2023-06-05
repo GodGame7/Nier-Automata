@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
         PotionDelay = true;
         Effect_Text.gameObject.SetActive(true);
         Effect_Text.text = string.Format("{0} 를 사용하였습니다. 남은 아이템의 갯수 {1} 개", item.ItemName, item.Quantity);
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
         Effect_Text.gameObject.SetActive(false);
         PotionDelay = false;
     }

@@ -8,7 +8,7 @@ public class LaserCoolTime : MonoBehaviour
     [SerializeField] GameObject Pord;
     [SerializeField] Text CoolTime_text;
     [SerializeField] Slider CoolTime_Slider;
-    private Vector3 CoolPos = new Vector3(0, -0.5f, 0);
+    private Vector3 CoolPos = new Vector3(0, -0.9f, 0);
     private float LaserCool = 7f;
     private float CurrentCool = 0f;
     public bool CanLaser = true;

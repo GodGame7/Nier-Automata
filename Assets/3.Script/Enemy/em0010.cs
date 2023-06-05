@@ -16,7 +16,6 @@ public class em0010 : Enemy
         while (!enemyHp.isdead)
         {
             TargetLookat();
-
             switch (state)
             {
                 case State.IDLE:

@@ -4,33 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    bool cursor;
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        CursorOff();
-    }
-    private void Update()
-    {
-        CursorManager();
+        
     }
 
-    private void CursorManager()
+    // Update is called once per frame
+    void Update()
     {
-        if (cursor) { 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        }
-        else { 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
-        }
-    }
-    public void CursorOn()
-    {
-        cursor = true;
-    }
-    public void CursorOff()
-    {
-        cursor = false;
+        
     }
 }

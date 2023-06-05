@@ -73,7 +73,6 @@ public class em0000 : Enemy
 
     IEnumerator PunchAttact2()
     {
-        TargetLookat();
         anim.SetTrigger("Attack1");
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));

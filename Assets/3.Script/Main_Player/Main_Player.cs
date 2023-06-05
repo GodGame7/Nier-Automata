@@ -9,10 +9,9 @@ public class Main_Player : MonoBehaviour
 
     [Header("ÄÄÆ÷³ÍÆ®")]
     StateManager sm;
-    public Rigidbody rb;
     public Animator anim_player;
     public Animator anim_sword;
-    public Animator anim_bigsword; 
+    public Animator anim_bigsword;
     public CapsuleCollider collider_body;
     public BoxCollider collider_sword;
     public BoxCollider collider_bigsword;

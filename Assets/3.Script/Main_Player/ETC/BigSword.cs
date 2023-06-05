@@ -34,7 +34,7 @@ public class BigSword : MonoBehaviour
         //Local Function
         IEnumerator CheckComboAtk_co()
         {
-            yield return new WaitForSeconds(0.08f);
+            yield return new WaitForEndOfFrame();
             yield return new WaitUntil(() => Input.GetMouseButtonDown(1));
             isContinueAtk = true;
         }

@@ -103,17 +103,17 @@ public class em1000 : Enemy
     {
         target_x = target.root.position.x;
 
-        if (target_x > 90f)
+        if (target_x > 5f)
         {
-            dir = Dir.Left;
+            dir = Dir.Right;
         }
-        else if (target_x <= 90f && target_x > 115f)
+        else if (target_x <= 5f && target_x > -15f)
         {
             dir = Dir.Center;
         }
-        else if (target_x <= 115f)
+        else if (target_x <= -15f)
         {
-            dir = Dir.Right;
+            dir = Dir.Left;
         }
 
     }
@@ -174,6 +174,4 @@ public class em1000 : Enemy
         //StopCoroutine(Attack());
         //enemyHp.isdead = false;
     }
-
-
 }
