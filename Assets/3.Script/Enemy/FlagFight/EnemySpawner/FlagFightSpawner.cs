@@ -131,7 +131,6 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0032 持失 五社球
     private void SpawnEm0032(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emRotatePoint, Vector3 emRotateAxis, float emfirstMoveSpeed, float emlastMoveSpeed, bool isCanLook, int num)
     {
-        Debug.Log(1);
         if (em0032s[num].TryGetComponent(out FlagEmInformation enemy))
         {
             SpawnEnemyHP(enemy);

@@ -288,7 +288,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         phase1_11.Invoke();
         text_Subtitle.gameObject.SetActive(false);
 
-        yield return wait_7_Second;
+        yield return wait_4_Second;
         Next_SubText();
 
         yield return wait_1_Second;

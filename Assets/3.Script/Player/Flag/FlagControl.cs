@@ -448,18 +448,16 @@ public class FlagControl : MonoBehaviour
     {
         while (true)
         {
-            if (!canFire)
+            if (canFire)
             {
-                break;
-            }
+                yield return FireDelay_wait;
+                yield return InputFireButton_wait;
 
-            yield return FireDelay_wait;
-            yield return InputFireButton_wait;
-
-            foreach (FlagBulletSpawner b in bulletSpawners)
-            {
-                b.Fire();
-                AudioManager.Instance.PlaySfx(Define.SFX.Shot);
+                foreach (FlagBulletSpawner b in bulletSpawners)
+                {
+                    b.Fire();
+                    AudioManager.Instance.PlaySfx(Define.SFX.Shot);
+                }
             }
         }
     }
