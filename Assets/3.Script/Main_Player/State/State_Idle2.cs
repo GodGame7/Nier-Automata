@@ -16,17 +16,20 @@ public class State_Idle2 : State
         Main_Player.Instance.anim_player.SetTrigger("Idle 0");
         Main_Player.Instance.anim_sword.SetTrigger("Idle");
         Main_Player.Instance.anim_bigsword.SetTrigger("Idle");
+
     }
 
     public override void Exit(State next)
     {
         Main_Player.Instance.anim_player.SetBool("Idle", false);
         Main_Player.Instance.anim_player.SetFloat("Speed", 0f);
+        Main_Player.Instance.rb.velocity = Vector3.zero;
+
     }
 
     public override void StateFixedUpdate()
     {
-
+        Main_Player.Instance.rb.velocity = Vector3.zero;
     }
 
     public override void StateUpdate()

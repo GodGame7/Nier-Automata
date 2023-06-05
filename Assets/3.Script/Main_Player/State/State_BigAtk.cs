@@ -37,6 +37,7 @@ public class State_BigAtk : State
         Main_Player.Instance.anim_player.applyRootMotion = false;
         Main_Player.Instance.collider_sword.enabled = false;
         ResetBool();
+        ResetBig();
         isCanStr = false;
         stronged = false;
         index = 0;

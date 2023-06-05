@@ -828,7 +828,6 @@ MonoBehaviour:
   rotationSpeed: 10
   anim: {fileID: 0}
   target: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &1787845615327828841
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1152,7 +1151,7 @@ MonoBehaviour:
   autoCreateSmoke: 1
   autoCreateGlow: 1
   autoCreateLight: 1
-  autoCreateForce: 1
+  autoCreateForce: 0
   autoCreateHeatwave: 0
 --- !u!1 &3240240297059951384
 GameObject:
