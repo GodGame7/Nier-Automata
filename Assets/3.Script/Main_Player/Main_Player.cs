@@ -88,7 +88,7 @@ public class Main_Player : MonoBehaviour
     }
     public bool isCanAttack()
     {
-        if (isDodge || isHitted) return false;
+        if (isDodge || isHitted || isAtk) return false;
         else return true;
     }
     public void OnDamage(float damage)
@@ -98,8 +98,11 @@ public class Main_Player : MonoBehaviour
             sm.ChangeState(sm.hitted);
             PlayerData.Instance.OnDamage(damage);
         }
-        else Debug.Log("무적 상태입니다");
-        //todo 닷지상태일 때, 닷지 효과 재생.
+        else
+        {
+            Debug.Log("무적 상태입니다");
+            if (isDodge) { HittedWhileDodge(); }
+        }
     }
     public void SwordToHand()
     {
@@ -111,10 +114,11 @@ public class Main_Player : MonoBehaviour
     }
 
     [Header("메쉬베이크용")]
-    [SerializeField] MeshBake meshBake;
+    [SerializeField] public MeshBake meshBake;
     public void HittedWhileDodge()
     {
-        
+        //todo 포스트프로세싱, 타임스케일 등 연출요소
+        meshBake.DodgeEffect();
     }
 
     private IEnumerator DestroyCopiesAfterDelay(GameObject[] copies, float delay)

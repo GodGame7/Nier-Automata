@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     StateManager sm;
     Coroutine co_dodge;
     Coroutine co_atk;
+    Coroutine co_big;
 
     [SerializeField] private InventoryUI Inventory_UI;
     public delegate void Item(int num);
@@ -20,6 +21,7 @@ public class PlayerInput : MonoBehaviour
         sm = FindObjectOfType<StateManager>();
         co_dodge = StartCoroutine(DodgeListener());
         co_atk = StartCoroutine(AttackListener());
+        co_big = StartCoroutine(BigAttackListener());
     }
     Vector3 inputVec;
     private void Update()
