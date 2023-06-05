@@ -9,6 +9,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
     [Header("Managers")]
     [SerializeField] FlagFightManager flagFightManager;
     [SerializeField] FlagFightSpawner flagFightSpawner;
+    [SerializeField] FlagFightSubTitleAudio flagFightSubTitleAudio;
 
     [Space(0.5f)]
     [Header("확인용")]
@@ -75,7 +76,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     string[] flagSubTitles = new string[]
     {
-        #region phase01 23개
+        #region phase01 24개
         "모든 존재는 사라지도록 설계되어 있다.",
         "생과 사를 되풀이 하는 나선에⋯⋯",
         "우리는 얽매여 있다.",
@@ -118,7 +119,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         #endregion
 
-        #region phase07 7개
+        #region phase07 8개
         "대장⋯⋯나⋯⋯",
         "⋯⋯4B, 로스트",
         "2B가 오퍼레이터 6O에게",
@@ -155,6 +156,8 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     IEnumerator Phase01_Co()
     {
+        flagFightSubTitleAudio.PlayClip(0);
+
         yield return wait_4_Second;
         text_Subtitle.gameObject.SetActive(false);
 
@@ -474,5 +477,6 @@ public class FlagFightSubTitleManager : MonoBehaviour
         subTitleCounter++;
         text_Subtitle.text = flagSubTitles[subTitleCounter];
         text_Subtitle.gameObject.SetActive(true);
+        flagFightSubTitleAudio.PlayClip(subTitleCounter);
     }
 }

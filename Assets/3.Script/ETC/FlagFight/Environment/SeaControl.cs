@@ -17,6 +17,6 @@ public class SeaControl : MonoBehaviour
 
     private void phase7_02()
     {
-        objectScrolling.scrollingSpeed = 5.0f;
+        gameObject.SetActive(false);
     }
 }
