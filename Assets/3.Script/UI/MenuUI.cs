@@ -35,6 +35,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject CanNot_ob;
     [Tooltip("하단 메뉴들")]
     [SerializeField] private GameObject[] BottomMenu;
+    [SerializeField] private GameObject Selected_Menu; //배열로 만들어줘야함 나중에 확장성
     [Tooltip("상단 메뉴 이미지")]
     [SerializeField] private Image[] TopImage;
     [Tooltip("상단 메뉴 텍스트")]
@@ -124,11 +125,11 @@ public class MenuUI : MonoBehaviour
         Time.timeScale = 1;
         OpenMenu = false;
         MenuUI_ob.SetActive(false);
-        for (int i=0; i<BottomMenu.Length; i++)
+        for (int i = 0; i < BottomMenu.Length; i++)
         {
             BottomMenu[i].SetActive(false);
         }
-        
+
     }
     public void LeftArrow() //탑메뉴창 왼쪽 넘기기
     {
@@ -140,19 +141,19 @@ public class MenuUI : MonoBehaviour
     {
         MenuCount++;
         UpdateMenuUI();
-        Cursor  .transform.position += Move_TopMenu_Cursor;
+        Cursor.transform.position += Move_TopMenu_Cursor;
     }
     public void EnterItem() // 탑메뉴창에서 아이템으로 넘어가기
     {
         EnterMenuItem = true;
-
+        Selected_Menu.SetActive(true);
     }
     public void ExitItem() // 탑메뉴창으로 돌아가기
     {
         EnterMenuItem = false;
-        
+        Selected_Menu.SetActive(false);
     }
-   
+
     private void UpdateMenuUI() // 메뉴들 UI 업데이트 
     {
         for (int i = 0; i < BottomMenu.Length; i++)

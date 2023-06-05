@@ -20,7 +20,7 @@ public class PordControl : MonoBehaviour
     [Header("MainUI_Canvas에 있음")]
     [Space(10)]
     [SerializeField] GameObject Lockon;
-    
+
 
 
     // 록온을 위한 변수
@@ -143,15 +143,17 @@ public class PordControl : MonoBehaviour
         {
 
             transform.position = Player.transform.position + PlayerAround;
-            //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
-            //                                 transform.position.y,
-            //                                 Player.transform.position.z + Cam.transform.rotation.z);
             transform.rotation = Cam.transform.rotation;
         }
+        //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
+        //                                 transform.position.y,
+        //                                 Player.transform.position.z + Cam.transform.rotation.z);
+        //transform.position = Player.transform.position + PlayerAround;
+        //transform.rotation = Cam.transform.rotation;
 
 
     }
-
+ 
     private IEnumerator Laser_co() // 레이저 사용시 코루틴
     {
         //카메라를 살짝 흔들어주세용
