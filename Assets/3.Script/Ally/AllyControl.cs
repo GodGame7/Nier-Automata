@@ -38,7 +38,7 @@ public class AllyControl : MonoBehaviour
         bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
         isSway = false;
         isFire = false;
-        fireDelay_wait = new WaitForSeconds(fireDelay);
+        fireDelay_wait = new WaitForSeconds(fireDelay);        
     }
 
     private void Update()
@@ -59,7 +59,6 @@ public class AllyControl : MonoBehaviour
     private IEnumerator MoveTo_co(string destPosition)
     {
         string[] pos = destPosition.Split(',');
-        newPosition = new Vector3(float.Parse(pos[0].Trim()), 0, float.Parse(pos[1].Trim()));
         Vector3 destPos = new Vector3(float.Parse(pos[0].Trim()), 0, float.Parse(pos[1].Trim()));
         int cnt = 0;
         while (Vector3.SqrMagnitude(destPos - rigid.position) > 0.000001f)
@@ -190,6 +189,8 @@ public class AllyControl : MonoBehaviour
     public void StartSway()
     {
         isSway = true;
+        newPosition = new Vector3(
+        Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
     }
 
     public void StopSway()
