@@ -7,6 +7,7 @@ public class State_Atk2 : State
     private Camera mainCamera;
     private GameObject sword;
     private GameObject bigSword;
+    [SerializeField] private Transform body;
     private GameObject idleSword;
     private GameObject idleBigSword;
     public bool isCanStr;
@@ -37,9 +38,13 @@ public class State_Atk2 : State
         Main_Player.Instance.collider_sword.enabled = false;
         EndAtk();
         ResetBool();
+        ResetSword();
+        StopCoroutine(listener);
         isCanStr = false;
         stronged = false;
         index = 0;
+        Main_Player.Instance.rb.velocity = Vector3.zero;
+
     }
 
     public override void StateFixedUpdate()
@@ -83,7 +88,6 @@ public class State_Atk2 : State
         stronged = true;
         isCanStr = false;//강공격 불변수 체크
         //강공격 애니메이션 재생
-        LoadSword();
         Main_Player.Instance.anim_sword.SetTrigger("AtkStrong");
         Main_Player.Instance.anim_player.SetTrigger("AtkStrong");
         //holdtime 초기화
@@ -126,7 +130,6 @@ public class State_Atk2 : State
     void Atk_co(int i)
     {
         //공격 애니메이션 실행
-        LoadSword();
         Atk_anim(i);
         //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
         // == Sword 스크립트에서 처리 ==
@@ -204,5 +207,4 @@ public class State_Atk2 : State
         idleBigSword.SetActive(true);
     }
     #endregion
-
 }

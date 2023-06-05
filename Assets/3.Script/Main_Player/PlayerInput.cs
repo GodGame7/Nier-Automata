@@ -112,7 +112,7 @@ public class PlayerInput : MonoBehaviour
     }
     private IEnumerator DoubleWClick()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.09f);
         float count = 0f;
         while (count < dashCount)
         {
@@ -128,7 +128,7 @@ public class PlayerInput : MonoBehaviour
     }
     private IEnumerator DoubleAClick()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.09f);
 
         float count = 0f;
         while (count < dashCount)
@@ -145,7 +145,7 @@ public class PlayerInput : MonoBehaviour
     }
     private IEnumerator DoubleSClick()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.09f);
 
         float count = 0f;
         while (count < dashCount)
@@ -162,7 +162,7 @@ public class PlayerInput : MonoBehaviour
     }
     private IEnumerator DoubleDClick()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.09f);
 
         float count = 0f;
         while (count < dashCount)
