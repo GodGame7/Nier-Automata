@@ -13,12 +13,12 @@ public class EnemyHPViewer : MonoBehaviour
     public void SetUp(FlagEmInformation enemy)
     {
         this.enemy = enemy;
-        TryGetComponent(out sliderHP);
+        transform.GetChild(0).gameObject.TryGetComponent(out sliderHP);
     }
 
     void Update()
     {
-        if (!enemy.Equals(null))
+        if (enemy != null)
         {
             sliderHP.value = enemy.CurrentHp / (float)enemy.MaxHp;
         }

@@ -8,7 +8,7 @@ public class EnemyHPPositionSetter : MonoBehaviour
     private RectTransform UITrans;
     public FlagEmInformation monster;
 
-    private Vector3 distance = 70 * Vector3.up;
+    private Vector3 distance = 80 * Vector3.up + -5 * Vector3.right;
 
     private void OnEnable()
     {
@@ -40,11 +40,10 @@ public class EnemyHPPositionSetter : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        // 오브젝트 위치가 갱신되면 UI도 따라가야된다.
-        // 근데 UI는 canvas에게 상속 받음
-        // => 현재 카메라 위치에서 오브젝트의 위치를 찾자
+
+        // 현재 카메라 위치에서 에너미 위치 찾기
         Vector3 ScreenPosition = Camera.main.WorldToScreenPoint(Target.transform.position);
 
-        UITrans.position = ScreenPosition + distance;
+        UITrans.position = ScreenPosition + distance + Target.transform.position.x * 104 * Vector3.right + Target.transform.position.z * 100 * Vector3.up;
     }
 }

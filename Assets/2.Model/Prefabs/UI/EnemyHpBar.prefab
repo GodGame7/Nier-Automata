@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 818176140167322296}
   - component: {fileID: 587817537829928762}
   - component: {fileID: 6554040746920726799}
-  - component: {fileID: 594871023690216528}
-  - component: {fileID: 594871023690216531}
+  - component: {fileID: 4919238295949999688}
+  - component: {fileID: 1573829378094762160}
   m_Layer: 5
   m_Name: EnemyHpBar
   m_TagString: Untagged
@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594871023690216530}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -35,11 +35,11 @@ RectTransform:
   - {fileID: 8256632634752858665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -847.9, y: -450.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -3.5, y: -17.8}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &587817537829928762
 Animator:
@@ -72,21 +72,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &594871023690216528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594871023690216530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29c138a5c31af8a41831b2a94bde8959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderHP: {fileID: 8256632634040099996}
-  enemy: {fileID: 0}
---- !u!114 &594871023690216531
+--- !u!114 &4919238295949999688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,6 +86,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   monster: {fileID: 0}
+  distance: {x: 15, y: 80, z: 0}
+--- !u!114 &1573829378094762160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594871023690216530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c138a5c31af8a41831b2a94bde8959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderHP: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &8256632633923272425
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 95, y: 10}
+  m_SizeDelta: {x: 110, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8256632634040099996
 MonoBehaviour:
@@ -334,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.2, y: -10.4}
+  m_AnchoredPosition: {x: -34, y: -10.399902}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8256632634752858671
