@@ -25,6 +25,7 @@ public class ModeFlag : IFlagModeStrategy
                 player.transform.localScale = playerScale;
             }
         }
+        AudioManager.Instance.PlaySfx(Define.SFX.Dash);
         player.SetAnimaTrigger(player.hashDash);
         player.StopCoroutine(nameof(player.ReturnToNomalState_co));
         player.StartCoroutine(player.ReturnToNomalState_co(player.EnterDashAni_wait, player.ExitDashAni_wait));
@@ -36,10 +37,12 @@ public class ModeFlag : IFlagModeStrategy
     #region АјАн
     public void StrongAttack(FlagControl player)
     {
+        AudioManager.Instance.PlaySfx(Define.SFX.FlagBarrier);
         player.SetAnimaTrigger(player.hashFlagStrongAttack);
     }
     public void WeakAttack(FlagControl player, bool isHorizontal)
     {
+        AudioManager.Instance.PlaySfx(Define.SFX.FlagAttack);
         if (isHorizontal)
         {
             HorizontalWeakAttack(player);

@@ -53,10 +53,14 @@ public class MeshBake : MonoBehaviour
     //private GameObject[] ghostContainers;
 
     [SerializeField]
-    private Ghost ghost1 = new Ghost();
+    private Ghost ghost1;
     [SerializeField]
-    private Ghost ghost2 = new Ghost();
-    Ghost[] allghost = new Ghost[2];
+    private Ghost ghost2;
+    [SerializeField]
+    private Ghost ghost3;
+    [SerializeField]
+    private Ghost ghost4;
+    Ghost[] allghost = new Ghost[4];
 
     public float delayTime = 1.0f;
     private float nowT = 0.0f;
@@ -68,10 +72,14 @@ public class MeshBake : MonoBehaviour
         nowT = 0.0f;
         allghost[0] = ghost1;
         allghost[1] = ghost2;
+        allghost[2] = ghost3;
+        allghost[3] = ghost4;
         int count = skinnedMeshRenderers.Length;
 
         ghost1.Init(count);
         ghost2.Init(count);
+        ghost3.Init(count);
+        ghost4.Init(count);
         //bakedMeshes = new Mesh[count];
         //ghostContainers = new GameObject[count];
         //meshFilters = new MeshFilter[count];
@@ -100,13 +108,21 @@ public class MeshBake : MonoBehaviour
             if (delayTime < nowT)
             {
                 nowT = 0.0f;
-                if (index % 2 == 0)
+                if (index % 4 == 0)
                 {
                     unitGhost(ghost1);
                 }
-                else
+                else if(index % 4 == 1)
                 {
                     unitGhost(ghost2);
+                }
+                else if (index % 4 == 2)
+                {
+                    unitGhost(ghost3);
+                }
+                else if (index % 4 == 3)
+                {
+                    unitGhost(ghost4);
                 }
                 index++;
             }
@@ -145,6 +161,36 @@ public class MeshBake : MonoBehaviour
                 ghost.ghostContainers[i].transform.position = transform.position; 
             }
             ghost.ghostContainers[i].SetActive(true);
+        }
+    }
+
+    public void DodgeEffect()
+    {
+        OffTrail();
+        unitGhost(ghost1);
+        unitGhost(ghost2);
+        unitGhost(ghost3);
+        unitGhost(ghost4);
+        StartCoroutine(Dodge());
+        IEnumerator Dodge()
+        {
+            float count = 0f;
+            while (count < 0.6f)
+            {
+                ghost1.ghostContainers[0].transform.root.transform.Translate(3f*Vector3.forward * Time.deltaTime);
+                ghost2.ghostContainers[0].transform.root.transform.Translate(3f*Vector3.back * Time.deltaTime);
+                ghost3.ghostContainers[0].transform.root.transform.Translate(3f*Vector3.right * Time.deltaTime);
+                ghost4.ghostContainers[0].transform.root.transform.Translate(3f*Vector3.left * Time.deltaTime);
+                count += Time.deltaTime;
+                yield return null;
+            }
+            for (int i = 0; i < allghost.Length; i++)
+            {
+                for (int j = 0; j < allghost[i].ghostContainers.Length; j++)
+                {
+                    allghost[i].ghostContainers[j].SetActive(false);
+                }
+            }
         }
     }
 }

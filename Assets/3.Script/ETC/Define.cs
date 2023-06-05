@@ -11,7 +11,7 @@ public class Define : MonoBehaviour
 
     public enum SFX
     {
-        BtnClick, BtnOver, //플레이어 효과음 이름 추가
+        EnemyShot, Raser, GundamAttack, ToFlag, FlagBarrier, FlagAttack, Shot, Hit, ToGundam, Dash, Danger,
     }
 
     public enum EnemyTagType

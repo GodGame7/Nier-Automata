@@ -21,6 +21,7 @@ public class State_DashRight : State
 
     public override void Exit(State next)
     {
+        Main_Player.Instance.meshBake.OffTrail();
 
     }
 
@@ -40,6 +41,7 @@ public class State_DashRight : State
     {
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetTrigger("DashRight");
+        Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {
             transform.Translate(Vector3.right * 15f * Time.deltaTime);
