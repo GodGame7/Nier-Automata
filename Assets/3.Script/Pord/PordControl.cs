@@ -6,13 +6,21 @@ public class PordControl : MonoBehaviour
 {
     [Header("설정을 위해 넣어주세용")]
     [SerializeField] Camera Cam;
+    [Header("PordObject에 있음")]
+    [Space(10)]
     [SerializeField] PordBulletSpawn PordBullet;
     [SerializeField] GameObject PordLaser;
+    [SerializeField] ParticleSystem Spark;
+    [Header("플레이어")]
+    [Space(10)]
     [SerializeField] GameObject Player;
-    [SerializeField] GameObject Lockon;
+    [Header("WorldCanvas(Pord)에 있음")]
     [SerializeField] GameObject MagicCircle;
     [SerializeField] LaserCoolTime LaserCoolTime;
-    [SerializeField] ParticleSystem Smoke;
+    [Header("MainUI_Canvas에 있음")]
+    [Space(10)]
+    [SerializeField] GameObject Lockon;
+    
 
 
     // 록온을 위한 변수
@@ -75,8 +83,8 @@ public class PordControl : MonoBehaviour
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
 
-            Smoke.Play();
-            Smoke.transform.position = transform.position + MagicCirclePositon;
+            Spark.Play();
+            Spark.transform.position = transform.position + MagicCirclePositon;
 
 
 

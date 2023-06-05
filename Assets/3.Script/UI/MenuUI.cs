@@ -31,11 +31,20 @@ public class MenuUI : MonoBehaviour
     //온오프할 메뉴들
     [Header("오브젝트를 넣어주세용")]
     [SerializeField] private GameObject MenuUI_ob;
+    [Tooltip("미구현 Obj")]
     [SerializeField] private GameObject CanNot_ob;
+    [Tooltip("하단 메뉴들")]
     [SerializeField] private GameObject[] BottomMenu;
+    [Tooltip("상단 메뉴 이미지")]
     [SerializeField] private Image[] TopImage;
+    [Tooltip("상단 메뉴 텍스트")]
     [SerializeField] private Text[] TopText;
+    [Tooltip("상단 메뉴 마우스 커서")]
+    [SerializeField] private Image Cursor;
 
+    //마우스 커서 위치용 변수
+    private Vector3 Defalut_TopMenu_Cursor = new Vector3(-860, 390, 0);
+    private Vector3 Move_TopMenu_Cursor = new Vector3(250, 0, 0);
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //메뉴창 열기
@@ -107,6 +116,7 @@ public class MenuUI : MonoBehaviour
         OpenMenu = true;
         MenuUI_ob.SetActive(true);
         UpdateMenuUI();
+        Cursor.gameObject.transform.localPosition = Defalut_TopMenu_Cursor;
     }
     public void MenuClose() //메뉴창 닫기
     {
@@ -114,16 +124,23 @@ public class MenuUI : MonoBehaviour
         Time.timeScale = 1;
         OpenMenu = false;
         MenuUI_ob.SetActive(false);
+        for (int i=0; i<BottomMenu.Length; i++)
+        {
+            BottomMenu[i].SetActive(false);
+        }
+        
     }
     public void LeftArrow() //탑메뉴창 왼쪽 넘기기
     {
         MenuCount--;
         UpdateMenuUI();
+        Cursor.transform.position -= Move_TopMenu_Cursor;
     }
     public void RightArrow() //탑메뉴창 오른쪽넘기기
     {
         MenuCount++;
         UpdateMenuUI();
+        Cursor  .transform.position += Move_TopMenu_Cursor;
     }
     public void EnterItem() // 탑메뉴창에서 아이템으로 넘어가기
     {
