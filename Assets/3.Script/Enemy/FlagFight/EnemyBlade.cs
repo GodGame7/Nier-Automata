@@ -13,7 +13,18 @@ public class EnemyBlade : MonoBehaviour
             if (other.TryGetComponent(out PlayerData playerData))
             {
                 playerData.OnDamage(Damage);
+                StartCoroutine(Wait());
             }
         }
+    }
+
+    IEnumerator Wait()
+    {
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
+
+        yield return new WaitForSeconds(1f);
+
+        collider.enabled = true;
     }
 }

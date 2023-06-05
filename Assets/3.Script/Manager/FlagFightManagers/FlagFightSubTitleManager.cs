@@ -163,39 +163,39 @@ public class FlagFightSubTitleManager : MonoBehaviour
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 생과 사...
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 우리는...
 
         yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
         phase1_01.Invoke();
-        Next_SubText();
+        Next_SubText(); // 이것은...
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_half_Second;
-        Next_SubText();
+        Next_SubText(); // 아니면...
 
         yield return wait_1half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         phase1_02.Invoke();
-        Next_SubText();
+        Next_SubText(); // 이해할 수 없는...
 
-        yield return wait_4_Second;
+        yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 언젠가...
 
         yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -208,21 +208,20 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
         yield return wait_2_Second;
         phase1_05.Invoke();
-        Next_SubText();
+        Next_SubText(); // 여긴 사령부...
 
         yield return wait_2_Second;
-        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
-        Next_SubText();
+        Next_SubText(); // 여긴 2B...
 
         yield return wait_2_Second;
         yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 자동...
 
         yield return wait_2_Second;
         yield return wait_half_Second;
@@ -230,33 +229,33 @@ public class FlagFightSubTitleManager : MonoBehaviour
         phase1_06.Invoke();
 
         yield return wait_2_Second;
-        Next_SubText();
+        Next_SubText(); // 여긴 6O...
 
         yield return wait_2_Second;
-        text_Subtitle.gameObject.SetActive(false);
-
-        yield return wait_1_Second;
-        Next_SubText();
-
-        yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false); // 통
-
-        yield return wait_2_Second;
-        Next_SubText();
-
-        yield return wait_4_Second;
         yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 통과
 
-        yield return wait_3_Second;
+        yield return wait_2_Second;
+        yield return wait_half_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_2_Second;
+        Next_SubText(); // 이행하고
+
+        yield return wait_4_Second;
+        text_Subtitle.gameObject.SetActive(false);
+
+        yield return wait_1_Second;
+        Next_SubText(); // 목표인
+
+        yield return wait_4_Second;
         phase1_07.Invoke();
         Next_SubText();
 
         yield return wait_1_Second;
-        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_6_Second;
