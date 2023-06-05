@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class AllyControl : MonoBehaviour
 {
+
     private GameObject[] enemies;
     private List<GameObject> aliveEnemies = new List<GameObject>();
     int enemyIndex;
@@ -39,17 +41,18 @@ public class AllyControl : MonoBehaviour
 
         newPosition = new Vector3(
         Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
-        Transform();
     }
 
     private void Update()
     {
         time += Time.deltaTime;
-        Sway();
-        Fire();
     }
 
-    public IEnumerator MoveTo(float destX)
+    public void MoveTo(float destX)
+    {
+        StartCoroutine(MoveTo_co(destX));
+    }
+    private IEnumerator MoveTo_co(float destX)
     {
         Vector3 destPos = destX * Vector3.right;
         int cnt = 0;
@@ -173,7 +176,6 @@ public class AllyControl : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(1);
             enemyIndex = Random.Range(0, aliveEnemies.Count);
             yield return new WaitForSeconds(1f);
         }
