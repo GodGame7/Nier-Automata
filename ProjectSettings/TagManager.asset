@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Actors
   - FlagBullet
+  - Wall
   layers:
   - Default
   - TransparentFX

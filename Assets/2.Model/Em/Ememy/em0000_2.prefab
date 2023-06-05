@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 965898344258009175}
   m_Layer: 0
   m_Name: em0000_2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,11 +370,10 @@ MonoBehaviour:
   rotationSpeed: 5
   anim: {fileID: 0}
   target: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
   Bullet_Prefab: {fileID: 2332928524474320455, guid: b72a357218355a94eb8d1dfc5ab4d6ed, type: 3}
   bullet_count: 15
   bullet_speed: 10
-  bullet_reload: 0.5
+  bullet_reload: 1
   Cannon_pos: {fileID: 8201950287617380573}
 --- !u!54 &965898344258009175
 Rigidbody:
