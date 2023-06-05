@@ -27,9 +27,12 @@ public class LaserControl : MonoBehaviour
     IEnumerator Co_Follow()
     {
         Vector3 targetPosition = new Vector3(Allies[counter].position.x, transform.position.y, transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
-        yield return null;
+        while (transform.position != targetPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
     
     IEnumerator Co_Fire()

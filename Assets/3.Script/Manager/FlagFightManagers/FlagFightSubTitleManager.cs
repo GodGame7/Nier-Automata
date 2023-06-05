@@ -33,6 +33,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
     public UnityEvent phase1_14; // 사령부 UI 등장
     public UnityEvent phase1_15; // 사격 UI 활성화, 사격 활성화 em0030 4기 활성화 BackGround01 서서히 꺼짐
 
+    public UnityEvent phase2_00; // 7E에게 Laser 발사
     public UnityEvent phase2_01; // 회피 UI 활성화, 회피 활성화, em0032 10기 활성화
 
     public UnityEvent phase3_01; // 1D에게 Laser 발사 
@@ -196,11 +197,10 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_1_Second;
         Next_SubText();
 
-        yield return wait_2_Second;
-        yield return wait_half_Second;
+        yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
 
-        yield return wait_2_Second;
+        yield return wait_1_Second;
         phase1_03.Invoke();
 
         yield return wait_4_Second;
@@ -329,6 +329,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     IEnumerator Phase02_Co()
     {
+        phase2_00.Invoke();
         yield return wait_4_Second;
         Next_SubText();
 
