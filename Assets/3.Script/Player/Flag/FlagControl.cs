@@ -29,6 +29,7 @@ public class FlagControl : MonoBehaviour
     public int invincibleLayer { get; private set; }
     public int defaultLayer { get; private set; }
     private bool canMove = true;
+    private bool moveToCenter = false;
     private bool canFire = false;
     public float threshold = 1f;
     private readonly Vector3 defaultPos = new Vector3(0, 0.02f, 0);
@@ -245,7 +246,7 @@ public class FlagControl : MonoBehaviour
     {
         currentState.Action(this);  // 상태에 따라 레이어 변경하여 무적여부 결정
 
-        if (!currentState.Equals(transfomationState) && canMove)
+        if (!currentState.Equals(transfomationState) && canMove && !moveToCenter)
         {
             InputMoveKey();
             if (currentState.Equals(nomalState))
@@ -257,7 +258,7 @@ public class FlagControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!currentState.Equals(transfomationState) && canMove)
+        if (!currentState.Equals(transfomationState) && canMove && !moveToCenter)
         {
             currentModeStrategy.Rotate(this);
             Move();
@@ -371,7 +372,7 @@ public class FlagControl : MonoBehaviour
     // 시점변경 등 플레이어 중앙으로 강제 이동시키는 메소드
     public IEnumerator MoveToCenter(float speed)
     {
-        canMove = false;
+        moveToCenter = true;
 
         while (Vector3.SqrMagnitude(transform.position - defaultPos) >= 0.0001f)
         {
@@ -383,7 +384,7 @@ public class FlagControl : MonoBehaviour
         }
         transform.position = defaultPos;
 
-        canMove = true;
+        moveToCenter = false;
     }
     public void StopMove()
     {
