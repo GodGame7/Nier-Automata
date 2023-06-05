@@ -18,6 +18,10 @@ public class AllyDie : MonoBehaviour
 
     IEnumerator Co_Dying()
     {
+        yield return new WaitForSeconds(1.5f);
+        Ally.SetActive(false);
+        explosion.transform.position = Ally.transform.position;
+        explosion.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         gameObject.SetActive(false);
     }

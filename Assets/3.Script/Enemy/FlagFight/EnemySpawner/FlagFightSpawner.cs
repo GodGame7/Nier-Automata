@@ -33,7 +33,7 @@ public class FlagFightSpawner : MonoBehaviour
     private bool isAlone = true;
 
     #region 발생시킬 이벤트들
-    public UnityEvent phase1_15_EMDie; // phase2 시작
+    public UnityEvent phase1_15_EMDie; // phase2 시작 
     public UnityEvent phase2_01_EMDie; // phase3 시작
     public UnityEvent phase3_04_EMDie; // phase4 시작 
     public UnityEvent phase4_01_EMDie; // Phase5 시작

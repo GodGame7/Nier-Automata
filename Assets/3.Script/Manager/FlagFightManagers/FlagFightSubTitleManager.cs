@@ -35,7 +35,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
 
     public UnityEvent phase2_01; // 회피 UI 활성화, 회피 활성화, em0032 10기 활성화
 
-    public UnityEvent phase3_01; // 6E에게 Laser 발사 
+    public UnityEvent phase3_01; // 1D에게 Laser 발사 
     public UnityEvent phase3_02; // Background1 천천히 활성화 위치 변경
     public UnityEvent phase3_03; // 플레이어 색깔변경
     public UnityEvent phase3_04; // em0030 6기 활성화, 강공격 UI 활성화, 강공격 활성화
@@ -197,6 +197,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_2_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
@@ -210,18 +211,21 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_2_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
         Next_SubText();
 
         yield return wait_2_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
         Next_SubText();
 
         yield return wait_2_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
         phase1_06.Invoke();
 
@@ -235,12 +239,13 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_3_Second;
-        text_Subtitle.gameObject.SetActive(false);
+        text_Subtitle.gameObject.SetActive(false); // 통
 
         yield return wait_2_Second;
         Next_SubText();
 
         yield return wait_4_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
@@ -251,6 +256,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_1_Second;
+        yield return wait_half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_6_Second;
@@ -263,6 +269,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_2_Second;
+        yield return wait_half_Second;
         phase1_08.Invoke();
         text_Subtitle.gameObject.SetActive(false);
 
@@ -270,6 +277,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         Next_SubText();
 
         yield return wait_1_Second;
+        yield return wait_half_Second;
         phase1_09.Invoke();
         text_Subtitle.gameObject.SetActive(false);
 

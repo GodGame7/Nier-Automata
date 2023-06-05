@@ -13,12 +13,13 @@ public class LaserControl : MonoBehaviour
     [SerializeField] GameObject Laser;
     [SerializeField] int counter;
     [SerializeField] float followSpeed;
-    WaitForSeconds wait_2_secounds = new WaitForSeconds(2.0f);
+    WaitForSeconds wait_1_secounds = new WaitForSeconds(1.5f);
+    WaitForSeconds wait_2_secounds = new WaitForSeconds(3.0f);
 
     public void FireLaser(int num)
     {
         counter = num;
-        AudioManager.Instance.PlaySfx(Define.SFX.Shot);
+        AudioManager.Instance.PlaySfx(Define.SFX.Raser);
         StartCoroutine(Co_Follow());
         StartCoroutine(Co_Fire());
     }
@@ -34,7 +35,7 @@ public class LaserControl : MonoBehaviour
     IEnumerator Co_Fire()
     {
         GuideLaser.SetActive(true);
-        yield return wait_2_secounds;
+        yield return wait_1_secounds;
 
         GuideLaser.SetActive(false);
         Laser.SetActive(true);
