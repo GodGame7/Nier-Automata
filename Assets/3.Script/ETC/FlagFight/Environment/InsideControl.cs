@@ -5,6 +5,7 @@ using UnityEngine;
 public class InsideControl : MonoBehaviour
 {
     [SerializeField] GameObject[] Insides;
+    [SerializeField] GameObject Exit;
     [SerializeField] FlagFightSubTitleManager flagFightSubTitleManager;
     [SerializeField] float insideSpeed = 2;
 
@@ -20,7 +21,8 @@ public class InsideControl : MonoBehaviour
 
     void phase7_02()
     {
-        for(int i = 0; i < Insides.Length; i++)
+        Exit.SetActive(true);
+        for (int i = 0; i < Insides.Length; i++)
         {
             Insides[i].SetActive(true);
         }
@@ -28,9 +30,11 @@ public class InsideControl : MonoBehaviour
 
     void Phase7_07()
     {
+        ObjectScrolling objectScrolling = Exit.GetComponent<ObjectScrolling>();
+        objectScrolling.scrollingSpeed = 0;
         for(int i = 0; i < Insides.Length; i++)
         {
-            ObjectScrolling objectScrolling = Insides[i].GetComponent<ObjectScrolling>();
+            objectScrolling = Insides[i].GetComponent<ObjectScrolling>();
             objectScrolling.scrollingSpeed = insideSpeed;
         }
     
