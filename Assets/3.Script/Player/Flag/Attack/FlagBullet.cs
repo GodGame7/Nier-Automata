@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class FlagBullet : MonoBehaviour
 {
-    private float moveSpeed = 0.6f;
+    protected float moveSpeed = 0.6f;
+    protected float damage;
 
+    private void Start()
+    {
+        if (PlayerData.Instance != null)
+        {
+            damage = PlayerData.Instance.atk;
+        }
+    }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         transform.position += moveSpeed * Time.deltaTime * -transform.up;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(Define.EnemyTagType.Enemy.ToString()))
         {
             if(other.TryGetComponent(out FlagEmInformation enemy))
             {
-                enemy.OnDamage(PlayerData.Instance.atk);
+                enemy.OnDamage(damage);
             }
             gameObject.SetActive(false);
         }

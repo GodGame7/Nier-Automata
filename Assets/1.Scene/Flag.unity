@@ -122987,6 +122987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagFightManager: {fileID: 648818931}
   flagFightSpawner: {fileID: 0}
+  flagFightSubTitleAudio: {fileID: 0}
   text_Subtitle: {fileID: 688423192}
   subTitleCounter: 0
   phase1_01:
@@ -137025,6 +137026,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6118387346965081964, guid: f5774ff544791d74dae5fca64484e7e7, type: 3}
+      propertyPath: bullet_pref
+      value: 
+      objectReference: {fileID: 4470847111418397664, guid: c4f79ce8fbbb66847b5f93e7d78db313, type: 3}
+    - target: {fileID: 6118387346965081967, guid: f5774ff544791d74dae5fca64484e7e7, type: 3}
+      propertyPath: bullet_pref
+      value: 
+      objectReference: {fileID: 4470847111418397664, guid: c4f79ce8fbbb66847b5f93e7d78db313, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5774ff544791d74dae5fca64484e7e7, type: 3}
 --- !u!4 &6901685909377780231
