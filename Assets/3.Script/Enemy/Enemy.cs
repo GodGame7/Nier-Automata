@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     protected float distance;
 
     //공격용 콜라이더
-    [HideInInspector]public BoxCollider[] boxCollider;
+    BoxCollider[] boxCollider;
 
 
     //애니메이터
@@ -171,10 +171,9 @@ public class Enemy : MonoBehaviour
             boxCollider[i].enabled = true;
         }
 
-        TargetLookat();
         int value = Random.Range(1, PattonNum + 1);
         anim.SetFloat("Patton", value);
-        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4)
+        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4 || anim.GetFloat("Patton") == 5)
         {
             anim.SetBool("IsAttack", true);
         }

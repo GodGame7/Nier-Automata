@@ -6,21 +6,13 @@ public class PordControl : MonoBehaviour
 {
     [Header("설정을 위해 넣어주세용")]
     [SerializeField] Camera Cam;
-    [Header("PordObject에 있음")]
-    [Space(10)]
     [SerializeField] PordBulletSpawn PordBullet;
     [SerializeField] GameObject PordLaser;
-    [SerializeField] ParticleSystem Spark;
-    [Header("플레이어")]
-    [Space(10)]
     [SerializeField] GameObject Player;
-    [Header("WorldCanvas(Pord)에 있음")]
+    [SerializeField] GameObject Lockon;
     [SerializeField] GameObject MagicCircle;
     [SerializeField] LaserCoolTime LaserCoolTime;
-    [Header("MainUI_Canvas에 있음")]
-    [Space(10)]
-    [SerializeField] GameObject Lockon;
-
+    [SerializeField] ParticleSystem Smoke;
 
 
     // 록온을 위한 변수
@@ -55,10 +47,10 @@ public class PordControl : MonoBehaviour
     private void Update()
     {
 
-        //if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
-        //{
-        //    transform.position += Vector3.up * 0.2f * Time.deltaTime;
-        //}
+        if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
+        {
+            transform.position += Vector3.up * 0.2f * Time.deltaTime;
+        }
 
         ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector3(960, 0, 840));
         LaserCoolTime.transform.rotation = Cam.transform.rotation;
@@ -75,7 +67,7 @@ public class PordControl : MonoBehaviour
             }
 
             isActive = true;
-            //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
 
             MagicCircle.transform.position = transform.position + MagicCirclePositon;
             MagicCircle.SetActive(true);
@@ -83,8 +75,8 @@ public class PordControl : MonoBehaviour
             PordBullet.Bullet[bulletCount].transform.position = transform.position + MagicCirclePositon;
             PordBullet.Bullet[bulletCount].SetActive(true);
 
-            Spark.Play();
-            Spark.transform.position = transform.position + MagicCirclePositon;
+            Smoke.Play();
+            Smoke.transform.position = transform.position + MagicCirclePositon;
 
 
 
@@ -142,23 +134,23 @@ public class PordControl : MonoBehaviour
         if (!isLaser)
         {
 
-            transform.position = Player.transform.position + PlayerAround;
+            transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
+                                             transform.position.y,
+                                             Player.transform.position.z + PlayerAround.z);
+            //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
+            //                                 transform.position.y,
+            //                                 Player.transform.position.z + Cam.transform.rotation.z);
             transform.rotation = Cam.transform.rotation;
         }
-        //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
-        //                                 transform.position.y,
-        //                                 Player.transform.position.z + Cam.transform.rotation.z);
-        //transform.position = Player.transform.position + PlayerAround;
-        //transform.rotation = Cam.transform.rotation;
 
 
     }
- 
+
     private IEnumerator Laser_co() // 레이저 사용시 코루틴
     {
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
-        //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
