@@ -22,7 +22,8 @@ public class State_DashFront : State
 
     public override void Exit(State next)
     {
-        
+        Main_Player.Instance.meshBake.OffTrail();
+
     }
 
     public override void StateFixedUpdate()
@@ -38,6 +39,7 @@ public class State_DashFront : State
     {
         Main_Player.Instance.anim_player.SetTrigger("DashFront");
         Main_Player.Instance.isDash = true;
+        Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {
             transform.Translate(Vector3.forward * 15f * Time.deltaTime);
