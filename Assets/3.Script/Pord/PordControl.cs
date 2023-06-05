@@ -55,10 +55,10 @@ public class PordControl : MonoBehaviour
     private void Update()
     {
 
-        if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
-        {
-            transform.position += Vector3.up * 0.2f * Time.deltaTime;
-        }
+        //if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
+        //{
+        //    transform.position += Vector3.up * 0.2f * Time.deltaTime;
+        //}
 
         ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector3(960, 0, 840));
         LaserCoolTime.transform.rotation = Cam.transform.rotation;
@@ -75,7 +75,7 @@ public class PordControl : MonoBehaviour
             }
 
             isActive = true;
-            transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
 
             MagicCircle.transform.position = transform.position + MagicCirclePositon;
             MagicCircle.SetActive(true);
@@ -142,9 +142,7 @@ public class PordControl : MonoBehaviour
         if (!isLaser)
         {
 
-            transform.position = new Vector3(Player.transform.position.x + PlayerAround.x,
-                                             transform.position.y,
-                                             Player.transform.position.z + PlayerAround.z);
+            transform.position = Player.transform.position + PlayerAround;
             //transform.position = new Vector3(Player.transform.position.x + Cam.transform.rotation.x,
             //                                 transform.position.y,
             //                                 Player.transform.position.z + Cam.transform.rotation.z);
@@ -158,7 +156,7 @@ public class PordControl : MonoBehaviour
     {
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
-        transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);

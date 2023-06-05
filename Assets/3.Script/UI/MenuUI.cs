@@ -49,11 +49,11 @@ public class MenuUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //메뉴창 열기
         {
-            if (OpenMenu)
+            if (OpenMenu && !EnterMenuItem)
             {
                 MenuClose();
             }
-            else
+            else if (!OpenMenu)
             {
                 MenuOpen();
             }
@@ -76,7 +76,7 @@ public class MenuUI : MonoBehaviour
                     LeftArrow();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (MenuCount != 2) //아이템 이외엔 미구현
                 {
@@ -155,7 +155,6 @@ public class MenuUI : MonoBehaviour
    
     private void UpdateMenuUI() // 메뉴들 UI 업데이트 
     {
-        Debug.Log(MenuCount);
         for (int i = 0; i < BottomMenu.Length; i++)
         {
             BottomMenu[i].SetActive(false);
@@ -182,7 +181,7 @@ public class MenuUI : MonoBehaviour
     private IEnumerator CantPlay() //아이템 이외엔 미구현입니다 뜨는거
     {
         CanNot_ob.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(1f);
         CanNot_ob.SetActive(false);
     }
 }
