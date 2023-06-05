@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour
 
     [Header("MainCamera")]
     [SerializeField] PlayerInput player1;
-    [SerializeField] StateManager player2;
+    //[SerializeField] MAin player2;
 
     [Header("Enemy")]
     [SerializeField] GameObject[] em0000;
@@ -31,6 +31,7 @@ public class SceneManager : MonoBehaviour
     public bool first = true;
     public bool second = false;
     public bool third = false;
+    public bool fourth = false;
 
     [HideInInspector]
     public VideoPlayer video;
@@ -49,7 +50,7 @@ public class SceneManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(firstVideo());
+        StartCoroutine(firstVideo_co());
     }
 
     private void Update()
@@ -57,50 +58,55 @@ public class SceneManager : MonoBehaviour
 
         if (first)
         {
-            StartCoroutine(firstEnemy());
+            StartCoroutine(firstEnemy_co());
         }
         else if (second)
         {
-            StartCoroutine(SecondEnemy());
+            StartCoroutine(SecondEnemy_co());
         }
         else if (third)
         {
             if (!em0010.activeSelf)
             {
-                StartCoroutine(Boss());
+                StartCoroutine(Boss_co());
             }
+        }
+        else if (fourth)
+        {
+            StartCoroutine(BossEnd_co());
         }
     }
 
 
 
-    IEnumerator firstVideo()
+    IEnumerator firstVideo_co()
     {
+        //화면전환
+        Time.timeScale = 0f;
         camera.GetComponent<CameraMovement>().enabled = false;
         player1.enabled = false;
-        player2.enabled = false;
-
-        Time.timeScale = 0f;
-        
-        Raw.SetActive(true);
+        //비디오 출력
         video.clip = firstvideo;
         video.Play();
 
-        while(!video.isPlaying)
+        Raw.SetActive(true);
+
+
+        while (!video.isPlaying)
         {
             yield return null;
         }
         yield return new WaitUntil(() => !video.isPlaying);
-        Time.timeScale = 1f;
-        Raw.SetActive(false);
 
+        //화면전환
+        Time.timeScale = 1f;
         camera.GetComponent<CameraMovement>().enabled = true;
         player1.enabled = true;
-        player2.enabled = true;
+        Raw.SetActive(false);
     }
 
 
-    IEnumerator firstEnemy()
+    IEnumerator firstEnemy_co()
     {
         first = false;
 
@@ -133,7 +139,7 @@ public class SceneManager : MonoBehaviour
 
     }
 
-    IEnumerator SecondEnemy()
+    IEnumerator SecondEnemy_co()
     {
         second = false;
 
@@ -162,10 +168,13 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    IEnumerator Boss()
+    IEnumerator Boss_co()
     {
         third = false;
-        video.clip = thirdvideo;
+        Raw.SetActive(true);
+        camera.GetComponent<CameraMovement>().enabled = false;
+        player1.enabled = false;
+        video.clip = secondvideo;
         video.Play();
         Time.timeScale = 0f;
 
@@ -175,6 +184,9 @@ public class SceneManager : MonoBehaviour
         }
         yield return new WaitUntil(() => !video.isPlaying);
 
+        camera.GetComponent<CameraMovement>().enabled = true;
+        Raw.SetActive(false);
+        player1.enabled = true;
         Time.timeScale = 1f;
         Wall.SetActive(false);
 
@@ -185,6 +197,24 @@ public class SceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(4.5f);
         Wallanim.SetTrigger("Breaken");
+
+        fourth = true;
+    }
+
+    IEnumerator BossEnd_co()
+    {
+
+        if (em1000.GetComponent<EnemyHp>().currentHp <= 0)
+        {
+            fourth = false;
+            yield return new WaitForSeconds(0.6f);
+
+            video.clip = thirdvideo;
+            video.Play();
+
+            player1.enabled = false;
+            Raw.SetActive(true);
+        }
     }
 
 }

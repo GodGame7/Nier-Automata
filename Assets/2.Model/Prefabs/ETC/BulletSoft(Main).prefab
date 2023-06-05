@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2332928524474320568}
   - component: {fileID: 870738952317219685}
   - component: {fileID: 7273161093543040274}
+  - component: {fileID: 4207573760174694326}
   m_Layer: 0
   m_Name: BulletSoft(Main)
   m_TagString: BulletSoft
@@ -132,3 +133,16 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 268234ffb27ec514aa323dec145b05f1, type: 2}
+--- !u!114 &4207573760174694326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332928524474320455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca4ddf2ae10c9f45991173e66a857a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
