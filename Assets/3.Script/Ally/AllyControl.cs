@@ -39,8 +39,7 @@ public class AllyControl : MonoBehaviour
 
         fireDelay_wait = new WaitForSeconds(fireDelay);
 
-        newPosition = new Vector3(
-        Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
+        MoveTo(new Vector3(0.03f, 0, 0.03f));
     }
 
     private void Update()
@@ -48,15 +47,14 @@ public class AllyControl : MonoBehaviour
         time += Time.deltaTime;
     }
 
-    public void MoveTo(float destX)
+    public void MoveTo(Vector3 destPos)
     {
-        StartCoroutine(MoveTo_co(destX));
+        StartCoroutine(MoveTo_co(destPos));
     }
-    private IEnumerator MoveTo_co(float destX)
+    private IEnumerator MoveTo_co(Vector3 destPos)
     {
-        Vector3 destPos = destX * Vector3.right;
         int cnt = 0;
-        while (Vector3.SqrMagnitude(destPos - rigid.position) > 0.0001f)
+        while (Vector3.SqrMagnitude(destPos - rigid.position) > 0.000001f)
         {
             rigid.position = Vector3.Lerp(rigid.position, destPos, Time.deltaTime * (1 + cnt++ * 0.01f));
             yield return null;
