@@ -300,7 +300,7 @@ public class FlagControl : MonoBehaviour
         float targetSpeed = moveSpeed;  // 대쉬 속도 등 모두 계산된 최종 이동속도
         Vector3 moveDir;
         // 시점에 따른 이동 방향 결정
-        currentViewStrategy.Move(this, out moveDir);    
+        currentViewStrategy.Move(this, out moveDir);
 
         // 이동 방향에 따른 애니메이션 설정
         if (currentModeStrategy is ModeFlag)
@@ -399,7 +399,7 @@ public class FlagControl : MonoBehaviour
     #region 공격
     private void Attack()
     {
-        if(!canFire)
+        if (!canFire)
         {
             return;
         }
@@ -448,9 +448,9 @@ public class FlagControl : MonoBehaviour
     {
         while (true)
         {
+            yield return FireDelay_wait;
             if (canFire)
             {
-                yield return FireDelay_wait;
                 yield return InputFireButton_wait;
 
                 foreach (FlagBulletSpawner b in bulletSpawners)
