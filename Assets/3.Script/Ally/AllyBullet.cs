@@ -12,8 +12,8 @@ public class AllyBullet : FlagBullet
         damage = allyDamage;
     }
 
-    //protected void OnTriggerEnter(Collider other)
-    //{
-    //    base.OnTriggerEnter(other);
-    //}
+    protected new void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
 }
