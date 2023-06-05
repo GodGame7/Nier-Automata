@@ -29,6 +29,7 @@ public class FlagControl : MonoBehaviour
     public int invincibleLayer { get; private set; }
     public int defaultLayer { get; private set; }
     private bool canMove = true;
+    private bool canFire = false;
     public float threshold = 1f;
     private readonly Vector3 defaultPos = new Vector3(0, 0.02f, 0);
 
@@ -397,6 +398,11 @@ public class FlagControl : MonoBehaviour
     #region 공격
     private void Attack()
     {
+        if(!canFire)
+        {
+            return;
+        }
+
         if (!currentState.Equals(attackState))
         {
             if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
@@ -441,6 +447,11 @@ public class FlagControl : MonoBehaviour
     {
         while (true)
         {
+            if (!canFire)
+            {
+                break;
+            }
+
             yield return FireDelay_wait;
             yield return InputFireButton_wait;
 
@@ -457,6 +468,10 @@ public class FlagControl : MonoBehaviour
         float startTime;
         while (true)
         {
+            if (!canFire)
+            {
+                break;
+            }
             // 건담 1단 공격
             yield return EnterGundamAttack1_wait;
             isCombo = true;
@@ -469,6 +484,15 @@ public class FlagControl : MonoBehaviour
     public void PlayGundamAttackSfx()
     {
         AudioManager.Instance.PlaySfx(Define.SFX.GundamAttack);
+    }
+
+    public void StopFire()
+    {
+        canFire = false;
+    }
+    public void CanFire()
+    {
+        canFire = true;
     }
     #endregion 공격
 

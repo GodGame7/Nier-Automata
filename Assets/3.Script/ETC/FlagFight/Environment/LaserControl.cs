@@ -18,6 +18,7 @@ public class LaserControl : MonoBehaviour
     public void FireLaser(int num)
     {
         counter = num;
+        AudioManager.Instance.PlaySfx(Define.SFX.Shot);
         StartCoroutine(Co_Follow());
         StartCoroutine(Co_Fire());
     }
