@@ -424,7 +424,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         phase7_02.Invoke();
 
         yield return wait_4_Second;
-        Next_SubText();
+        Next_SubText(); // 4B...
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -434,25 +434,25 @@ public class FlagFightSubTitleManager : MonoBehaviour
         pahse7_04.Invoke();
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 2B가...
 
         yield return wait_1half_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_half_Second;
-        Next_SubText();
+        Next_SubText(); // 본기 이외의...
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;
-        Next_SubText();
+        Next_SubText(); // 작전 수행에 지장
 
         yield return wait_2_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_2_Second;
-        Next_SubText();
+        Next_SubText(); // 2B에게...
 
         yield return wait_1_Second;
         text_Subtitle.gameObject.SetActive(false);
@@ -460,7 +460,7 @@ public class FlagFightSubTitleManager : MonoBehaviour
         yield return wait_1_Second;
         Next_SubText();
 
-        yield return wait_2_Second;
+        yield return wait_3_Second;
         text_Subtitle.gameObject.SetActive(false);
 
         yield return wait_1_Second;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class FlagEmInformation : MonoBehaviour
 {
     [Header("Enemy Ã¼·Â")]
-    float maxHp = 50f;
+    [SerializeField] float maxHp = 50f;
     public float MaxHp => maxHp;
 
     [Header("Enemy Æø¹ß")]
