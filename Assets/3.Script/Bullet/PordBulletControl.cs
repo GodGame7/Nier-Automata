@@ -13,7 +13,7 @@ public class PordBulletControl : MonoBehaviour
     }
     private void OnEnable()
     {
-        StartCoroutine(Disable());
+        Invoke("DisableBullet", 4f);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -37,13 +37,12 @@ public class PordBulletControl : MonoBehaviour
 
     }
 
-    private IEnumerator Disable() //불렛 지속시간 설정
+   
+    private void DisableBullet() //불렛 일정시간후 지우기위함
     {
-        yield return new WaitForSeconds(4f);
         gameObject.SetActive(false);
     }
-
-    private void DisableSpark()
+    private void DisableSpark() //파티클시스템 일정시간후 지우기 위함
     {
         Spark.gameObject.SetActive(false);
     }
