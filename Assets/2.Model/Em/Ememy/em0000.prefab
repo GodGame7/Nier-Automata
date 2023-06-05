@@ -1360,7 +1360,6 @@ MonoBehaviour:
   rotationSpeed: 10
   anim: {fileID: 0}
   target: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &3427793693206566815
 Rigidbody:
   m_ObjectHideFlags: 0
