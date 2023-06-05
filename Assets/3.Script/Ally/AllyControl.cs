@@ -24,8 +24,8 @@ public class AllyControl : MonoBehaviour
     private float time = 0f;
     private float stopDirTime = 0.5f;
     private float changeDirTime = 2.0f;
-    public bool isSway = true;
-    public bool isFire = true;
+    public bool isSway = false;
+    public bool isFire = false;
 
     Vector3 newPosition;
 
@@ -36,13 +36,20 @@ public class AllyControl : MonoBehaviour
         TryGetComponent(out anim);
         TryGetComponent(out rigid);
         bulletSpawners = GetComponentsInChildren<FlagBulletSpawner>();
-
+        isSway = false;
+        isFire = false;
         fireDelay_wait = new WaitForSeconds(fireDelay);
     }
 
     private void Update()
     {
         time += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        Sway();
+        Fire();
     }
 
     public void MoveTo(string destPos)
@@ -150,7 +157,7 @@ public class AllyControl : MonoBehaviour
         {
             List<GameObject> tmpList = new List<GameObject>();
             int length = aliveEnemies.Count;
-            for (int i = 0; i< length;i++)
+            for (int i = 0; i < length; i++)
             {
                 if (!aliveEnemies[i].activeSelf)
                 {
@@ -177,5 +184,25 @@ public class AllyControl : MonoBehaviour
             enemyIndex = Random.Range(0, aliveEnemies.Count);
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    public void StartSway()
+    {
+        isSway = true;
+    }
+
+    public void StopSway()
+    {
+        isSway = false;
+    }
+
+    public void StartFire()
+    {
+        isFire = true;
+    }
+
+    public void StopFire()
+    {
+        isFire = false;
     }
 }

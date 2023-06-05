@@ -7,20 +7,23 @@ public class AllyDie : MonoBehaviour
     [Header("Ally Æø¹ß")]
     [SerializeField] GameObject Ally;
     [SerializeField] GameObject explosion;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip deathClip;
 
     public void Die()
     {
-        Ally.SetActive(false);
-        explosion.transform.position = Ally.transform.position;
-        explosion.SetActive(true);
         StartCoroutine(Co_Dying());
     }
 
     IEnumerator Co_Dying()
     {
-        yield return new WaitForSeconds(1.5f);
-        Ally.SetActive(false);
         explosion.transform.position = Ally.transform.position;
+        yield return new WaitForSeconds(1.5f);
+        if (audioSource != null && deathClip != null)
+        {
+            audioSource.PlayOneShot(deathClip);
+        }
+        Ally.SetActive(false);
         explosion.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         gameObject.SetActive(false);
