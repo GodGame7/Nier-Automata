@@ -21,7 +21,7 @@ public class PordBulletControl : MonoBehaviour
         {
             other.transform.root.GetComponent<EnemyHp>().TakeDamage(6);
             transform.position = WaitLocation;
-            gameObject.SetActive(false);
+            DisableBullet();
 
             Spark.gameObject.transform.position = other.gameObject.transform.position;
             Spark.gameObject.SetActive(true);
@@ -31,9 +31,12 @@ public class PordBulletControl : MonoBehaviour
         if (other.CompareTag("BulletSoft"))
         {
             other.gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            DisableBullet();
         }
-
+        if (other.CompareTag("Wall"))
+        {
+            DisableBullet();
+        }
 
     }
 
