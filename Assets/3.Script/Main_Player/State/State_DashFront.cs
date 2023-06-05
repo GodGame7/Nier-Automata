@@ -7,13 +7,14 @@ public class State_DashFront : State
     StateManager sm;
     float lastdashtime = 0;
     float dashbat = 0.5f;
+    float dashtime = 5f;
     private void Awake()
     {
         sm = FindObjectOfType<StateManager>();
     }
     public override void Enter(State before)
     {
-        
+        dashtime = 5f;
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetBool("DashEnd", false);
         lastdashtime = Time.time;
@@ -23,6 +24,7 @@ public class State_DashFront : State
     public override void Exit(State next)
     {
         Main_Player.Instance.meshBake.OffTrail();
+        Main_Player.Instance.rb.velocity = Vector3.zero;
 
     }
 
@@ -33,7 +35,11 @@ public class State_DashFront : State
 
     public override void StateUpdate()
     {
-        
+        if (dashtime < 0.5f)
+        {
+            transform.Translate(Vector3.forward * 10f * Time.deltaTime);
+            dashtime += Time.deltaTime;
+        }
     }
     private IEnumerator DashFront()
     {
@@ -70,15 +76,14 @@ public class State_DashFront : State
     private IEnumerator Dodge()
     {
         Main_Player.Instance.isDodge = true;
-        Main_Player.Instance.anim_player.applyRootMotion = true;
         Main_Player.Instance.anim_player.SetBool("DodgeFront", true);
+        dashtime = 0f;
         yield return new WaitUntil(() =>
         Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge_front"));
         yield return new WaitUntil(() =>
         (Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).normalizedTime>=0.58f));
         yield return CancleListener();
         Main_Player.Instance.anim_player.SetBool("DodgeFront", false);
-        Main_Player.Instance.anim_player.applyRootMotion = false;
         Main_Player.Instance.isDash = false;
         Main_Player.Instance.isDodge = false;
     }
