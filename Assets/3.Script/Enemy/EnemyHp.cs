@@ -113,6 +113,8 @@ public class EnemyHp : MonoBehaviour
 
     }
 
+
+
     ////»ç¸Á
     //IEnumerator Die()
     //{

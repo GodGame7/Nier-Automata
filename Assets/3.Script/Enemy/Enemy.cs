@@ -219,10 +219,10 @@ public class Enemy : MonoBehaviour
             enemyHp.capsuleCollider.enabled = false;
         }
 
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f);
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f);
         enemyHp.isdead_effect.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         enemyHp.isdead = false;
         enemyHp.isdead_effect.SetActive(false);
         gameObject.SetActive(false);
