@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour
 
     [Header("MainCamera")]
     [SerializeField] PlayerInput player1;
-    //[SerializeField] MAin player2;
+    [SerializeField] StateManager player2;
 
     [Header("Enemy")]
     [SerializeField] GameObject[] em0000;
@@ -85,8 +85,10 @@ public class SceneManager : MonoBehaviour
         Time.timeScale = 0f;
         camera.GetComponent<CameraMovement>().enabled = false;
         player1.enabled = false;
+        player2.enabled = false;
+
         //비디오 출력
-        video.clip = firstvideo;
+        //video.clip = firstvideo;
         video.Play();
 
         Raw.SetActive(true);
@@ -102,7 +104,12 @@ public class SceneManager : MonoBehaviour
         Time.timeScale = 1f;
         camera.GetComponent<CameraMovement>().enabled = true;
         player1.enabled = true;
+        player2.enabled = true;
         Raw.SetActive(false);
+
+        //미리 비디오 바꿔두기
+        video.clip = secondvideo;
+        video.Stop();
     }
 
 
@@ -171,12 +178,14 @@ public class SceneManager : MonoBehaviour
     IEnumerator Boss_co()
     {
         third = false;
+
+        Time.timeScale = 0f;
         Raw.SetActive(true);
         camera.GetComponent<CameraMovement>().enabled = false;
         player1.enabled = false;
-        video.clip = secondvideo;
+        player2.enabled = false;
+
         video.Play();
-        Time.timeScale = 0f;
 
         while (!video.isPlaying)
         {
@@ -184,11 +193,18 @@ public class SceneManager : MonoBehaviour
         }
         yield return new WaitUntil(() => !video.isPlaying);
 
+        Time.timeScale = 1f;
         camera.GetComponent<CameraMovement>().enabled = true;
         Raw.SetActive(false);
         player1.enabled = true;
-        Time.timeScale = 1f;
+        player2.enabled = true;
         Wall.SetActive(false);
+
+        video.clip = thirdvideo;
+        video.Stop();
+
+
+        video.clip = thirdvideo;
 
         if (!em1000.activeSelf)
         {
@@ -209,11 +225,24 @@ public class SceneManager : MonoBehaviour
             fourth = false;
             yield return new WaitForSeconds(0.6f);
 
-            video.clip = thirdvideo;
             video.Play();
 
+            camera.GetComponent<CameraMovement>().enabled = false;
             player1.enabled = false;
+            player2.enabled = false;
             Raw.SetActive(true);
+
+            while (!video.isPlaying)
+            {
+                yield return null;
+            }
+            yield return new WaitUntil(() => !video.isPlaying);
+
+            camera.GetComponent<CameraMovement>().enabled = true;
+            player1.enabled = true;
+            player2.enabled = true;
+            Raw.SetActive(false);
+
         }
     }
 

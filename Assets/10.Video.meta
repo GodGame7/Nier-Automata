@@ -1,9 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+=======
 <<<<<<<< HEAD:Assets/SkySeries Freebie.meta
-guid: e0c03d80cb1bae0479d7ab21a08d7946
+guid: a19643e9758953c409745537d71c78e3
 ========
+>>>>>>> Stashed changes
 guid: ad1fe58cbaebefe409f6553d806684a6
->>>>>>>> editor:Assets/10.Video.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

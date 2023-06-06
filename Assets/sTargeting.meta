@@ -1,9 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+=======
 <<<<<<<< HEAD:Assets/8.Audio/BGM.meta
-guid: b1c218fc7cdbccc439f2b9cc1ff3280e
+guid: 36e403211660f80448b66fb86bc1769e
 ========
+>>>>>>> Stashed changes
 guid: 87e55e2c974fc1e489c721dfdd885cb1
->>>>>>>> editor:Assets/sTargeting.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
