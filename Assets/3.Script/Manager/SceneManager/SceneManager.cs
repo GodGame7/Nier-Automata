@@ -212,8 +212,20 @@ public class SceneManager : MonoBehaviour
             video.clip = thirdvideo;
             video.Play();
 
+            camera.GetComponent<CameraMovement>().enabled = false;
             player1.enabled = false;
             Raw.SetActive(true);
+
+            while (!video.isPlaying)
+            {
+                yield return null;
+            }
+            yield return new WaitUntil(() => !video.isPlaying);
+
+            camera.GetComponent<CameraMovement>().enabled = true;
+            player1.enabled = true;
+            Raw.SetActive(false);
+
         }
     }
 
