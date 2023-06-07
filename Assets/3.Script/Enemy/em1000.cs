@@ -63,7 +63,7 @@ public class em1000 : Enemy
 
         while (true)
         {
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f);
+            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f);
             anim.SetFloat("Random", Random.Range(0, 2));
             isattack = false;
 
@@ -104,15 +104,15 @@ public class em1000 : Enemy
     {
         target_x = target.root.position.x;
 
-        if (target_x > 90f)
+        if (target_x > 115f)
         {
             dir = Dir.Left;
         }
-        else if (target_x <= 90f && target_x > 115f)
+        else if (target_x >= 90f && target_x < 115f)
         {
             dir = Dir.Center;
         }
-        else if (target_x <= 115f)
+        else if (target_x <= 90f)
         {
             dir = Dir.Right;
         }
