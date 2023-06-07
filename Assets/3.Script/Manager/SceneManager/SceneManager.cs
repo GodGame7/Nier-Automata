@@ -61,6 +61,14 @@ public class SceneManager : MonoBehaviour
 
     private void Update()
     {
+        if (video.isPlaying)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                video.Stop();
+            }
+        }
+
 
         if (first)
         {
@@ -98,6 +106,9 @@ public class SceneManager : MonoBehaviour
         {
             yield return null;
         }
+
+        
+
         yield return new WaitUntil(() => !video.isPlaying);
 
         //ºñµð¿À ´Ý±â
