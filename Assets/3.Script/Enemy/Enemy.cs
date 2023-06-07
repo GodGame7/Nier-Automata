@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
 
         //타겟을 쳐다봄
         //대쉬 할 경우에는 바로 쳐다보고, 아닌경우 자연스러운 회전
-        if (state == State.DASH )
+        if (state == State.DASH)
         {
             transform.LookAt(targetPosition);
         }
@@ -173,10 +173,10 @@ public class Enemy : MonoBehaviour
             state = State.ATTACK;
         }
 
-        for (int i = 0; i < boxCollider.Length; i++)
-        {
-            boxCollider[i].enabled = true;
-        }
+        //for (int i = 0; i < boxCollider.Length; i++)
+        //{
+        //    boxCollider[i].enabled = true;
+        //}
 
 
         int value = Random.Range(1, PattonNum + 1);
@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour
             anim.SetBool("IsAttack", true);
         }
 
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.4f)
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.6f)
         {
             Debug.Log("락온");
             TargetLookat();
@@ -202,10 +202,10 @@ public class Enemy : MonoBehaviour
         anim.SetBool("IsAttack", false);
 
         //무기 콜라이더 끄고
-        for (int i = 0; i < boxCollider.Length; i++)
-        {
-            boxCollider[i].enabled = false;
-        }
+        //for (int i = 0; i < boxCollider.Length; i++)
+        //{
+        //    boxCollider[i].enabled = false;
+        //}
 
         //애니메이션이 Idle이 되면, 상태도 Idle이 됌
         state = State.IDLE;
@@ -236,6 +236,22 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Main_Player.Instance.OnDamage(damage);
+        }
+    }
+
+    void AttackCollider_On()
+    {
+        for (int i = 0; i < boxCollider.Length; i++)
+        {
+            boxCollider[i].enabled = true;
+        }
+    }
+
+    void AttackCollider_Off()
+    {
+        for (int i = 0; i < boxCollider.Length; i++)
+        {
+            boxCollider[i].enabled = false;
         }
     }
 }

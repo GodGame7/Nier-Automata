@@ -42,4 +42,6 @@ public class em0010 : Enemy
     {
         audio.PlayOneShot(Walk);
     }
+
+
 }
