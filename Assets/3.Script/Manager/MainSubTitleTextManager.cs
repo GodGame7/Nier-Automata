@@ -16,8 +16,6 @@ public class MainSubTitleTextManager : MonoBehaviour
 
     string[] flagSubTitles = new string[]
     {
-        "적의 파괴를 확인",
-        "아니⋯⋯",
         "이것이 목표 대형 병기!?",
         "부정 : 해당 적은 목표가 아님",
         "신속한 제거를 권장",
@@ -31,19 +29,19 @@ public class MainSubTitleTextManager : MonoBehaviour
         text_Subtitle = GetComponentInChildren<Text>();
     }
 
-    private void NextSubText()
+    public void NextSubText()
     {
         text_Subtitle.text = flagSubTitles[subTitleCounter];
         text_Subtitle.gameObject.SetActive(true);
         subTitleCounter++;
     }
 
-    private void OffSubText()
+    public void OffSubText()
     {
         text_Subtitle.gameObject.SetActive(false);
     }
 
-    private void PlayClip(int subTitleCounter)
+    public void PlayClip(int subTitleCounter)
     {
         flagFightSubTitleAudio.PlayClip(subTitleCounter);
     }

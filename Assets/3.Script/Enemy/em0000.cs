@@ -6,6 +6,12 @@ using UnityEngine.AI;
 
 public class em0000 : Enemy
 {
+
+    public AudioClip Attack1;
+    public AudioClip Attack2;
+    public AudioClip Walk;
+    public AudioClip Dash;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -52,19 +58,23 @@ public class em0000 : Enemy
         switch (random)
         {
             case 1:
-                yield return StartCoroutine(WindmillAttack2());
+                yield return StartCoroutine(WindmillAttack());
                 break;
 
             case 2:
-                yield return StartCoroutine(PunchAttact2());
+                yield return StartCoroutine(PunchAttact());
                 break;
         }
         state = State.IDLE;
+
     }
 
-    IEnumerator WindmillAttack2()
+    IEnumerator WindmillAttack()
     {
         anim.SetBool("Attack2", true);
+
+        //소리실행
+        StartCoroutine(PlaySound(Attack2));
 
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
         {
@@ -72,18 +82,29 @@ public class em0000 : Enemy
             yield return null;
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         anim.SetBool("Attack2", false);
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
     }
 
-    IEnumerator PunchAttact2()
+
+    IEnumerator PunchAttact()
     {
+
         TargetLookat();
         anim.SetTrigger("Attack1");
 
+        StartCoroutine(PlaySound(Attack1));
+
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
+    }
+
+    IEnumerator PlaySound(AudioClip soundname)
+    {
+        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Attack Start (Windmill)"));
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"));
+        audio.PlayOneShot(soundname);
     }
 
 }

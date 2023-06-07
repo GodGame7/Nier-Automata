@@ -41,6 +41,7 @@ public class em1000 : Enemy
         currentSawRotateSpeed = maxsawrotateSpeed;
 
         anim.SetTrigger("Intro");
+        audio.Play();
         StartCoroutine(Attack());
 
     }

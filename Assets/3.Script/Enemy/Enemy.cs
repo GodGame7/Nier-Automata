@@ -52,6 +52,8 @@ public class Enemy : MonoBehaviour
     //타겟 위치
     [HideInInspector] public Transform target;
 
+    [HideInInspector] public AudioSource audio;
+
     //타겟 위치를 저장하는 변수
     protected Vector3 targetPosition;
 
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour
 
         TryGetComponent(out enemyHp);
         TryGetComponent(out anim);
+        TryGetComponent(out audio);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
