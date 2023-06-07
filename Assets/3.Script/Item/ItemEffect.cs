@@ -8,6 +8,7 @@ public class ItemEffect : MonoBehaviour
     private void Awake()
     {
         PlayerInput.UseItem += UseItem;
+        MenuUI.UseItem += UseItem;
     }
 
     public void UseItem(int num)

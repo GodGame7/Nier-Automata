@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     protected float distance;
 
     //공격용 콜라이더
-    BoxCollider[] boxCollider;
+    [HideInInspector] public BoxCollider[] boxCollider;
 
 
     //애니메이터
@@ -73,6 +73,14 @@ public class Enemy : MonoBehaviour
         state = State.IDLE;
     }
 
+
+    private void Update()
+    {
+        //타겟과의 거리를 측정
+        distance = Vector3.Distance(transform.position, target.transform.position);
+
+    }
+
     //타겟 바라보기
     public void TargetLookat()
     {
@@ -81,7 +89,7 @@ public class Enemy : MonoBehaviour
 
         //타겟을 쳐다봄
         //대쉬 할 경우에는 바로 쳐다보고, 아닌경우 자연스러운 회전
-        if (state == State.DASH)
+        if (state == State.DASH )
         {
             transform.LookAt(targetPosition);
         }
@@ -90,10 +98,6 @@ public class Enemy : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-
-        //타겟과의 거리를 측정
-        distance = Vector3.Distance(transform.position, target.transform.position);
-
     }
 
     //정지
@@ -171,11 +175,19 @@ public class Enemy : MonoBehaviour
             boxCollider[i].enabled = true;
         }
 
+
         int value = Random.Range(1, PattonNum + 1);
         anim.SetFloat("Patton", value);
-        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4 || anim.GetFloat("Patton") == 5)
+        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4)
         {
             anim.SetBool("IsAttack", true);
+        }
+
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.4f)
+        {
+            Debug.Log("락온");
+            TargetLookat();
+            yield return null;
         }
 
 
@@ -207,10 +219,10 @@ public class Enemy : MonoBehaviour
             enemyHp.capsuleCollider.enabled = false;
         }
 
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f);
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f);
         enemyHp.isdead_effect.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         enemyHp.isdead = false;
         enemyHp.isdead_effect.SetActive(false);
         gameObject.SetActive(false);

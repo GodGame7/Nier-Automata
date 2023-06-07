@@ -15,7 +15,6 @@ public class InsideControl : MonoBehaviour
     {
         flagFightSubTitleManager = FindObjectOfType<FlagFightSubTitleManager>();
         flagFightSubTitleManager.phase7_02.AddListener(phase7_02);
-
         flagFightSubTitleManager.phase7_07.AddListener(Phase7_07);
     }
 
@@ -39,5 +38,13 @@ public class InsideControl : MonoBehaviour
         }
     
     }
+
+    public void ExitSpeed(float Speed)
+    {
+        ObjectScrolling objectScrolling = Exit.GetComponent<ObjectScrolling>();
+        objectScrolling.scrollingSpeed = Speed;
+    }
+
+
 
 }

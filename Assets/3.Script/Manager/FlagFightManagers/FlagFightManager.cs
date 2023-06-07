@@ -25,6 +25,12 @@ public class FlagFightManager : MonoBehaviour
 
     private void NextPhase()
     {
+        StartCoroutine(NextScene());
+    }
+
+    IEnumerator NextScene()
+    {
+        yield return new WaitForSeconds(4.0f);
         Debug.Log("³Ñ¾î°¡¿ê!");
     }
 

@@ -7,12 +7,14 @@ public class State_DashRight : State
     StateManager sm;
     float lastdashtime = 0;
     float dashbat = 0.5f;
+    float dashtime = 5f;
     private void Awake()
     {
         sm = FindObjectOfType<StateManager>();
     }
     public override void Enter(State before)
     {
+        dashtime = 5f;
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetBool("DashEnd", false);
         lastdashtime = Time.time;
@@ -22,6 +24,7 @@ public class State_DashRight : State
     public override void Exit(State next)
     {
         Main_Player.Instance.meshBake.OffTrail();
+        Main_Player.Instance.rb.velocity = Vector3.zero;
 
     }
 
@@ -32,7 +35,11 @@ public class State_DashRight : State
 
     public override void StateUpdate()
     {
-        
+       if (dashtime < 0.5f)
+        {
+            transform.Translate(Vector3.right *10f * Time.deltaTime);
+            dashtime += Time.deltaTime;
+        }
     }
 
 
@@ -73,10 +80,9 @@ public class State_DashRight : State
     private IEnumerator Dodge()
     {
         Main_Player.Instance.isDodge = true;
-        Main_Player.Instance.anim_player.applyRootMotion = true;
         //todo 닷지 애니메이션 실행 , 닷지 애니메이션 종료 후 닷지끝애니메이션, isDodge = false
         Main_Player.Instance.anim_player.SetBool("DodgeRight", true);
-        //yield return new WaitForSeconds(1.5f);
+        dashtime = 0f;
         yield return new WaitUntil(() =>
         Main_Player.Instance.anim_player.GetCurrentAnimatorStateInfo(0).IsName("dodge3_right"));
         yield return new WaitUntil(() =>
@@ -84,7 +90,6 @@ public class State_DashRight : State
         yield return CancleListener();
         Main_Player.Instance.isDodge = false;
         Main_Player.Instance.anim_player.SetBool("DodgeRight", false);
-        Main_Player.Instance.anim_player.applyRootMotion = false;
         Main_Player.Instance.isDash = false;
     }
     private IEnumerator CancleListener()

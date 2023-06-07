@@ -37,7 +37,7 @@ public class em0000 : Enemy
                     yield return StartCoroutine(OnDash());
                     break;
             }
-            TargetLookat();
+
             yield return null;
         }
 
@@ -65,7 +65,14 @@ public class em0000 : Enemy
     IEnumerator WindmillAttack2()
     {
         anim.SetBool("Attack2", true);
-        yield return new WaitForSeconds(4f);
+
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
+        {
+            TargetLookat();
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3f);
         anim.SetBool("Attack2", false);
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
@@ -73,6 +80,7 @@ public class em0000 : Enemy
 
     IEnumerator PunchAttact2()
     {
+        TargetLookat();
         anim.SetTrigger("Attack1");
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));

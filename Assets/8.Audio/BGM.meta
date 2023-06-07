@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/8.Audio/BGM.meta
 guid: b1c218fc7cdbccc439f2b9cc1ff3280e
+========
+guid: 87e55e2c974fc1e489c721dfdd885cb1
+>>>>>>>> editor:Assets/sTargeting.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
