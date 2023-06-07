@@ -356,7 +356,7 @@ public class FlagFightSpawner : MonoBehaviour
     public void Phase5_02()
     {
         RemainEnemies = 8;
-        emfirstMoveSpeed = 0.0053f;
+        emfirstMoveSpeed = 0.0058f;
         emlastMoveSpeed = 0.0f;
         isCanLook = true;
 

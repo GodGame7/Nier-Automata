@@ -255,15 +255,6 @@ public class FlagControl : MonoBehaviour
             }
             Attack();
         }
-
-        if (!gameObject.layer.Equals(invincibleLayer) && !canMove)
-        {
-            gameObject.layer = invincibleLayer;
-        }
-        else if(!gameObject.layer.Equals(defaultLayer) && canMove)
-        {
-            gameObject.layer = defaultLayer;
-        }
     }
     private void FixedUpdate()
     {
@@ -511,5 +502,15 @@ public class FlagControl : MonoBehaviour
     {
         yield return AnimaReset_wait;
         anim.ResetTrigger(hashAni);
+    }
+
+    public void Invincible()
+    {
+        gameObject.layer = invincibleLayer;
+    }
+
+    public void UNInvincible()
+    {
+        gameObject.layer = defaultLayer;
     }
 }

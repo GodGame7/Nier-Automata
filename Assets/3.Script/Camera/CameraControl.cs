@@ -33,10 +33,10 @@ public class CameraControl : MonoBehaviour
 
     public void ChangeCameraPosition(Vector3 destPos, Quaternion destRot)
     {
-        StartCoroutine(test_co(destPos, destRot));
+        StartCoroutine(CameraMove_co(destPos, destRot));
     }
 
-    private IEnumerator test_co(Vector3 destPos, Quaternion destRot)
+    private IEnumerator CameraMove_co(Vector3 destPos, Quaternion destRot)
     {
         int cnt = 0;
 

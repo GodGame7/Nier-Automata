@@ -9,6 +9,7 @@ public class ItemEffect : MonoBehaviour
     {
         PlayerInput.UseItem += UseItem;
         MenuUI.UseItem += UseItem;
+        Temp.UseItem += UseItem;
     }
 
     public void UseItem(int num)
