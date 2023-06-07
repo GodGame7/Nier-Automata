@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class SceneManager : MonoBehaviour
 {
     [Header("MainCamera")]
-    [SerializeField] Camera camera;
+    [SerializeField] new Camera camera;
 
     [Header("MainCamera")]
     [SerializeField] PlayerInput player1;
@@ -42,9 +42,12 @@ public class SceneManager : MonoBehaviour
     public VideoClip secondvideo;
     public VideoClip thirdvideo;
 
+    public AudioManager audioManager;
+
 
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         TryGetComponent(out video);
     }
 
@@ -106,6 +109,9 @@ public class SceneManager : MonoBehaviour
         player1.enabled = true;
         player2.enabled = true;
         Raw.SetActive(false);
+
+        // BGM Ω√¿€
+        StartBGM();
 
         //πÃ∏Æ ∫Òµø¿ πŸ≤„µŒ±‚
         video.clip = secondvideo;
@@ -184,7 +190,7 @@ public class SceneManager : MonoBehaviour
         camera.GetComponent<CameraMovement>().enabled = false;
         player1.enabled = false;
         player2.enabled = false;
-
+        StopBGM(); // BGM ∏ÿ√„
         video.Play();
 
         while (!video.isPlaying)
@@ -203,6 +209,7 @@ public class SceneManager : MonoBehaviour
         video.clip = thirdvideo;
         video.Stop();
 
+        StartBGM(); // BGM Ω√¿€
 
         video.clip = thirdvideo;
 
@@ -225,6 +232,7 @@ public class SceneManager : MonoBehaviour
             fourth = false;
             yield return new WaitForSeconds(0.6f);
 
+            StartBGM(); // BGM ∏ÿ√„
             video.Play();
 
             camera.GetComponent<CameraMovement>().enabled = false;
@@ -243,7 +251,20 @@ public class SceneManager : MonoBehaviour
             player2.enabled = true;
             Raw.SetActive(false);
 
+            StopBGM(); // BGM Ω√¿€
         }
+    }
+
+    // BGM ¿Áª˝ ∏ﬁº“µÂ
+    void StartBGM()
+    {
+        audioManager.PlayBgm("BGM");
+    }
+
+    // BGM ∏ÿ√„ ∏ﬁº“µÂ
+    void StopBGM()
+    {
+        audioManager.StopBgm();
     }
 
 }
