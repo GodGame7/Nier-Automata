@@ -11,6 +11,7 @@ TagManager:
   - FlagBullet
   - Wall
   - Canvas
+  - Pord
   layers:
   - Default
   - TransparentFX

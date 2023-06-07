@@ -345,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &42895616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &93582823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2503,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &447200121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5067,7 +5067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &920188146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7864,6 +7864,7 @@ MonoBehaviour:
   - {fileID: 1839469757}
   NewGame_obj: {fileID: 1939017097}
   StartMenu_obj: {fileID: 1542599358}
+  Setting_obj: {fileID: 0}
   SystemMenu: {fileID: 39987603}
   NewGame_BackGround:
   - {fileID: 152436398}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
@@ -41,6 +42,13 @@ public class MenuUI : MonoBehaviour
     private int MaxInvenLength = 3;
     private Color Selected_Text_Color = new Color(164f / 255f, 162f / 255f, 147f / 255f);
     private Color Selected_Image_Color = new Color(180f / 255f, 178f / 255f, 163f / 255f);
+
+    //시스템 용 변수
+    private bool OnSystem = false;
+    private int SystemCount = 0;
+    private int MaxSystemCount = 6;
+
+
     //온오프할 메뉴들
     [Header("오브젝트를 넣어주세용")]
     [SerializeField] private GameObject MenuUI_ob;
@@ -117,19 +125,24 @@ public class MenuUI : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return))
             {
-                if (MenuCount != 2) //아이템 이외엔 미구현
-                {
-                    StartCoroutine(CantPlay());
-                }
 
 
-                else  //아이템에서 엔터클릭시 진행 
+                if (MenuCount == 2)
                 {
                     if (InvenLength != 0)
                     {
                         EnterItem();
                     }
                     return;
+                }
+                else if (MenuCount == 4)
+                {
+
+                }
+
+                else//아이템 이외엔 미구현
+                {
+                    StartCoroutine(CantPlay());
                 }
 
             }
@@ -165,7 +178,50 @@ public class MenuUI : MonoBehaviour
 
 
         }
+        if (OnSystem)
+        {
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (SystemCount > 0)
+                {
+
+                    SystemUp();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (SystemCount < MaxSystemCount)
+                {
+                    SystemDown();
+
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                if (SystemCount == 4)
+                {
+                    SystemGoTitle();
+                }
+                else if (SystemCount == 5)
+                {
+                    SystemGameEnd();
+                }
+                else
+                {
+                    StartCoroutine(CantPlay());
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+
+            }
+        }
+
     }
+    #region 메뉴창
     public void MenuOpen() //메뉴창 열기
     {
         if (TryGetComponent(out CameraMovement MainCam1))
@@ -198,7 +254,8 @@ public class MenuUI : MonoBehaviour
         }
 
     }
-
+    #endregion
+    #region 탑 메뉴창
     public void LeftArrow() //탑메뉴창 왼쪽 넘기기
     {
         MenuCount--;
@@ -246,6 +303,8 @@ public class MenuUI : MonoBehaviour
         ClearSlot();
         SetSlot();
     }
+    #endregion
+    #region 아이템 메뉴
     public void ItemUpArrow() //아이템 메뉴 위화살표 클릭시
     {
         Selected_Cursor.transform.position += Move_Selected_Cursor;
@@ -285,6 +344,10 @@ public class MenuUI : MonoBehaviour
     }
     private void SetSlot()
     {
+        if(PlayerData.Instance.inven.Items.Count == 0)
+        {
+            return;
+        }
         Item_Header.text = string.Format("{0}", PlayerData.Instance.inven.Items[ItemMenuCount].ItemName);
         Item_Explain.text = string.Format("{0}", PlayerData.Instance.inven.Items[ItemMenuCount].Tooltip);
         Item_Amount.text = string.Format("소지수 : {0} / 99", PlayerData.Instance.inven.Items[ItemMenuCount].Quantity);
@@ -293,6 +356,40 @@ public class MenuUI : MonoBehaviour
         ItemList_Image[ItemMenuCount].color = Selected_Image_Color;
 
     }
+    #endregion
+    #region 시스템 설정
+    private void SystemUp()
+    {
+        SystemCount--;
+        UpdateSystemUI();
+    }
+    private void SystemDown()
+    {
+        SystemCount++;
+        UpdateSystemUI();
+    }
+    private void SystemExit()
+    {
+        OnSystem = false;
+
+    }
+    private void UpdateSystemUI()
+    {
+        for (int i=0; i<MaxSystemCount; i++)
+        {
+
+        }
+
+    }
+    private void SystemGoTitle()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+    }
+    private void SystemGameEnd()
+    {
+        Application.Quit();
+    }
+    #endregion
     private IEnumerator CantPlay() //아이템 이외엔 미구현입니다 뜨는거
     {
         CanNot_ob.SetActive(true);

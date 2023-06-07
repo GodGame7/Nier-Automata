@@ -23,6 +23,7 @@ public class Intro : MonoBehaviour
     [Header("뉴게임 오브젝트")]
     [SerializeField] GameObject NewGame_obj;
     [SerializeField] GameObject StartMenu_obj;
+    [SerializeField] GameObject Setting_obj;
     [Header("1.New Game")]
     [SerializeField] GameObject SystemMenu;
     [SerializeField] Image[] NewGame_BackGround;
@@ -62,6 +63,15 @@ public class Intro : MonoBehaviour
     private Color Selected_NewGame_Txt = new Color(189f / 255f, 179f / 255f, 166f / 255f);
     private Color Default_NewGame_Box = new Color(73f / 255f, 70f / 255f, 59f / 255f);
     private Color Selected_NewGame_Box = new Color(203f / 255f, 197f / 255f, 168f / 255f);
+    //환경 설정 변수
+    private bool OnSetting = false;
+    private int SettingCount = 0;
+    private int MaxSettingCount = 6;
+
+    //환경 설정 사운드 변수
+    private bool onSound = false;
+    
+
     //시스템 메뉴 관련 변수
     private bool OnSystemMenu = false;
     private int SystemMenuCount = 0;
@@ -128,6 +138,14 @@ public class Intro : MonoBehaviour
         OnTitleWarning = false;
         Title_Warning.SetActive(false);
     }
+    private void TitleSettingEnter()
+    {
+        OnTitleMenu = false;
+        OnSetting = true;
+        Title_Menu.SetActive(false);
+        Menu.SetActive(true);
+        Setting_obj.SetActive(true);
+    }
     #endregion
     #region 메뉴 관련 메서드
     private void MenuExit()
@@ -174,6 +192,57 @@ public class Intro : MonoBehaviour
         NewGame_Text[NewGameCount].color = Selected_NewGame_Txt;
         NewGame_Date_Text[NewGameCount].color = Selected_NewGame_Txt;
         NewGame_Box[NewGameCount].color = Selected_NewGame_Box;
+
+    }
+    #endregion
+    #region 환경설정 관련 메서드
+    private void SettingUp()
+    {
+        SettingCount--;
+        UpdateSettingUI();
+    }
+    private void SettingDown()
+    {
+        SettingCount++;
+        UpdateSettingUI();
+    }
+    private void UpdateSettingUI()
+    {
+
+    }
+    private void SettingEnter()
+    {
+
+    }
+    private void SettingExit()
+    {
+
+    }
+
+    #endregion
+    #region 사운드 관련 메서드
+    private void SoundLeftArrow()
+    {
+
+    }
+    private void SoundRightArrow()
+    {
+
+    }
+    private void SoundUpArrow()
+    {
+
+    }
+    private void SoundDownArrow()
+    {
+
+    }
+    private void SoundEnter()
+    {
+
+    }
+    private void SoundExit()
+    {
 
     }
     #endregion
@@ -302,7 +371,14 @@ public class Intro : MonoBehaviour
                     TitleWarningEnter();
                     return;
                 }
-
+                if(TitleCount == 2)
+                {
+                    TitleSettingEnter();
+                }
+                if (TitleCount == 4)
+                {
+                    Application.Quit();
+                }
                 else
                 {
                     CantPlay();
@@ -365,6 +441,14 @@ public class Intro : MonoBehaviour
                 MenuExit();
                 return;
             }
+        }
+        if (OnSetting)
+        {
+
+        }
+        if(onSound)
+        {
+            
         }
         if (OnSystemMenu)
         {

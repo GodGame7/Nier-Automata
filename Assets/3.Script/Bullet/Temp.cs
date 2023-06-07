@@ -26,7 +26,7 @@ public class Temp : MonoBehaviour
         if (Inventory_UI.isActiveInven)
         {
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.J))
             {
 
 
