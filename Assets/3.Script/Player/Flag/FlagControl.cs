@@ -503,4 +503,14 @@ public class FlagControl : MonoBehaviour
         yield return AnimaReset_wait;
         anim.ResetTrigger(hashAni);
     }
+
+    public void Invincible()
+    {
+        gameObject.layer = invincibleLayer;
+    }
+
+    public void UNInvincible()
+    {
+        gameObject.layer = defaultLayer;
+    }
 }

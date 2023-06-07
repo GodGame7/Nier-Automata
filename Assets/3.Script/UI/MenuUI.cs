@@ -155,7 +155,10 @@ public class MenuUI : MonoBehaviour
     }
     public void MenuOpen() //메뉴창 열기
     {
-        MainCam.GetComponent<CameraMovement>().enabled = false;
+        if (TryGetComponent(out CameraMovement MainCam1))
+        {
+            MainCam1.enabled = false;
+        }
         MenuCount = 0;
         Time.timeScale = 0;
         OpenMenu = true;
@@ -165,7 +168,12 @@ public class MenuUI : MonoBehaviour
     }
     public void MenuClose() //메뉴창 닫기
     {
-        MainCam.GetComponent<CameraMovement>().enabled = true;
+        if (TryGetComponent(out CameraMovement MainCam1))
+        {
+            MainCam1.enabled = true;
+        }
+
+        //MainCam.GetComponent<CameraMovement>().enabled = true;
         MenuCount = 0;
         Time.timeScale = 1;
         OpenMenu = false;
