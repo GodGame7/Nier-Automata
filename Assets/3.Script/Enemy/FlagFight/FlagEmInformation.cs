@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Flag 적의 체력, 대미지 받기, 사망, 사망 이벤트 제공
 public class FlagEmInformation : MonoBehaviour
@@ -25,6 +26,8 @@ public class FlagEmInformation : MonoBehaviour
     private new Collider collider;
 
     public bool onHP = false;
+    [SerializeField]
+    private GameObject DamagePrefab;
 
     private void Start()
     {
@@ -64,10 +67,36 @@ public class FlagEmInformation : MonoBehaviour
         onHP = true;
         StopCoroutine(nameof(OffDamaged_co));
         StartCoroutine(nameof(OffDamaged_co));
+        StartCoroutine(DamageEffect_co(damage, transform.position));
+
         if (currentHP <= 0 && !isDie)
         {
             Die();
         }
+    }
+    private IEnumerator DamageEffect_co(float damage, Vector3 position)
+    {
+        // 데미지 화면에 띄우기
+        GameObject Damage = Instantiate(DamagePrefab);
+        Damage.transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        Text damageText = Damage.GetComponent<Text>();
+
+        // 수치 설정
+        damageText.text = damage.ToString();
+        // 위치 설정
+        Vector3 screenPoint = Camera.main.WorldToScreenPoint(position);
+        Damage.transform.position = screenPoint;
+
+        // 데미지 사라짐
+        for (float alpha = 1f; alpha >= 0f; alpha -= 1.5f * Time.deltaTime)
+        {
+            Color newColor = damageText.color;
+            newColor.a = alpha;
+            damageText.color = newColor;
+            yield return null;
+            Damage.transform.position += 0.5f * Vector3.up;
+        }
+        Destroy(Damage);
     }
     private IEnumerator OffDamaged_co()
     {
