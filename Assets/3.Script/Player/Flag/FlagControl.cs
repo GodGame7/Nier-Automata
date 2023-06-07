@@ -32,7 +32,7 @@ public class FlagControl : MonoBehaviour
     private bool moveToCenter = false;
     private bool canFire = true;
     public float threshold = 1f;
-    private readonly Vector3 defaultPos = new Vector3(0, 0.02f, 0);
+    private readonly Vector3 defaultPos = Vector3.zero;
 
     // 대쉬
     public KeyCode lastKeyPressed { get; private set; }  // 대쉬를 위해 이전 키입력 저장
@@ -119,9 +119,9 @@ public class FlagControl : MonoBehaviour
     }
     private void OnApplicationFocus(bool hasFocus)
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         // todo 버튼 눌러야돼서 나중에 바꿀것
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
     }
     private void GetComponentAndCashing()
     {
@@ -255,6 +255,15 @@ public class FlagControl : MonoBehaviour
             }
             Attack();
         }
+
+        if (!gameObject.layer.Equals(invincibleLayer) && !canMove)
+        {
+            gameObject.layer = invincibleLayer;
+        }
+        else if(!gameObject.layer.Equals(defaultLayer) && canMove)
+        {
+            gameObject.layer = defaultLayer;
+        }
     }
     private void FixedUpdate()
     {
@@ -336,8 +345,8 @@ public class FlagControl : MonoBehaviour
         }
         Vector3 newPosition = new Vector3(
             Mathf.Clamp((rigid.position.x + targetSpeed * Time.deltaTime * moveDir.x), -0.3f, 0.3f),
-            Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * moveDir.y), -0.18f, 0.18f),
-            Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * moveDir.z), -0.15f, 0.15f));
+            Mathf.Clamp((rigid.position.y + targetSpeed * Time.deltaTime * moveDir.y), -0.135f, 0.135f),
+            Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * moveDir.z), -0.17f, 0.17f));
         rigid.MovePosition(newPosition);
     }
     private void CheckDash()
@@ -467,10 +476,6 @@ public class FlagControl : MonoBehaviour
         float startTime;
         while (true)
         {
-            if (!canFire)
-            {
-                break;
-            }
             // 건담 1단 공격
             yield return EnterGundamAttack1_wait;
             isCombo = true;
