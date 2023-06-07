@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class FlagFightManager : MonoBehaviour
 {
@@ -31,19 +32,6 @@ public class FlagFightManager : MonoBehaviour
     IEnumerator NextScene()
     {
         yield return new WaitForSeconds(4.0f);
-        Debug.Log("³Ñ¾î°¡¿ê!");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
