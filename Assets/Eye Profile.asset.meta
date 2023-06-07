@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Eye Profile.asset.meta
 guid: 94e322edf0c99024690c0e09ea848b3d
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
-========
-guid: a6c18b7a28922944492611ef5b722941
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 9100000
->>>>>>>> 0e3f422effe5dcb9d81400b7c18355e1e1798fcf:Assets/5.Animation/MainScene/NewSword.controller.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -14,10 +14,8 @@ public class State_Atk2 : State
     [SerializeField]bool stronged;
     int index = 0;
     float holdTime = 0;
-    Swords SM;
     private void Start()
     {
-        SM = FindObjectOfType<Swords>();
         mainCamera = Camera.main;
         sword = Main_Player.Instance.sword;
         bigSword = Main_Player.Instance.bigSword;
@@ -27,7 +25,7 @@ public class State_Atk2 : State
     public override void Enter(State before)
     {
         Main_Player.Instance.isAtk = true;
-       // Main_Player.Instance.anim_player.applyRootMotion = true;
+        Main_Player.Instance.anim_player.applyRootMotion = true;
         Atk();
         Main_Player.Instance.anim_sword.SetTrigger("Atk");
         Main_Player.Instance.anim_player.SetTrigger("Atk");
@@ -36,7 +34,9 @@ public class State_Atk2 : State
 
     public override void Exit(State next)
     {
-       //Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.anim_player.applyRootMotion = false;
+        Main_Player.Instance.collider_sword.enabled = false;
+        EndAtk();
         ResetBool();
         ResetSword();
         StopCoroutine(listener);
@@ -88,7 +88,6 @@ public class State_Atk2 : State
         stronged = true;
         isCanStr = false;//강공격 불변수 체크
         //강공격 애니메이션 재생
-        SMoveAnim(1f, 1500f);
         Main_Player.Instance.anim_sword.SetTrigger("AtkStrong");
         Main_Player.Instance.anim_player.SetTrigger("AtkStrong");
         //holdtime 초기화
@@ -126,23 +125,22 @@ public class State_Atk2 : State
     {
         index++;
         int i = index;
+        //index값을 추가하고 추가 된 인덱스 값을 i로 받음.
         if (i <= 5)
         {
             Atk_co(i);
         }
+        //공격 5콤보가 끝난 상태이므로 아무것도 안 함.
     }
     void Atk_co(int i)
     {
+        //공격 애니메이션 실행
         Rotate2();
-        switch (i)
-        {
-            case 1: MoveAnim(0.1f, 350f); break;
-            case 2: MoveAnim(0.15f, 300f); break;
-            case 3: MoveAnim(0.5f, 20); break;
-            case 4: MoveAnim(0f, 0f); break;
-            case 5: MoveAnim(0.4f, 20); break;
-        }
         Atk_anim(i);
+        //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
+        // == Sword 스크립트에서 처리 ==
+        //다음 공격을 입력받고 입력받으면 다음 공격을 실행해야 돼!
+        // == Sword 스크립트에서 처리 ==
     }
 
     void Atk_anim(int i)
@@ -151,49 +149,16 @@ public class State_Atk2 : State
         Main_Player.Instance.anim_player.SetBool("Atk" + i, true);
     }
 
-    IEnumerator move;
-    void MoveAnim(float time, float power)
-    {
-        float count = 0f;
-        move = Move();
-        StopCoroutine(move);
-        StartCoroutine(move);
-        IEnumerator Move()
-        {
-            while (count < time)
-            {
-                Main_Player.Instance.rb.velocity += (transform.forward * power * Time.deltaTime);
-                count += Time.deltaTime;
-                yield return null;
-            }
-            Main_Player.Instance.rb.velocity = Vector3.zero;
-        }
-    }
-    IEnumerator smove;
-    void SMoveAnim(float time, float power)
-    {
-        float count = 0f;
-        smove = Move();
-        StopCoroutine(smove);
-        StartCoroutine(smove);
-        IEnumerator Move()
-        {
-            while (count < time)
-            {                
-                Main_Player.Instance.rb.velocity = (transform.forward * power * Time.deltaTime);
-                count += Time.deltaTime;
-                yield return null;
-            }
-            Main_Player.Instance.rb.velocity = Vector3.zero;
-        }
-    }
-
     IEnumerator listener;
     public void EndAtk()
     {
+        //지금 애니메이션이 끝까지 재생 될 거임.
+        //근데 WASD나 공격키, 점프키 등 입력값이 있으면 언제든지 애니메이션 재생이 종료되어야 함.
+        //애니메이션 재생 종료는 Main_Player의 불값이 초기화되기만 해도 ForceIdle이 됨.
         listener = CancleListener();
         StopCoroutine(listener);
         StartCoroutine(listener);
+        //칼을 집어넣음
     }
 
     IEnumerator CancleListener()
@@ -213,82 +178,39 @@ public class State_Atk2 : State
         ResetSword();
     }
 
-    //==애니메이션이벤트용==
-
-    [SerializeField]
-    bool isContinueAtk;
-    IEnumerator cor;
-
-    public void S_HitboxOn()
-    {
-        Main_Player.Instance.collider_sword.enabled = true;
-    }
-    public void S_HitboxOff()
-    {
-        Main_Player.Instance.collider_sword.enabled = false;
-    }
-
-    public void B_HitboxOn()
-    {
-        Main_Player.Instance.collider_bigsword.enabled = true;
-    }
-    public void B_HitboxOff()
-    {
-        Main_Player.Instance.collider_bigsword.enabled = false;
-    }
-    public void CheckComboAtk()
-    {
-        isContinueAtk = false;
-        cor = CheckComboAtk_co();
-        StartCoroutine(cor);
-
-        //Local Function
-        IEnumerator CheckComboAtk_co()
-        {
-            yield return new WaitForSeconds(0.08f);
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            isContinueAtk = true;
-        }
-    }
-    public void StartComboAtk()
-    {
-        if (isCanStr)
-        {
-            AtkStrong();
-            Debug.Log("강공격");
-        }
-        else if (isContinueAtk)
-        {
-            Atk();
-        }
-        else
-        {
-            StopCoroutine(cor);
-        }
-    }
-
 
 
 
 
     #region 메소드 Load,Reset + Sword, Big
-    public void LoadSword()
+
+    Vector3 trashposition = new Vector3(0, 100, 0);
+    void LoadSword()
     {
-        SM.HandSword();
+        //sword.SetActive(true);
+        sword.transform.position = transform.position;
+        sword.transform.rotation = transform.rotation;
+        idleSword.SetActive(false);
     }
-    public void ResetSword()
+    void ResetSword()
     {
         //sword.SetActive(false);
-        SM.NoSword();
+        sword.transform.position = trashposition;
+        idleSword.SetActive(true);
     }
-    public void LoadBig()
+    void LoadBig()
     {
         //bigSword.SetActive(true);
-        SM.HandBSword();
+        bigSword.transform.position = transform.position;
+        bigSword.transform.rotation = transform.rotation;
+        idleBigSword.SetActive(false);
     }
-    public void ResetBig()
+    void ResetBig()
     {
-        SM.NoSword();
+        //bigSword.SetActive(false);
+        bigSword.transform.position = trashposition;
+
+        idleBigSword.SetActive(true);
     }
     #endregion
 }
