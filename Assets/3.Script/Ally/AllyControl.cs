@@ -88,7 +88,7 @@ public class AllyControl : MonoBehaviour
                 time = 0;
 
                 newPosition = new Vector3(
-                Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
+                Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), rigid.position.y, rigid.position.z);
             }
         }
         else
@@ -190,7 +190,7 @@ public class AllyControl : MonoBehaviour
     {
         isSway = true;
         newPosition = new Vector3(
-        Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), 0, 0);
+        Mathf.Clamp((rigid.position.x + dir * 0.1f), -0.3f, 0.3f), rigid.position.y, rigid.position.z);
     }
 
     public void StopSway()

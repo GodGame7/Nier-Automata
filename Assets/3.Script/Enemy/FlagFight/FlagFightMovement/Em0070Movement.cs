@@ -56,7 +56,7 @@ public class Em0070Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, 0.00f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, -0.02f, transform.position.z);
     }
 
     public IEnumerator Co_Move()

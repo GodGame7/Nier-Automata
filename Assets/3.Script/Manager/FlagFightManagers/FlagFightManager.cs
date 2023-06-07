@@ -31,7 +31,7 @@ public class FlagFightManager : MonoBehaviour
 
     IEnumerator NextScene()
     {
-        yield return new WaitForSeconds(4.0f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        yield return new WaitForSeconds(5.0f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 }
