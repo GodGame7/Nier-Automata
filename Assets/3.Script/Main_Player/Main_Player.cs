@@ -15,12 +15,14 @@ public class Main_Player : MonoBehaviour
     public Animator anim_bigsword; 
     public CapsuleCollider collider_body;
     public BoxCollider collider_sword;
+    public BoxCollider collider_throwingsword;
     public BoxCollider collider_bigsword;
     [Header("검 거치대")]
     public GameObject idleSword;
     public GameObject idleBigSword;
     public GameObject bigSword;
     public GameObject sword;
+    public GameObject throwingsword;
     [Header("손 위치")]
     public Transform leftHand;
     public Transform rightHand;
@@ -35,7 +37,7 @@ public class Main_Player : MonoBehaviour
     public bool isAtk;
     public bool isDodge;
     public bool isHitted;
-    public bool isSwordhand;
+    public bool isInvincible;
 
     private void Awake()
     {
