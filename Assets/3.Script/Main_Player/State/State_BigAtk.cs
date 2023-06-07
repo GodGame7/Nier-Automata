@@ -13,10 +13,9 @@ public class State_BigAtk : State
     [SerializeField] bool stronged;
     int index = 0;
     float holdTime = 0;
-    Swords SM;
+
     private void Start()
     {
-        SM = FindObjectOfType<Swords>();
         mainCamera = Camera.main;
         sword = Main_Player.Instance.sword;
         bigSword = Main_Player.Instance.bigSword;
@@ -203,21 +202,33 @@ public class State_BigAtk : State
 
     #region ¸Þ¼Òµå Load,Reset + Sword, Big
 
-    public void LoadSword()
+    Vector3 trashposition = new Vector3(0, 100, 0);
+    void LoadSword()
     {
-        SM.HandSword();
+        //sword.SetActive(true);
+        sword.transform.position = transform.position;
+        sword.transform.rotation = transform.rotation;
+        idleSword.SetActive(false);
     }
-    public void ResetSword()
+    void ResetSword()
     {
-        SM.NoSword();
+        //sword.SetActive(false);
+        sword.transform.position = trashposition;
+        idleSword.SetActive(true);
     }
     public void LoadBig()
     {
-        SM.HandBSword();
+        //bigSword.SetActive(true);
+        bigSword.transform.position = transform.position;
+        bigSword.transform.rotation = transform.rotation;
+        idleBigSword.SetActive(false);
     }
-    public void ResetBig()
+    void ResetBig()
     {
-        SM.NoSword();
+        //bigSword.SetActive(false);
+        bigSword.transform.position = trashposition;
+
+        idleBigSword.SetActive(true);
     }
     #endregion
 

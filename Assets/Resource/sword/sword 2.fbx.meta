@@ -231,14 +231,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.068345755
+      - time: 0.08312408
         functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.12446304
+      - time: 0.104758605
         functionName: StartComboAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -288,14 +288,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.025763066
+      - time: 0.035615284
         functionName: SwordHitboxOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.08977793
+      - time: 0.084851824
         functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -353,20 +353,20 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.094458446
-        functionName: ThrowingOn
+        functionName: SwordHitboxOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.36386633
+      - time: 0.2702703
         functionName: StartComboAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.39836842
+      - time: 0.3294029
         functionName: EndAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -374,7 +374,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.56298774
-        functionName: ThrowingOff
+        functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -409,15 +409,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: ThrowingOn
+      - time: 0.0012285231
+        functionName: CheckComboAtk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.0012285231
-        functionName: CheckComboAtk
+      - time: 0.20552744
+        functionName: SwordHitboxOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -438,7 +438,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.7405541
-        functionName: ThrowingOff
+        functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -474,14 +474,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.18639806
-        functionName: ThrowingOn
+        functionName: SwordHitboxOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.77707815
-        functionName: ThrowingOff
+        functionName: SwordHitboxOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
