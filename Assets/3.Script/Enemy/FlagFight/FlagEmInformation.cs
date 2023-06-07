@@ -67,14 +67,14 @@ public class FlagEmInformation : MonoBehaviour
         onHP = true;
         StopCoroutine(nameof(OffDamaged_co));
         StartCoroutine(nameof(OffDamaged_co));
-        StartCoroutine(DamageEffect_co(damage, transform.position));
+        DamageEffect(damage, transform.position);
 
         if (currentHP <= 0 && !isDie)
         {
             Die();
         }
     }
-    private IEnumerator DamageEffect_co(float damage, Vector3 position)
+    private void DamageEffect(float damage, Vector3 position)
     {
         // 데미지 화면에 띄우기
         GameObject Damage = Instantiate(DamagePrefab);
@@ -87,16 +87,16 @@ public class FlagEmInformation : MonoBehaviour
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(position);
         Damage.transform.position = screenPoint;
 
-        // 데미지 사라짐
-        for (float alpha = 1f; alpha >= 0f; alpha -= 1.5f * Time.deltaTime)
-        {
-            Color newColor = damageText.color;
-            newColor.a = alpha;
-            damageText.color = newColor;
-            yield return null;
-            Damage.transform.position += 0.5f * Vector3.up;
-        }
-        Destroy(Damage);
+        //// 데미지 사라짐
+        //for (float alpha = 1f; alpha >= 0f; alpha -= 1.5f * Time.deltaTime)
+        //{
+        //    Color newColor = damageText.color;
+        //    newColor.a = alpha;
+        //    damageText.color = newColor;
+        //    yield return null;
+        //    Damage.transform.position += 0.5f * Vector3.up;
+        //}
+        //Destroy(Damage);
     }
     private IEnumerator OffDamaged_co()
     {
@@ -124,6 +124,7 @@ public class FlagEmInformation : MonoBehaviour
         explosion.SetActive(true);
         collider.enabled = false;
         StartCoroutine(Co_Dying());
+        
     }
 
     IEnumerator Co_Dying()

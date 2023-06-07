@@ -139,9 +139,16 @@ public class AllyControl : MonoBehaviour
     }
     private IEnumerator FindEnemies_co()
     {
-        yield return new WaitForSeconds(0.5f);
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("ToGundam") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f);
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if (enemies.Length != 0)
+            {
+                break;
+            }
+        }
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Gundam Idle Move"));
         StartCoroutine(LookAt_co());
     }
 
@@ -168,6 +175,7 @@ public class AllyControl : MonoBehaviour
             if (aliveEnemies.Count == 0)
             {
                 StopCoroutine(nameof(SearchEnemy));
+                StartCoroutine(FindEnemies_co());
                 break;
             }
             transform.LookAt(enemies[enemyIndex].transform);
