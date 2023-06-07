@@ -10,6 +10,7 @@ public class em0010 : Enemy
     public AudioClip LeftPunch;
     public AudioClip RightPunch;
     public AudioClip doubleAttack;
+    public AudioClip FootAttack;
 
     protected override void OnEnable()
     {
@@ -60,6 +61,10 @@ public class em0010 : Enemy
     void LeftPunchSound()
     {
         audio.PlayOneShot(LeftPunch);
+    }
+    void FootAttackSound()
+    {
+        audio.PlayOneShot(FootAttack);
     }
 
     void JumpStartSound()
