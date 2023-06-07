@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 10f;
         }
-        else
+        else if(Input.GetKeyUp(KeyCode.F11))
         {
             Time.timeScale = 1f;
         }
