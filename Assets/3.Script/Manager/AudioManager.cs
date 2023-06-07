@@ -95,13 +95,14 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
-    private void StopBgm()
+    public void StopBgm()
     {
         if (bgmPlayer.isPlaying)
         {
             bgmPlayer.Stop();
         }
     }
+
     public void SetBgmVolume(float volume = 1.0f)
     {
         bgmPlayer.volume = volume;

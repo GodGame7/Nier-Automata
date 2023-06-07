@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/FlagFight.unity
     guid: 134acb6798f4e3b45aeffd91b71bef07
-  - enabled: 0
+  - enabled: 1
     path: Assets/1.Scene/MainScene.unity
     guid: d8d6596bd86a22741ba42544cb5e59bd
   - enabled: 0

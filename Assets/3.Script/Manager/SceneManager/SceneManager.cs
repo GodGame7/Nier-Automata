@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class SceneManager : MonoBehaviour
 {
     [Header("MainCamera")]
-    [SerializeField] Camera camera;
+    [SerializeField] new Camera camera;
 
     [Header("MainCamera")]
     [SerializeField] PlayerInput player1;
@@ -42,9 +42,14 @@ public class SceneManager : MonoBehaviour
     public VideoClip secondvideo;
     public VideoClip thirdvideo;
 
+    [Header("오디오, 자막 관련")]
+    public AudioManager audioManager;
+    public MainSubTitleTextManager subText;
+
 
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         TryGetComponent(out video);
     }
 
@@ -106,6 +111,9 @@ public class SceneManager : MonoBehaviour
         player1.enabled = true;
         player2.enabled = true;
         Raw.SetActive(false);
+
+        // BGM 시작
+        StartBGM();
 
         //미리 비디오 바꿔두기
         video.clip = secondvideo;
@@ -184,7 +192,7 @@ public class SceneManager : MonoBehaviour
         camera.GetComponent<CameraMovement>().enabled = false;
         player1.enabled = false;
         player2.enabled = false;
-
+        StopBGM(); // BGM 멈춤
         video.Play();
 
         while (!video.isPlaying)
@@ -203,6 +211,7 @@ public class SceneManager : MonoBehaviour
         video.clip = thirdvideo;
         video.Stop();
 
+        StartBGM(); // BGM 시작
 
         video.clip = thirdvideo;
 
@@ -213,8 +222,22 @@ public class SceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(4.5f);
         Wallanim.SetTrigger("Breaken");
-
         fourth = true;
+
+        yield return new WaitForSeconds(1f);
+        subText.PlayClip(0);
+        subText.NextSubText(); // 이것이....... 목표 대형 병기!? <- 자막출력
+
+        yield return new WaitForSeconds(4f);
+        subText.NextSubText(); // 부정: 해당 적은 목표가 아님 <- 자막출력
+
+        yield return new WaitForSeconds(3.5f);
+        subText.NextSubText();  // 신속한 제거를 권장 <- 자막출력
+        yield return new WaitForSeconds(2.5f);
+        subText.NextSubText(); // 간단하게 말하는군 <- 자막출력
+
+        yield return new WaitForSeconds(2f);
+        subText.OffSubText();
     }
 
     IEnumerator BossEnd_co()
@@ -225,6 +248,7 @@ public class SceneManager : MonoBehaviour
             fourth = false;
             yield return new WaitForSeconds(0.6f);
 
+            StartBGM(); // BGM 멈춤
             video.Play();
 
             camera.GetComponent<CameraMovement>().enabled = false;
@@ -243,7 +267,20 @@ public class SceneManager : MonoBehaviour
             player2.enabled = true;
             Raw.SetActive(false);
 
+            StopBGM(); // BGM 시작
         }
+    }
+
+    // BGM 재생 메소드
+    void StartBGM()
+    {
+        audioManager.PlayBgm("BGM");
+    }
+
+    // BGM 멈춤 메소드
+    void StopBGM()
+    {
+        audioManager.StopBgm();
     }
 
 }
