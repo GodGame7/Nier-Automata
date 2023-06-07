@@ -5,12 +5,14 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     State_Atk2 player;
+    Swords SM;
     [SerializeField]
     bool isContinueAtk;
     IEnumerator cor;
     private void Start()
     {
         player = FindObjectOfType<State_Atk2>();
+        SM = FindObjectOfType<Swords>();
     }
     void SwordHitboxOn()
     {
@@ -19,6 +21,18 @@ public class Sword : MonoBehaviour
     void SwordHitboxOff()
     {
         Main_Player.Instance.collider_sword.enabled = false;
+    }
+    void ThrowingOn()
+    {
+        SM.ThrowingSword();
+        SwordHitboxOff();
+        Main_Player.Instance.collider_throwingsword.enabled = true;
+    }
+    void ThrowingOff()
+    {
+        SM.ThrowingSwordOff();
+        SwordHitboxOff();
+        Main_Player.Instance.collider_throwingsword.enabled = false;
     }
     void CheckComboAtk()
     {
@@ -50,7 +64,6 @@ public class Sword : MonoBehaviour
             StopCoroutine(cor);
         }       
     }
-
     void EndAtk()
     {
         player.EndAtk();
