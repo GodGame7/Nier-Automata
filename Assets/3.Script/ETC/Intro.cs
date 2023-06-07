@@ -25,12 +25,12 @@ public class Intro : MonoBehaviour
     [SerializeField] GameObject StartMenu_obj;
     [SerializeField] GameObject Setting_obj;
     [Header("1.New Game")]
-    [SerializeField] GameObject SystemMenu;
     [SerializeField] Image[] NewGame_BackGround;
     [SerializeField] Image[] NewGame_Box;
     [SerializeField] Text[] NewGame_Text;
     [SerializeField] Text[] NewGame_Date_Text;
     [Header("시스템 메뉴 관련")]
+    [SerializeField] GameObject SystemMenu;
     [SerializeField] GameObject System_Selected_Cursor;
     [SerializeField] Image[] System_BackGround;
     [SerializeField] Image[] System_Box;
@@ -40,6 +40,29 @@ public class Intro : MonoBehaviour
     [SerializeField] Image[] StartMenu_BackGround;
     [SerializeField] Image[] StartMenu_Box;
     [SerializeField] Text[] StartMenu_Text;
+    [Header("셋팅 오브젝트")]
+    [SerializeField] GameObject Setting_Selected_Cursor;
+    [SerializeField] Image[] SettingMenu_BackGround;
+    [SerializeField] Image[] SettingMenu_Box;
+    [SerializeField] Text[] SettingMenu_Text;
+
+    [Header("5.Sound")]
+    [SerializeField] GameObject Sound_Selected_Zone;
+    [SerializeField] Image[] Sound_BackGround;
+    [SerializeField] Image[] Sound_Box;
+    [SerializeField] Text[] Sound_Text;
+    [Header("사운드 셋팅")]
+    [SerializeField] GameObject SoundSetting_obj;
+    [SerializeField] Image[] SoundSetting_BackGround;
+    [SerializeField] Image[] SoundSetting_Box;
+    [SerializeField] Text[] SoundSetting_Text;
+    [SerializeField] GameObject[] BGM_Obj;
+    [SerializeField] GameObject BGM_Selected_Zone;
+    [SerializeField] GameObject[] SFX_Obj;
+    [SerializeField] GameObject SFX_Selected_Zone;
+    [SerializeField] GameObject[] TalkSound_Obj;
+    [SerializeField] GameObject TalkSound_Selected_Zone;
+
 
     [Header("CanNot Obj")]
     [SerializeField] GameObject CanNot_ob;
@@ -63,14 +86,51 @@ public class Intro : MonoBehaviour
     private Color Selected_NewGame_Txt = new Color(189f / 255f, 179f / 255f, 166f / 255f);
     private Color Default_NewGame_Box = new Color(73f / 255f, 70f / 255f, 59f / 255f);
     private Color Selected_NewGame_Box = new Color(203f / 255f, 197f / 255f, 168f / 255f);
+
     //환경 설정 변수
     private bool OnSetting = false;
+    private bool TitleToSetting = false;
+    private bool MenuToSetting = false;
     private int SettingCount = 0;
     private int MaxSettingCount = 6;
+    private Color Default_Setting_BackGround = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Color Selected_Setting_BackGround = new Color(97f / 255f, 96f / 255f, 83f / 255f);
+    private Color Default_Setting_Box = new Color(68f / 255f, 62f / 255f, 52f / 255f);
+    private Color Selected_Setting_Box = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Color Default_Setting_Txt = new Color(93f / 255f, 88f / 255f, 66f / 255f);
+    private Color Selected_Setting_Txt = new Color(182f / 255f, 175f / 255f, 149f / 255f);
 
-    //환경 설정 사운드 변수
-    private bool onSound = false;
-    
+    //사운드 변수
+    private bool OnSound = false;
+    private int SoundCount = 0;
+    private int MaxSoundCount = 4;
+    private Color Default_Sound_BackGround = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Color Selected_Sound_BackGround = new Color(97f / 255f, 96f / 255f, 83f / 255f);
+    private Color Default_Sound_Box = new Color(68f / 255f, 62f / 255f, 52f / 255f);
+    private Color Selected_Sound_Box = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Color Default_Sound_Txt = new Color(93f / 255f, 88f / 255f, 66f / 255f);
+    private Color Selected_Sound_Txt = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Vector3 Move_Setting_SelectedZone = new Vector3(0, 85, 0);
+
+    //사운드 셋팅 변수 
+    private bool OnSoundSetting = false;
+    private bool OnBGM = false;
+    private bool OnSFX = false;
+    private bool OnTalkSound = false;
+    private int SoundSettingCount = 0;
+    private int MaxSoundSettingCount = 4;
+    private int BgmCount = 10;
+    private int MaxBgmCount = 10;
+    private int SFXCount = 10;
+    private int MaxSFXCount = 10;
+    private int TalkSoundCount = 10;
+    private int MaxTalkSoundCount = 10;
+    private Color Default_SoundSetting_BackGround = new Color(182, 175, 149);
+    private Color Selected_SoundSetting_BackGround = new Color(72, 73, 62);
+    private Color Default_SoundSetting_Box = new Color(68, 62, 52);
+    private Color Selected_SoundSetting_Box = new Color(211, 206, 188);
+    private Color Default_SoundSetting_Txt = new Color(93, 88, 66);
+    private Color Selected_SoundSetting_Txt = new Color(211, 206, 188);
 
     //시스템 메뉴 관련 변수
     private bool OnSystemMenu = false;
@@ -142,6 +202,7 @@ public class Intro : MonoBehaviour
     {
         OnTitleMenu = false;
         OnSetting = true;
+        TitleToSetting = true;
         Title_Menu.SetActive(false);
         Menu.SetActive(true);
         Setting_obj.SetActive(true);
@@ -150,6 +211,7 @@ public class Intro : MonoBehaviour
     #region 메뉴 관련 메서드
     private void MenuExit()
     {
+        NewGame_obj.SetActive(false);
         Menu.SetActive(false);
         Title.SetActive(true);
         Title_Presskey.SetActive(true);
@@ -200,50 +262,181 @@ public class Intro : MonoBehaviour
     {
         SettingCount--;
         UpdateSettingUI();
+        Setting_Selected_Cursor.transform.position += Move_Setting_SelectedZone;
     }
     private void SettingDown()
     {
         SettingCount++;
         UpdateSettingUI();
+        Setting_Selected_Cursor.transform.position -= Move_Setting_SelectedZone;
     }
     private void UpdateSettingUI()
     {
+        for (int i = 0; i < MaxSettingCount; i++)
+        {
+            SettingMenu_BackGround[i].color = Default_Setting_BackGround;
+            SettingMenu_Box[i].color = Default_Setting_Box;
+            SettingMenu_Text[i].color = Default_Setting_Txt;
+        }
+        SettingMenu_BackGround[SettingCount].color = Selected_Setting_BackGround;
+        SettingMenu_Box[SettingCount].color = Selected_Setting_Box;
+        SettingMenu_Text[SettingCount].color = Selected_Setting_Txt;
 
     }
     private void SettingEnter()
     {
+        OnSetting = false;
+        OnSound = true;
+        SoundSetting_obj.SetActive(true);
 
     }
     private void SettingExit()
     {
+        if (TitleToSetting)
+        {
+            OnTitleMenu = true;
+            OnSetting = false;
+            TitleToSetting = false;
+            Title_Menu.SetActive(true);
+            Title.SetActive(true);
+            Menu.SetActive(false);
+            Setting_obj.SetActive(false);
 
+        }
+        if (MenuToSetting)
+        {
+            OnStartMenu = true;
+            OnSetting = false;
+            MenuToSetting = false;
+            StartMenu_obj.SetActive(true);
+            Setting_obj.SetActive(false);
+            
+        }
     }
 
     #endregion
     #region 사운드 관련 메서드
-    private void SoundLeftArrow()
-    {
-
-    }
-    private void SoundRightArrow()
-    {
-
-    }
     private void SoundUpArrow()
     {
-
+        SoundCount--;
+        UpdateSoundSetting();
+        Sound_Selected_Zone.transform.position += Move_Setting_SelectedZone;
     }
     private void SoundDownArrow()
     {
-
+        SoundCount++;
+        UpdateSoundSetting();
+        Sound_Selected_Zone.transform.position -= Move_Setting_SelectedZone;
     }
-    private void SoundEnter()
+    private void UpdateSoundSetting()
     {
-
+        for (int i = 0; i < MaxSoundCount; i++)
+        {
+            Sound_BackGround[i].color = Default_Sound_BackGround;
+            Sound_Box[i].color = Default_Sound_Box;
+            Sound_Text[i].color = Default_Sound_Txt;
+        }
+        Sound_BackGround[SoundCount].color = Selected_Sound_BackGround;
+        Sound_Box[SoundCount].color = Selected_Sound_Box;
+        Sound_Text[SoundCount].color = Selected_Sound_Txt;
+    }
+    private void EnterBGMSetting()
+    {
+        OnSound = false;
+        OnSoundSetting = true;
+        OnBGM = true;
+    }
+    private void EnterSFXSetting()
+    {
+        OnSound = false;
+        OnSoundSetting = true;
+        OnSFX = true;
+    }
+    private void EnterTalkSoundSetting()
+    {
+        OnSound = false;
+        OnSoundSetting = true;
+        OnTalkSound = true;
     }
     private void SoundExit()
     {
+        OnSound = false;
+        OnSetting = true;
+        SoundSetting_obj.SetActive(false);
+    }
+    #endregion
+    #region 사운드셋팅 관련 메서드
+    private void BGMLeft()
+    {
+        BgmCount--;
+        BGMUpdateUI();
 
+    }
+    private void BGMRight()
+    {
+        BgmCount++;
+        BGMUpdateUI();
+    }
+    private void BGMUpdateUI()
+    {
+        for (int i = 0; i < MaxBgmCount; i++)
+        {
+            BGM_Obj[i].SetActive(false);
+        }
+        for (int i = 0; i < BgmCount; i++)
+        {
+            BGM_Obj[i].SetActive(true);
+        }
+    }
+    private void SFXLeft()
+    {
+        SFXCount--;
+        SFXUpdateUI();
+    }
+    private void SFXRight()
+    {
+        SFXCount++;
+        SFXUpdateUI();
+    }
+    private void SFXUpdateUI()
+    {
+        for (int i = 0; i < MaxSFXCount; i++)
+        {
+            SFX_Obj[i].SetActive(false);
+        }
+        for (int i = 0; i < SFXCount; i++)
+        {
+            SFX_Obj[i].SetActive(true);
+        }
+    }
+    private void SoundTalkLeft()
+    {
+        TalkSoundCount--;
+        UpdateSoundTalkUI();
+    }
+    private void SoundTalkRight()
+    {
+        TalkSoundCount++;
+        UpdateSoundTalkUI();
+    }
+    private void UpdateSoundTalkUI()
+    {
+        for (int i = 0; i < MaxTalkSoundCount; i++)
+        {
+            TalkSound_Obj[i].SetActive(false);
+        }
+        for (int i = 0; i < TalkSoundCount; i++)
+        {
+            TalkSound_Obj[i].SetActive(true);
+        }
+    }
+    private void SoundSettingExit()
+    {
+        OnSoundSetting = false;
+        OnBGM = false;
+        OnSFX = false;
+        OnTalkSound = false;
+        OnSound = true;
     }
     #endregion
     #region 시스템 메뉴 관련 메서드
@@ -304,6 +497,15 @@ public class Intro : MonoBehaviour
     private void StartMenuEnter()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("FlagFight");
+    }
+    private void StartMenuEnterSetting()
+    {
+        OnStartMenu = false;
+        OnSetting = true;
+        MenuToSetting = true;
+        StartMenu_obj.SetActive(false);
+        Setting_obj.SetActive(true);
+
     }
     private void StartMenuExit()
     {
@@ -371,9 +573,10 @@ public class Intro : MonoBehaviour
                     TitleWarningEnter();
                     return;
                 }
-                if(TitleCount == 2)
+                if (TitleCount == 2)
                 {
                     TitleSettingEnter();
+                    return;
                 }
                 if (TitleCount == 4)
                 {
@@ -444,11 +647,110 @@ public class Intro : MonoBehaviour
         }
         if (OnSetting)
         {
-
+            if (SettingCount > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    SettingUp();
+                }
+            }
+            if (SettingCount < MaxSettingCount - 1)
+            {
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    SettingDown();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                if (SettingCount == 4)
+                {
+                    SettingEnter();
+                    return;
+                }
+                else
+                {
+                    CantPlay();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SettingExit();
+                return;
+            }
         }
-        if(onSound)
+        if (OnSound)
         {
-            
+            if (SoundCount > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    SoundUpArrow();
+                }
+            }
+            if (SoundCount < MaxSoundCount - 1)
+            {
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    SoundDownArrow();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                if (SoundCount == 0)
+                {
+                    EnterBGMSetting();
+                }
+                if (SoundCount == 1)
+                {
+                    EnterSFXSetting();
+                }
+                if (SoundCount == 2)
+                {
+                    EnterTalkSoundSetting();
+                }
+            }
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                SoundExit();
+            }
+        }
+        if (OnSoundSetting)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (OnBGM)
+                {
+                    BGMLeft();
+                }
+                else if (OnSFX)
+                {
+                    SFXLeft();
+                }
+                else if (OnTalkSound)
+                {
+                    SoundTalkLeft();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (OnBGM)
+                {
+                    BGMRight();
+                }
+                else if (OnSFX)
+                {
+                    SFXRight();
+                }
+                else if (OnTalkSound)
+                {
+                    SoundTalkRight();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SoundSettingExit();
+            }
         }
         if (OnSystemMenu)
         {
@@ -508,6 +810,10 @@ public class Intro : MonoBehaviour
                 {
                     StartMenuEnter();
                     return;
+                }
+                if (StartMenuCount == 1)
+                {
+                    StartMenuEnterSetting();
                 }
                 else
                 {
