@@ -56,6 +56,9 @@ public class SceneManager : MonoBehaviour
 
     private void Start()
     {
+        // BGM 시작
+        audioManager.SetBgmVolume(0.2f);
+
         StartCoroutine(firstVideo_co());
     }
 
@@ -106,16 +109,11 @@ public class SceneManager : MonoBehaviour
         {
             yield return null;
         }
-
-        
-
         yield return new WaitUntil(() => !video.isPlaying);
 
         //비디오 닫기
         VideoEnd();
 
-        // BGM 시작
-        audioManager.SetBgmVolume(0.2f);
         StartBGM();
 
         //미리 비디오 바꿔두기
