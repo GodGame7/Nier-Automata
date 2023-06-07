@@ -81,7 +81,7 @@ public class Intro : MonoBehaviour
     private Color Selected_StartMenu_Txt = new Color(173f / 255f, 163f / 255f, 155f / 255f);
     private Color Defalut_StartMenu_Box = new Color(68f / 255f, 62f / 255f, 52f / 255f);
     private Color Selected_StartMenu_Box = new Color(191f / 255f, 183f / 255f, 153f / 255f);
-    private Vector3 Selected_StartMenu_SelectZone = new Vector3(0,85f,0);
+    private Vector3 Selected_StartMenu_SelectZone = new Vector3(0, 85f, 0);
     #region 타이틀 관련 메서드
     private void TitlePressKey()
     {
@@ -299,14 +299,13 @@ public class Intro : MonoBehaviour
 
                 if (TitleCount == 1)
                 {
-                    Debug.Log("들어옴");
                     TitleWarningEnter();
                     return;
                 }
 
                 else
                 {
-                    StartCoroutine(CantPlay());
+                    CantPlay();
                     return;
                 }
             }
@@ -322,7 +321,6 @@ public class Intro : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("이거들어옴?");
                 TitleMenuEnter();
                 return;
             }
@@ -348,11 +346,17 @@ public class Intro : MonoBehaviour
                     NewGameDown();
                 }
             }
-            if (NewGameCount != 2)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                if (NewGameCount != 2)
                 {
                     NewGameEnter();
+                    return;
+                }
+                else
+                {
+                    NewGameEnter();
+                    SystemMenuEnter();
                     return;
                 }
             }
@@ -378,14 +382,20 @@ public class Intro : MonoBehaviour
                     SystemMenuRight();
                 }
             }
-            if (SystemMenuCount == 0)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                if (SystemMenuCount == 0)
                 {
                     SystemMenuEnter();
                     return;
                 }
+                else
+                {
+                    SystemMenuExit();
+                    return;
+                }
             }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SystemMenuExit();
@@ -408,14 +418,19 @@ public class Intro : MonoBehaviour
                     StartMenuDown();
                 }
             }
-            if (StartMenuCount == 0)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                if (StartMenuCount == 0)
                 {
                     StartMenuEnter();
                     return;
                 }
+                else
+                {
+                    CantPlay();
+                }
             }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 StartMenuExit();
@@ -423,10 +438,14 @@ public class Intro : MonoBehaviour
             }
         }
     }
-    private IEnumerator CantPlay() //미구현입니다 뜨는거
+    private void CantPlay() //미구현입니다 뜨는거
     {
         CanNot_ob.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+
+        Invoke("CannotFalse", 1f);
+    }
+    private void CannotFalse()
+    {
         CanNot_ob.SetActive(false);
     }
 }

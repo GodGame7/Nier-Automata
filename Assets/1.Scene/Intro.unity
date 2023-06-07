@@ -666,7 +666,6 @@ RectTransform:
   m_Children:
   - {fileID: 1988023188}
   - {fileID: 1247745009}
-  - {fileID: 729647729}
   m_Father: {fileID: 2038816958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4160,7 +4159,7 @@ RectTransform:
   m_Children:
   - {fileID: 364988465}
   - {fileID: 2122104034}
-  m_Father: {fileID: 93582823}
+  m_Father: {fileID: 2038816958}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7759,7 +7758,7 @@ GameObject:
   - component: {fileID: 1339198613}
   - component: {fileID: 1339198612}
   m_Layer: 5
-  m_Name: Text_BackGround1
+  m_Name: Text_BackGround2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8916,7 +8915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1542599359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10839,7 +10838,7 @@ GameObject:
   - component: {fileID: 1878385204}
   - component: {fileID: 1878385203}
   m_Layer: 5
-  m_Name: LeftBox
+  m_Name: LeftBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12004,6 +12003,7 @@ RectTransform:
   m_Children:
   - {fileID: 93582823}
   - {fileID: 42895616}
+  - {fileID: 729647729}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
