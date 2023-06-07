@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 {
     //우측하단 아이템 사용 텍스트
     [SerializeField] private Text Effect_Text;
+    [SerializeField] private MenuUI Menu;
     //포션 사용 딜레이를 주기위한 bool값
     private bool PotionDelay = false;
     public List<ItemData> Items = new List<ItemData>();
@@ -23,23 +24,37 @@ public class Inventory : MonoBehaviour
             Items[itemIndex].Quantity++;
         }
     }
-    
+
     public void RemoveItem(ItemData item)
     {
-        if(PotionDelay) //포션 딜레이 상태라면 사용할수 없도록
+        if (PotionDelay) //포션 딜레이 상태라면 사용할수 없도록
         {
             return;
         }
         ItemData removeItem = Items.Find(x => x.ItemName == item.ItemName);
-        if (removeItem !=null)
+        if (removeItem != null)
         {
-            
+
             if (removeItem.Quantity <= 1) //아이템이 1개 이하에서 사용하면 아이템 삭제
             {
                 removeItem.Quantity--;
                 StartCoroutine(Text_co(removeItem));
-                
-                Items.Remove(removeItem);
+                Debug.Log(Menu.InvenLength);
+                if (Menu.EnterMenuItem)
+                {
+                    if (Menu.InvenLength == 1)
+                    {
+                        Menu.ExitItem();
+                        Menu.ItemMenuCount = 0;
+                        Items.Remove(removeItem);
+                        return;
+                    }
+                    else
+                    {
+                        Menu.ItemUpArrow();
+                        Items.Remove(removeItem);
+                    }
+                }
             }
             else //아이템이 2개 이상이라면 아이템 갯수 -1
             {
