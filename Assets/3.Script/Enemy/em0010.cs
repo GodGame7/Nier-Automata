@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class em0010 : Enemy
 {
+    public AudioClip Walk;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -34,5 +36,10 @@ public class em0010 : Enemy
             }
             yield return null;
         }
+    }
+
+    void WalkSound()
+    {
+        audio.PlayOneShot(Walk);
     }
 }

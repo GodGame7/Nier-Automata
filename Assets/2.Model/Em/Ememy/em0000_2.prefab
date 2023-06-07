@@ -1978,6 +1978,7 @@ GameObject:
   - component: {fileID: 5738974797184583664}
   - component: {fileID: 952585951404260915}
   - component: {fileID: 6615526995365264014}
+  - component: {fileID: 8959435499199860663}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -2061,6 +2062,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8959435499199860663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347172531422484623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 94e322edf0c99024690c0e09ea848b3d, type: 2}
 --- !u!1 &4551045982363838981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2091,7 @@ GameObject:
   - component: {fileID: 8072891287811613724}
   - component: {fileID: 108729033522353197}
   - component: {fileID: 7943262287113801896}
+  - component: {fileID: 4600061459727488224}
   m_Layer: 0
   m_Name: Eye (1)
   m_TagString: Untagged
@@ -2156,6 +2175,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4600061459727488224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551045982363838981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 94e322edf0c99024690c0e09ea848b3d, type: 2}
 --- !u!1 &4647824878964477231
 GameObject:
   m_ObjectHideFlags: 0
