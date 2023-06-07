@@ -67,8 +67,9 @@ public class PlayerData : MonoBehaviour
         hp -= damage;
     }
 
-    public void Die()
+    private void Die()
     {
-        // todo 이벤트 발생 => 메인필드랑 flag 각각 다른 행동 해야될 것 같으니까 이벤트만 발생시켜야 될듯?
+        GameManager.Instance.isGameOver = true;
+        Destroy(GameObject.FindWithTag("Player"));
     }
 }

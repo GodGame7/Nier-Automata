@@ -1,10 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance = null;
+
     bool cursor;
+    public bool isGameOver = false;
+    private bool isAllive = true;
+
+    private Image fadeImage;
+    [SerializeField]
+    private GameObject GameOverUI_Pref;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (!Instance.Equals(this))
+            {
+                Destroy(gameObject);
+            }
+            return;
+        }
+    }
     private void Start()
     {
         CursorOff();
@@ -12,17 +38,42 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CursorManager();
+        if(isGameOver && isAllive)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        isAllive = false;
+        GameObject gameOverUI = Instantiate(GameOverUI_Pref);
+        fadeImage = gameOverUI.GetComponentInChildren<Image>();
+        StartCoroutine(FadeOut());
+    }
+    private IEnumerator FadeOut()
+    {
+        fadeImage.gameObject.SetActive(true);
+        for (float alpha = 0f; alpha <= 0.8f; alpha += Time.deltaTime)
+        {
+            Color newColor = fadeImage.color;
+            newColor.a = alpha;
+            fadeImage.color = newColor;
+            yield return null;
+        }
     }
 
     private void CursorManager()
     {
-        if (cursor) { 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (cursor)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
-        else { 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
     public void CursorOn()
