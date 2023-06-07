@@ -368,6 +368,7 @@ MonoBehaviour:
   attackDistance: 0
   dashDistance: 0
   rotationSpeed: 5
+  enemyHp: {fileID: 0}
   boxCollider: []
   anim: {fileID: 0}
   target: {fileID: 0}
@@ -2134,7 +2135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Lv 1
+  m_Text: 'Lv : 1'
 --- !u!1 &4708145746086766250
 GameObject:
   m_ObjectHideFlags: 0

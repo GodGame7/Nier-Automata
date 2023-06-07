@@ -113,7 +113,12 @@ public class State_Atk2 : State
         Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
         transform.rotation = toRotation;
     }
-
+    void Rotate2()
+    {
+        Quaternion initialRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(initialRotation.eulerAngles.x, mainCamera.transform.rotation.eulerAngles.y, initialRotation.eulerAngles.z);
+        transform.rotation = targetRotation;
+    }
 
     //============================ 공격 메소드 =========================
     public void Atk()
@@ -130,6 +135,7 @@ public class State_Atk2 : State
     void Atk_co(int i)
     {
         //공격 애니메이션 실행
+        Rotate2();
         Atk_anim(i);
         //공격 애니메이션 중 콜라이더가 온 될 시점 + 지속 될 시간
         // == Sword 스크립트에서 처리 ==
