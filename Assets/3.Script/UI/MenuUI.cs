@@ -85,7 +85,6 @@ public class MenuUI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(InvenLength);
         if (Input.GetKeyDown(KeyCode.Escape)) //메뉴창 열기
         {
             if (OpenMenu && !EnterMenuItem)
