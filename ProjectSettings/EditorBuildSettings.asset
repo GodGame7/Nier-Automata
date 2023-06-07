@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/1.Scene/Flag.unity
-    guid: e50dd9f966148284c8c050ca707737cd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/1.Scene/FlagFight.unity
     guid: 134acb6798f4e3b45aeffd91b71bef07
