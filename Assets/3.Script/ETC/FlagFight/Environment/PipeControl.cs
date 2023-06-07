@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PipeControl : MonoBehaviour
 {
-    [SerializeField] float scrollingSpeed;
+    [SerializeField] public float scrollingSpeed;
 
     void Update()
     {
