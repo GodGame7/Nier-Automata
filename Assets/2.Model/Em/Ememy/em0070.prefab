@@ -3418,6 +3418,8 @@ MonoBehaviour:
   fightManager: {fileID: 0}
   flagFightSpawner: {fileID: 0}
   isBoss: 0
+  onHP: 0
+  DamagePrefab: {fileID: 0}
 --- !u!65 &5915697680076646136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3508,6 +3510,8 @@ MonoBehaviour:
   fightManager: {fileID: 0}
   flagFightSpawner: {fileID: 0}
   isBoss: 0
+  onHP: 0
+  DamagePrefab: {fileID: 0}
 --- !u!65 &5915697680231883477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3598,6 +3602,8 @@ MonoBehaviour:
   fightManager: {fileID: 0}
   flagFightSpawner: {fileID: 0}
   isBoss: 0
+  onHP: 0
+  DamagePrefab: {fileID: 0}
 --- !u!65 &5915697680485189914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3688,6 +3694,8 @@ MonoBehaviour:
   fightManager: {fileID: 0}
   flagFightSpawner: {fileID: 0}
   isBoss: 0
+  onHP: 0
+  DamagePrefab: {fileID: 0}
 --- !u!65 &5915697680595871257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3859,6 +3867,8 @@ MonoBehaviour:
   fightManager: {fileID: 0}
   flagFightSpawner: {fileID: 0}
   isBoss: 1
+  onHP: 0
+  DamagePrefab: {fileID: 5240663430803989586, guid: 1b09fb37275e23f4a95eb4aca18d360f, type: 3}
 --- !u!114 &5915697680952693024
 MonoBehaviour:
   m_ObjectHideFlags: 0
