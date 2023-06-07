@@ -18,11 +18,11 @@ public class MenuUI : MonoBehaviour
 
     // 몇번메뉴인지 확인하기위함 
     private int MenuCount = 0;
-    private int ItemMenuCount = 0;
+    public int ItemMenuCount = 0;
 
     // 인풋값 확인하기위한 불값
     private bool OpenMenu = false;
-    private bool EnterMenuItem = false;
+    public bool EnterMenuItem = false;
 
     //탑메뉴 색상
     private Color Select_Color = new Color(65f / 255f, 61f / 255f, 53f / 255f);
@@ -37,7 +37,7 @@ public class MenuUI : MonoBehaviour
     private Vector3 Move_Selected_Cursor = new Vector3(0, 75f, 0);
 
     //인벤토리용 변수
-    private int InvenLength;
+    public int InvenLength;
     private int MaxInvenLength = 3;
     private Color Selected_Text_Color = new Color(164f / 255f, 162f / 255f, 147f / 255f);
     private Color Selected_Image_Color = new Color(180f / 255f, 178f / 255f, 163f / 255f);
@@ -85,6 +85,7 @@ public class MenuUI : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(InvenLength);
         if (Input.GetKeyDown(KeyCode.Escape)) //메뉴창 열기
         {
             if (OpenMenu && !EnterMenuItem)
@@ -94,6 +95,7 @@ public class MenuUI : MonoBehaviour
             else if (!OpenMenu)
             {
                 MenuOpen();
+
             }
 
         }
@@ -114,16 +116,23 @@ public class MenuUI : MonoBehaviour
                     LeftArrow();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return))
             {
                 if (MenuCount != 2) //아이템 이외엔 미구현
                 {
                     StartCoroutine(CantPlay());
                 }
+
+
                 else  //아이템에서 엔터클릭시 진행 
                 {
-                    EnterItem();
+                    if (InvenLength != 0)
+                    {
+                        EnterItem();
+                    }
+                    return;
                 }
+
             }
         }
         if (EnterMenuItem) //아이템 메뉴창에서 조작
@@ -147,10 +156,15 @@ public class MenuUI : MonoBehaviour
 
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return))
             {
                 ItemEnter();
+                return;
             }
+
+
         }
     }
     public void MenuOpen() //메뉴창 열기
@@ -162,6 +176,7 @@ public class MenuUI : MonoBehaviour
         MenuUI_ob.SetActive(true);
         UpdateMenuUI();
         Cursor.gameObject.transform.localPosition = Defalut_TopMenu_Cursor;
+        InvenLength = PlayerData.Instance.inven.Items.Count;
     }
     public void MenuClose() //메뉴창 닫기
     {
@@ -230,6 +245,7 @@ public class MenuUI : MonoBehaviour
         ItemMenuCount--;
         UpdateMenuBottom();
     }
+
     public void ItemDownArrow() //아이템 메뉴 아래화살표 클릭시
     {
         Selected_Cursor.transform.position -= Move_Selected_Cursor;
