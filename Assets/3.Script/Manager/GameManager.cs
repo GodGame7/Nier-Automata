@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        CursorManager();
         if(isGameOver && isAllive)
         {
             GameOver();
@@ -69,9 +68,12 @@ public class GameManager : MonoBehaviour
             fadeImage.color = newColor;
             yield return null;
         }
+        yield return new WaitForSeconds(2f);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
 
-    private void CursorManager()
+    private void OnApplicationFocus(bool hasFocus)
     {
         if (cursor)
         {
