@@ -26,6 +26,7 @@ public class FlagFightSpawner : MonoBehaviour
     private float emfirstMoveSpeed;
     private float emlastMoveSpeed;
     private bool isCanLook;
+    private Vector3 CalibrationY = new Vector3(0,-0.02f,0);
 
     [SerializeField]
     private GameObject monsterHPPrefabs;
@@ -94,6 +95,9 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0030 持失 五社球
     private void SpawnEm0030(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emLastDesPosition, float emfirstMoveSpeed, float emlastMoveSpeed, bool isCanLook, int num)
     {
+        emPosition = emPosition + CalibrationY;
+        emFirstDesPosition = emFirstDesPosition + CalibrationY;
+        emLastDesPosition = emLastDesPosition + CalibrationY;
         if (em0030s[num].TryGetComponent(out FlagEmInformation enemy))
         {
             SpawnEnemyHP(enemy);
@@ -115,6 +119,8 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0031 持失 五社球
     private void SpawnEm0031(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, int num)
     {
+        emPosition = emPosition + CalibrationY;
+        emFirstDesPosition = emFirstDesPosition + CalibrationY;
         if (em0031s[num].TryGetComponent(out FlagEmInformation enemy))
         {
             SpawnEnemyHP(enemy);
@@ -131,6 +137,9 @@ public class FlagFightSpawner : MonoBehaviour
     // Em0032 持失 五社球
     private void SpawnEm0032(Vector3 emRotation, Vector3 emPosition, Vector3 emFirstDesPosition, Vector3 emRotatePoint, Vector3 emRotateAxis, float emfirstMoveSpeed, float emlastMoveSpeed, bool isCanLook, int num)
     {
+        emPosition = emPosition + CalibrationY;
+        emFirstDesPosition = emFirstDesPosition + CalibrationY;
+        emRotatePoint = emRotatePoint + CalibrationY;
         if (em0032s[num].TryGetComponent(out FlagEmInformation enemy))
         {
             SpawnEnemyHP(enemy);
