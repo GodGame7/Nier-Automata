@@ -87,7 +87,7 @@ public class State_Atk2 : State
         stronged = true;
         isCanStr = false;//강공격 불변수 체크
         //강공격 애니메이션 재생
-        SMoveAnim(1f, 1500f);
+        SMoveAnim(1f, 600f);
         Main_Player.Instance.anim_sword.SetTrigger("AtkStrong");
         Main_Player.Instance.anim_player.SetTrigger("AtkStrong");
         //holdtime 초기화
@@ -119,7 +119,6 @@ public class State_Atk2 : State
         Quaternion targetRotation = Quaternion.Euler(initialRotation.eulerAngles.x, mainCamera.transform.rotation.eulerAngles.y, initialRotation.eulerAngles.z);
         transform.rotation = targetRotation;
     }
-
     //============================ 공격 메소드 =========================
     public void Atk()
     {
@@ -133,13 +132,16 @@ public class State_Atk2 : State
     void Atk_co(int i)
     {
         Rotate2();
-        switch (i)
+        if (!Physics.Raycast(transform.position, transform.forward, 5f, LayerMask.NameToLayer("Enemy")))
         {
-            case 1: MoveAnim(0.1f, 300f); break;
-            case 2: MoveAnim(0.15f, 200f); break;
-            case 3: MoveAnim(0.5f, 20); break;
-            case 4: MoveAnim(0f, 0f); break;
-            case 5: MoveAnim(0.4f, 20); break;
+            switch (i)
+            {
+                case 1: MoveAnim(0.1f, 220f); AudioManager.Instance.PlaySfx(Define.SFX.Atk1); break;
+                case 2: MoveAnim(0.15f, 130f); AudioManager.Instance.PlaySfx(Define.SFX.Atk2); break;
+                case 3: MoveAnim(0.5f, 15); AudioManager.Instance.PlaySfx(Define.SFX.Atk3); break;
+                case 4: MoveAnim(0f, 0f); AudioManager.Instance.PlaySfx(Define.SFX.Atk4); break;
+                case 5: MoveAnim(0.4f, 15); break;
+            }
         }
         Atk_anim(i);
     }
@@ -161,9 +163,9 @@ public class State_Atk2 : State
         {
             while (count < time)
             {
-                Main_Player.Instance.rb.velocity += (transform.forward * power * Time.deltaTime);
-                count += Time.deltaTime;
-                yield return null;
+                Main_Player.Instance.rb.velocity += (transform.forward * power * Time.fixedDeltaTime);
+                count += Time.fixedDeltaTime;
+                yield return new WaitForFixedUpdate();
             }
             Main_Player.Instance.rb.velocity = Vector3.zero;
         }
@@ -179,9 +181,9 @@ public class State_Atk2 : State
         {
             while (count < time)
             {                
-                Main_Player.Instance.rb.velocity = (transform.forward * power * Time.deltaTime);
-                count += Time.deltaTime;
-                yield return null;
+                Main_Player.Instance.rb.velocity = (transform.forward * power * Time.fixedDeltaTime);
+                count += Time.fixedDeltaTime;
+                yield return new WaitForFixedUpdate();
             }
             Main_Player.Instance.rb.velocity = Vector3.zero;
         }

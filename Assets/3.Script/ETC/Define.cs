@@ -11,7 +11,7 @@ public class Define : MonoBehaviour
 
     public enum SFX
     {
-        EnemyShot, Raser, GundamAttack, ToFlag, FlagBarrier, FlagAttack, Shot, Hit, ToGundam, Dash, Danger, 
+        EnemyShot, Raser, GundamAttack, ToFlag, FlagBarrier, FlagAttack, Shot, Hit, ToGundam, Dash, Danger, Atk1, Atk2, Atk3, Atk4
     }
 
     public enum EnemyTagType
