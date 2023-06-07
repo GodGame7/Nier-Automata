@@ -27,7 +27,6 @@ public class State_Atk2 : State
     public override void Enter(State before)
     {
         Main_Player.Instance.isAtk = true;
-       // Main_Player.Instance.anim_player.applyRootMotion = true;
         Atk();
         Main_Player.Instance.anim_sword.SetTrigger("Atk");
         Main_Player.Instance.anim_player.SetTrigger("Atk");
@@ -36,15 +35,15 @@ public class State_Atk2 : State
 
     public override void Exit(State next)
     {
-       //Main_Player.Instance.anim_player.applyRootMotion = false;
         ResetBool();
         ResetSword();
+        if (listener != null) { 
         StopCoroutine(listener);
+        }
         isCanStr = false;
         stronged = false;
         index = 0;
         Main_Player.Instance.rb.velocity = Vector3.zero;
-
     }
 
     public override void StateFixedUpdate()
@@ -136,8 +135,8 @@ public class State_Atk2 : State
         Rotate2();
         switch (i)
         {
-            case 1: MoveAnim(0.1f, 350f); break;
-            case 2: MoveAnim(0.15f, 300f); break;
+            case 1: MoveAnim(0.1f, 300f); break;
+            case 2: MoveAnim(0.15f, 200f); break;
             case 3: MoveAnim(0.5f, 20); break;
             case 4: MoveAnim(0f, 0f); break;
             case 5: MoveAnim(0.4f, 20); break;

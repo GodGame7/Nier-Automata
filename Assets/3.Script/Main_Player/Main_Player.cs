@@ -38,6 +38,7 @@ public class Main_Player : MonoBehaviour
     public bool isDodge;
     public bool isHitted;
     public bool isInvincible;
+    float invinsibletimer = 0f;
 
     private void Awake()
     {
@@ -65,20 +66,6 @@ public class Main_Player : MonoBehaviour
         isDodge = false;
         isHitted = false;
     }
-    //public void Rotation2(Vector3 inputVec)
-    //{
-    //    StartCoroutine(Rotatewhile(inputVec));
-    //}
-    //public IEnumerator Rotatewhile(Vector3 inputVec)
-    //{
-    //    Quaternion targetRotation = Quaternion.LookRotation(inputVec, Vector3.up);
-    //    while (transform.rotation != targetRotation)
-    //    {
-    //        transform.rotation = 
-    //            Quaternion.RotateTowards(transform.rotation, targetRotation, 1f * Time.deltaTime);
-    //        yield return null;
-    //    }
-    //}
     public void Rotate()
     {
         Vector3 rotation = new Vector3(0f, Input.GetAxis("Horizontal"), 0f) * 1f;
@@ -86,7 +73,7 @@ public class Main_Player : MonoBehaviour
     }
     public bool isCanHit()
     {
-        if (isDodge || isHitted) return false;
+        if (isDodge || isHitted || isDash || isInvincible) return false;
         else return true;
     }
     public bool isCanAttack()
@@ -94,18 +81,40 @@ public class Main_Player : MonoBehaviour
         if (isDodge || isHitted || isAtk) return false;
         else return true;
     }
+
+    IEnumerator invin;
+    void BeInvincible(float time)
+    {
+        invin = Invincible_co(time);
+        if (invin != null) { 
+        StopCoroutine(invin);
+        }
+        StartCoroutine(invin);
+        IEnumerator Invincible_co(float time)
+        {
+            isInvincible = true;
+            invinsibletimer = time;
+            while (isInvincible && invinsibletimer > 0f)
+            {
+                invinsibletimer -= Time.deltaTime;
+                yield return null;
+            }
+            isInvincible = false;
+        }
+    }
     public void OnDamage(float damage)
     {
         if (isCanHit())
         {
             sm.ChangeState(sm.hitted);
+            BeInvincible(1f);
             PlayerData.Instance.OnDamage(damage);
         }
-        else
+        else if(isInvincible)
         {
             Debug.Log("무적 상태입니다");
-            if (isDodge) { HittedWhileDodge(); }
         }
+        else if (isDodge || isDash) { BeInvincible(0.3f); HittedWhileDodge(); }
     }
     public void SwordToHand()
     {
@@ -122,15 +131,5 @@ public class Main_Player : MonoBehaviour
     {
         //todo 포스트프로세싱, 타임스케일 등 연출요소
         meshBake.DodgeEffect();
-    }
-
-    private IEnumerator DestroyCopiesAfterDelay(GameObject[] copies, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        for (int i = 0; i < copies.Length; i++)
-        {
-            Destroy(copies[i]);
-        }
     }
 }
