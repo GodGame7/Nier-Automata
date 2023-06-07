@@ -30,7 +30,7 @@ public class FlagControl : MonoBehaviour
     public int defaultLayer { get; private set; }
     private bool canMove = true;
     private bool moveToCenter = false;
-    private bool canFire = false;
+    private bool canFire = true;
     public float threshold = 1f;
     private readonly Vector3 defaultPos = new Vector3(0, 0.02f, 0);
 
