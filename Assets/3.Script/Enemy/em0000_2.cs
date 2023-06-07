@@ -21,6 +21,9 @@ public class em0000_2 : Enemy
     int count = 0;
     float timer = 0f;
 
+    [Header("AudioClip")]
+    public AudioClip Attack;
+
     void Start()
     {
         Bullet_Soft = new GameObject[bullet_count];
@@ -67,16 +70,15 @@ public class em0000_2 : Enemy
                 count = 0;
             }
 
-            //Vector3 Can_pos = Cannon_pos.position;
-            //Can_pos.y = 1f;
 
             Bullet_Soft[count].SetActive(true);
             Bullet_Soft[count].transform.position = Cannon_pos.position;
 
+            //ÃÑ¾Ë ¹ß»ç
+            audio.PlayOneShot(Attack);
+
+
             Vector3 direction = (target.transform.position - Bullet_Soft[count].transform.position).normalized;
-
-            //Bullet_Soft[count].transform.LookAt(target.transform);
-
             Rigidbody bulletRigidbody = Bullet_Soft[count].GetComponent<Rigidbody>();
             if (bulletRigidbody != null)
             {

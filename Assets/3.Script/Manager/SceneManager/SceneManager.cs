@@ -42,7 +42,9 @@ public class SceneManager : MonoBehaviour
     public VideoClip secondvideo;
     public VideoClip thirdvideo;
 
+    [Header("오디오, 자막 관련")]
     public AudioManager audioManager;
+    public MainSubTitleTextManager subText;
 
 
     private void Awake()
@@ -220,8 +222,22 @@ public class SceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(4.5f);
         Wallanim.SetTrigger("Breaken");
-
         fourth = true;
+
+        yield return new WaitForSeconds(1f);
+        subText.PlayClip(0);
+        subText.NextSubText(); // 이것이....... 목표 대형 병기!? <- 자막출력
+
+        yield return new WaitForSeconds(4f);
+        subText.NextSubText(); // 부정: 해당 적은 목표가 아님 <- 자막출력
+
+        yield return new WaitForSeconds(3.5f);
+        subText.NextSubText();  // 신속한 제거를 권장 <- 자막출력
+        yield return new WaitForSeconds(2.5f);
+        subText.NextSubText(); // 간단하게 말하는군 <- 자막출력
+
+        yield return new WaitForSeconds(2f);
+        subText.OffSubText();
     }
 
     IEnumerator BossEnd_co()
