@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+        if(Input.GetKey(KeyCode.F11))
+        {
+            Time.timeScale = 10f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     private void GameOver()
