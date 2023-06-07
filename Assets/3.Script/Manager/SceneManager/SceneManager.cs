@@ -12,6 +12,7 @@ public class SceneManager : MonoBehaviour
     [Header("MainCamera")]
     [SerializeField] PlayerInput player1;
     [SerializeField] StateManager player2;
+    [SerializeField] MenuUI menu;
 
     [Header("Enemy")]
     [SerializeField] GameObject[] em0000;
@@ -61,6 +62,14 @@ public class SceneManager : MonoBehaviour
     private void Update()
     {
 
+        if (video.isPlaying)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                video.Stop();
+            }
+        }
+
         if (first)
         {
             StartCoroutine(firstEnemy_co());
@@ -87,10 +96,7 @@ public class SceneManager : MonoBehaviour
     IEnumerator firstVideo_co()
     {
         //화면전환
-        Time.timeScale = 0f;
-        camera.GetComponent<CameraMovement>().enabled = false;
-        player1.enabled = false;
-        player2.enabled = false;
+        VideoStart();
 
         //비디오 출력
         //video.clip = firstvideo;
@@ -106,11 +112,7 @@ public class SceneManager : MonoBehaviour
         yield return new WaitUntil(() => !video.isPlaying);
 
         //화면전환
-        Time.timeScale = 1f;
-        camera.GetComponent<CameraMovement>().enabled = true;
-        player1.enabled = true;
-        player2.enabled = true;
-        Raw.SetActive(false);
+        VideoEnd();
 
         // BGM 시작
         StartBGM();
@@ -187,11 +189,8 @@ public class SceneManager : MonoBehaviour
     {
         third = false;
 
-        Time.timeScale = 0f;
-        Raw.SetActive(true);
-        camera.GetComponent<CameraMovement>().enabled = false;
-        player1.enabled = false;
-        player2.enabled = false;
+        VideoStart();
+
         StopBGM(); // BGM 멈춤
         video.Play();
 
@@ -201,11 +200,8 @@ public class SceneManager : MonoBehaviour
         }
         yield return new WaitUntil(() => !video.isPlaying);
 
-        Time.timeScale = 1f;
-        camera.GetComponent<CameraMovement>().enabled = true;
-        Raw.SetActive(false);
-        player1.enabled = true;
-        player2.enabled = true;
+        VideoEnd();
+
         Wall.SetActive(false);
 
         video.clip = thirdvideo;
@@ -249,12 +245,10 @@ public class SceneManager : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
 
             StartBGM(); // BGM 멈춤
+
             video.Play();
 
-            camera.GetComponent<CameraMovement>().enabled = false;
-            player1.enabled = false;
-            player2.enabled = false;
-            Raw.SetActive(true);
+            VideoStart();
 
             while (!video.isPlaying)
             {
@@ -262,10 +256,7 @@ public class SceneManager : MonoBehaviour
             }
             yield return new WaitUntil(() => !video.isPlaying);
 
-            camera.GetComponent<CameraMovement>().enabled = true;
-            player1.enabled = true;
-            player2.enabled = true;
-            Raw.SetActive(false);
+            VideoEnd();
 
             StopBGM(); // BGM 시작
         }
@@ -283,4 +274,25 @@ public class SceneManager : MonoBehaviour
         audioManager.StopBgm();
     }
 
+    void VideoStart()
+    {
+        Time.timeScale = 0f;
+        camera.GetComponent<CameraMovement>().enabled = false;
+        player1.enabled = false;
+        player2.enabled = false;
+        menu.enabled = false;
+
+        Raw.SetActive(true);
+    }
+
+    void VideoEnd()
+    {
+        Time.timeScale = 1f;
+        camera.GetComponent<CameraMovement>().enabled = true;
+        player1.enabled = true;
+        player2.enabled = true;
+        menu.enabled = true;
+
+        Raw.SetActive(false);
+    }
 }
