@@ -39,6 +39,7 @@ public class Inventory : MonoBehaviour
             {
                 removeItem.Quantity--;
                 StartCoroutine(Text_co(removeItem));
+                Debug.Log(Menu.InvenLength);
                 if (Menu.EnterMenuItem)
                 {
                     if (Menu.InvenLength == 1)

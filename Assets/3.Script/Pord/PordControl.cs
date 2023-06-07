@@ -141,6 +141,7 @@ public class PordControl : MonoBehaviour
         }
         if (!isLaser)
         {
+
             transform.position = Player.transform.position + PlayerAround;
             transform.rotation = Cam.transform.rotation;
         }
