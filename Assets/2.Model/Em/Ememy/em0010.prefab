@@ -832,7 +832,13 @@ MonoBehaviour:
   anim: {fileID: 0}
   target: {fileID: 0}
   audio: {fileID: 0}
-  Walk: {fileID: 0}
+  DieBoom: {fileID: 8300000, guid: 2be27846b5be3ee4492ec595efa5023a, type: 3}
+  Walk: {fileID: 8300000, guid: 7526eeb0363b95c43b7b87a8eb8cd077, type: 3}
+  JumpStart: {fileID: 8300000, guid: cd3856041defa9d4a931bea552bd80b9, type: 3}
+  JumpEnd: {fileID: 8300000, guid: b2a983ab5ef40ac4da85e8e08de40e54, type: 3}
+  LeftPunch: {fileID: 8300000, guid: 17e66c6ba036b2848a961cf6eb100486, type: 3}
+  RightPunch: {fileID: 8300000, guid: 24cc89317155469419da54b575cbd56b, type: 3}
+  doubleAttack: {fileID: 8300000, guid: 13f4305529a2fad4b8662af75953d008, type: 3}
 --- !u!54 &1787845615327828841
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -870,7 +876,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

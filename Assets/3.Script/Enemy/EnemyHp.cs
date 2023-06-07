@@ -105,7 +105,7 @@ public class EnemyHp : MonoBehaviour
             enemy.anim.SetFloat("HitNum", hitNum);
             enemy.anim.SetTrigger("Hit");
 
-            if (enemy.anim.GetFloat("Patton") == 2 || enemy.anim.GetFloat("Patton") == 4 || enemy.anim.GetBool("Attack2"))
+            if (enemy.anim.GetFloat("Patton") != 1 || enemy.anim.GetBool("Attack2"))
             {
                 enemy.anim.ResetTrigger("Hit");
             }

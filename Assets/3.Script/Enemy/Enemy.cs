@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour
     //타겟 위치를 저장하는 변수
     protected Vector3 targetPosition;
 
+    [Header("Cilp")]
+    public AudioClip DieBoom;
 
     private void Awake()
     {
@@ -180,8 +182,9 @@ public class Enemy : MonoBehaviour
 
 
         int value = Random.Range(1, PattonNum + 1);
+
         anim.SetFloat("Patton", value);
-        if (anim.GetFloat("Patton") == 2 || anim.GetFloat("Patton") == 4)
+        if (anim.GetFloat("Patton") != 1)
         {
             anim.SetBool("IsAttack", true);
         }
@@ -224,6 +227,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Die") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f);
         enemyHp.isdead_effect.SetActive(true);
+        audio.PlayOneShot(DieBoom);
 
         yield return new WaitForSeconds(2f);
         enemyHp.isdead = false;

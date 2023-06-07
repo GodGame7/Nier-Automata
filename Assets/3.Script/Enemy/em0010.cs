@@ -5,6 +5,11 @@ using UnityEngine;
 public class em0010 : Enemy
 {
     public AudioClip Walk;
+    public AudioClip JumpStart;
+    public AudioClip JumpEnd;
+    public AudioClip LeftPunch;
+    public AudioClip RightPunch;
+    public AudioClip doubleAttack;
 
     protected override void OnEnable()
     {
@@ -41,6 +46,30 @@ public class em0010 : Enemy
     void WalkSound()
     {
         audio.PlayOneShot(Walk);
+    }
+
+    void DoubleAttackSound()
+    {
+        audio.PlayOneShot(doubleAttack);
+    }
+    void RightPunchSound()
+    {
+        audio.PlayOneShot(RightPunch);
+    }
+
+    void LeftPunchSound()
+    {
+        audio.PlayOneShot(LeftPunch);
+    }
+
+    void JumpStartSound()
+    {
+        audio.PlayOneShot(JumpStart);
+    }
+
+    void JumpEndSound()
+    {
+        audio.PlayOneShot(JumpEnd);
     }
 
 
