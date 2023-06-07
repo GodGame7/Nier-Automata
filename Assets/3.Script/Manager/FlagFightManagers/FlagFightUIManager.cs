@@ -88,6 +88,11 @@ public class FlagFightUIManager : MonoBehaviour
         StartCoroutine(FadeOut(background01, 2.0f));
     }
 
+    public void NextPhase()
+    {
+        StartCoroutine(FadeIn(background02, 5.0f));
+    }
+
     private IEnumerator FadeOut(GameObject obj, float duration)
     {
         CanvasGroup canvasGroup = obj.GetComponent<CanvasGroup>();
