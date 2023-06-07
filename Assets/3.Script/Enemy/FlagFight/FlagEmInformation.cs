@@ -78,7 +78,7 @@ public class FlagEmInformation : MonoBehaviour
     {
         // 데미지 화면에 띄우기
         GameObject Damage = Instantiate(DamagePrefab);
-        Damage.transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        Damage.transform.SetParent(GameObject.FindWithTag("Canvas").transform, false);
         Text damageText = Damage.GetComponent<Text>();
 
         // 수치 설정

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Eye Profile.asset.meta
 guid: 94e322edf0c99024690c0e09ea848b3d
 NativeFormatImporter:
+========
+guid: 0851605490a599b46b6ac5cb681d93ea
+DefaultImporter:
+>>>>>>>> c5632b2bf50adbac776b454aa8614d3daf0d4dbb:Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder Example.unity.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 
