@@ -60,3 +60,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5c698ae796eda2489a950f781834ca1, type: 3}
   - {fileID: 8300000, guid: 276d53ddb8d36f94fb8b6d1e1520cc3e, type: 3}
   - {fileID: 8300000, guid: 35af5477e9aa54e449f55aee36c40bbb, type: 3}
+  - {fileID: 8300000, guid: 4ce73782851e99244ab27b461f97ae35, type: 3}
+  - {fileID: 8300000, guid: 0393bfb1d03cd1e49ac5f5a351653763, type: 3}
+  - {fileID: 8300000, guid: dda0867a4203c0b41a17012a918e6cd6, type: 3}
+  - {fileID: 8300000, guid: 41f0f3740630b2b438e3b34914b10ee9, type: 3}
+  - {fileID: 8300000, guid: 7939578b9cea4cb49aea0308c2bc1d36, type: 3}
+  - {fileID: 8300000, guid: 766d1ece98a83924c88bf6f44083b7b0, type: 3}
+  - {fileID: 8300000, guid: eda0d2b288571ee40aabf7821795681d, type: 3}
+  - {fileID: 8300000, guid: bd9f7b726dc10374babe30e41b286d46, type: 3}
+  float_talkSound: 0
