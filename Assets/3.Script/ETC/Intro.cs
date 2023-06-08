@@ -375,13 +375,13 @@ public class Intro : MonoBehaviour
         BgmCount--;
         BGMUpdateUI();
         //브금 소리 줄이기
-        AudioManager.Instance.SetBgmVolume(BgmCount);
+        AudioManager.Instance.SetBgmVolume(BgmCount * 0.1f);
     }
     private void BGMRight()
     {
         BgmCount++;
         BGMUpdateUI();
-        AudioManager.Instance.SetBgmVolume(BgmCount);
+        AudioManager.Instance.SetBgmVolume(BgmCount * 0.1f);
         //브금 소리늘리기
     }
     private void BGMUpdateUI()
@@ -399,14 +399,14 @@ public class Intro : MonoBehaviour
     {
         SFXCount--;
         SFXUpdateUI();
-        AudioManager.Instance.SetSfxVolume(SFXCount);
+        AudioManager.Instance.SetSfxVolume(SFXCount * 0.1f);
         //SFX 소리줄이기
     }
     private void SFXRight()
     {
         SFXCount++;
         SFXUpdateUI();
-        AudioManager.Instance.SetSfxVolume(SFXCount);
+        AudioManager.Instance.SetSfxVolume(SFXCount * 0.1f);
         //SFX 소리 늘리기
     }
     private void SFXUpdateUI()
@@ -426,7 +426,7 @@ public class Intro : MonoBehaviour
         UpdateSoundTalkUI();
         //대사 소리 줄이기
         AudioManager audio = FindObjectOfType<AudioManager>();
-        audio.float_talkSound = TalkSoundCount;
+        audio.float_talkSound = TalkSoundCount * 0.1f;
 
     }
     private void SoundTalkRight()
@@ -435,7 +435,7 @@ public class Intro : MonoBehaviour
         UpdateSoundTalkUI();
         //대사 소리 늘리기
         AudioManager audio = FindObjectOfType<AudioManager>();
-        audio.float_talkSound = TalkSoundCount;
+        audio.float_talkSound = TalkSoundCount * 0.1f;
     }
     private void UpdateSoundTalkUI()
     {
