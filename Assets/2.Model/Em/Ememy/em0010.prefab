@@ -839,6 +839,7 @@ MonoBehaviour:
   LeftPunch: {fileID: 8300000, guid: 17e66c6ba036b2848a961cf6eb100486, type: 3}
   RightPunch: {fileID: 8300000, guid: 24cc89317155469419da54b575cbd56b, type: 3}
   doubleAttack: {fileID: 8300000, guid: 13f4305529a2fad4b8662af75953d008, type: 3}
+  FootAttack: {fileID: 8300000, guid: aff0a6509f8084e418d4e33d3bb76ffa, type: 3}
 --- !u!54 &1787845615327828841
 Rigidbody:
   m_ObjectHideFlags: 0
