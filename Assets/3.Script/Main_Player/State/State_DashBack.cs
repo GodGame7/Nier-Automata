@@ -53,6 +53,7 @@ public class State_DashBack : State
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    Main_Player.Instance.rb.velocity = Vector3.zero;
                     StartCoroutine(Dodge());
                     yield break;
                 }
@@ -64,6 +65,7 @@ public class State_DashBack : State
             Main_Player.Instance.isDash = false;
             yield break;
         }
+        Main_Player.Instance.rb.velocity = Vector3.zero;
         Main_Player.Instance.anim_player.SetBool("DashEnd", true);
         yield return new WaitForSeconds(0.4f);
         Main_Player.Instance.isDash = false;
