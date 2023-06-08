@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+        isGameOver = false;
+        isAllive = true;
     }
 
     private void OnApplicationFocus(bool hasFocus)

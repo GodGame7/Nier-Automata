@@ -31,6 +31,10 @@ public class FollowUI : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(target_obj == null)
+        {
+            return;
+        }
         if (!target_obj.activeSelf)
         {
             Destroy(gameObject);

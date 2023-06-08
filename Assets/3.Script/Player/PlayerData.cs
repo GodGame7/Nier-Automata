@@ -12,17 +12,10 @@ public class PlayerData : MonoBehaviour
             if (instance == null)
             {
                 instance = FindObjectOfType<PlayerData>();
-                //Init();
                 return instance;
             }
             else return instance;
         }
-    }
-    static void Init()
-    {
-        GameObject obj = new GameObject("PlayerManager");
-        obj.AddComponent<PlayerData>();
-        instance = obj.GetComponent<PlayerData>();
     }
 
     public float atk;
