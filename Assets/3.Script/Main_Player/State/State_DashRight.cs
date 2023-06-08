@@ -49,15 +49,17 @@ public class State_DashRight : State
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetTrigger("DashRight");
         AudioManager.Instance.PlaySfx(Define.SFX.Dash2);
+        Main_Player.Instance.rb.AddForce(transform.right * 1500f, ForceMode.Impulse);
         Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {
-            if (Physics.Raycast(transform.position, transform.right, 2f, 1 << LayerMask.NameToLayer("Wall"))) { transform.Translate(Vector3.right * 8f * Time.deltaTime); }
-            else { transform.Translate(Vector3.right * 15f * Time.deltaTime); }
+            //if (Physics.Raycast(transform.position, transform.right, 2f, 1 << LayerMask.NameToLayer("Wall"))) { transform.Translate(Vector3.right * 8f * Time.deltaTime); }
+            //else { transform.Translate(Vector3.right * 15f * Time.deltaTime); }
             if (Time.time - lastdashtime < 0.3f)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    Main_Player.Instance.rb.velocity = Vector3.zero;
                     StartCoroutine(Dodge());
                     yield break;
                 }
@@ -69,6 +71,7 @@ public class State_DashRight : State
             Main_Player.Instance.isDash = false;
             yield break;
         }
+        Main_Player.Instance.rb.velocity = Vector3.zero;
         Main_Player.Instance.anim_player.SetBool("DashEnd", true);
         yield return new WaitForSeconds(0.4f);
         Main_Player.Instance.isDash = false;
