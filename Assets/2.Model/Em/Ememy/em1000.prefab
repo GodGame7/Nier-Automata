@@ -385,6 +385,11 @@ MonoBehaviour:
   maxsawrotateSpeed: 500
   minsawrotateSpeed: 150
   speed_down_time: 4
+  allAttackStart: {fileID: 8300000, guid: 38282a6af7667fd45b99b23919e7f018, type: 3}
+  allAttackEnd: {fileID: 8300000, guid: 0026207c1e7fe7c419fd2e55d9d059e9, type: 3}
+  Attack2: {fileID: 8300000, guid: b986770ee18884648981e572c85a9e67, type: 3}
+  Attack2End: {fileID: 8300000, guid: ca0246b0157d39a40978a23ce0d27e6b, type: 3}
+  Attack4: {fileID: 8300000, guid: 8fad26b7e19a89f43af94e04bb805dbb, type: 3}
 --- !u!54 &8933600936241203491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -411,7 +416,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2cbb5ed01051be5429b3e8732b54321a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
