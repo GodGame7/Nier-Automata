@@ -212,7 +212,7 @@ public class MenuUI : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (SystemCount < MaxSystemCount)
+                if (SystemCount < MaxSystemCount-1)
                 {
                     SystemDown();
                     AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
