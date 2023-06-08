@@ -189,9 +189,8 @@ public class Enemy : MonoBehaviour
             anim.SetBool("IsAttack", true);
         }
 
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.6f)
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f)
         {
-            Debug.Log("¶ô¿Â");
             TargetLookat();
             yield return null;
         }
