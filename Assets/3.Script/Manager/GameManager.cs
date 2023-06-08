@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        CursorManager();
         if(isGameOver && isAllive)
         {
             GameOver();
@@ -74,7 +73,7 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
 
-    private void CursorManager()
+    private void OnApplicationFocus(bool hasFocus)
     {
         if (cursor)
         {

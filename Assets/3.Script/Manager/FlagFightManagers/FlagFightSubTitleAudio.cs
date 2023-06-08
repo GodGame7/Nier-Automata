@@ -20,5 +20,10 @@ public class FlagFightSubTitleAudio : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    public void SetBgmVolume(float volume = 1.0f)
+    {
+        audioSource.volume = volume;
+    }
 }
 

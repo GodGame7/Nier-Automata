@@ -117,12 +117,6 @@ public class FlagControl : MonoBehaviour
         StopCoroutine(nameof(ResetCombo_co));
         StopCoroutine(nameof(SetTransformationState_co));
     }
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        // todo 버튼 눌러야돼서 나중에 바꿀것
-        //Cursor.lockState = CursorLockMode.None;
-    }
     private void GetComponentAndCashing()
     {
         TryGetComponent(out anim);
