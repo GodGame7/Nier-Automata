@@ -272,6 +272,5 @@ public class PlayerInput : MonoBehaviour
             sm.ChangeState(sm.dashstates[2]);
         }
     }
-
     #endregion
 }

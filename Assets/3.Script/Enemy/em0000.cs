@@ -73,8 +73,7 @@ public class em0000 : Enemy
     {
         anim.SetBool("Attack2", true);
 
-        //소리실행
-        StartCoroutine(PlaySound(Attack2));
+
 
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
         {
@@ -95,16 +94,28 @@ public class em0000 : Enemy
         TargetLookat();
         anim.SetTrigger("Attack1");
 
-        StartCoroutine(PlaySound(Attack1));
 
         yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Idle"));
     }
 
-    IEnumerator PlaySound(AudioClip soundname)
+    void PlayAttack1()
     {
-        //yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("em0000_Attack Start (Windmill)"));
-        yield return new WaitUntil(() => anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"));
-        audio.PlayOneShot(soundname);
+        audio.PlayOneShot(Attack1);
+    }
+
+    void PlayAttack2()
+    {
+        audio.PlayOneShot(Attack2);
+    }
+
+    void PlayWalk()
+    {
+        audio.PlayOneShot(Walk);
+    }
+
+    void PlayDash()
+    {
+        audio.PlayOneShot(Dash);
     }
 
 }

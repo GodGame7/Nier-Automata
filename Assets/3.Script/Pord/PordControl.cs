@@ -43,8 +43,7 @@ public class PordControl : MonoBehaviour
 
     //포드의 위치를 위한 변수
     private Vector3 PlayerAround = new Vector3(1, 1, 0);
-    private Vector3 TopPosition = new Vector3(0, 1.8f, 0);
-    private Vector3 MagicCirclePositon = new Vector3(0, 0, 0.4f);
+    private Vector3 MagicCirclePositon;
 
     //포드의 움직임 제어용 변수
     private bool isActive = false;
@@ -52,7 +51,7 @@ public class PordControl : MonoBehaviour
     //포드의 총위치를 위한 변수
     Vector3 ScreenCenter;
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         //if (transform.position.y < (Player.transform.position + TopPosition).y && !isActive)
@@ -73,7 +72,7 @@ public class PordControl : MonoBehaviour
             {
                 return; //딜레이 시간동안은 총알을 못쏘도록
             }
-
+            MagicCirclePositon = transform.forward*0.4f;
             isActive = true;
             //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
 
@@ -90,12 +89,12 @@ public class PordControl : MonoBehaviour
 
             if (isLockOn) //록온시 타겟방향으로
             {
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move((targetpos - PordBullet.Bullet[bulletCount].transform.position).normalized);
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().MoveRockOn((targetpos - PordBullet.Bullet[bulletCount].transform.position).normalized);
             }
             else //록온이 아닐시 앞으로
             {
 
-                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(new Vector3(ScreenCenter.x, transform.position.y, ScreenCenter.z).normalized);
+                PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().Move(transform.forward);
                 //방향 조정 필요 임시로 넣어뒀음
             }
 

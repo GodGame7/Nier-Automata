@@ -11,11 +11,12 @@ TagManager:
   - FlagBullet
   - Wall
   - Canvas
+  - Pord
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 

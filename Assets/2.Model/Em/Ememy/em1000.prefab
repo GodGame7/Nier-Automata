@@ -379,6 +379,8 @@ MonoBehaviour:
   boxCollider: []
   anim: {fileID: 0}
   target: {fileID: 0}
+  audio: {fileID: 0}
+  DieBoom: {fileID: 8300000, guid: 2be27846b5be3ee4492ec595efa5023a, type: 3}
   saw: {fileID: 8706809041425183}
   maxsawrotateSpeed: 500
   minsawrotateSpeed: 150

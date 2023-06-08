@@ -4,12 +4,17 @@ using UnityEngine.UI;
 
 public class ItemEffect : MonoBehaviour
 {
-
+    [SerializeField]
+    private ItemData[] itemData;
     private void Awake()
     {
         PlayerInput.UseItem += UseItem;
         MenuUI.UseItem += UseItem;
         Temp.UseItem += UseItem;
+
+        itemData[0].Quantity = 15;
+        itemData[1].Quantity = 7;
+        itemData[2].Quantity = 5;
     }
 
     public void UseItem(int num)

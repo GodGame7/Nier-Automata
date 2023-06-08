@@ -57,7 +57,7 @@ public class SceneManager : MonoBehaviour
     private void Start()
     {
         // BGM Ω√¿€
-        audioManager.SetBgmVolume(0.2f);
+        audioManager.SetBgmVolume(0.5f);
 
         StartCoroutine(firstVideo_co());
     }

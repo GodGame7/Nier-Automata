@@ -912,10 +912,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   target: {fileID: 0}
   audio: {fileID: 0}
-  Attack1: {fileID: 0}
-  Attack2: {fileID: 8300000, guid: 13ef9ddbc02e45b40b662e4bb4fca891, type: 3}
-  Walk: {fileID: 0}
-  Dash: {fileID: 0}
+  DieBoom: {fileID: 8300000, guid: 2be27846b5be3ee4492ec595efa5023a, type: 3}
+  Attack1: {fileID: 8300000, guid: 4e95547a49d4217489114ae05edb6799, type: 3}
+  Attack2: {fileID: 8300000, guid: 68f66a31207ea11439f2aa3e72d03c65, type: 3}
+  Walk: {fileID: 8300000, guid: 56179b6911bb0a14cbfb55a9ef5f8edc, type: 3}
+  Dash: {fileID: 8300000, guid: 747bf126221f01b438ec5f79f37d8079, type: 3}
 --- !u!54 &3427793693206566815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -953,9 +954,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -988,7 +989,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1018,6 +1019,15 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.95977014
       value: 1
       inSlope: 0
       outSlope: 0
