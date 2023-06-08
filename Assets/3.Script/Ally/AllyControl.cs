@@ -14,13 +14,9 @@ public class AllyControl : MonoBehaviour
     private Rigidbody rigid;
     private FlagBulletSpawner[] bulletSpawners = new FlagBulletSpawner[2];
     private float lastFireTime = 0.0f;
-    [SerializeField]
     private float fireDelay = 0.2f;
 
-    private float speed = 0.2f;
-    [SerializeField]
     private int dir = 1;
-    [SerializeField]
     private float time = 0f;
     private float stopDirTime = 0.5f;
     private float changeDirTime = 2.0f;
@@ -110,25 +106,6 @@ public class AllyControl : MonoBehaviour
             lastFireTime = Time.time;
         }
     }
-    // time 동안 쏘고 중지
-    //public IEnumerator Fire_co(float time)
-    //{
-    //
-    //    float startTime = Time.time;
-    //    while (true)
-    //    {
-    //        yield return fireDelay_wait;
-
-    //        foreach (FlagBulletSpawner b in bulletSpawners)
-    //        {
-    //            b.Fire();
-    //        }
-    //        if (Time.time - startTime >= time)
-    //        {
-    //            break;
-    //        }
-    //    }
-    //}
 
     public void Transform()
     {
