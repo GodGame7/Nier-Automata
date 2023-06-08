@@ -5,6 +5,10 @@ using UnityEngine;
 public class State_Idle2 : State
 {
     private Camera mainCamera;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip move;
+    [SerializeField] private AudioClip run;
+
     float moveSpeed = 5f; // 플레이어 이동 속도
     private void Start()
     {
@@ -16,7 +20,6 @@ public class State_Idle2 : State
         Main_Player.Instance.anim_player.SetTrigger("Idle 0");
         Main_Player.Instance.anim_sword.SetTrigger("Idle");
         Main_Player.Instance.anim_bigsword.SetTrigger("Idle");
-
     }
 
     public override void Exit(State next)
@@ -24,7 +27,6 @@ public class State_Idle2 : State
         Main_Player.Instance.anim_player.SetBool("Idle", false);
         Main_Player.Instance.anim_player.SetFloat("Speed", 0f);
         Main_Player.Instance.rb.velocity = Vector3.zero;
-
     }
 
     public override void StateFixedUpdate()
@@ -55,6 +57,7 @@ public class State_Idle2 : State
             {
                 moveSpeed = 8f;
                 Main_Player.Instance.anim_player.SetFloat("Speed", 1.5f);
+                PlayRunSound();
             }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
@@ -65,8 +68,27 @@ public class State_Idle2 : State
             {
                 moveSpeed = 5f;
                 Main_Player.Instance.anim_player.SetFloat("Speed", 1f);
+                PlayMoveSound();
             }
         }
         else Main_Player.Instance.anim_player.SetFloat("Speed", 0f);
+    }
+
+
+
+
+    private void PlayRunSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(run);
+        }
+    }
+    private void PlayMoveSound() 
+    { 
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(move);
+        }
     }
 }

@@ -26,6 +26,7 @@ public class State_Atk2 : State
     }
     public override void Enter(State before)
     {
+        ResetBool();
         Main_Player.Instance.isAtk = true;
         Atk();
         Main_Player.Instance.anim_sword.SetTrigger("Atk");
@@ -34,8 +35,7 @@ public class State_Atk2 : State
     }
 
     public override void Exit(State next)
-    {
-        ResetBool();
+    {        
         ResetSword();
         if (listener != null) { 
         StopCoroutine(listener);
@@ -44,6 +44,7 @@ public class State_Atk2 : State
         stronged = false;
         index = 0;
         Main_Player.Instance.rb.velocity = Vector3.zero;
+        ResetBool();
     }
 
     public override void StateFixedUpdate()
@@ -132,7 +133,7 @@ public class State_Atk2 : State
     void Atk_co(int i)
     {
         Rotate2();
-        if (!Physics.Raycast(transform.position, transform.forward, 5f, LayerMask.NameToLayer("Enemy")))
+        if (Input.GetKey(KeyCode.W))
         {
             switch (i)
             {

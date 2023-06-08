@@ -48,6 +48,7 @@ public class State_DashRight : State
     {
         Main_Player.Instance.isDash = true;
         Main_Player.Instance.anim_player.SetTrigger("DashRight");
+        AudioManager.Instance.PlaySfx(Define.SFX.Dash2);
         Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {

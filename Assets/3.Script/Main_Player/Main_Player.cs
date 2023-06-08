@@ -114,7 +114,7 @@ public class Main_Player : MonoBehaviour
         {
             Debug.Log("무적 상태입니다");
         }
-        else if (isDodge || isDash) { BeInvincible(0.3f); HittedWhileDodge(); }
+        else if (isDodge || isDash) { BeInvincible(1f); HittedWhileDodge(); }
     }
     public void SwordToHand()
     {
@@ -130,6 +130,7 @@ public class Main_Player : MonoBehaviour
     public void HittedWhileDodge()
     {
         //todo 포스트프로세싱, 타임스케일 등 연출요소
+        AudioManager.Instance.PlaySfx(Define.SFX.Dodge);
         meshBake.DodgeEffect();
     }
 }

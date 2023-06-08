@@ -25,6 +25,7 @@ public class State_BigAtk : State
     }
     public override void Enter(State before)
     {
+        ResetBool();
         Main_Player.Instance.isAtk = true;
         Main_Player.Instance.anim_player.applyRootMotion = true;
         Atk();
