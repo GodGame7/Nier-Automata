@@ -44,20 +44,18 @@ public class SceneManager : MonoBehaviour
     public VideoClip thirdvideo;
 
     [Header("오디오, 자막 관련")]
-    public AudioManager audioManager;
     public MainSubTitleTextManager subText;
 
 
     private void Awake()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
+    {        
         TryGetComponent(out video);
     }
 
     private void Start()
     {
         // BGM 시작
-        audioManager.SetBgmVolume(0.5f);
+        AudioManager.Instance.SetBgmVolume(0.5f);
 
         StartCoroutine(firstVideo_co());
     }
@@ -267,13 +265,13 @@ public class SceneManager : MonoBehaviour
     // BGM 재생 메소드
     void StartBGM()
     {
-        audioManager.PlayBgm("BGM");
+        AudioManager.Instance.PlayBgm("BGM");
     }
 
     // BGM 멈춤 메소드
     void StopBGM()
     {
-        audioManager.StopBgm();
+        AudioManager.Instance.StopBgm();
     }
 
     void VideoStart()

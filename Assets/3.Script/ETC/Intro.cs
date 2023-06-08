@@ -514,7 +514,9 @@ public class Intro : MonoBehaviour
     }
     private void StartMenuEnter()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("FlagFight");
+        if (StartMenuCount == 0) { UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene"); }
+        else { UnityEngine.SceneManagement.SceneManager.LoadScene("FlagFight"); }
+        
     }
     private void StartMenuEnterSetting()
     {
