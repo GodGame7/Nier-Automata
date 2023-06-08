@@ -310,7 +310,7 @@ public class Intro : MonoBehaviour
             MenuToSetting = false;
             StartMenu_obj.SetActive(true);
             Setting_obj.SetActive(false);
-            
+
         }
     }
 
@@ -423,8 +423,6 @@ public class Intro : MonoBehaviour
         //대사 소리 줄이기
         AudioManager audio = FindObjectOfType<AudioManager>();
         audio.float_talkSound = TalkSoundCount;
-
-
 
     }
     private void SoundTalkRight()
@@ -726,7 +724,7 @@ public class Intro : MonoBehaviour
                     EnterTalkSoundSetting();
                 }
             }
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SoundExit();
             }
@@ -737,30 +735,48 @@ public class Intro : MonoBehaviour
             {
                 if (OnBGM)
                 {
-                    BGMLeft();
+                    if (BgmCount > 0)
+                    {
+                        BGMLeft();
+                    }
                 }
                 else if (OnSFX)
                 {
-                    SFXLeft();
+                    if (SFXCount > 0)
+                    {
+                        SFXLeft();
+                    }
                 }
                 else if (OnTalkSound)
                 {
-                    SoundTalkLeft();
+                    if (TalkSoundCount > 0)
+                    {
+                        SoundTalkLeft();
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (OnBGM)
                 {
-                    BGMRight();
+                    if (BgmCount < MaxBgmCount)
+                    {
+                        BGMRight();
+                    }
                 }
                 else if (OnSFX)
                 {
-                    SFXRight();
+                    if (SFXCount < MaxSFXCount)
+                    {
+                        SFXRight();
+                    }
                 }
                 else if (OnTalkSound)
                 {
-                    SoundTalkRight();
+                    if (TalkSoundCount < MaxTalkSoundCount)
+                    {
+                        SoundTalkRight();
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Escape))

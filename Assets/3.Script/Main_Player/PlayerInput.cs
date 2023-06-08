@@ -40,7 +40,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (Inventory_UI.isActiveInven)
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.Return))
             {
                 UseItem?.Invoke(Inventory_UI.ListNum);
                 Inventory_UI.UpdateUI();
