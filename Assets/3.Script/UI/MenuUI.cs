@@ -100,7 +100,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] Image[] System_BackGround;
     [SerializeField] Image[] System_Box;
     [SerializeField] Text[] System_Text;
-
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //메뉴창 열기
@@ -124,6 +124,8 @@ public class MenuUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     RightArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
+
                 }
             }
             if (MenuCount >= 1) //좌측 화살표 클릭시 왼쪽 넘어가게
@@ -131,6 +133,7 @@ public class MenuUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     LeftArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return))
@@ -170,6 +173,7 @@ public class MenuUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     ItemUpArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (ItemMenuCount < InvenLength - 1)
@@ -177,6 +181,7 @@ public class MenuUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     ItemDownArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
 
                 }
             }
@@ -198,6 +203,7 @@ public class MenuUI : MonoBehaviour
                 if (SystemCount > 0)
                 {
                     SystemUp();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -205,6 +211,7 @@ public class MenuUI : MonoBehaviour
                 if (SystemCount < MaxSystemCount)
                 {
                     SystemDown();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
 

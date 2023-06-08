@@ -45,14 +45,17 @@ public class PlayerInput : MonoBehaviour
             {
                 UseItem?.Invoke(Inventory_UI.ListNum);
                 Inventory_UI.UpdateUI();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
             }            
             if (Input.GetKeyDown(KeyCode.K))
             {
                 Inventory_UI.UpSelected();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
                 Inventory_UI.DownSelected();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
             }
 
         }
