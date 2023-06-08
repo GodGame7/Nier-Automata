@@ -52,7 +52,8 @@ public class State_DashRight : State
         Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {
-            transform.Translate(Vector3.right * 15f * Time.deltaTime);
+            if (Physics.Raycast(transform.position, transform.right, 2f, 1 << LayerMask.NameToLayer("Wall"))) { transform.Translate(Vector3.right * 8f * Time.deltaTime); }
+            else { transform.Translate(Vector3.right * 15f * Time.deltaTime); }
             if (Time.time - lastdashtime < 0.3f)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
