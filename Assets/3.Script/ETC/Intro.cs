@@ -176,6 +176,10 @@ public class Intro : MonoBehaviour
         Title.SetActive(false);
         Menu.SetActive(true);
         Menu_obj[TitleCount].SetActive(true);
+        if(TitleCount==1)
+        {
+            NewGame_obj.SetActive(true);
+        }
         OnTitleWarning = false;
         OnGameMenu = true;
     }

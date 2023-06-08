@@ -47,8 +47,13 @@ public class MenuUI : MonoBehaviour
     private bool OnSystem = false;
     private int SystemCount = 0;
     private int MaxSystemCount = 6;
-
-
+    private Color Default_System_BackGround = new Color(182f / 255f, 175f / 255f, 149f / 255f);
+    private Color Selected_System_BackGround = new Color(98f / 255f, 94f / 255f, 85f / 255f);
+    private Color Default_System_Box = new Color(68f / 255f, 62f / 255f, 52f / 255f);
+    private Color Selected_System_Box = new Color(191f / 255f, 183f / 255f, 159f / 255f);
+    private Color Default_System_Txt = new Color(99f / 255f, 94f / 255f, 71f / 255f);
+    private Color Selected_System_Txt = new Color(171f / 255f, 165f / 255f, 154f / 255f);
+    private Vector3 Selected_System_Zone = new Vector3(0,85,0);
     //온오프할 메뉴들
     [Header("오브젝트를 넣어주세용")]
     [SerializeField] private GameObject MenuUI_ob;
@@ -90,6 +95,11 @@ public class MenuUI : MonoBehaviour
     public delegate void Item(int num);
     public static event Item UseItem;
 
+    [Header("시스템 영역")]
+    [SerializeField] GameObject System_Selected_Zone;
+    [SerializeField] Image[] System_BackGround;
+    [SerializeField] Image[] System_Box;
+    [SerializeField] Text[] System_Text;
 
     private void Update()
     {
@@ -135,9 +145,10 @@ public class MenuUI : MonoBehaviour
                     }
                     return;
                 }
-                else if (MenuCount == 4)
+                else if (MenuCount == 6)
                 {
-
+                    EnterSystem();
+                    return;
                 }
 
                 else//아이템 이외엔 미구현
@@ -152,6 +163,7 @@ public class MenuUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitItem();
+                return;
             }
             if (ItemMenuCount > 0)
             {
@@ -185,7 +197,6 @@ public class MenuUI : MonoBehaviour
             {
                 if (SystemCount > 0)
                 {
-
                     SystemUp();
                 }
             }
@@ -194,7 +205,6 @@ public class MenuUI : MonoBehaviour
                 if (SystemCount < MaxSystemCount)
                 {
                     SystemDown();
-
                 }
             }
 
@@ -203,10 +213,12 @@ public class MenuUI : MonoBehaviour
                 if (SystemCount == 4)
                 {
                     SystemGoTitle();
+                    return;
                 }
                 else if (SystemCount == 5)
                 {
                     SystemGameEnd();
+                    return;
                 }
                 else
                 {
@@ -216,7 +228,7 @@ public class MenuUI : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-
+                SystemExit();
             }
         }
 
@@ -277,6 +289,12 @@ public class MenuUI : MonoBehaviour
         UpdateMenuBottom();
 
     }
+    public void EnterSystem()
+    {
+        OnSystem = true;
+        OpenMenu = false;
+
+    }
     public void ExitItem() // 탑메뉴창으로 돌아가기
     {
         ItemMenuCount = 0;
@@ -284,6 +302,7 @@ public class MenuUI : MonoBehaviour
         Selected_Menu.SetActive(false);
     }
 
+    
     private void UpdateMenuUI() // 메뉴들 UI 업데이트 
     {
         for (int i = 0; i < BottomMenu.Length; i++)
@@ -344,7 +363,7 @@ public class MenuUI : MonoBehaviour
     }
     private void SetSlot()
     {
-        if(PlayerData.Instance.inven.Items.Count == 0)
+        if (PlayerData.Instance.inven.Items.Count == 0)
         {
             return;
         }
@@ -362,23 +381,31 @@ public class MenuUI : MonoBehaviour
     {
         SystemCount--;
         UpdateSystemUI();
+        System_Selected_Zone.transform.position += Selected_System_Zone;
     }
     private void SystemDown()
     {
         SystemCount++;
         UpdateSystemUI();
+        System_Selected_Zone.transform.position -= Selected_System_Zone;
     }
     private void SystemExit()
     {
         OnSystem = false;
+        OpenMenu = true;
 
     }
     private void UpdateSystemUI()
     {
-        for (int i=0; i<MaxSystemCount; i++)
+        for (int i = 0; i < MaxSystemCount; i++)
         {
-
+            System_BackGround[i].color = Default_System_BackGround;
+            System_Box[i].color = Default_System_Box;
+            System_Text[i].color = Default_System_Txt;
         }
+        System_BackGround[SystemCount].color = Selected_System_BackGround;
+        System_Box[SystemCount].color = Selected_System_Box;
+        System_Text[SystemCount].color = Selected_System_Txt;
 
     }
     private void SystemGoTitle()
