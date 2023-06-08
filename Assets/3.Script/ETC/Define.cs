@@ -13,7 +13,7 @@ public class Define : MonoBehaviour
     {
         EnemyShot, Raser, GundamAttack, ToFlag, FlagBarrier, FlagAttack, Shot, Hit, ToGundam, Dash, Danger, 
         Atk1, Atk2, Atk3, Atk4, AtkStrong, Dash2, Dodge, Charge, Title_Warning , UI_Enter,
-        UI_Move , UI_Space, Bosshit, Bosshit2
+        UI_Move , UI_Space, PordBulletShot, PordLaser , Bosshit, Bosshit2 , 
 
     }
 

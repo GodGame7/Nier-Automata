@@ -90,7 +90,7 @@ public class PordControl : MonoBehaviour
             Spark.transform.position = transform.position + MagicCirclePositon;
 
 
-
+            AudioManager.Instance.PlaySfx(Define.SFX.PordBulletShot);
             if (isLockOn) //록온시 타겟방향으로
             {
                 PordBullet.Bullet[bulletCount].GetComponent<PordBulletMovement>().MoveRockOn((targetpos - PordBullet.Bullet[bulletCount].transform.position).normalized);
@@ -162,6 +162,7 @@ public class PordControl : MonoBehaviour
         //카메라를 살짝 흔들어주세용
         //소리도 여기에 넣어주세용
         //transform.position = new Vector3(transform.position.x, Player.transform.position.y + PlayerAround.y, transform.position.z);
+        AudioManager.Instance.PlaySfx(Define.SFX.PordLaser);
         isActive = true;
         isLaser = true;
         PordLaser.SetActive(true);
