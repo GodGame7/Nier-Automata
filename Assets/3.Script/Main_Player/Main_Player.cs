@@ -107,6 +107,7 @@ public class Main_Player : MonoBehaviour
         if (isCanHit())
         {
             sm.ChangeState(sm.hitted);
+            AudioManager.Instance.PlaySfx(Define.SFX.Dodge);
             BeInvincible(1f);
             PlayerData.Instance.OnDamage(damage);
         }

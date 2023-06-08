@@ -76,6 +76,7 @@ public class AudioManager : MonoBehaviour
 
         // SFX Player 생성 및 세팅
         GameObject sfx_obj = new GameObject("SfxPlayer");
+        sfx_obj.transform.position = transform.position;
         sfx_obj.transform.parent = transform;
         sfxPlayer = sfx_obj.AddComponent<AudioSource>();
         sfxPlayer.playOnAwake = false;

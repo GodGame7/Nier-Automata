@@ -27,6 +27,15 @@ public class em1000 : Enemy
     bool allattack;
     bool allattack2;
 
+    [Header("Cilp")]
+
+    public AudioClip allAttackStart;
+    public AudioClip allAttackEnd;
+    public AudioClip Attack2;
+    public AudioClip Attack2End;
+    public AudioClip Attack4;
+
+
     Dir dir;
 
     void Start()
@@ -176,5 +185,30 @@ public class em1000 : Enemy
         //enemyHp.isdead = false;
     }
 
+
+    void AllAttackSound()
+    {
+        audio.PlayOneShot(allAttackStart);
+    }
+
+    void allAttackEndSound()
+    {
+        audio.PlayOneShot(allAttackEnd);
+    }
+
+    void Attack2Sound()
+    {
+        audio.PlayOneShot(Attack2);
+    }
+
+    void Attack2EndSound()
+    {
+        audio.PlayOneShot(Attack2End);
+    }
+
+    void Attack4Sound()
+    {
+        audio.PlayOneShot(Attack4);
+    }
 
 }

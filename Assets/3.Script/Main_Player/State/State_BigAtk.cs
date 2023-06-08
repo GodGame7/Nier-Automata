@@ -95,6 +95,7 @@ public class State_BigAtk : State
         LoadBig();
         Main_Player.Instance.anim_bigsword.SetTrigger("AtkStrong");
         Main_Player.Instance.anim_player.SetTrigger("BigStrong");
+        AudioManager.Instance.PlaySfx(Define.SFX.Charge);
         //holdtime √ ±‚»≠
         holdTime = 0f;
     }
