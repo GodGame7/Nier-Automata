@@ -733,21 +733,25 @@ public class Intro : MonoBehaviour
                 {
                     EnterBGMSetting();
                     AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
+                    return;
                 }
                 if (SoundCount == 1)
                 {
                     EnterSFXSetting();
                     AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
+                    return;
                 }
                 if (SoundCount == 2)
                 {
                     EnterTalkSoundSetting();
                     AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
+                    return;
                 }
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SoundExit();
+                return;
             }
         }
         if (OnSoundSetting)
@@ -806,9 +810,10 @@ public class Intro : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.Return))
             {
                 SoundSettingExit();
+                return;
             }
         }
         if (OnSystemMenu)
