@@ -145,12 +145,14 @@ public class MenuUI : MonoBehaviour
                     if (InvenLength != 0)
                     {
                         EnterItem();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                     }
                     return;
                 }
                 else if (MenuCount == 6)
                 {
                     EnterSystem();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                     return;
                 }
 
@@ -166,6 +168,7 @@ public class MenuUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitItem();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 return;
             }
             if (ItemMenuCount > 0)
@@ -190,6 +193,7 @@ public class MenuUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 ItemEnter();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                 return;
             }
 
@@ -236,6 +240,7 @@ public class MenuUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SystemExit();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
             }
         }
 
