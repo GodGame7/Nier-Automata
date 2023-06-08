@@ -10,6 +10,8 @@ public class FlagFightSubTitleAudio : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        audioSource.volume = audioManager.float_talkSound;
     }
 
     public void PlayClip(int subTitleCounter)
@@ -21,9 +23,6 @@ public class FlagFightSubTitleAudio : MonoBehaviour
         }
     }
 
-    public void SetBgmVolume(float volume = 1.0f)
-    {
-        audioSource.volume = volume;
-    }
+    
 }
 

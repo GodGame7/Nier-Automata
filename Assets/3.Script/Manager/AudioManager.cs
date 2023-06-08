@@ -31,6 +31,9 @@ public class AudioManager : MonoBehaviour
     // 카메라 위치(중앙)에서 재생할 효과음 (ex-플레이어 효과음)
     private AudioSource sfxPlayer;
 
+    public float float_talkSound;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -115,6 +118,12 @@ public class AudioManager : MonoBehaviour
     public void SetSfxVolume(float volume = 1.0f)
     {
         sfxPlayer.volume = volume;
+    }
+
+    public void SetTalkSounds()
+    {
+        FlagFightSubTitleAudio flagFightSubTitleAudio = FindObjectOfType<FlagFightSubTitleAudio>();
+        flagFightSubTitleAudio.SetBgmVolume(float_talkSound);
     }
 
     
