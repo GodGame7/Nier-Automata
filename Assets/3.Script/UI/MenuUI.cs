@@ -22,7 +22,7 @@ public class MenuUI : MonoBehaviour
     public int ItemMenuCount = 0;
 
     // 인풋값 확인하기위한 불값
-    private bool OpenMenu = false;
+    public bool OpenMenu = false;
     public bool EnterMenuItem = false;
 
     //탑메뉴 색상
@@ -182,7 +182,7 @@ public class MenuUI : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 ItemEnter();
                 return;

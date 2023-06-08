@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     Coroutine co_dodge;
     Coroutine co_atk;
     Coroutine co_big;
-
+    MenuUI Menu;
     [SerializeField] private InventoryUI Inventory_UI;
     public delegate void Item(int num);
     public static event Item UseItem;
@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
         co_dodge = StartCoroutine(DodgeListener());
         co_atk = StartCoroutine(AttackListener());
         co_big = StartCoroutine(BigAttackListener());
+        Menu = FindObjectOfType<MenuUI>();
     }
     Vector3 inputVec;
     private void Update()
@@ -38,7 +39,7 @@ public class PlayerInput : MonoBehaviour
         {
             Inventory_UI.InvenActive();
         }
-        if (Inventory_UI.isActiveInven)
+        if (Inventory_UI.isActiveInven && !Menu.OpenMenu)
         {
             if (Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.Return))
             {
