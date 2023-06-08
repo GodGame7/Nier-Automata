@@ -806,7 +806,7 @@ public class Intro : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.Return))
             {
                 SoundSettingExit();
             }
