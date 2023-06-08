@@ -573,6 +573,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     TitleMenuDown();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (TitleCount < MaxTitleCount - 1)
@@ -580,6 +581,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     TitleMenuUp();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
 
@@ -589,11 +591,13 @@ public class Intro : MonoBehaviour
                 if (TitleCount == 1)
                 {
                     TitleWarningEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.Title_Warning);
                     return;
                 }
                 if (TitleCount == 2)
                 {
                     TitleSettingEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
                     return;
                 }
                 if (TitleCount == 4)
@@ -619,6 +623,7 @@ public class Intro : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 TitleMenuEnter();
+                AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
                 return;
             }
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -634,6 +639,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     NewGameUp();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (NewGameCount < MaxNewGameCount - 1)
@@ -641,6 +647,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     NewGameDown();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
@@ -648,12 +655,14 @@ public class Intro : MonoBehaviour
                 if (NewGameCount != 2)
                 {
                     NewGameEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
                     return;
                 }
                 else
                 {
                     NewGameEnter();
                     SystemMenuEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                     return;
                 }
             }
@@ -670,6 +679,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     SettingUp();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (SettingCount < MaxSettingCount - 1)
@@ -677,6 +687,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     SettingDown();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
@@ -684,6 +695,7 @@ public class Intro : MonoBehaviour
                 if (SettingCount == 4)
                 {
                     SettingEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                     return;
                 }
                 else
@@ -704,6 +716,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     SoundUpArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (SoundCount < MaxSoundCount - 1)
@@ -711,6 +724,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     SoundDownArrow();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
@@ -718,14 +732,17 @@ public class Intro : MonoBehaviour
                 if (SoundCount == 0)
                 {
                     EnterBGMSetting();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                 }
                 if (SoundCount == 1)
                 {
                     EnterSFXSetting();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                 }
                 if (SoundCount == 2)
                 {
                     EnterTalkSoundSetting();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -742,6 +759,7 @@ public class Intro : MonoBehaviour
                     if (BgmCount > 0)
                     {
                         BGMLeft();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
                 else if (OnSFX)
@@ -749,6 +767,7 @@ public class Intro : MonoBehaviour
                     if (SFXCount > 0)
                     {
                         SFXLeft();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
                 else if (OnTalkSound)
@@ -756,6 +775,7 @@ public class Intro : MonoBehaviour
                     if (TalkSoundCount > 0)
                     {
                         SoundTalkLeft();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
             }
@@ -766,6 +786,7 @@ public class Intro : MonoBehaviour
                     if (BgmCount < MaxBgmCount)
                     {
                         BGMRight();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
                 else if (OnSFX)
@@ -773,6 +794,7 @@ public class Intro : MonoBehaviour
                     if (SFXCount < MaxSFXCount)
                     {
                         SFXRight();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
                 else if (OnTalkSound)
@@ -780,6 +802,7 @@ public class Intro : MonoBehaviour
                     if (TalkSoundCount < MaxTalkSoundCount)
                     {
                         SoundTalkRight();
+                        AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                     }
                 }
             }
@@ -795,6 +818,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     SystemMenuLeft();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (SystemMenuCount < MaxSystemMenuCount - 1)
@@ -802,6 +826,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     SystemMenuRight();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
@@ -809,11 +834,13 @@ public class Intro : MonoBehaviour
                 if (SystemMenuCount == 0)
                 {
                     SystemMenuEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
                     return;
                 }
                 else
                 {
                     SystemMenuExit();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                     return;
                 }
             }
@@ -831,6 +858,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     StartMenuUp();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (StartMenuCount < MaxStartMenuCount - 1)
@@ -838,6 +866,7 @@ public class Intro : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     StartMenuDown();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Move);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
@@ -845,11 +874,13 @@ public class Intro : MonoBehaviour
                 if (StartMenuCount == 0)
                 {
                     StartMenuEnter();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Enter);
                     return;
                 }
                 if (StartMenuCount == 1)
                 {
                     StartMenuEnterSetting();
+                    AudioManager.Instance.PlaySfx(Define.SFX.UI_Space);
                 }
                 else
                 {

@@ -10923,6 +10923,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: sfxClips.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: sfxClips.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: c2c7f81d4e48fc14c98fadd18d859b39, type: 3}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: sfxClips.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c42014e8f829844cad7762f428dd030, type: 3}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: sfxClips.Array.data[13]
+      value: 
+      objectReference: {fileID: 8300000, guid: c6579a5a84d6a4045b2c3189a41f47ee, type: 3}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: sfxClips.Array.data[14]
+      value: 
+      objectReference: {fileID: 8300000, guid: b79787e3251ccfd44b3f2204ea93f632, type: 3}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: bgmClips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ca036c7ebad98e409195c5cd717b9ac, type: 3}
+    - target: {fileID: 8228837580787951196, guid: a35512cf49780c942b57f940b26a5425, type: 3}
+      propertyPath: bgmClips.Array.data[1].name
+      value: BGM
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35512cf49780c942b57f940b26a5425, type: 3}
 --- !u!1 &1247745008

@@ -52,8 +52,10 @@ public class Inventory : MonoBehaviour
                     {
                         Menu.ItemUpArrow();
                         Items.Remove(removeItem);
+                        return;
                     }
                 }
+                Items.Remove(removeItem);
             }
             else //아이템이 2개 이상이라면 아이템 갯수 -1
             {

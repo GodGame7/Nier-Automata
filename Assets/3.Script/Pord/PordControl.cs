@@ -51,6 +51,10 @@ public class PordControl : MonoBehaviour
     //포드의 총위치를 위한 변수
     Vector3 ScreenCenter;
 
+    private void Awake()
+    {
+        MagicCircle.SetActive(false);
+    }
     private void FixedUpdate()
     {
 
