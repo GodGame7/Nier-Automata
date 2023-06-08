@@ -31,7 +31,6 @@ public class State_Idle2 : State
 
     public override void StateFixedUpdate()
     {
-        Main_Player.Instance.rb.velocity = Vector3.zero;
     }
 
     public override void StateUpdate()

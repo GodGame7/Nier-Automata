@@ -46,21 +46,22 @@ public class State_DashFront : State
         Main_Player.Instance.anim_player.SetTrigger("DashFront");
         Main_Player.Instance.isDash = true;
         AudioManager.Instance.PlaySfx(Define.SFX.Dash2);
-
+        Main_Player.Instance.rb.AddForce(transform.forward * 1500f, ForceMode.Impulse);
         Main_Player.Instance.meshBake.OnTrail();
         while (Time.time - lastdashtime < dashbat)
         {
-            if (Physics.Raycast(transform.position, transform.forward, 2f, 1 << LayerMask.NameToLayer("Wall"))) { transform.Translate(Vector3.forward * 8f * Time.deltaTime); }
-            else { transform.Translate(Vector3.forward * 15f * Time.deltaTime); }
+            //if (Physics.Raycast(transform.position, transform.forward, 2f, 1 << LayerMask.NameToLayer("Wall"))) { Main_Player.Instance.rb.MovePosition(transform.position + transform.forward * 5f * Time.fixedDeltaTime); }
+            //else { Debug.Log("´ë½¬"); Main_Player.Instance.rb.MovePosition(transform.position + transform.forward * 15f * Time.fixedDeltaTime); }
             if (Time.time - lastdashtime < 0.3f)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     StartCoroutine(Dodge());
+                    Main_Player.Instance.rb.velocity = Vector3.zero;
                     yield break;
                 }
             }
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
