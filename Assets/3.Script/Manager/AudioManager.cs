@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public class Sound
+public struct Sound
 {
     public string name;
     public AudioClip clip;
@@ -76,7 +76,6 @@ public class AudioManager : MonoBehaviour
 
         // SFX Player 생성 및 세팅
         GameObject sfx_obj = new GameObject("SfxPlayer");
-        sfx_obj.transform.position = transform.position;
         sfx_obj.transform.parent = transform;
         sfxPlayer = sfx_obj.AddComponent<AudioSource>();
         sfxPlayer.playOnAwake = false;
@@ -120,12 +119,4 @@ public class AudioManager : MonoBehaviour
     {
         sfxPlayer.volume = volume;
     }
-
-    public void SetTalkSounds()
-    {
-        FlagFightSubTitleAudio flagFightSubTitleAudio = FindObjectOfType<FlagFightSubTitleAudio>();
-        flagFightSubTitleAudio.SetBgmVolume(float_talkSound);
-    }
-
-    
 }

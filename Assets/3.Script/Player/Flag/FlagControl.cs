@@ -30,28 +30,25 @@ public class FlagControl : MonoBehaviour
     public int defaultLayer { get; private set; }
     private bool canMove = true;
     private bool moveToCenter = false;
-    private bool canFire = true;
+    public bool canFire = true;
     public float threshold = 1f;
     private readonly Vector3 defaultPos = Vector3.zero;
 
     // 대쉬
-    public KeyCode lastKeyPressed { get; private set; }  // 대쉬를 위해 이전 키입력 저장
-    private readonly KeyCode[] keysToCheck = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.W };    // 대쉬를 위해 비교할 이동키 모음
-    private float lastKeyPressTime = 0f;
-    private readonly float timeAllowedBetweenKeyPresses = 0.5f; // 연속 입력으로 판단하기 위한 최대 시간차
+    public KeyCode lastKeyPressed;  // 대쉬를 위해 이전 키입력 저장
 
     // 공격
     public bool isCombo { get; private set; }   // 건담 약공격 콤보
     private float preInputDelay = 0.9f;         // 선입력 유지시간
 
     // 전략, 상태
-    private IFlagViewStrategy currentViewStrategy = new FlagTopViewMove();
-    private IFlagModeStrategy currentModeStrategy = new ModeFlag();
-    public IFlagState currentState = new FlagNomal();
-    private FlagNomal nomalState;
-    private FlagAttack attackState;
-    private FlagDash dashState;
-    private FlagTransformation transfomationState;
+    public IFlagViewStrategy currentViewStrategy = new FlagTopViewMove();
+    public IFlagModeStrategy currentModeStrategy = new ModeFlag();
+    public FlagBaseState currentState = new FlagNomal();
+    public FlagNomal nomalState;
+    public FlagAttack attackState;
+    public FlagDash dashState;
+    public FlagTransformation transfomationState;
 
 
     //[Header("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")]
@@ -209,7 +206,7 @@ public class FlagControl : MonoBehaviour
     }
 
     // 상태
-    private void SetState(IFlagState state)
+    public void SetState(FlagBaseState state)
     {
         StopCoroutine(nameof(ReturnToNomalState_co));
         currentState = state;
@@ -243,11 +240,8 @@ public class FlagControl : MonoBehaviour
         if (!currentState.Equals(transfomationState) && canMove && !moveToCenter)
         {
             InputMoveKey();
-            if (currentState.Equals(nomalState))
-            {
-                CheckDash();
-            }
-            Attack();
+            currentState.Dash(this);
+            currentState.Attack(this);
         }
     }
     private void FixedUpdate()
@@ -291,9 +285,8 @@ public class FlagControl : MonoBehaviour
     }
     private void Move()
     {
-        float targetSpeed = moveSpeed;  // 대쉬 속도 등 모두 계산된 최종 이동속도
+        float targetSpeed = moveSpeed;
         Vector3 moveDir;
-        // 시점에 따른 이동 방향 결정
         currentViewStrategy.Move(this, out moveDir);
 
         // 이동 방향에 따른 애니메이션 설정
@@ -334,28 +327,7 @@ public class FlagControl : MonoBehaviour
             Mathf.Clamp((rigid.position.z + targetSpeed * Time.deltaTime * moveDir.z), -0.17f, 0.17f));
         rigid.MovePosition(newPosition);
     }
-    private void CheckDash()
-    {
-        // 방향키만 두번 입력 체크함
-        foreach (KeyCode key in keysToCheck)
-        {
-            if (Input.GetKeyDown(key))
-            {
-                // 일정 시간 안에 같은 방향키를 두번 눌렀으면 대쉬
-                if (lastKeyPressed == key && Time.time - lastKeyPressTime <= timeAllowedBetweenKeyPresses)
-                {
-                    SetState(dashState);
-                    currentModeStrategy.Dash(this);
-                    lastKeyPressed = KeyCode.None;
-                }
-                else
-                {
-                    lastKeyPressed = key;
-                }
-                lastKeyPressTime = Time.time;
-            }
-        }
-    }
+    
     public IEnumerator ResetScaleX_co()
     {
         yield return EnterDashAni_wait;
@@ -391,53 +363,6 @@ public class FlagControl : MonoBehaviour
     #endregion 이동
 
     #region 공격
-    private void Attack()
-    {
-        if (!canFire)
-        {
-            return;
-        }
-
-        if (!currentState.Equals(attackState))
-        {
-            if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
-            {
-                // 비행기 모드의 약공격이 시점에 따라 수직오르 돌지 수평으로 돌지 결정하기 위한 변수
-                bool isHorizontal;
-                if (currentViewStrategy is FlagSideViewMove)
-                {
-                    isHorizontal = false;
-                }
-                else
-                {
-                    isHorizontal = true;
-                }
-
-                currentModeStrategy.WeakAttack(this, isHorizontal);
-                SetState(attackState);
-                StopCoroutine(nameof(ReturnToNomalState_co));
-                StartCoroutine(ReturnToNomalState_co(EnterAttackAni_wait, ExitAttackAni_wait));
-            }
-            if (Input.GetKeyDown(KeyCode.Slash) || Input.GetMouseButtonDown(1))
-            {
-                SetState(attackState);
-                currentModeStrategy.StrongAttack(this);
-                StopCoroutine(nameof(ReturnToNomalState_co));
-                StartCoroutine(ReturnToNomalState_co(EnterAttackAni_wait, ExitAttackAni_wait));
-            }
-        }
-        // 건담모드는 공격중에도 약공격 콤보로 발동 가능
-        else if (currentModeStrategy is ModeGundam)
-        {
-            if (Input.GetKeyDown(KeyCode.Period) || Input.GetMouseButtonDown(0))
-            {
-                SetState(attackState);
-                currentModeStrategy.WeakAttack(this);
-                StopCoroutine(nameof(ReturnToNomalState_co));
-                StartCoroutine(ReturnToNomalState_co(EnterAttackAni_wait, ExitAttackAni_wait));
-            }
-        }
-    }
     private IEnumerator Fire_co()
     {
         while (true)
